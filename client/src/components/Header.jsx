@@ -22,16 +22,19 @@ const Header = () => {
           <a href="/">The L&D Hub</a>
           <a href="/">Learning Experience Design</a>
         </div>
-        <p className="text-gray-50 text-5xl font-semibold">
+        <p className="text-5xl font-semibold text-gray-50">
           Developing an <br /> Effective Learning <br />
           Strategy
         </p>
       </motion.div>
       <motion.div
         className="flex-1"
-        initial={{ y: "100vh" }}
-        animate={{ y: 0 }}
-        transition={{ delay: 1, duration: 0.7 }}
+        initial={{ y: "100vh", scale: 1 }}
+        animate={{ y: 0, scale: [1, 1.05, 1] }} // Combines slide and zoom animations
+        transition={{
+          y: { delay: 1, duration: 0.7, ease: "easeOut" }, // Slide transition
+          scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }, // Infinite zoom transition
+        }}
       >
         <img src="/headerImg.png" alt="" className="w-[90%]" />
       </motion.div>
