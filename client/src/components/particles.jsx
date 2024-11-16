@@ -21,34 +21,44 @@ const Particle = () => {
         resize: true,
       },
       modes: {
-        push: { quantity: 1 },
+        push: { quantity: 4 },
         repulse: { distance: 100, duration: 0.4 },
       },
     },
     particles: {
-      color: { value: "#ffffff" },
-      links: {
-        color: "#ffffff",
-        distance: 150,
-        enable: true,
-        opacity: 0.5,
-        width: 1,
-      },
+      // color: { value: ["#FFA500", "#FF4500", "#FFD700"] }, // Colors for fire effect
+      color: { value: ["#FFF"] }, // Colors for fire effect
       move: {
-        direction: "none",
+        direction: "top", // Move particles upwards to resemble flames
         enable: true,
-        outModes: { default: "bounce" },
+        outModes: { default: "out" },
         random: false,
-        speed: 2,
+        speed: { min: 1, max: 3 },
         straight: false,
       },
       number: {
         density: { enable: true, area: 800 },
-        value: 50,
+        value: 80,
       },
-      opacity: { value: 0.5 },
+      opacity: {
+        value: { min: 0.3, max: 0.7 },
+        animation: {
+          enable: true,
+          speed: 1,
+          minimumValue: 0.3,
+          sync: false,
+        },
+      },
       shape: { type: "circle" },
-      size: { value: { min: 1, max: 5 } },
+      size: {
+        value: { min: 2, max: 6 },
+        animation: {
+          enable: true,
+          speed: 2,
+          minimumValue: 1,
+          sync: false,
+        },
+      },
     },
     detectRetina: true,
   };

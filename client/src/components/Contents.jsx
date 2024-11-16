@@ -24,7 +24,7 @@ const Contents = () => {
     },
   ];
   return (
-    <div className="px-36 flex gap-20 mt-20">
+    <div className="px-36 flex  gap-20 mt-20">
       <div>
         <div className="w-[280px] sticky top-10 mb-6">
           <div>

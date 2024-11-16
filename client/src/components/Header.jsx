@@ -4,10 +4,14 @@ import { motion } from "framer-motion";
 
 const Header = () => {
   return (
-    <div className="w-full h-screen bg-[#161628] px-36 flex items-center overflow-hidden">
-      <Particle />
+    <div className="relative w-full h-screen bg-[#161628] px-36 flex items-center overflow-hidden">
+      {/* Particle effect only within the header */}
+      <div className="absolute top-0 left-0 w-full h-full max-h-screen z-0 pointer-events-none">
+        <Particle />
+      </div>
+
       <motion.div
-        className="flex-1"
+        className="flex-1 z-10" // Ensures text appears above particles
         initial={{ x: "-100vw" }}
         animate={{ x: 0 }}
         transition={{
@@ -27,13 +31,14 @@ const Header = () => {
           Strategy
         </p>
       </motion.div>
+
       <motion.div
-        className="flex-1"
+        className="flex-1 "
         initial={{ y: "100vh", scale: 1 }}
-        animate={{ y: 0, scale: [1, 1.05, 1] }} // Combines slide and zoom animations
+        animate={{ y: 0, scale: [1, 1.05, 1] }}
         transition={{
-          y: { delay: 1, duration: 0.7, ease: "easeOut" }, // Slide transition
-          scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }, // Infinite zoom transition
+          y: { delay: 1, duration: 0.7, ease: "easeOut" },
+          scale: { duration: 5, repeat: Infinity, ease: "easeInOut" },
         }}
       >
         <img src="/headerImg.png" alt="" className="w-[90%]" />
