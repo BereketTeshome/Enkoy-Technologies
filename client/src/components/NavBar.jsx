@@ -13,7 +13,7 @@ const NavBar = () => {
   // Toggle mobile menu visibility
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
-    setActiveDropdown(null); // Close all dropdowns when mobile menu is toggled
+    setActiveDropdown(null);
   };
 
   const navItems = [
@@ -46,12 +46,17 @@ const NavBar = () => {
       icon: "/img/contentsMenuImg.png",
     },
     {
-      name: "Learning Lab",
+      name: "Learning Hub",
       content: ["Research Articles", "Webinars", "Workshops"],
       icon: "/img/contentsMenuImg.png",
     },
     {
       name: "About Us",
+      content: ["Our Mission", "Company Values", "Careers"],
+      icon: "/img/contentsMenuImg.png",
+    },
+    {
+      name: "*Digital Training",
       content: ["Our Mission", "Company Values", "Careers"],
       icon: "/img/contentsMenuImg.png",
     },
@@ -126,7 +131,7 @@ const NavBar = () => {
       {/* Contact Us Button */}
       <a
         href="/"
-        className="relative text-sm font-semibold max-w-[110px] bg-gradient-to-r from-pink-500 to-yellow-500 text-white flex items-center px-5 py-2 mt-5 rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-pink-500/50"
+        className="relative text-sm font-semibold max-w-[110px] bg-gradient-to-r from-pink-500 to-yellow-500 text-white flex items-center px-5 py-2 rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-pink-500/50"
       >
         <span className="absolute inset-0 w-full h-full transition-opacity duration-300 ease-in-out opacity-0 bg-gradient-to-r from-pink-500 to-yellow-500 group-hover:opacity-100"></span>
         <span className="relative z-10">Contact Us</span>

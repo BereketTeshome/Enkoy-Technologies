@@ -6,12 +6,12 @@ const Header = () => {
   return (
     <div className="relative w-full h-screen bg-[#161628] px-36 flex items-center overflow-hidden">
       {/* Particle effect only within the header */}
-      <div className="absolute top-0 left-0 w-full h-full max-h-screen z-0 pointer-events-none">
+      <div className="absolute top-0 left-0 z-0 w-full h-full max-h-screen pointer-events-none">
         <Particle />
       </div>
 
       <motion.div
-        className="flex-1 z-10" // Ensures text appears above particles
+        className="z-10 flex-1" // Ensures text appears above particles
         initial={{ x: "-100vw" }}
         animate={{ x: 0 }}
         transition={{
@@ -27,8 +27,8 @@ const Header = () => {
           <a href="/">Learning Experience Design</a>
         </div>
         <p className="text-5xl font-semibold text-gray-50">
-          Developing an <br /> Effective Learning <br />
-          Strategy
+          Engaging <br /> <span className="text-">Digital Solutions</span>{" "}
+          <br /> for Lasting Impact
         </p>
       </motion.div>
 
