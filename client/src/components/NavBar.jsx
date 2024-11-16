@@ -63,7 +63,7 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="w-full bg-[#161628] py-5 px-6 lg:px-36 flex justify-between items-center relative">
+    <nav className="w-full bg-[#161628] py-5 px-6 lg:px-10 flex justify-between items-center relative">
       <div>
         <img src="/navLogo.png" alt="logo" className="w-[40px]" />
       </div>
@@ -83,7 +83,10 @@ const NavBar = () => {
             onMouseEnter={() => toggleDropdown(item.name)}
             onMouseLeave={() => toggleDropdown(null)}
           >
-            <a href="#" className="text-sm font-semibold text-gray-50">
+            <a
+              href="#"
+              className="text-xs font-semibold lg:text-sm text-gray-50 whitespace-nowrap"
+            >
               {item.name}
             </a>
             <AnimatePresence>
@@ -95,7 +98,7 @@ const NavBar = () => {
                   transition={{ duration: 0.4 }}
                   className="absolute top-full mt-2 w-72 bg-white shadow-[#FAD358] shadow-md p-4 rounded-lg z-10"
                 >
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center mb-2">
                     <img
                       src={item.icon}
                       alt={`${item.name} icon`}
