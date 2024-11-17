@@ -9,24 +9,39 @@ const Contents = () => {
   const tabs = [
     {
       id: 1,
-      title: "Learning Experience Design",
+      title: "Level Up: Digital Training & LXD",
       content: <LearningExperienceDesign />,
     },
     {
       id: 2,
-      title: "ADDIE Model",
+      title: "Game On: Engaging Digital Learning",
       content: <ADDIEModel />,
     },
     {
       id: 3,
-      title: "Instructional Design",
+      title: "Quest for Knowledge: LXD in Digital Training",
+      content: <InstructionalDesign />,
+    },
+    {
+      id: 4,
+      title: "Play to Learn: Digital Training with LXD",
+      content: <InstructionalDesign />,
+    },
+    {
+      id: 5,
+      title: "Unlocking Potential: LXD in Digital Training",
+      content: <InstructionalDesign />,
+    },
+    {
+      id: 6,
+      title: "Power-Up: Transforming Training with LXD",
       content: <InstructionalDesign />,
     },
   ];
   return (
-    <div className="px-36 flex  gap-20 mt-20">
+    <div className="flex gap-12 px-24 mt-20">
       <div>
-        <div className="w-[280px] sticky top-10 mb-6">
+        <div className="w-[320px] sticky top-10 mb-6">
           <div>
             <div className="flex items-center bg-[#161628] text-white gap-5 text-lg py-2 px-4 font-semibold mb-5">
               <img src="/img/contentsMenuImg.png" alt="" className="w-[30px]" />
