@@ -171,7 +171,7 @@ const LearningExperience = () => {
           </ul>
           <p>
             Invest in your learning design today and create a future-ready
-            workforce that excels in any environment!
+            workforce that excels in any environment! s
           </p>
         </div>
       </div>
