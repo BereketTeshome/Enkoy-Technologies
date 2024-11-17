@@ -12,6 +12,7 @@ import Accessibility from "./pages/servicePages/Accessibility";
 import LearningExperiences from "./pages/servicePages/LearningExperiences";
 import AnimationVideos from "./pages/servicePages/AnimationVideos";
 import LXD from "./pages/servicePages/LXD";
+import "./App.css";
 const App = () => {
   return (
     <div className="">

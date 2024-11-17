@@ -3,38 +3,32 @@ import React from "react";
 const Achievements = () => {
   const stats = [
     {
-      value: "15",
-      description: "Avg years of experience of our design team",
+      value: "2",
+      description: "years of professional experience",
     },
     {
       value: "1",
-      description: "Ideal length of an animation (in minutes)",
+      description: "Ideal length of an animation in (Minutes)",
     },
     {
-      value: "50",
-      description: "Avg # of illustrations we create for a course",
+      value: "4068",
+      description: "Total project hours completed",
     },
     {
-      value: "21,443",
-      description: "Total project hours completed in 2021",
+      value: "50+",
+      description: "illustrations we create for a course",
     },
   ];
 
   return (
-    <div
-      style={{
-        backgroundColor: "#FFCD57",
-        padding: "100px 0",
-        textAlign: "center",
-      }}
-    >
-      <div style={{ display: "flex", justifyContent: "center", gap: "50px" }}>
+    <div className="bg-[#FFCD57] py-12 sm:py-16 text-center">
+      <div className="flex flex-wrap justify-center gap-8 px-4 sm:gap-12">
         {stats.map((stat, index) => (
-          <div key={index} style={{ maxWidth: "200px" }}>
-            <h2 style={{ fontSize: "3rem", margin: "0", color: "#000" }}>
+          <div key={index} className="max-w-xs">
+            <h2 className="text-4xl font-bold text-black sm:text-5xl">
               {stat.value}
             </h2>
-            <p style={{ fontSize: "1rem", margin: "10px 0 0", color: "#000" }}>
+            <p className="mt-2 text-sm text-black sm:text-base">
               {stat.description}
             </p>
           </div>

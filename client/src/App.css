@@ -29,7 +29,7 @@ html {
 .solution-scroll {
   overflow: hidden;
   padding: 20px 0;
-  background: #f8f7f7;
+  background: #ffffff;
   white-space: nowrap;
   position: relative;
 }
@@ -100,7 +100,7 @@ html {
 }
 
 .images-scroll img {
-  height: 150px;
+  height: 100px;
   margin: 0 30px;
 }
 
