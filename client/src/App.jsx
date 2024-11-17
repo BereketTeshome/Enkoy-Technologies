@@ -11,8 +11,12 @@ import Accessibility from "./pages/servicePages/Accessibility";
 import LearningExperiences from "./pages/servicePages/LearningExperiences";
 import AnimationVideos from "./pages/servicePages/AnimationVideos";
 import LXD from "./pages/servicePages/LXD";
+import CorporateTraining from "./pages/CorporateTraining.jsx";
+import LeadershipDevelopment from "./pages/corporateTrainingPages/LeadershipDevelopment.jsx";
+import LearningExperience from "./pages/corporateTrainingPages/LearningExperience.jsx";
 import "./App.css";
 import Story from "./pages/servicePages/Story";
+
 const App = () => {
   return (
     <div className="">
@@ -43,6 +47,18 @@ const App = () => {
             element={<AnimationVideos />}
           />
           <Route path="/services/LXD" element={<LXD />} />
+
+          {/* Corporate Training */}
+
+          <Route path="/corporate-training" element={<CorporateTraining />} />
+          <Route
+            path="/corporate-training/leadership"
+            element={<LeadershipDevelopment />}
+          />
+          <Route
+            path="/corporate-training/learning-experience"
+            element={<LearningExperience />}
+          />
         </Routes>
       </div>
       <Footer />
