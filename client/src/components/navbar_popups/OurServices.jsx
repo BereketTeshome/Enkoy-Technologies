@@ -1,7 +1,7 @@
 import React from "react";
 
 const OurServices = () => (
-  <div className="grid z-100 grid-cols-4 gap-4 p-6  bg-white shadow-md rounded-md w-[900px] shadow-white">
+  <div className="grid z-100 grid-cols-4 gap-4 p-6 bg-white shadow-md rounded-md w-[900px] shadow-white">
     {/* Customized learning Column */}
     <div>
       <div className="flex items-center mb-2">
@@ -22,15 +22,23 @@ const OurServices = () => (
       </a>
       <ul className="space-y-5 text-sm text-gray-700">
         {[
-          "Self-paced learning",
-          "Gamification",
-          "Animated video",
-          "Storytelling",
-          "Translation and localization",
-          "Accessibility",
+          {
+            label: "Self-paced learning",
+            link: "/services/self-paced-learning",
+          },
+          { label: "Gamification", link: "/services/gamification" },
+          { label: "Animated video", link: "/services/animated-videos" },
+          { label: "Storytelling", link: "/services/storytelling" },
+          {
+            label: "Translation and localization",
+            link: "/services/translation",
+          },
+          { label: "Accessibility", link: "/services/accessibility" },
         ].map((item, index) => (
-          <li key={index} className="cursor-pointer hover:text-blue-500">
-            {item}
+          <li key={index}>
+            <a href={item.link} className="cursor-pointer hover:text-blue-500">
+              {item.label}
+            </a>
           </li>
         ))}
       </ul>
@@ -39,7 +47,8 @@ const OurServices = () => (
       </a>
     </div>
 
-    {/* Consulting and advisory Column */}
+    {/* Repeat similar structure for other columns */}
+    {/* Consulting and advisory */}
     <div>
       <div className="flex items-center mb-2">
         <img
@@ -59,18 +68,29 @@ const OurServices = () => (
       </a>
       <ul className="space-y-5 text-sm text-gray-700">
         {[
-          "Learning experiences design",
-          "Instructional design",
-          "In-house Training digitalization",
+          {
+            label: "Learning experiences design",
+            link: "/services/learning-experiences",
+          },
+          {
+            label: "Instructional design",
+            link: "/services/instructional-design",
+          },
+          {
+            label: "In-house Training digitalization",
+            link: "/services/training-digitalization",
+          },
         ].map((item, index) => (
-          <li key={index} className="cursor-pointer hover:text-blue-500">
-            {item}
+          <li key={index}>
+            <a href={item.link} className="cursor-pointer hover:text-blue-500">
+              {item.label}
+            </a>
           </li>
         ))}
       </ul>
     </div>
 
-    {/* Animation and video production Column */}
+    {/* Animation and video production */}
     <div>
       <div className="flex items-center mb-2">
         <img
@@ -89,17 +109,21 @@ const OurServices = () => (
         See overview
       </a>
       <ul className="space-y-5 text-sm text-gray-700">
-        {["Animation video", "Video editing", "Graphics design"].map(
-          (item, index) => (
-            <li key={index} className="cursor-pointer hover:text-blue-500">
-              {item}
-            </li>
-          )
-        )}
+        {[
+          { label: "Animation video", link: "/services/animation-videos" },
+          { label: "Video editing", link: "/services/video-editing" },
+          { label: "Graphics design", link: "/services/graphics-design" },
+        ].map((item, index) => (
+          <li key={index}>
+            <a href={item.link} className="cursor-pointer hover:text-blue-500">
+              {item.label}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
 
-    {/* Off the Shelf Training Column */}
+    {/* Capacity Building */}
     <div>
       <div className="flex items-center mb-2">
         <img
@@ -117,14 +141,22 @@ const OurServices = () => (
       </a>
       <ul className="space-y-5 text-sm text-gray-700">
         {[
-          "LXD training",
-          "Leadership skill",
-          "Personal development",
-          "Employability skill",
-          "Basic computer skill",
+          { label: "LXD training", link: "/services/LXD" },
+          { label: "Leadership skill", link: "/services/leadership-skill" },
+          {
+            label: "Personal development",
+            link: "/services/personal-development",
+          },
+          {
+            label: "Employability skill",
+            link: "/services/employability-skill",
+          },
+          { label: "Basic computer skill", link: "/services/computer-skill" },
         ].map((item, index) => (
-          <li key={index} className="cursor-pointer hover:text-blue-500">
-            {item}
+          <li key={index}>
+            <a href={item.link} className="cursor-pointer hover:text-blue-500">
+              {item.label}
+            </a>
           </li>
         ))}
       </ul>

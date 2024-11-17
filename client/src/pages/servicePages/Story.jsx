@@ -1,6 +1,6 @@
 import React from "react";
 
-const Storytelling = () => {
+const Story = () => {
   return (
     <div className="pt-20 ">
       <div className="flex flex-col w-full items-center">
@@ -39,4 +39,4 @@ const Storytelling = () => {
   );
 };
 
-export default Storytelling;
+export default Story;

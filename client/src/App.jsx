@@ -6,13 +6,13 @@ import Footer from "./components/Footer";
 import SelfPacedLearning from "./pages/servicePages/SelfPacedLearning";
 import Gamification from "./pages/servicePages/Gamification";
 import AnimatedVideos from "./pages/servicePages/AnimatedVideos";
-import Storytelling from "./pages/servicePages/storytelling";
 import Translation from "./pages/servicePages/Translation";
 import Accessibility from "./pages/servicePages/Accessibility";
 import LearningExperiences from "./pages/servicePages/LearningExperiences";
 import AnimationVideos from "./pages/servicePages/AnimationVideos";
 import LXD from "./pages/servicePages/LXD";
 import "./App.css";
+import Story from "./pages/servicePages/Story";
 const App = () => {
   return (
     <div className="">
@@ -31,7 +31,7 @@ const App = () => {
             path="/services/animated-videos"
             element={<AnimatedVideos />}
           />
-          <Route path="/services/storytelling" element={<Storytelling />} />
+          <Route path="/services/storytelling" element={<Story />} />
           <Route path="/services/translation" element={<Translation />} />
           <Route path="/services/accessibility" element={<Accessibility />} />
           <Route
