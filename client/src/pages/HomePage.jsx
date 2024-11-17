@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-// import Contents from "../components/Contents";
+import Contents from "../components/Contents";
 import Partners from "../components/homepage_contents/partners";
 import Testimonials from "../components/homepage_contents/Testimonials";
 import OurServices from "../components/homepage_contents/OurServices";
@@ -21,11 +21,11 @@ const HomePage = () => {
       <Testimonials />
       <Achievement />
       <OurServices />
+      <Contents />
       <VideoSection />
       <HowWeWork />
       <CaseStudies />
       <ContactUsSection />
-      {/* <Contents /> */}
     </div>
   );
 };
