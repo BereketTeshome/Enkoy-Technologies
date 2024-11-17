@@ -1,6 +1,6 @@
 import React from "react";
 
-const Achievements = () => {
+const Achievement = () => {
   const stats = [
     {
       value: "2",
@@ -38,4 +38,4 @@ const Achievements = () => {
   );
 };
 
-export default Achievements;
+export default Achievement;
