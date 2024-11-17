@@ -3,6 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import Footer from "./components/Footer";
+
+import "./index.css";
+import "./App.css";
+
 const App = () => {
   return (
     <div className="bg-gray-50">

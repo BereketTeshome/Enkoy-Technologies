@@ -1,12 +1,18 @@
 import React from "react";
 import Header from "../components/Header";
-import Contents from "../components/Contents";
+// import Contents from "../components/Contents";
+import Partners from "../components/homepage_contents/partners";
+import Testimonials from "../components/homepage_contents/Testimonials";
+import Achievements from "../components/homepage_contents/achievements";
 
 const HomePage = () => {
   return (
     <div>
       <Header />
-      <Contents />
+      <Partners />
+      <Testimonials />
+      <Achievements />
+      {/* <Contents /> */}
     </div>
   );
 };
