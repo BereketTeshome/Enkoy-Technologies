@@ -15,6 +15,8 @@ import LXD from "./pages/servicePages/LXD";
 import CorporateTraining from "./pages/CorporateTraining.jsx";
 import LeadershipDevelopment from "./pages/corporateTrainingPages/LeadershipDevelopment.jsx";
 import LearningExperience from "./pages/corporateTrainingPages/LearningExperience.jsx";
+import "./App.css";
+
 const App = () => {
   return (
     <div className="">

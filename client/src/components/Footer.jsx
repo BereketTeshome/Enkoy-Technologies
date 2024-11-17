@@ -1,61 +1,116 @@
 import { Mail, Phone } from "@mui/icons-material";
+import {
+  FaLinkedin,
+  FaInstagram,
+  FaYoutube,
+  FaTelegramPlane,
+  FaFacebookF,
+  FaTwitter,
+} from "react-icons/fa";
 import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-[#161628] w-full px-36">
-      <div className="pt-20 text-white flex justify-between">
-        <div>
+    <div className="bg-[#161628] w-full px-6 md:px-12 lg:px-36">
+      <div className="flex flex-wrap justify-between gap-12 pt-12 text-white">
+        {/* Logo and Contact */}
+        <div className="flex-1 min-w-[250px]">
           <img src="/navLogo.png" alt="logo" className="w-[50px]" />
-          <h2 className="text-lg mb-10 mt-2">
-            The people-first eLearning <br /> agency
+          <h2 className="mt-4 mb-8 text-lg">
+            Empowering Learning <br /> through digital excellence
           </h2>
-          <p className="flex items-center text-sm gap-3 mb-2">
-            <Phone fontSize="small" /> +251987654321
+          <p className="flex items-center gap-3 mb-2 text-sm">
+            <Phone fontSize="small" /> +251970010047
           </p>
-          <p className="flex items-center text-sm gap-3 mb-2">
-            <Mail fontSize="small" /> info@elmlearning.com
+          <p className="flex items-center gap-3 mb-2 text-sm">
+            <Mail fontSize="small" /> enkoytechnologies@gmail.com
           </p>
         </div>
-        <div>
-          <p className="text-sm font-semibold mb-6">Services</p>
-          <div className="*:mb-3 *:text-sm flex flex-col">
-            <a href="/">Custom eLearning</a>
-            <a href="/">Instructor-Led Training</a>
+
+        {/* Services Section */}
+        <div className="flex-1 min-w-[150px]">
+          <p className="mb-6 text-lg font-semibold underline">Services</p>
+          <div className="space-y-3 text-sm">
+            <a href="/">Adaptive Digital Learning</a>
+            <a href="/">Self-paced learning</a>
+            <a href="/">Corporate Training - Professional Skills Training</a>
             <a href="/">Learning Strategy</a>
-            <a href="/">Corporate Training</a>
             <a href="/">Our Work</a>
           </div>
         </div>
-        <div>
-          <p className="text-sm font-semibold mb-6">Company</p>
-          <div className="*:mb-3 *:text-sm flex flex-col">
-            <a href="/">About Us</a>
-            <a href="/">DEI Commitment</a>
-            <a href="/">Our Sustainability Commitment</a>
-            <a href="/">Careers</a>
-            <a href="/">Contact Us</a>
+
+        {/* Company Section */}
+        <div className="flex-1 min-w-[150px]">
+          <p className="mb-6 text-lg font-semibold underline">Company</p>
+          <div className="space-y-3 text-sm">
+            <a href="/">About us</a>
+            <a href="/">Career</a>
+            <a href="/">Contact us</a>
           </div>
         </div>
-        <div>
-          <p className="text-sm font-semibold mb-6">Resources</p>
-          <div className="*:mb-3 *:text-sm flex flex-col">
-            <a href="/">Learning Lab</a>
-            <a href="/">News</a>
-            <a href="/">L&D Hub</a>
+
+        {/* Social Links Section */}
+        <div className="flex-1 min-w-[200px]">
+          <p className="mb-6 text-lg font-semibold underline">Social Links</p>
+          <div className="grid grid-cols-3 gap-4">
+            <a
+              href="https://www.linkedin.com/company/enkoytech/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-500"
+            >
+              <FaLinkedin size={24} />
+            </a>
+            <a
+              href="https://www.instagram.com/enkoy_1/profilecard/?igsh=dHRzYmI5N2hrZXRm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-pink-500"
+            >
+              <FaInstagram size={24} />
+            </a>
+            <a
+              href="https://youtube.com/@enkoytech?si=7_wriEQK_H9UUJNW"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-red-500"
+            >
+              <FaYoutube size={24} />
+            </a>
+            <a
+              href="https://x.com/enkoytech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-400"
+            >
+              <FaTwitter size={24} />
+            </a>
+            <a
+              href="https://t.me/enkoytechs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-400"
+            >
+              <FaTelegramPlane size={24} />
+            </a>
+            <a
+              href="https://web.facebook.com/profile.php?id=61568879338093"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-700"
+            >
+              <FaFacebookF size={24} />
+            </a>
           </div>
         </div>
       </div>
-      <div className="w-full">
-        <img
-          src="/footerLogo.png"
-          alt="footerLogo.png"
-          className="w-[110px] my-10"
-        />
-        <hr />
-        <div className="flex justify-between text-sm text-gray-400 pt-2 pb-6">
-          <p>© ELM Learning 2024</p>
-          <p>Privacy Policy</p>
+
+      {/* Footer Bottom */}
+      <div className="w-full mt-12">
+        <hr className="border-gray-600" />
+        <div className="flex flex-wrap justify-between gap-4 pt-4 pb-6 text-sm text-gray-400">
+          <p className="flex-1 text-center">© Enkoy Technologies 2024</p>
+          <p className="flex-1 text-center">Privacy Policy</p>
         </div>
       </div>
     </div>
