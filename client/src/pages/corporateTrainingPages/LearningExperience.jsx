@@ -3,17 +3,18 @@ import FAQSection from "../../components/corporateTraining/FAQSection";
 const LearningExperience = () => {
   const faqData = [
     {
-      question: "Tailored Leadership Development for Your Unique Context",
+      question: "Tailored Learning Solutions for Your Unique Context",
       answer: [
-        `At Enkoy Technologies, our leadership training is intricately designed to resonate with your organization’s specific culture and objectives. We begin by gaining a deep understanding of your mission, vision, values, and goals. This foundational knowledge allows us to craft a corporate leadership development program that aligns seamlessly with your context.`,
+        `At Enkoy Technologies, our approach to LXD training is deeply rooted in your organization’s culture and objectives. We begin by conducting a thorough analysis of your mission, vision, values, and desired learning outcomes. This foundational understanding enables us to develop learning experiences that align seamlessly with your organizational context.
+`,
         "We also pay close attention to the desired outcomes of your leadership training. By identifying the specific improvements you want to see in your leaders’ performance, we can create targeted solutions that drive real results. Additionally, we assess your organization’s life cycle stage, recognizing that different phases demand distinct leadership capabilities.",
       ],
     },
     {
-      question: "Real-World Challenges in a Controlled Environment",
+      question: "Real-World Applications in a Supportive Environment",
       answer: [
-        "Our training methodology immerses learners in realistic leadership scenarios, allowing them to experience the challenges leaders face firsthand. Through simulations, we evaluate their performance and gather feedback from various perspectives—team members, supervisors, and customers—to provide comprehensive insights.",
-        "By confronting your leaders with these authentic challenges, we prepare them to navigate complex situations. Our coaching emphasizes the development of effective change management strategies, equipping them to lead through organizational transformations, technological advancements, and shifts in the economic landscape.",
+        "Our training methodology immerses participants in realistic learning scenarios that mimic real-world challenges. Through interactive simulations and collaborative projects, we evaluate their learning outcomes and gather feedback from multiple perspectives—peers, mentors, and stakeholders.",
+        "By placing learners in authentic situations, we prepare them to tackle complex challenges effectively. Our training emphasizes developing practical skills that can be immediately applied, ensuring that participants leave with actionable insights.",
       ],
     },
   ];
@@ -119,61 +120,58 @@ const LearningExperience = () => {
       <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
         <div className="flex-1 flex ">
           <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
-            Key Components of Our <br /> Leadership Development <br /> Solutions
+            Key Components of Our Learning Experience Design Solutions
           </h2>
         </div>
         <div className="flex-1 text-gray-900 text-[15px]">
-          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
-            Our comprehensive training approach focuses on:
-          </h2>
+          <p>Our comprehensive training approach focuses on:</p>
           <ul className="list-disc pl-6 py-5 *:mb-5">
             <li>
-              <b>Realistic Obstacles:</b>Leaders confront challenging,
-              real-world scenarios that test their skills and decision-making
-              abilities.
+              <b>Engaging Content:</b>Learning experiences that captivate and
+              motivate participants.
             </li>
             <li>
-              <b>Collaborative Problem-Solving: </b> IWe foster teamwork and
-              collaboration, teaching leaders how to work together to overcome
-              obstacles.
+              <b>Collaborative Learning: </b> Opportunities for teamwork and
+              peer interaction to enhance understanding.
             </li>
             <li>
-              <b>Conflict Resolution:</b> We delve into the root causes of
-              conflicts and provide strategies for effective resolution.
+              <b>Realistic Scenarios: </b>Simulations that reflect actual
+              challenges learners may face.
             </li>
             <li>
-              <b>Emotional Intelligence:</b> Leaders learn how to manage diverse
-              personalities while maintaining their own emotional balance.
+              <b>Feedback Mechanisms:</b> Continuous feedback loops to inform
+              and improve learning effectiveness.
             </li>
           </ul>
           <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
             Transformative Benefits for Your Organization
           </h2>
           <p>
-            The impact of our leadership development solutions extends far
-            beyond individual leaders. As your leaders become more effective,
-            the benefits ripple throughout your organization:
+            The impact of our Learning Experience Design solutions extends
+            throughout your organization. As your workforce engages with
+            effective learning experiences, the benefits include:
           </p>
           <ul className="list-disc pl-6 py-5 *:mb-5">
             <li>
-              Teams achieve results that align with your organizational culture
-              and objectives.
+              Improved knowledge retention and application among employees.
             </li>
             <li>
-              Employee engagement and commitment increase, fostering a positive
-              work environment.
+              Enhanced engagement and morale, fostering a positive learning
+              culture.
             </li>
-            <li>Innovation flourishes as leaders inspire creative thinking.</li>
-            <li>Collaboration improves, leading to stronger team dynamics.</li>
             <li>
-              Overall productivity and effectiveness rise, driving your
-              organization’s success.
+              Increased innovation as learners feel empowered to contribute
+              ideas.
+            </li>
+            <li>Strengthened collaboration and communication across teams.</li>
+            <li>
+              Overall productivity and performance improvements, driving
+              organizational success.
             </li>
           </ul>
           <p>
-            Investing in leadership development transforms not just your leaders
-            but your entire organization. Let us help you build a legacy of
-            strong leadership today!
+            Invest in your learning design today and create a future-ready
+            workforce that excels in any environment! s
           </p>
         </div>
       </div>
