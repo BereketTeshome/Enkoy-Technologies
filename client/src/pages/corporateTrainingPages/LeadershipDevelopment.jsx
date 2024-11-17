@@ -1,6 +1,23 @@
 import React from "react";
 import FAQSection from "../../components/corporateTraining/FAQSection";
 const LeadershipDevelopment = () => {
+  const faqData = [
+    {
+      question: "Tailored Leadership Development for Your Unique Context",
+      answer: [
+        `At Enkoy Technologies, our leadership training is intricately designed to resonate with your organization’s specific culture and objectives. We begin by gaining a deep understanding of your mission, vision, values, and goals. This foundational knowledge allows us to craft a corporate leadership development program that aligns seamlessly with your context.`,
+        "We also pay close attention to the desired outcomes of your leadership training. By identifying the specific improvements you want to see in your leaders’ performance, we can create targeted solutions that drive real results. Additionally, we assess your organization’s life cycle stage, recognizing that different phases demand distinct leadership capabilities.",
+      ],
+    },
+    {
+      question: "Real-World Challenges in a Controlled Environment",
+      answer: [
+        "Our training methodology immerses learners in realistic leadership scenarios, allowing them to experience the challenges leaders face firsthand. Through simulations, we evaluate their performance and gather feedback from various perspectives—team members, supervisors, and customers—to provide comprehensive insights.",
+        "By confronting your leaders with these authentic challenges, we prepare them to navigate complex situations. Our coaching emphasizes the development of effective change management strategies, equipping them to lead through organizational transformations, technological advancements, and shifts in the economic landscape.",
+      ],
+    },
+  ];
+  console.log(faqData);
   return (
     <div className="pt-20 ">
       <div className="flex flex-col w-full items-center">
@@ -96,7 +113,7 @@ const LeadershipDevelopment = () => {
       <br />
       <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
         <div className="flex-1">
-          <FAQSection />
+          <FAQSection faqData={faqData} />
         </div>
         <div className="flex-1">
           <img

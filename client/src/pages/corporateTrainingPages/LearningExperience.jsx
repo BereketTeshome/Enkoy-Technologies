@@ -1,6 +1,22 @@
 import React from "react";
 import FAQSection from "../../components/corporateTraining/FAQSection";
 const LearningExperience = () => {
+  const faqData = [
+    {
+      question: "Tailored Leadership Development for Your Unique Context",
+      answer: [
+        `At Enkoy Technologies, our leadership training is intricately designed to resonate with your organization’s specific culture and objectives. We begin by gaining a deep understanding of your mission, vision, values, and goals. This foundational knowledge allows us to craft a corporate leadership development program that aligns seamlessly with your context.`,
+        "We also pay close attention to the desired outcomes of your leadership training. By identifying the specific improvements you want to see in your leaders’ performance, we can create targeted solutions that drive real results. Additionally, we assess your organization’s life cycle stage, recognizing that different phases demand distinct leadership capabilities.",
+      ],
+    },
+    {
+      question: "Real-World Challenges in a Controlled Environment",
+      answer: [
+        "Our training methodology immerses learners in realistic leadership scenarios, allowing them to experience the challenges leaders face firsthand. Through simulations, we evaluate their performance and gather feedback from various perspectives—team members, supervisors, and customers—to provide comprehensive insights.",
+        "By confronting your leaders with these authentic challenges, we prepare them to navigate complex situations. Our coaching emphasizes the development of effective change management strategies, equipping them to lead through organizational transformations, technological advancements, and shifts in the economic landscape.",
+      ],
+    },
+  ];
   return (
     <div className="pt-20 ">
       <div className="flex flex-col w-full items-center">
@@ -11,18 +27,18 @@ const LearningExperience = () => {
             className="w-[70px]"
           />
           <p className="uppercase text-sm font-semibold text-[#FF8689] my-10 ">
-            Leadership development training
+            Enhancing Learning Through Thoughtful Design
           </p>
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
-            Leadership development training designed to motivate and achieve
-            results.
+            Learning Experience Design (LXD) Training
           </h2>
           <p className="mb-7">
-            At Enkoy Technologies, we are committed to cultivating leadership
-            skills! Whether your team includes natural leaders or individuals
-            ready to step into leadership roles, we can assist you in teaching
-            them essential skills through our leadership development training
-            solutions.
+            At Enkoy Technologies, we believe that effective learning
+            experiences are key to unlocking potential. Our Learning Experience
+            Design (LXD) training is crafted to engage participants and promote
+            meaningful learning outcomes. Whether you’re developing training for
+            new employees or upskilling your existing workforce, our approach
+            ensures that learning is both impactful and enjoyable.
           </p>
           <a href="/contact" className="py-3 px-6 bg-gray-900 text-white">
             Get in touch
@@ -41,21 +57,16 @@ const LearningExperience = () => {
           </div>
           <div className="flex-1">
             <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
-              Transformative Leadership Development for Lasting Impact
+              Transformative Learning Experiences for Lasting Change
             </h2>
             <p className="mb-2">
-              At Enkoy Technologies, we believe that effective leadership is the
-              cornerstone of organizational success. Our transformative
-              leadership development training helps cultivate leaders who not
-              only excel in their roles but also inspire their teams to achieve
-              greatness.
-            </p>
-            <p>
-              By combining practical skills with strategic insights, our
-              programs are designed to challenge leaders to think critically and
-              act decisively. We focus on real-world applications, ensuring that
-              participants can implement what they learn in their day-to-day
-              operations.
+              Our LXD training focuses on creating transformative learning
+              experiences that foster engagement and retention. By integrating
+              innovative design principles with best practices in adult
+              learning, we help organizations develop programs that resonate
+              with learners and drive results. Our training encourages
+              participants to actively engage with content, enhancing their
+              ability to apply what they learn in real-world situations.
             </p>
           </div>
         </div>
@@ -65,28 +76,24 @@ const LearningExperience = () => {
         <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
           <div className="flex-1 flex ">
             <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
-              Building Future-Ready Leaders
+              Building Future-Ready Learning Environments
             </h2>
           </div>
           <div className="flex-1 text-gray-900 text-[15px] *:mb-2">
             <p>
-              As the business landscape evolves, so too must our leaders. At
-              Enkoy Technologies, we specialize in building future-ready leaders
-              who can thrive in an ever-changing environment. Our leadership
-              development training focuses on essential skills such as strategic
-              thinking, emotional intelligence, and adaptive leadership.
+              As the educational landscape evolves, so must our approaches to
+              learning. At Enkoy Technologies, we specialize in designing
+              future-ready learning experiences that adapt to the changing needs
+              of your organization. Our LXD training emphasizes key skills such
+              as critical thinking, collaboration, and adaptability, ensuring
+              that learners are equipped for the challenges ahead.
             </p>
             <p>
-              We collaborate closely with your organization to understand its
-              goals and challenges, allowing us to create a customized training
-              experience. Our programs not only prepare leaders for current
-              challenges but also equip them with the foresight to anticipate
-              and respond to future demands.
-            </p>
-            <p>
-              By fostering a culture of continuous learning and development, we
-              help organizations cultivate a pipeline of leaders who are ready
-              to meet tomorrow’s challenges head-on.
+              We work closely with your organization to understand its unique
+              goals and challenges, allowing us to create customized learning
+              experiences that address specific needs. By promoting a culture of
+              continuous learning, we help organizations build a workforce that
+              is prepared to thrive in an ever-changing environment.
             </p>
           </div>
         </div>
@@ -96,7 +103,7 @@ const LearningExperience = () => {
       <br />
       <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
         <div className="flex-1">
-          <FAQSection />
+          <FAQSection faqData={faqData} />
         </div>
         <div className="flex-1">
           <img
