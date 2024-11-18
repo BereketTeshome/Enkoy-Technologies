@@ -68,7 +68,9 @@ const NavBar = () => {
         href="/"
         className="relative text-sm font-semibold max-w-[110px] bg-gradient-to-r from-pink-500 to-yellow-500 text-white flex items-center px-5 py-2 rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-pink-500/50"
       >
-        <span className="relative z-10">Contact Us</span>
+        <a className="relative z-10" href="/Contact">
+          Contact Us
+        </a>
       </a>
     </nav>
   );

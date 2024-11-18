@@ -26,7 +26,7 @@ const Gamification = () => {
             thrive in their educational journeys.
           </p>
           <a href="/contact" className="py-3 px-6 bg-gray-900 text-white">
-            Get in touch
+            Contact Us
           </a>
         </div>
         <br />

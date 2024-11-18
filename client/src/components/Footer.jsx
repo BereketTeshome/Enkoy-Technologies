@@ -30,23 +30,55 @@ const Footer = () => {
         {/* Services Section */}
         <div className="flex-1 min-w-[150px]">
           <p className="mb-6 text-lg font-semibold underline">Services</p>
-          <div className="space-y-3 text-sm">
-            <a href="/">Adaptive Digital Learning</a>
-            <a href="/">Self-paced learning</a>
-            <a href="/">Corporate Training - Professional Skills Training</a>
-            <a href="/">Learning Strategy</a>
-            <a href="/">Our Work</a>
-          </div>
+          <ul className="space-y-3 text-sm">
+            <li>
+              <a href="/" className="hover:text-indigo-400">
+                Adaptive Digital Learning
+              </a>
+            </li>
+            <li>
+              <a href="/self-pace-learning" className="hover:text-indigo-400">
+                Self-paced learning
+              </a>
+            </li>
+            <li>
+              <a href="/" className="hover:text-indigo-400">
+                Corporate Training - Professional Skills Training
+              </a>
+            </li>
+            <li>
+              <a href="/" className="hover:text-indigo-400">
+                Learning Strategy
+              </a>
+            </li>
+            <li>
+              <a href="/case-studies" className="hover:text-indigo-400">
+                Our Work
+              </a>
+            </li>
+          </ul>
         </div>
 
         {/* Company Section */}
         <div className="flex-1 min-w-[150px]">
           <p className="mb-6 text-lg font-semibold underline">Company</p>
-          <div className="space-y-3 text-sm">
-            <a href="/">About us</a>
-            <a href="/">Career</a>
-            <a href="/">Contact us</a>
-          </div>
+          <ul className="space-y-3 text-sm">
+            <li>
+              <a href="/" className="hover:text-indigo-400">
+                About us
+              </a>
+            </li>
+            <li>
+              <a href="/" className="hover:text-indigo-400">
+                Career
+              </a>
+            </li>
+            <li>
+              <a href="/" className="hover:text-indigo-400">
+                Contact us
+              </a>
+            </li>
+          </ul>
         </div>
 
         {/* Social Links Section */}
