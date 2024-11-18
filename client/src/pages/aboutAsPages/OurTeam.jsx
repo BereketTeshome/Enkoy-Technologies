@@ -9,8 +9,7 @@ const OurTeam = () => {
       </div>
       <br />
       <br />
-      <br />
-      <br />
+
       <div>
         <OurTeams />
       </div>

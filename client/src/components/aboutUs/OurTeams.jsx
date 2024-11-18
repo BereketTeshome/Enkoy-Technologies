@@ -1,87 +1,92 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+
+const teamData = [
+  {
+    img: "/img/aboutUs/team2.png",
+    name: "Abdi Abraham",
+    title: "CEO",
+    about:
+      "our course developer & coordinator , takes ideas and turns them into dynamic digital courses. His technical expertise and creativity shine through in every module, ensuring that learning is interactive and effective.",
+  },
+  {
+    img: "/img/aboutUs/team1.png",
+    name: "Eyob Solomon",
+    title: "COO",
+    about:
+      "Eyob Solomom is our talented UI/UX designer who crafts intuitive and seamless interfaces, ensuring an enjoyable user experience. Beyond his design skills, he's a compelling storyteller who brings learning to life and gives learners a memorable and engaging journey.",
+  },
+  {
+    img: "/img/aboutUs/team3.png",
+    name: "Temesgen Adera",
+    title: "CFO",
+    about:
+      "our instructional designer, crafts engaging learning experiences. With a keen eye for educational effectiveness, he ensures that each course is not only informative but also engaging, making learning a joy for all.",
+  },
+  {
+    img: "/img/aboutUs/team5.png",
+    name: " Eyob Teklay",
+    title: "CMO",
+    about:
+      "our animator and graphic designer, adds the finishing touch with stunning visuals. His artistic flair and technical skills create eye-catching animations that engage and captivate learners.",
+  },
+  {
+    img: "/img/aboutUs/team4.png",
+    name: "Dires Gashu",
+    title: "CTO",
+    about:
+      "Our tech specialist ensures that all our digital solutions run smoothly. With his deep understanding of technology, he tackles any technical challenges that arise, enabling the team to focus on creating exceptional learning experiences.",
+  },
+  {
+    img: "/img/aboutUs/team6.png",
+    name: "Moges Wuletaw",
+    title: "CDO",
+    about:
+      "Our master storyteller, weaves captivating narratives that breathe life into our animations and graphics. His ability to connect with audiences through compelling tales makes every project a memorable experience.",
+  },
+];
+
 const OurTeams = () => {
-  const teams = [
-    {
-      img: "/img/aboutUs/team1.png",
-      name: "Eyob Solomon-COO",
-      about:
-        "Eyob Solomom is our talented UI/UX designer who crafts intuitive and seamless interfaces, ensuring an enjoyable user experience. Beyond his design skills, he's a compelling storyteller who brings learning to life and gives learners a memorable and engaging journey.",
-    },
-    {
-      img: "/img/aboutUs/team1.png",
-      name: "Eyob Solomon-COO",
-      about:
-        "Eyob Solomom is our talented UI/UX designer who crafts intuitive and seamless interfaces, ensuring an enjoyable user experience. Beyond his design skills, he's a compelling storyteller who brings learning to life and gives learners a memorable and engaging journey.",
-    },
-    {
-      img: "/img/aboutUs/team1.png",
-      name: "Eyob Solomon-COO",
-      about:
-        "Eyob Solomom is our talented UI/UX designer who crafts intuitive and seamless interfaces, ensuring an enjoyable user experience. Beyond his design skills, he's a compelling storyteller who brings learning to life and gives learners a memorable and engaging journey.",
-    },
-    {
-      img: "/img/aboutUs/team1.png",
-      name: "Eyob Solomon-COO",
-      about:
-        "Eyob Solomom is our talented UI/UX designer who crafts intuitive and seamless interfaces, ensuring an enjoyable user experience. Beyond his design skills, he's a compelling storyteller who brings learning to life and gives learners a memorable and engaging journey.",
-    },
-    {
-      img: "/img/aboutUs/team1.png",
-      name: "Eyob Solomon-COO",
-      about:
-        "Eyob Solomom is our talented UI/UX designer who crafts intuitive and seamless interfaces, ensuring an enjoyable user experience. Beyond his design skills, he's a compelling storyteller who brings learning to life and gives learners a memorable and engaging journey.",
-    },
-  ];
   useEffect(() => {
-    AOS.init({ duration: 1500 });
+    AOS.init({ duration: 500 });
   }, []);
+
   return (
-    <div>
-      <p className="px-32">
-        Everyone at ELM is a learner through and through. Author, indoor
-        horticulturist, Ph.D. holder in physics, weekend DJ, award-winning
-        learning architect, the list goes on. Our team brings a wealth of
-        diverse experience to our projects.
-      </p>
-      <br />
-      <br />
-      <br />
-      <br />
-      <div>
-        <h1
-          className="text-2xl font-bold text-center mb-6 animation"
-          data-aos="fade-left"
-        >
-          OUR TEAMS
-        </h1>
-        <div
-          className="flex flex-wrap justify-center animation"
-          data-aos="zoom-in"
-        >
-          {teams.map((item) => {
-            return (
-              <div
-                key={item.id}
-                className="relative w-56 h-56 bg-yellow-500 bg-opacity-80 p-6 rounded-full shadow-lg transition-all duration-400 transform hover:rounded-lg hover:h-64 cursor-pointer m-5"
-              >
-                <div className="relative w-full h-full ">
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-full h-full object-cover rounded-full transition-transform duration-400 hover:transform hover:translate-y-[-70px]"
-                  />
-                </div>
-                <div className="absolute w-full text-center transition-all duration-500 transform translate-y-[-90px] opacity-0 pointer-events-none hover:opacity-100">
-                  <h3 className="font-bold">{item.name}</h3>
-                  <p className="text-sm">{item.about}</p>
-                </div>
+    <div className="px-6 lg:px-32 py-12">
+      <div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        data-aos="fade-up"
+      >
+        {teamData.map((member, index) => (
+          <motion.div
+            key={index}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="relative bg-white rounded-xl shadow-md overflow-hidden"
+          >
+            <div className="p-4">
+              <motion.img
+                src={member.img}
+                alt={member.name}
+                className="w-full object-cover rounded-lg"
+                whileHover={{ y: -20 }}
+                transition={{ type: "spring", stiffness: 200 }}
+              />
+              <div className="absolute top-0 left-0 w-full h-full bg-[#FFCD57]  opacity-0 hover:opacity-100 transition-opacity duration-300 flex p-4">
+                <p className="font-semibold text-gray-800">{member.about}</p>
               </div>
-            );
-          })}
-        </div>
+              <h2 className="mt-4 text-lg font-semibold text-gray-800">
+                {member.name}
+              </h2>
+              <p className="text-gray-500">{member.title}</p>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   );
