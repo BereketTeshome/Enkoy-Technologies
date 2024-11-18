@@ -25,6 +25,8 @@ import EmployabilitySkill from "./pages/servicePages/EmployabilitySkill.jsx";
 import PersonalDev from "./pages/servicePages/PersonalDev.jsx";
 import LeadershipSkill from "./pages/servicePages/LeadershipSkill.jsx";
 import Contact from "./pages/Contact.jsx";
+import Portfolio from "./pages/Portfolio.jsx";
+import UnderConstruction from "./pages/UnderConstruction.jsx";
 
 const App = () => {
   return (
@@ -103,8 +105,14 @@ const App = () => {
             element={<LearningExperience />}
           />
 
+          {/* Our work */}
+          <Route path="/portfolio" element={<Portfolio />} />
+
           {/* Contact Us Page */}
           <Route path="/contact" element={<Contact />} />
+
+          {/* Add a fallback route (optional) */}
+          <Route path="*" element={<UnderConstruction />} />
         </Routes>
       </div>
       <Footer />
