@@ -2,8 +2,8 @@ import React from "react";
 
 const LXD = () => {
   return (
-    <div className="pt-20 ">
-      <div className="flex flex-col w-full items-center">
+    <div className="py-20 ">
+      <div className="flex flex-col items-center w-full">
         <div className="sm:w-[60%] pb-20 w-[80%]">
           <img
             src="/img/services/storytelling.png"
@@ -36,13 +36,10 @@ const LXD = () => {
             initiatives and foster a culture of continuous improvement within
             your organization.
           </p>
-          <a href="/contact" className="py-3 px-6 bg-gray-900 text-white">
-            Get in touch
+          <a href="/contact" className="px-6 py-3 text-white bg-gray-900">
+            Contact Us
           </a>
         </div>
-        <br />
-        <br />
-        <br />
       </div>
     </div>
   );

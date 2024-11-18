@@ -6,16 +6,17 @@ const Testimonials = () => {
   const testimonials = [
     {
       quote:
-        "Their entire process is centered around understanding the customer’s needs and building the perfect learning experience for the target audience. I am blown away by our final product and can’t wait to share it with the national pediatric community.",
-      author: "Staff Physician",
-      organization: "UCSF Children’s Hospital, Oakland",
+        "I would like to extend my heartfelt thanks to Enkoy Technologies for your exceptional work in making the necessary adjustments! I am thrilled to announce that both courses are now live on atingi, with the Amharic course proudly positioned as the first under its language filter in the public library: Content Library. Congratulations on the successful launch of the courses! Your dedication and effort are truly appreciated.",
+      author: "Lizzy",
+      organization:
+        "Deutsche Gesellschaft fuer Internationale Zusammenarbeit (GIZ) GmbH;",
       logo: "/img/contentsMenuImg.png",
     },
     {
       quote:
-        "We were thrilled with the innovative solutions they provided. It truly elevated our team's learning and engagement.",
-      author: "Learning Director",
-      organization: "Global Health Initiative",
+        "We are delighted to recommend Enkoy Technologies for their exceptional work in transforming our 'Decent Work in Ethiopia' training into a 6-hour self-paced online course. The course, now hosted on the atingi platform, met all our expectations in terms of quality and engagement. Enkoy’s team applied a minimal viable product (MVP) approach, incorporating multiple feedback loops and iterations, to effectively convert our in-person training for company managers and workers into an engaging online format for young Ethiopians, especially fresh graduates. Their expertise in learning experience design and online course development made this collaboration a success, and we look forward to working with them on future projects",
+      author: "GIZ Ethiopia and Djibouti",
+      organization: "German Development Cooperation",
       logo: "/img/contentsMenuImg.png",
     },
   ];
