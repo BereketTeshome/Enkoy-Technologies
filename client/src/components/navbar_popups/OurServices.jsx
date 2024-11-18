@@ -15,7 +15,7 @@ const OurServices = () => (
         </span>
       </div>
       <a
-        href="/learning-solutions-overview"
+        href="/self-paced-learning"
         className="text-[#F1858C] text-sm mb-2 mt-6 block"
       >
         See overview
@@ -61,7 +61,7 @@ const OurServices = () => (
         </span>
       </div>
       <a
-        href="/instructor-led-overview"
+        href="/learning-experiences"
         className="text-[#F1858C] text-sm mb-2 block"
       >
         See overview
@@ -102,10 +102,7 @@ const OurServices = () => (
           Animation and video production
         </span>
       </div>
-      <a
-        href="/learning-strategy-overview"
-        className="text-[#F1858C] text-sm mb-2 block"
-      >
+      <a href="/animation-videos" className="text-[#F1858C] text-sm mb-2 block">
         See overview
       </a>
       <ul className="space-y-5 text-sm text-gray-700">
@@ -134,7 +131,7 @@ const OurServices = () => (
         <span className="ml-2 font-bold text-gray-800">Capacity Building</span>
       </div>
       <a
-        href="/off-the-shelf-overview"
+        href="/services/LXD"
         className="text-[#F1858C] text-sm mb-2 mt-6 block"
       >
         See overview

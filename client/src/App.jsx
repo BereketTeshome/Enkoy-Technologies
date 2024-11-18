@@ -16,6 +16,15 @@ import LeadershipDevelopment from "./pages/corporateTrainingPages/LeadershipDeve
 import LearningExperience from "./pages/corporateTrainingPages/LearningExperience.jsx";
 import "./App.css";
 import Story from "./pages/servicePages/Story";
+import InstructionalDesign from "./pages/servicePages/InstructionalDesign.jsx";
+import TrainingDigitalization from "./pages/servicePages/TrainingDigitalization.jsx";
+import VideoEditing from "./pages/servicePages/VideoEditing.jsx";
+import GraphicsDesign from "./pages/servicePages/GraphicsDesign.jsx";
+import BasicComputerSkill from "./pages/servicePages/BasicComputerSkill.jsx";
+import EmployabilitySkill from "./pages/servicePages/EmployabilitySkill.jsx";
+import PersonalDev from "./pages/servicePages/PersonalDev.jsx";
+import LeadershipSkill from "./pages/servicePages/LeadershipSkill.jsx";
+import Contact from "./pages/Contact.jsx";
 
 const App = () => {
   return (
@@ -37,20 +46,54 @@ const App = () => {
           />
           <Route path="/services/storytelling" element={<Story />} />
           <Route path="/services/translation" element={<Translation />} />
+          <Route
+            path="/services/instructional-design"
+            element={<InstructionalDesign />}
+          />
+          <Route
+            path="/services/training-digitalization"
+            element={<TrainingDigitalization />}
+          />
           <Route path="/services/accessibility" element={<Accessibility />} />
           <Route
             path="/services/learning-experiences"
             element={<LearningExperiences />}
           />
+
+          <Route path="/services/LXD" element={<LXD />} />
+
           <Route
             path="/services/animation-videos"
             element={<AnimationVideos />}
           />
-          <Route path="/services/LXD" element={<LXD />} />
+
+          <Route path="/services/video-editing" element={<VideoEditing />} />
+
+          <Route
+            path="/services/graphics-design"
+            element={<GraphicsDesign />}
+          />
+          <Route
+            path="/services/leadership-skill"
+            element={<LeadershipSkill />}
+          />
+          <Route
+            path="/services/personal-development"
+            element={<PersonalDev />}
+          />
+          <Route
+            path="/services/employability-skill"
+            element={<EmployabilitySkill />}
+          />
+          <Route
+            path="/services/computer-skill"
+            element={<BasicComputerSkill />}
+          />
 
           {/* Corporate Training */}
 
           <Route path="/corporate-training" element={<CorporateTraining />} />
+
           <Route
             path="/corporate-training/leadership"
             element={<LeadershipDevelopment />}
@@ -59,6 +102,9 @@ const App = () => {
             path="/corporate-training/learning-experience"
             element={<LearningExperience />}
           />
+
+          {/* Contact Us Page */}
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
       <Footer />

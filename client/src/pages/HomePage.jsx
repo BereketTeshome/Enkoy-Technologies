@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-import Contents from "../components/Contents";
+// import Contents from "../components/Contents";
 import Partners from "../components/homepage_contents/partners";
 import Testimonials from "../components/homepage_contents/Testimonials";
 import OurServices from "../components/homepage_contents/OurServices";
@@ -14,14 +14,12 @@ const HomePage = () => {
   return (
     <div>
       <Header />
-      <h1 className="relative text-3xl font-semibold text-center text-gray-600 top-10">
-        Who we work with
-      </h1>
+
       <Partners />
       <Testimonials />
       <Achievement />
       <OurServices />
-      <Contents />
+      {/* <Contents /> */}
       <VideoSection />
       <HowWeWork />
       <CaseStudies />

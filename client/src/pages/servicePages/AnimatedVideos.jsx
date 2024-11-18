@@ -23,7 +23,7 @@ const AnimatedVideos = () => {
             learners excited and motivated.
           </p>
           <a href="/contact" className="py-3 px-6 bg-gray-900 text-white">
-            Get in touch
+            Contact Us
           </a>
         </div>
         <br />

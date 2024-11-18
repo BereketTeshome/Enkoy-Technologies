@@ -83,7 +83,7 @@ const CorporateTraining = () => {
           </p>
           <div className="flex justify-between sm:items-center flex-col sm:flex-row *:w-fit gap-y-4">
             <a href="/contact" className="py-3 px-6 bg-gray-900 text-white ">
-              Get in touch
+              Contact Us
             </a>
             <a
               href="#solutions"
