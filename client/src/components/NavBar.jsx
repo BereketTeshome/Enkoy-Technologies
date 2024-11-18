@@ -123,9 +123,13 @@ const NavBar = () => {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
           >
-            <a href="/" className="text-sm font-semibold text-gray-50">
+            <a
+              href="/"
+              className="text-sm font-semibold text-gray-50 transition-colors duration-300 hover:text-[#FFCD57]"
+            >
               Home
             </a>
+
             {navItems.map((item, index) => (
               <div key={index} className="w-full">
                 <button

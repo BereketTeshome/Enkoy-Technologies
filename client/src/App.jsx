@@ -146,10 +146,10 @@ const App = () => {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/about-us/our-team" element={<OurTeam />} />
           <Route path="/about-us/our-DEI" element={<OurDEI />} />
-          <Route
+          {/* <Route
             path="/about-us/our-sustainability"
             element={<OurSustainability />}
-          />
+          /> */}
 
           {/* Our work */}
           <Route path="/portfolio" element={<Portfolio />} />
