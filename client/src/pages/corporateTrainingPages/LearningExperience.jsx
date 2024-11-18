@@ -23,7 +23,7 @@ const LearningExperience = () => {
       <div className="flex flex-col w-full items-center">
         <div className="sm:w-[60%] pb-20 w-[80%]">
           <img
-            src="/img/corporate-training/customerTraining.webp"
+            src="/img/corporate-training/bb.webp"
             alt=""
             className="w-[70px]"
           />
@@ -51,7 +51,7 @@ const LearningExperience = () => {
         <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
           <div className="flex-1">
             <img
-              src="/img/corporate-training/leadersImg.png"
+              src="/img/corporate-training/learningExperienceImg.webp"
               alt=""
               className="w-[90%]"
             />
@@ -108,7 +108,7 @@ const LearningExperience = () => {
         </div>
         <div className="flex-1">
           <img
-            src="/img/corporate-training/leadersImg.png"
+            src="/img/corporate-training/learningExperienceImg2.png"
             alt=""
             className="w-[90%]"
           />
@@ -171,7 +171,7 @@ const LearningExperience = () => {
           </ul>
           <p>
             Invest in your learning design today and create a future-ready
-            workforce that excels in any environment! s
+            workforce that excels in any environment!
           </p>
         </div>
       </div>

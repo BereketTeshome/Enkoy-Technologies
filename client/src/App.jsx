@@ -16,6 +16,18 @@ import LeadershipDevelopment from "./pages/corporateTrainingPages/LeadershipDeve
 import LearningExperience from "./pages/corporateTrainingPages/LearningExperience.jsx";
 import "./App.css";
 import Story from "./pages/servicePages/Story";
+import PersonalDevelopment from "./pages/corporateTrainingPages/PersonalDevelopment.jsx";
+import BasicComputer from "./pages/corporateTrainingPages/BasicComputer.jsx";
+import Employability from "./pages/corporateTrainingPages/Employability.jsx";
+import DecentWork from "./pages/corporateTrainingPages/DecentWork.jsx";
+import FairEmployment from "./pages/corporateTrainingPages/FairEmployment.jsx";
+import Safety from "./pages/corporateTrainingPages/Safety.jsx";
+import WorkLife from "./pages/corporateTrainingPages/WorkLife.jsx";
+import SoftSkill from "./pages/corporateTrainingPages/SoftSkill.jsx";
+import AboutUs from "./pages/AboutUs.jsx";
+import OurTeam from "./pages/aboutAsPages/OurTeam.jsx";
+import OurDEI from "./pages/aboutAsPages/OurDEI.jsx";
+import OurSustainability from "./pages/aboutAsPages/OurSustainability.jsx";
 import InstructionalDesign from "./pages/servicePages/InstructionalDesign.jsx";
 import TrainingDigitalization from "./pages/servicePages/TrainingDigitalization.jsx";
 import VideoEditing from "./pages/servicePages/VideoEditing.jsx";
@@ -102,12 +114,47 @@ const App = () => {
             path="/corporate-training/learning-experience"
             element={<LearningExperience />}
           />
+          <Route
+            path="/corporate-training/personal-development"
+            element={<PersonalDevelopment />}
+          />
+          <Route
+            path="/corporate-training/basic-computer"
+            element={<BasicComputer />}
+          />
+
+          <Route
+            path="/corporate-training/employability"
+            element={<Employability />}
+          />
+          <Route
+            path="/corporate-training/decent-Work"
+            element={<DecentWork />}
+          />
+          <Route
+            path="/corporate-training/fair-employment"
+            element={<FairEmployment />}
+          />
+          <Route path="/corporate-training/safety" element={<Safety />} />
+          <Route path="/corporate-training/work-life" element={<WorkLife />} />
+          <Route
+            path="/corporate-training/soft-skill"
+            element={<SoftSkill />}
+          />
+          {/* aboutUs */}
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/about-us/our-team" element={<OurTeam />} />
+          <Route path="/about-us/our-DEI" element={<OurDEI />} />
+          <Route
+            path="/about-us/our-sustainability"
+            element={<OurSustainability />}
+          />
 
           {/* Contact Us Page */}
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

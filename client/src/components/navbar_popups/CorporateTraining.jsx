@@ -16,7 +16,7 @@ const CorporateTraining = () => {
       </div>
       {/* Overview Link */}
       <a
-        href="/corporate-training-overview"
+        href="/corporate-training"
         className="text-[#F1858C] text-sm mb-4 inline-block"
       >
         See overview
@@ -25,27 +25,61 @@ const CorporateTraining = () => {
       <div className="grid grid-cols-2 gap-x-6">
         <ul className="space-y-2 text-sm text-gray-700">
           {[
-            "Leadership development training",
-            "Learning Experience Design (LXD) Training",
-            "Personal development training",
-            "Basic computer skill training",
-            "Employability and entrepreneurship",
+            {
+              text: "Leadership development training",
+              link: "/corporate-training/leadership",
+            },
+            {
+              text: "Learning Experience Design (LXD) Training",
+              link: "/corporate-training/learning-experience",
+            },
+            {
+              text: "Personal development training",
+              link: "/corporate-training/personal-development",
+            },
+            {
+              text: "Basic computer skill training",
+              link: "/corporate-training/basic-computer",
+            },
+            {
+              text: "Employability and entrepreneurship",
+              link: "/corporate-training/employability",
+            },
           ].map((item, index) => (
             <li key={index} className="cursor-pointer hover:text-blue-500">
-              {item}
+              <a href={item.link} className="block">
+                {item.text}
+              </a>
             </li>
           ))}
         </ul>
         <ul className="space-y-2 text-sm text-gray-700">
           {[
-            "Decent work and SDG training",
-            "Fair employment practice training",
-            "Safety and Health at workplace training",
-            "Work life  balance training",
-            "Soft skill training",
+            {
+              text: "Decent work and SDG training",
+              link: "/corporate-training/decent-work",
+            },
+            {
+              text: "Fair employment practice training",
+              link: "/corporate-training/fair-employment",
+            },
+            {
+              text: "Safety and Health at workplace training",
+              link: "/corporate-training/safety",
+            },
+            {
+              text: "Work life balance training",
+              link: "/corporate-training/work-life",
+            },
+            {
+              text: "Soft skill training",
+              link: "/corporate-training/soft-skill",
+            },
           ].map((item, index) => (
             <li key={index} className="cursor-pointer hover:text-blue-500">
-              {item}
+              <a href={item.link} className="block">
+                {item.text}
+              </a>
             </li>
           ))}
         </ul>
