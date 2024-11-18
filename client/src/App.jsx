@@ -26,6 +26,8 @@ import WorkLife from "./pages/corporateTrainingPages/WorkLife.jsx";
 import SoftSkill from "./pages/corporateTrainingPages/SoftSkill.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import OurTeam from "./pages/aboutAsPages/OurTeam.jsx";
+import OurDEI from "./pages/aboutAsPages/OurDEI.jsx";
+import OurSustainability from "./pages/aboutAsPages/OurSustainability.jsx";
 
 const App = () => {
   return (
@@ -99,6 +101,11 @@ const App = () => {
           {/* aboutUs */}
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/about-us/our-team" element={<OurTeam />} />
+          <Route path="/about-us/our-DEI" element={<OurDEI />} />
+          <Route
+            path="/about-us/our-sustainability"
+            element={<OurSustainability />}
+          />
         </Routes>
       </div>
       {/* <Footer /> */}
