@@ -12,7 +12,6 @@ const NavBar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Track screen width to reset mobile menu state
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
 
   const handleResize = () => {
@@ -21,7 +20,6 @@ const NavBar = () => {
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
-    // Close mobile menu on large screens
     if (isLargeScreen) {
       setIsMenuOpen(false);
       setActiveDropdown(null);
@@ -37,7 +35,11 @@ const NavBar = () => {
     { name: "Our Work", component: <OurWork /> },
     { name: "Learning Hub", component: <LearningHub /> },
     { name: "About Us", component: <AboutUs /> },
-    { name: "*Digital Training", component: <DigitalTraining /> },
+    {
+      name: "*Digital Training",
+      component: <DigitalTraining />,
+      special: true,
+    },
   ];
 
   const toggleDropdown = (name) => {
@@ -59,16 +61,20 @@ const NavBar = () => {
         {navItems.map((item, index) => (
           <div
             key={index}
-            className="relative"
+            className="relative group"
             onMouseEnter={() => setActiveDropdown(item.name)}
             onMouseLeave={() => setActiveDropdown(null)}
           >
             <a
               href="#"
-              className="text-xs font-semibold lg:text-sm text-gray-50"
+              className={`relative text-xs font-semibold lg:text-sm ${
+                item.special ? "text-[#FFCD57] font-bold" : "text-gray-50"
+              } group`}
             >
               {item.name}
+              <span className="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-[#FFCD57] transition-all duration-300 group-hover:w-full"></span>
             </a>
+
             <AnimatePresence>
               {activeDropdown === item.name && (
                 <motion.div
@@ -124,7 +130,9 @@ const NavBar = () => {
               <div key={index} className="w-full">
                 <button
                   onClick={() => toggleDropdown(item.name)}
-                  className="w-full text-left px-4 py-2 text-sm font-semibold text-gray-50 bg-[#1f1f38] hover:bg-[#2a2a46] focus:outline-none"
+                  className={`w-full text-left px-4 py-2 text-sm font-semibold ${
+                    item.special ? "text-[#FFCD57] font-bold " : "text-gray-50"
+                  } bg-[#1f1f38] hover:bg-[#2a2a46] focus:outline-none`}
                 >
                   {item.name}
                 </button>
