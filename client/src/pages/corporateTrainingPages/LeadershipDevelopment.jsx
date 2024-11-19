@@ -34,7 +34,7 @@ const LeadershipDevelopment = () => {
             Leadership development training designed to motivate and achieve
             results.
           </h2>
-          <p className="mb-7">
+          <p className="mb-7 text-justify">
             At Enkoy Technologies, we are committed to cultivating leadership
             skills! Whether your team includes natural leaders or individuals
             ready to step into leadership roles, we can assist you in teaching
@@ -60,14 +60,14 @@ const LeadershipDevelopment = () => {
             <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
               Transformative Leadership Development for Lasting Impact
             </h2>
-            <p className="mb-2">
+            <p className="mb-2 text-justify">
               At Enkoy Technologies, we believe that effective leadership is the
               cornerstone of organizational success. Our transformative
               leadership development training helps cultivate leaders who not
               only excel in their roles but also inspire their teams to achieve
               greatness.
             </p>
-            <p>
+            <p className="text-justify">
               By combining practical skills with strategic insights, our
               programs are designed to challenge leaders to think critically and
               act decisively. We focus on real-world applications, ensuring that
@@ -79,13 +79,13 @@ const LeadershipDevelopment = () => {
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
+        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
           <div className="flex-1 flex ">
             <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
               Building Future-Ready Leaders
             </h2>
           </div>
-          <div className="flex-1 text-gray-900 text-[15px] *:mb-2">
+          <div className="flex-1 text-gray-900 text-[15px] *:mb-2 *:text-justify">
             <p>
               As the business landscape evolves, so too must our leaders. At
               Enkoy Technologies, we specialize in building future-ready leaders
@@ -136,7 +136,7 @@ const LeadershipDevelopment = () => {
           <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
             Our comprehensive training approach focuses on:
           </h2>
-          <ul className="list-disc pl-6 py-5 *:mb-5">
+          <ul className="list-disc pl-6 py-5 *:mb-5 *:text-justify">
             <li>
               <b>Realistic Obstacles:</b>Leaders confront challenging,
               real-world scenarios that test their skills and decision-making

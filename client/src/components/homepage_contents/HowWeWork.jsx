@@ -18,7 +18,7 @@ const HowWeWork = () => {
           <h2 className="text-xl text-gray-800 md:text-2xl lg:text-3xl mb-7">
             We prioritize people over processes
           </h2>
-          <p className="text-sm text-gray-900 md:text-base">
+          <p className="text-sm text-gray-900 md:text-base text-justify">
             At Enkoy Technologies, we believe the best learning experiences come
             from truly understanding the learner. By placing people at the
             center of everything we do, we design solutions that are as
@@ -47,7 +47,7 @@ const HowWeWork = () => {
           <h2 className="text-xl text-gray-800 md:text-2xl lg:text-3xl mb-7">
             This isn’t just training, it’s empathetic learning.
           </h2>
-          <p className="text-sm text-gray-900 md:text-base">
+          <p className="text-sm text-gray-900 md:text-base text-justify">
             We use a blend of human-centered design (HCD) and learning
             experience design (LXD) to create engaging, accessible, and
             learner-driven experiences. At Enkoy, we understand that learning is
@@ -75,7 +75,7 @@ const HowWeWork = () => {
           <h2 className="text-xl text-gray-800 md:text-2xl lg:text-3xl mb-7">
             We focus on real-world results.
           </h2>
-          <p className="text-sm text-gray-900 md:text-base">
+          <p className="text-sm text-gray-900 md:text-base text-justify">
             At Enkoy Technologies, measurable outcomes are at the heart of
             everything we do. We don't believe in training for the sake of
             training. Every learning solution we create is carefully crafted

@@ -4,7 +4,7 @@ const LearningExperiences = () => {
   return (
     <div className="pt-20 ">
       <div className="flex flex-col w-full items-center">
-        <div className="sm:w-[60%] pb-20 w-[80%]">
+        <div className="sm:w-[60%] pb-20 w-[80%] ">
           <img
             src="/img/services/learningExperiences.png"
             alt=""
@@ -16,7 +16,7 @@ const LearningExperiences = () => {
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
             Learning experiences design consulting
           </h2>
-          <p className="mb-7">
+          <p className="mb-7 text-justify">
             At Enkoy, creativity is at the heart of everything we do. With our
             expertise in designing eLearning courses, we offer top-notch
             Learning Experience Design (LXD) consulting services to elevate your
@@ -27,7 +27,7 @@ const LearningExperiences = () => {
           <h2 className="text-2xl font-semibold text-gray-950 my-2">
             Our Process
           </h2>
-          <ol className="list-decimal pl-6 py-5 *:mb-5">
+          <ol className="list-decimal pl-6 py-5 *:mb-5 text-justify">
             <li>
               <b>Needs Assessment:</b>We begin by understanding your specific
               goals, audience, and challenges to tailor our approach

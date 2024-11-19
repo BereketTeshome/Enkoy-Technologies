@@ -19,7 +19,7 @@ const FAQItem = ({ question, answer }) => {
         <span className="icon text-2xl">{isOpen ? "−" : "+"}</span>
       </div>
       {isOpen && (
-        <div className="faq-content mt-2 text-gray-600 *:mb-2">
+        <div className="faq-content mt-2 text-gray-600 *:mb-2 text-justify">
           {answer.map((item) => {
             return <p>{item}</p>;
           })}

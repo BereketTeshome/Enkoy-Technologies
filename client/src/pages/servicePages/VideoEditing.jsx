@@ -16,7 +16,7 @@ const VideoEditing = () => {
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
             Animated videos are a powerful tool for transforming digital content
           </h2>
-          <p className="mb-7">
+          <p className="mb-7 text-justify">
             At Enkoy, we provide professional video editing services that
             elevate your visual content and engage your audience. Our process
             starts with understanding your goals and the message you want to

@@ -160,7 +160,7 @@ const App = () => {
           <Route path="*" element={<UnderConstruction />} />
         </Routes>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

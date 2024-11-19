@@ -16,7 +16,7 @@ const Story = () => {
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
             Storytelling brings the modules to life
           </h2>
-          <p className="mb-7">
+          <p className="mb-7 text-justify">
             Storytelling, combined with a well-crafted learning strategy,
             creates an exceptional learning experience centered on narrative.
             But the real magic lies in the outcome: highly engaged and focused

@@ -33,7 +33,7 @@ const LearningExperience = () => {
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
             Learning Experience Design (LXD) Training
           </h2>
-          <p className="mb-7">
+          <p className="mb-7 text-justify">
             At Enkoy Technologies, we believe that effective learning
             experiences are key to unlocking potential. Our Learning Experience
             Design (LXD) training is crafted to engage participants and promote
@@ -60,7 +60,7 @@ const LearningExperience = () => {
             <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
               Transformative Learning Experiences for Lasting Change
             </h2>
-            <p className="mb-2">
+            <p className="mb-2 text-justify">
               Our LXD training focuses on creating transformative learning
               experiences that foster engagement and retention. By integrating
               innovative design principles with best practices in adult
@@ -74,13 +74,13 @@ const LearningExperience = () => {
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
+        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
           <div className="flex-1 flex ">
             <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
               Building Future-Ready Learning Environments
             </h2>
           </div>
-          <div className="flex-1 text-gray-900 text-[15px] *:mb-2">
+          <div className="flex-1 text-gray-900 text-[15px] *:mb-2 text-justify">
             <p>
               As the educational landscape evolves, so must our approaches to
               learning. At Enkoy Technologies, we specialize in designing
@@ -117,7 +117,7 @@ const LearningExperience = () => {
       <br />
       <br />
       <br />
-      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
+      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
         <div className="flex-1 flex ">
           <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
             Key Components of Our Learning Experience Design Solutions
@@ -125,7 +125,7 @@ const LearningExperience = () => {
         </div>
         <div className="flex-1 text-gray-900 text-[15px]">
           <p>Our comprehensive training approach focuses on:</p>
-          <ul className="list-disc pl-6 py-5 *:mb-5">
+          <ul className="list-disc pl-6 py-5 *:mb-5 text-justify">
             <li>
               <b>Engaging Content:</b>Learning experiences that captivate and
               motivate participants.
@@ -146,12 +146,12 @@ const LearningExperience = () => {
           <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
             Transformative Benefits for Your Organization
           </h2>
-          <p>
+          <p className="text-justify">
             The impact of our Learning Experience Design solutions extends
             throughout your organization. As your workforce engages with
             effective learning experiences, the benefits include:
           </p>
-          <ul className="list-disc pl-6 py-5 *:mb-5">
+          <ul className="list-disc pl-6 py-5 *:mb-5 text-justify">
             <li>
               Improved knowledge retention and application among employees.
             </li>

@@ -16,7 +16,7 @@ const InstructionalDesign = () => {
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
             Crafting Engaging eLearning Experiences with Passion and Expertise
           </h2>
-          <p className="mb-7">
+          <p className="mb-7 text-justify">
             At Enkoy, creativity is our passion; we live and breathe it! With
             our expertise in designing eLearning courses, we offer exceptional
             instructional design consulting services to help you create engaging

@@ -12,9 +12,9 @@ const AboutUs = () => {
         initial={{ opacity: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <div className="text-white text-center px-6 md:px-0 *:w-[60%] flex flex-col items-center justify-center">
-          <p className="uppercase text-sm mb-4">About us</p>
-          <h1 className="text-4xl font-semibold ">
+        <div className="text-white text-center px-1  md:px-0 w-full md:*:w-[60%] flex flex-col items-center justify-center">
+          <p className="mb-4 text-sm uppercase">About us</p>
+          <h1 className="text-3xl font-semibold md:text-4xl ">
             We believe that organizations can succeed when they commit to
             building a culture of continuous learning.
           </h1>
@@ -23,13 +23,13 @@ const AboutUs = () => {
 
       {/* Who We Are Section */}
       <motion.div
-        className="py-20 px-5 md:px-32 text-center"
+        className="px-5 py-20 text-center md:px-32"
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: 50 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <h2 className="text-3xl font-semibold mb-4">Who We Are</h2>
-        <p className="text-gray-700 text-lg leading-relaxed">
+        <h2 className="mb-4 text-3xl font-semibold">Who We Are</h2>
+        <p className="text-lg leading-relaxed text-gray-700">
           Enkoy Technologies is a leading digital learning development company
           based in Ethiopia. We are a passionate team of professionals with
           diverse expertise in instructional design, animation, storytelling,
@@ -51,10 +51,10 @@ const AboutUs = () => {
           initial={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <h3 className="text-3xl text-gray-900 font-semibold mb-4">
+          <h3 className="mb-4 text-3xl font-semibold text-gray-900">
             Our Mission
           </h3>
-          <p className="text-gray-800 text-lg">
+          <p className="text-lg text-justify text-gray-800">
             At Enkoy Technologies, our mission is to craft impactful,
             learner-centered digital solutions that prioritize individuals'
             needs and well-being, enhancing the educational experience through
@@ -67,13 +67,13 @@ const AboutUs = () => {
         <motion.div
           className="flex-1"
           whileInView={{ opacity: 1, x: 0 }}
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <h3 className="text-3xl text-gray-900 font-semibold mb-4">
+          <h3 className="mb-4 text-3xl font-semibold text-gray-900">
             Our Vision
           </h3>
-          <p className="text-gray-800 text-lg">
+          <p className="text-lg text-justify text-gray-800">
             We envision a world where innovative learning technologies are
             seamlessly integrated into every educational environment,
             transforming manual learning materials into interactive, engaging
@@ -85,13 +85,13 @@ const AboutUs = () => {
 
       {/* Our Journey Section */}
       <motion.div
-        className="py-20 px-5 md:px-32 text-center"
+        className="px-5 py-20 text-center md:px-32"
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: 50 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <h2 className="text-3xl font-semibold mb-4">Our Journey</h2>
-        <p className="text-gray-700 text-lg leading-relaxed">
+        <h2 className="mb-4 text-3xl font-semibold">Our Journey</h2>
+        <p className="text-lg leading-relaxed text-gray-700">
           Founded in 2023, Enkoy Technologies began with a simple but powerful
           vision: to transform the way education is delivered in Ethiopia and
           beyond. Our team united through LXD training and storytelling
@@ -103,15 +103,15 @@ const AboutUs = () => {
 
       {/* Core Values Section */}
       <motion.div
-        className="bg-gray-100 py-20 px-5 md:px-32"
+        className="px-5 py-20 bg-[#FFCD57] md:px-32"
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: 50 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <h2 className="text-3xl font-semibold text-center mb-8">
+        <h2 className="mb-8 text-3xl font-semibold text-center">
           Our Core Values
         </h2>
-        <ul className="space-y-4 text-gray-800 text-lg">
+        <ul className="space-y-4 text-lg text-gray-800">
           <li>
             <strong>Innovation:</strong> We provide cutting-edge digital
             learning solutions by integrating storytelling, gaming elements, and

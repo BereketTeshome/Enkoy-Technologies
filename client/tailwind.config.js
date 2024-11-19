@@ -7,5 +7,8 @@ export default {
   // corePlugins: {
   //   preflight: false,
   // },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    // other plugins
+  ],
 };

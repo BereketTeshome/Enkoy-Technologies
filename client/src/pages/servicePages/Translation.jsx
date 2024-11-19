@@ -16,7 +16,7 @@ const Translation = () => {
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
             bringing everyone together with translation and localization
           </h2>
-          <p className="mb-7">
+          <p className="mb-7 text-justify">
             Translation and localization empower learners to access courses in
             their preferred language, enhancing understanding and retention. By
             tailoring content to suit cultural nuances and language preferences,

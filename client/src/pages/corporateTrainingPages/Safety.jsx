@@ -23,7 +23,7 @@ const Safety = () => {
 
   return (
     <div className="pt-20 ">
-      <div className="flex flex-col w-full items-center">
+      <div className="flex flex-col items-center w-full">
         <div className="sm:w-[60%] pb-20 w-[80%]">
           <img
             src="/img/corporate-training/safety.svg"
@@ -36,7 +36,7 @@ const Safety = () => {
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
             Ensuring a Safe and Healthy Work Environment
           </h2>
-          <p className="mb-7">
+          <p className="text-justify mb-7">
             At Enkoy Technologies, we prioritize the well-being of employees as
             a fundamental aspect of organizational success. Our Safety and
             Health at Workplace Training is designed to equip individuals and
@@ -45,14 +45,14 @@ const Safety = () => {
             effective safety practices, businesses can reduce risks, enhance
             productivity, and foster a culture of care.
           </p>
-          <a href="/contact" className="py-3 px-6 bg-gray-900 text-white">
+          <a href="/contact" className="px-6 py-3 text-white bg-gray-900">
             Get in touch
           </a>
         </div>
         <br />
         <br />
         <br />
-        <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+        <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
           <div className="flex-1">
             <img
               src="/img/corporate-training/safetyImg.webp"
@@ -61,10 +61,10 @@ const Safety = () => {
             />
           </div>
           <div className="flex-1">
-            <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
+            <h2 className="text-3xl  sm:text-5xl text-gray-950 mb-7">
               Transformative Learning for Workplace Safety
             </h2>
-            <p className="mb-2">
+            <p className="mb-2 text-justify">
               Our approach to Safety and Health Training focuses on practical
               applications that empower participants to recognize, assess, and
               mitigate workplace hazards. We cover essential topics such as
@@ -79,13 +79,13 @@ const Safety = () => {
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
-          <div className="flex-1 flex ">
-            <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
+        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
+          <div className="flex flex-1 ">
+            <h2 className="inline-block text-4xl font-semibold text-gray-900  md:text-6xl">
               Building a Culture of Safety and Well-Being
             </h2>
           </div>
-          <div className="flex-1 text-gray-900 text-[15px] *:mb-2">
+          <div className="flex-1 text-gray-900 text-[15px] *:mb-2 text-justify">
             <p>
               In today’s dynamic work environment, prioritizing safety and
               health is crucial for every organization. At Enkoy Technologies,
@@ -101,7 +101,7 @@ const Safety = () => {
       <br />
       <br />
       <br />
-      <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+      <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
         <div className="flex-1">
           <FAQSection faqData={faqData} />
         </div>
@@ -116,14 +116,14 @@ const Safety = () => {
       <br />
       <br />
       <br />
-      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-blue-300 md:flex-row flex-col">
-        <div className="flex-1 flex ">
-          <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
+      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
+        <div className="flex flex-1 ">
+          <h2 className="inline-block text-3xl font-semibold text-gray-900  md:text-5xl">
             Key Components of Our Safety and Health Training Solutions
           </h2>
         </div>
-        <div className="flex-1 text-gray-900 text-[15px]">
-          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+        <div className="flex-1 text-gray-900 text-[15px] text-justify">
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Our comprehensive training approach focuses on:
           </h2>
           <ul className="list-disc pl-6 py-5 *:mb-5">
@@ -145,7 +145,7 @@ const Safety = () => {
               physical well-being and reduce the risk of injury.
             </li>
           </ul>
-          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Transformative Benefits for Individuals and Organizations
           </h2>
           <p>

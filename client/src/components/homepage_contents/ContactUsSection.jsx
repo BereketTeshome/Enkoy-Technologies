@@ -44,7 +44,7 @@ const ContactUsSection = () => {
               Have a question? Want to talk about your project? We’re ready when
               you are.
             </motion.p>
-            <motion.p className="text-gray-800" variants={itemVariants}>
+            {/* <motion.p className="text-gray-800" variants={itemVariants}>
               To view our current job openings, please visit our
               <a
                 href="#"
@@ -53,7 +53,7 @@ const ContactUsSection = () => {
                 careers page
               </a>
               .
-            </motion.p>
+            </motion.p> */}
             <motion.div
               className="mt-8"
               initial={{ scale: 0.8, opacity: 0 }}

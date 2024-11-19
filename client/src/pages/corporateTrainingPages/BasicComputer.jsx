@@ -34,7 +34,7 @@ const BasicComputer = () => {
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
             Empowering Individuals with Essential Digital Competencies
           </h2>
-          <p className="mb-7">
+          <p className="mb-7 text-justify">
             At Enkoy Technologies, we understand that basic computer skills are
             fundamental in today’s digital world. Our Basic Computer Skills
             Training is designed to equip individuals with the essential
@@ -61,7 +61,7 @@ const BasicComputer = () => {
             <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
               Transformative Learning for Digital Proficiency
             </h2>
-            <p className="mb-2">
+            <p className="mb-2 text-justify">
               Our approach to Basic Computer Skills Training focuses on creating
               engaging and practical learning experiences. Participants will
               learn to operate common software applications, manage files and
@@ -75,13 +75,13 @@ const BasicComputer = () => {
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
+        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
           <div className="flex-1 flex ">
             <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
               Building Confidence in Digital Environments
             </h2>
           </div>
-          <div className="flex-1 text-gray-900 text-[15px] *:mb-2">
+          <div className="flex-1 text-gray-900 text-[15px] *:mb-2 text-justify">
             <p>
               As technology continues to evolve, having a strong grasp of basic
               computer skills is crucial. At Enkoy Technologies, we aim to build
@@ -113,13 +113,13 @@ const BasicComputer = () => {
       <br />
       <br />
       <br />
-      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
+      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col ">
         <div className="flex-1 flex ">
           <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
             Key Components of Our Basic Computer Skills Training Solutions
           </h2>
         </div>
-        <div className="flex-1 text-gray-900 text-[15px]">
+        <div className="flex-1 text-gray-900 text-[15px] text-justify">
           <p>Our comprehensive training approach focuses on:</p>
           <ul className="list-disc pl-6 py-5 *:mb-5">
             <li>
