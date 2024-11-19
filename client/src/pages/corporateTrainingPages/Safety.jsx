@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
 
 const Safety = () => {
@@ -6,10 +7,7 @@ const Safety = () => {
     {
       question: "Tailored Learning Solutions for Organizational Needs",
       answer: [
-        `At Enkoy Technologies, we begin our Safety and Health at Workplace Training with a thorough assessment of your organization’s current safety practices and challenges. This allows us to create customized training programs that address specific needs and compliance requirements.
-
-    
-            `,
+        `At Enkoy Technologies, we begin our Safety and Health at Workplace Training with a thorough assessment of your organization’s current safety practices and challenges. This allows us to create customized training programs that address specific needs and compliance requirements.`,
         "We foster an engaging learning environment where participants can actively participate in discussions, share experiences, and develop actionable safety strategies. Our experienced trainers provide ongoing support and resources to help organizations effectively implement safety practices.",
       ],
     },
@@ -21,22 +19,42 @@ const Safety = () => {
     },
   ];
 
+  const fadeInUp = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+    viewport: { amount: 0.2, once: true },
+  };
+
   return (
-    <div className="pt-20 ">
-      <div className="flex flex-col items-center w-full">
-        <div className="sm:w-[60%] pb-20 w-[80%]">
-          <img
+    <motion.div className="pt-20">
+      <motion.div
+        className="flex flex-col w-full items-center"
+        variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
+      >
+        <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
+          <motion.img
             src="/img/corporate-training/safety.svg"
-            alt=""
+            alt="Safety Icon"
             className="w-[70px]"
+            {...fadeInUp}
           />
-          <p className="uppercase text-sm font-semibold text-[#FF8689] my-10 ">
+          <motion.p
+            className="uppercase text-sm font-semibold text-[#FF8689] my-10"
+            {...fadeInUp}
+          >
             Safety and Health at workplace training
-          </p>
-          <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
+          </motion.p>
+          <motion.h2
+            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            {...fadeInUp}
+          >
             Ensuring a Safe and Healthy Work Environment
-          </h2>
-          <p className="text-justify mb-7">
+          </motion.h2>
+          <motion.p className="mb-7" {...fadeInUp}>
             At Enkoy Technologies, we prioritize the well-being of employees as
             a fundamental aspect of organizational success. Our Safety and
             Health at Workplace Training is designed to equip individuals and
@@ -44,27 +62,36 @@ const Safety = () => {
             safe and healthy work environment. By understanding and implementing
             effective safety practices, businesses can reduce risks, enhance
             productivity, and foster a culture of care.
-          </p>
-          <a href="/contact" className="px-6 py-3 text-white bg-gray-900">
+          </motion.p>
+          <motion.a
+            href="/contact"
+            className="py-3 px-6 bg-gray-900 text-white"
+            {...fadeInUp}
+          >
             Get in touch
-          </a>
-        </div>
-        <br />
-        <br />
-        <br />
-        <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
-          <div className="flex-1">
-            <img
+          </motion.a>
+        </motion.div>
+
+        <motion.div
+          className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row"
+          variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
+        >
+          <motion.div className="flex-1" {...fadeInUp}>
+            <motion.img
               src="/img/corporate-training/safetyImg.webp"
-              alt=""
+              alt="Workplace Safety"
               className="w-[90%]"
+              {...fadeInUp}
             />
-          </div>
-          <div className="flex-1">
-            <h2 className="text-3xl  sm:text-5xl text-gray-950 mb-7">
+          </motion.div>
+          <motion.div className="flex-1" {...fadeInUp}>
+            <motion.h2
+              className="text-3xl sm:text-5xl text-gray-950 mb-7"
+              {...fadeInUp}
+            >
               Transformative Learning for Workplace Safety
-            </h2>
-            <p className="mb-2 text-justify">
+            </motion.h2>
+            <motion.p className="mb-2" {...fadeInUp}>
               Our approach to Safety and Health Training focuses on practical
               applications that empower participants to recognize, assess, and
               mitigate workplace hazards. We cover essential topics such as
@@ -73,20 +100,29 @@ const Safety = () => {
               exercises, participants learn how to implement safety protocols
               and promote a culture of health and safety within their
               organizations.
-            </p>
-          </div>
-        </div>
+            </motion.p>
+          </motion.div>
+        </motion.div>
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
-          <div className="flex flex-1 ">
-            <h2 className="inline-block text-4xl font-semibold text-gray-900  md:text-6xl">
+        <motion.div
+          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col"
+          variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
+        >
+          <motion.div className="flex-1 flex" {...fadeInUp}>
+            <motion.h2
+              className="inline-block md:text-6xl text-4xl text-gray-900 font-semibold"
+              {...fadeInUp}
+            >
               Building a Culture of Safety and Well-Being
-            </h2>
-          </div>
-          <div className="flex-1 text-gray-900 text-[15px] *:mb-2 text-justify">
-            <p>
+            </motion.h2>
+          </motion.div>
+          <motion.div
+            className="flex-1 text-gray-900 text-[15px]"
+            {...fadeInUp}
+          >
+            <motion.p {...fadeInUp}>
               In today’s dynamic work environment, prioritizing safety and
               health is crucial for every organization. At Enkoy Technologies,
               our training emphasizes the importance of creating a proactive
@@ -94,91 +130,112 @@ const Safety = () => {
               maintaining a safe workplace. We tailor our programs to meet the
               specific needs of your organization, ensuring relevance and
               effectiveness.
-            </p>
-          </div>
-        </div>
-      </div>
-      <br />
-      <br />
-      <br />
-      <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
-        <div className="flex-1">
-          <FAQSection faqData={faqData} />
-        </div>
-        <div className="flex-1">
-          <img
-            src="/img/corporate-training/safetyImg2.webp"
-            alt=""
-            className="w-[90%]"
-          />
-        </div>
-      </div>
-      <br />
-      <br />
-      <br />
-      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
-        <div className="flex flex-1 ">
-          <h2 className="inline-block text-3xl font-semibold text-gray-900  md:text-5xl">
-            Key Components of Our Safety and Health Training Solutions
-          </h2>
-        </div>
-        <div className="flex-1 text-gray-900 text-[15px] text-justify">
-          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
-            Our comprehensive training approach focuses on:
-          </h2>
-          <ul className="list-disc pl-6 py-5 *:mb-5">
-            <li>
-              <b>Understanding Safety Regulations: </b>Educating participants on
-              relevant workplace safety laws and regulations.
-            </li>
-            <li>
-              <b>Hazard Recognition and Assessment:</b>Teaching employees how to
-              identify potential hazards and assess risks in their work
-              environment.
-            </li>
-            <li>
-              <b>Emergency Preparedness:</b> Providing strategies for responding
-              to emergencies, including evacuation procedures and first aid.
-            </li>
-            <li>
-              <b>Promoting Ergonomics:</b> Encouraging practices that enhance
-              physical well-being and reduce the risk of injury.
-            </li>
-          </ul>
-          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
-            Transformative Benefits for Individuals and Organizations
-          </h2>
-          <p>
-            The impact of our Safety and Health at Workplace Training extends
-            throughout your organization. As participants enhance their
-            understanding of safety practices, the advantages include:
-          </p>
-          <ul className="list-disc pl-6 py-5 *:mb-5">
-            <li>
-              A safer work environment that reduces the likelihood of accidents
-              and injuries.
-            </li>
-            <li>
-              Increased employee morale and productivity as workers feel secure
-              and valued.
-            </li>
-            <li>
-              Enhanced organizational reputation as a company that prioritizes
-              employee safety and health.
-            </li>
-            <li>
-              Improved compliance with safety regulations, minimizing legal and
-              financial risks.
-            </li>
-          </ul>
-          <p>
-            Invest in Safety and Health at Workplace Training today to empower
-            your workforce to create a safe, healthy, and productive work
-            environment!
-          </p>
-        </div>
-      </div>
-    </div>
+            </motion.p>
+          </motion.div>
+        </motion.div>
+        <br />
+        <br />
+        <br />
+        <motion.div
+          className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row"
+          variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
+        >
+          <motion.div className="flex-1" {...fadeInUp}>
+            <FAQSection faqData={faqData} />
+          </motion.div>
+          <motion.div className="flex-1" {...fadeInUp}>
+            <motion.img
+              src="/img/corporate-training/safetyImg2.webp"
+              alt="Safety Training"
+              className="w-[90%]"
+              {...fadeInUp}
+            />
+          </motion.div>
+        </motion.div>
+        <br />
+        <br />
+        <br />
+
+        <motion.div
+          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-blue-300 md:flex-row flex-col"
+          variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
+        >
+          <motion.div className="flex-1 flex" {...fadeInUp}>
+            <motion.h2
+              className="inline-block md:text-5xl text-3xl text-gray-900 font-semibold"
+              {...fadeInUp}
+            >
+              Key Components of Our Safety and Health Training Solutions
+            </motion.h2>
+          </motion.div>
+          <motion.div
+            className="flex-1 text-gray-900 text-[15px]"
+            {...fadeInUp}
+          >
+            <motion.h2
+              className="text-2xl font-semibold text-gray-950 mb-5 mt-2"
+              {...fadeInUp}
+            >
+              Our comprehensive training approach focuses on:
+            </motion.h2>
+            <motion.ul className="list-disc pl-6 py-5" {...fadeInUp}>
+              <li>
+                <b>Understanding Safety Regulations:</b> Educating participants
+                on relevant workplace safety laws and regulations.
+              </li>
+              <li>
+                <b>Hazard Recognition and Assessment:</b> Teaching employees how
+                to identify potential hazards and assess risks in their work
+                environment.
+              </li>
+              <li>
+                <b>Emergency Preparedness:</b> Providing strategies for
+                responding to emergencies, including evacuation procedures and
+                first aid.
+              </li>
+              <li>
+                <b>Promoting Ergonomics:</b> Encouraging practices that enhance
+                physical well-being and reduce the risk of injury.
+              </li>
+            </motion.ul>
+            <motion.h2
+              className="text-2xl font-semibold text-gray-950 mb-5 mt-2"
+              {...fadeInUp}
+            >
+              Transformative Benefits for Individuals and Organizations
+            </motion.h2>
+            <motion.p {...fadeInUp}>
+              The impact of our Safety and Health at Workplace Training extends
+              throughout your organization. As participants enhance their
+              understanding of safety practices, the advantages include:
+            </motion.p>
+            <motion.ul className="list-disc pl-6 py-5" {...fadeInUp}>
+              <li>
+                A safer work environment that reduces the likelihood of
+                accidents and injuries.
+              </li>
+              <li>
+                Increased employee morale and productivity as workers feel
+                secure and valued.
+              </li>
+              <li>
+                Enhanced organizational reputation as a company that prioritizes
+                employee safety and health.
+              </li>
+              <li>
+                Improved compliance with safety regulations, minimizing legal
+                and financial risks.
+              </li>
+            </motion.ul>
+            <motion.p {...fadeInUp}>
+              Invest in Safety and Health at Workplace Training today to empower
+              your workforce to create a safe, healthy, and productive work
+              environment!
+            </motion.p>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 
