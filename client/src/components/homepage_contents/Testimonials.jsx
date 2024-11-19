@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-
   const testimonials = [
     {
       quote:
@@ -33,7 +33,13 @@ const Testimonials = () => {
 
   return (
     <div>
-      <div className="sticky px-4 py-10 bg-gray-200 top-1">
+      <motion.div
+        className="sticky px-4 py-10 bg-gray-200 top-1"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ margin: "-50%", once: true }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="flex flex-col items-center max-w-6xl gap-8 mx-auto lg:flex-row">
           {/* Text Section */}
           <div className="flex-1">
@@ -95,7 +101,7 @@ const Testimonials = () => {
             &gt;
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -11,7 +11,6 @@ import { HiMenu, HiX } from "react-icons/hi";
 const NavBar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
 
   const handleResize = () => {
@@ -54,16 +53,39 @@ const NavBar = () => {
       </div>
 
       {/* Desktop Menu */}
-      <div className="items-center hidden gap-16 lg:flex">
-        <a href="/" className="text-sm font-semibold text-gray-50">
+      <motion.div
+        className="items-center hidden gap-16 lg:flex"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.2 },
+          },
+        }}
+      >
+        <motion.a
+          href="/"
+          className="text-sm font-semibold text-gray-50"
+          variants={{
+            hidden: { opacity: 0, y: -20 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
           Home
-        </a>
+        </motion.a>
         {navItems.map((item, index) => (
-          <div
+          <motion.div
             key={index}
             className="relative group"
             onMouseEnter={() => setActiveDropdown(item.name)}
             onMouseLeave={() => setActiveDropdown(null)}
+            style={{ zIndex: activeDropdown === item.name ? 50 : 1 }}
+            variants={{
+              hidden: { opacity: 0, y: -20 },
+              visible: { opacity: 1, y: 0 },
+            }}
           >
             <a
               href="#"
@@ -74,7 +96,6 @@ const NavBar = () => {
               {item.name}
               <span className="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-[#FFCD57] transition-all duration-300 group-hover:w-full"></span>
             </a>
-
             <AnimatePresence>
               {activeDropdown === item.name && (
                 <motion.div
@@ -88,19 +109,19 @@ const NavBar = () => {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
         ))}
-      </div>
-
-      {/* Contact Us Button (Desktop Only) */}
-      <div className="hidden lg:block">
-        <a
+        <motion.a
           href="/Contact"
-          className="relative text-sm font-semibold max-w-[110px] bg-gradient-to-r from-pink-500 to-yellow-500 text-white flex items-center px-5 py-2 rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-pink-500/50"
+          className="relative text-sm font-semibold max-w-[110px] bg-gradient-to-r from-pink-500 to-yellow-500 text-white flex items-center justify-center px-5 py-2 rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-pink-500/50"
+          variants={{
+            hidden: { opacity: 0, y: -20 },
+            visible: { opacity: 1, y: 0 },
+          }}
         >
           Contact Us
-        </a>
-      </div>
+        </motion.a>
+      </motion.div>
 
       {/* Mobile Menu Icon */}
       <div className="block lg:hidden">
@@ -121,17 +142,21 @@ const NavBar = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
           >
-            <a href="/" className="text-sm font-semibold text-gray-50">
+            <motion.a
+              href="/"
+              className="text-sm font-semibold text-gray-50"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
               Home
-            </a>
+            </motion.a>
             {navItems.map((item, index) => (
-              <div key={index} className="w-full">
+              <motion.div key={index} className="w-full">
                 <button
                   onClick={() => toggleDropdown(item.name)}
                   className={`w-full text-left px-4 py-2 text-sm font-semibold ${
-                    item.special ? "text-[#FFCD57] font-bold " : "text-gray-50"
+                    item.special ? "text-[#FFCD57] font-bold" : "text-gray-50"
                   } bg-[#1f1f38] hover:bg-[#2a2a46] focus:outline-none`}
                 >
                   {item.name}
@@ -149,14 +174,16 @@ const NavBar = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             ))}
-            <a
+            <motion.a
               href="/Contact"
               className="relative text-sm font-semibold max-w-[110px] bg-gradient-to-r from-pink-500 to-yellow-500 text-white flex items-center justify-center px-5 py-2 rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-pink-500/50"
+              initial={{ y: -16 }}
+              animate={{ y: 0 }}
             >
               Contact Us
-            </a>
+            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>

@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 
 const VideoSection = () => {
   return (
-    <div className="py-20 bg-[#FFCD57] ">
+    <div className="py-20 bg-[#FFCD57] " id="video">
       <div className="bg-[#FFCD57] sticky top-0">
         <div className="px-6 mx-auto text-center max-w-7xl sm:px-12">
           {/* Heading */}

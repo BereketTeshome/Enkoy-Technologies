@@ -2,7 +2,7 @@ import React from "react";
 
 const LearningHub = () => {
   return (
-    <div className="flex items-start gap-9 justify-between p-6 bg-white rounded-md shadow-md shadow-white md:w-[400px]">
+    <div className="flex items-start gap-9 justify-between p-6 bg-white rounded-md shadow-md shadow-white md:w-[400px] sm:flex-row flex-col">
       {/* Left Section */}
       <div className=" border-r-[1px]  border-gray-200 min-w-[130px] pr-1">
         <div className="mb-4">

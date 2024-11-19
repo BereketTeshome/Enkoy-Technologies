@@ -1,5 +1,6 @@
 import React from "react";
 import FAQSection from "../../components/corporateTraining/FAQSection";
+import { motion } from "framer-motion";
 const LeadershipDevelopment = () => {
   const faqData = [
     {
@@ -17,46 +18,96 @@ const LeadershipDevelopment = () => {
       ],
     },
   ];
-  console.log(faqData);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // Stagger duration between each child
+        when: "beforeChildren", // Ensure container animates before children
+      },
+    },
+  };
+
+  // Variants for child elements
+  const childVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      // transition: {
+      //   delay: 0.5,
+      //   duration: 0.6, // Stagger duration between each child
+      // },
+    },
+  };
+
   return (
     <div className="pt-20 ">
       <div className="flex flex-col w-full items-center">
-        <div className="sm:w-[60%] pb-20 w-[80%]">
-          <img
+        <motion.div
+          className="sm:w-[60%] pb-20 w-[80%]"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.img
             src="/img/corporate-training/customerTraining.webp"
             alt=""
             className="w-[70px]"
           />
-          <p className="uppercase text-sm font-semibold text-[#FF8689] my-10 ">
+          <motion.p
+            className="uppercase text-sm font-semibold text-[#FF8689] my-10 "
+            variants={childVariants}
+          >
             Leadership development training
-          </p>
-          <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
+          </motion.p>
+          <motion.h2
+            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            variants={childVariants}
+          >
             Leadership development training designed to motivate and achieve
             results.
-          </h2>
-          <p className="mb-7">
+          </motion.h2>
+          <motion.p className="mb-7" variants={childVariants}>
             At Enkoy Technologies, we are committed to cultivating leadership
             skills! Whether your team includes natural leaders or individuals
             ready to step into leadership roles, we can assist you in teaching
             them essential skills through our leadership development training
             solutions.
-          </p>
-          <a href="/contact" className="py-3 px-6 bg-gray-900 text-white">
+          </motion.p>
+          <motion.a
+            href="/contact"
+            className="py-3 px-6 bg-gray-900 text-white"
+            variants={childVariants}
+          >
             Contact Us
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
         <br />
         <br />
         <br />
         <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
-          <div className="flex-1">
+          <motion.div
+            className="flex-1"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ amount: 0.2, once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <img
               src="/img/corporate-training/leadersImg.png"
               alt=""
               className="w-[90%]"
             />
-          </div>
-          <div className="flex-1">
+          </motion.div>
+          <motion.div
+            className="flex-1"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ amount: 0.2, once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
               Transformative Leadership Development for Lasting Impact
             </h2>
@@ -74,18 +125,30 @@ const LeadershipDevelopment = () => {
               participants can implement what they learn in their day-to-day
               operations.
             </p>
-          </div>
+          </motion.div>
         </div>
         <br />
         <br />
         <br />
         <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
-          <div className="flex-1 flex ">
+          <motion.div
+            className="flex-1 flex "
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ amount: 0.2, once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
               Building Future-Ready Leaders
             </h2>
-          </div>
-          <div className="flex-1 text-gray-900 text-[15px] *:mb-2">
+          </motion.div>
+          <motion.div
+            className="flex-1 text-gray-900 text-[15px] *:mb-2"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ amount: 0.2, once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <p>
               As the business landscape evolves, so too must our leaders. At
               Enkoy Technologies, we specialize in building future-ready leaders
@@ -105,34 +168,58 @@ const LeadershipDevelopment = () => {
               help organizations cultivate a pipeline of leaders who are ready
               to meet tomorrow’s challenges head-on.
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
       <br />
       <br />
       <br />
       <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
-        <div className="flex-1">
+        <motion.div
+          className="flex-1"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.2, once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <FAQSection faqData={faqData} />
-        </div>
-        <div className="flex-1">
+        </motion.div>
+        <motion.div
+          className="flex-1"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.2, once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <img
             src="/img/corporate-training/leadershipImg2.png"
             alt=""
             className="w-[90%]"
           />
-        </div>
+        </motion.div>
       </div>
       <br />
       <br />
       <br />
       <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-blue-300 md:flex-row flex-col">
-        <div className="flex-1 flex ">
+        <motion.div
+          className="flex-1 flex "
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.2, once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
             Key Components of Our <br /> Leadership Development <br /> Solutions
           </h2>
-        </div>
-        <div className="flex-1 text-gray-900 text-[15px]">
+        </motion.div>
+        <motion.div
+          className="flex-1 text-gray-900 text-[15px]"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.2, once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
             Our comprehensive training approach focuses on:
           </h2>
@@ -185,7 +272,7 @@ const LeadershipDevelopment = () => {
             but your entire organization. Let us help you build a legacy of
             strong leadership today!
           </p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,17 +1,41 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const HowWeWork = () => {
+  const variants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5, // Stagger duration between each child
+      },
+    },
+  };
+
   return (
     <>
-      <div className="flex flex-col items-center w-full px-5 py-16 md:py-28 md:px-20 lg:flex-row">
-        <div className="flex justify-center flex-1 mb-8 lg:mb-0">
+      <div className="flex flex-col items-center w-full px-5 py-16 md:py-28 md:px-20 overflow-hidden lg:flex-row">
+        <motion.div
+          className="flex justify-center flex-1 mb-8 lg:mb-0"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={variants}
+        >
           <img
             src="/img/services/gamificationImg.png"
             alt="why_mobile_learning.png"
             className="w-[90%] md:w-[80%] lg:w-[60%]"
           />
-        </div>
-        <div className="flex-1 text-center lg:text-left">
+        </motion.div>
+        <motion.div
+          className="flex-1 text-center lg:text-left"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={variants}
+        >
           <h3 className="text-[#F1858B] text-lg font-medium mb-5">
             How We Work
           </h3>
@@ -29,18 +53,30 @@ const HowWeWork = () => {
             considered, making sure the solution is not just effective, but also
             inclusive and relevant.
           </p>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="flex flex-col items-center w-full px-5 py-16 md:py-28 md:px-20 lg:flex-row-reverse bg-[#F6F9FC]">
-        <div className="flex justify-center flex-1 mb-8 lg:mb-0">
+      <div className="flex flex-col items-center w-full px-5 py-16 md:py-28 md:px-20 overflow-hidden lg:flex-row-reverse bg-[#F6F9FC]">
+        <motion.div
+          className="flex justify-center flex-1 mb-8 lg:mb-0"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={variants}
+        >
           <img
             src="/img/services/why_mobile_learning.png"
             alt="why_mobile_learning.png"
             className="w-[90%] md:w-[80%] lg:w-[60%]"
           />
-        </div>
-        <div className="flex-1 text-center lg:text-left">
+        </motion.div>
+        <motion.div
+          className="flex-1 text-center lg:text-left"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={variants}
+        >
           <h3 className="text-[#F1858B] text-lg font-medium mb-5">
             How We Work
           </h3>
@@ -57,18 +93,30 @@ const HowWeWork = () => {
             designs, we ensure that learners don’t just absorb information, they
             connect with it, retain it, and apply it meaningfully.
           </p>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="flex flex-col items-center w-full px-5 py-16 md:py-28 md:px-20 lg:flex-row">
-        <div className="flex justify-center flex-1 mb-8 lg:mb-0">
+      <div className="flex flex-col items-center w-full px-5 py-16 md:py-28 md:px-20 overflow-hidden lg:flex-row">
+        <motion.div
+          className="flex justify-center flex-1 mb-8 lg:mb-0"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={variants}
+        >
           <img
             src="/img/services/gamificationImg.png"
             alt="why_mobile_learning.png"
             className="w-[90%] md:w-[80%] lg:w-[60%]"
           />
-        </div>
-        <div className="flex-1 text-center lg:text-left">
+        </motion.div>
+        <motion.div
+          className="flex-1 text-center lg:text-left"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={variants}
+        >
           <h3 className="text-[#F1858B] text-lg font-medium mb-5">
             How We Work
           </h3>
@@ -86,7 +134,7 @@ const HowWeWork = () => {
             application, our solutions always have a clear path to improvement
             and impact.
           </p>
-        </div>
+        </motion.div>
       </div>
     </>
   );
