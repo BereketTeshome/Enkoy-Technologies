@@ -38,7 +38,6 @@ const Employability = () => {
         whileInView="animate"
         viewport={{ once: true }}
       >
-
         <div className="sm:w-[60%] pb-20 w-[80%]">
           <motion.img
             src="/img/corporate-training/decentWork.webp"
@@ -59,7 +58,6 @@ const Employability = () => {
             Empowering Individuals for Career Success and Business Innovation
           </motion.h2>
           <motion.p className="mb-7" {...fadeIn}>
-
             At Enkoy Technologies, we believe that equipping individuals with
             the skills for employability and entrepreneurship is essential in
             today’s dynamic job market. Our Employability and Entrepreneurship
@@ -74,7 +72,6 @@ const Employability = () => {
             className="py-3 px-6 bg-gray-900 text-white"
             {...fadeIn}
           >
-
             Get in touch
           </motion.a>
         </div>
@@ -83,7 +80,6 @@ const Employability = () => {
         <br />
         <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
           <motion.div className="flex-1" {...fadeIn}>
-
             <img
               src="/img/corporate-training/employabilityImg.webp"
               alt=""
@@ -92,7 +88,6 @@ const Employability = () => {
           </motion.div>
           <motion.div className="flex-1" {...fadeIn}>
             <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
-
               Transformative Learning for Career and Business Growth
             </h2>
             <p className="mb-2 text-justify">
@@ -110,14 +105,13 @@ const Employability = () => {
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
+        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
           <motion.div className="flex-1 flex" {...fadeIn}>
             <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
               Building Skills for a Competitive Edge
             </h2>
           </motion.div>
           <motion.div className="flex-1 text-gray-900 text-[15px]" {...fadeIn}>
-
             <p>
               In a rapidly changing job landscape, having a competitive edge is
               crucial. At Enkoy Technologies, our training emphasizes critical
@@ -147,7 +141,6 @@ const Employability = () => {
       <br />
       <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
         <motion.div className="flex-1" {...fadeIn}>
-
           <FAQSection faqData={faqData} />
         </motion.div>
         <motion.div className="flex-1" {...fadeIn}>
@@ -161,7 +154,7 @@ const Employability = () => {
       <br />
       <br />
       <br />
-      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-blue-300 md:flex-row flex-col">
+      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
         <motion.div className="flex-1 flex" {...fadeIn}>
           <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
             Key Components of Our Employability and Entrepreneurship Training
@@ -170,7 +163,6 @@ const Employability = () => {
         </motion.div>
         <motion.div className="flex-1 text-gray-900 text-[15px]" {...fadeIn}>
           <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
-
             Our comprehensive training approach focuses on:
           </h2>
           <ul className="list-disc pl-6 py-5 *:mb-5">

@@ -1,145 +1,242 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
 
 const ContactUsSection = () => {
-  // Variants for animation
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.2,
-      },
-    },
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    countryCode: "",
+    phone: "",
+    company: "",
+    projectDescription: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const validateForm = () => {
+    const newErrors = {};
+    const emailPattern = /^(?=.*[a-zA-Z])(?=.*@)[^\s@]+@[^\s@]+\.[^\s@]+$/; // Must contain letters and an '@'
+    const selectedOption = document.querySelector(
+      "#countryCode option:checked"
+    );
+    const requiredLength = selectedOption
+      ? parseInt(selectedOption.getAttribute("data-length"))
+      : 0;
+
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = "Please enter your full name.";
+    }
+
+    if (!emailPattern.test(formData.email.trim())) {
+      newErrors.email = "Please enter a valid email address.";
+    }
+
+    if (
+      formData.countryCode &&
+      formData.phone.length !== requiredLength &&
+      requiredLength > 0
+    ) {
+      newErrors.phone = `Phone number must be ${requiredLength} digits.`;
+    }
+
+    setErrors(newErrors);
+    setIsFormValid(Object.keys(newErrors).length === 0);
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+    validateForm();
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isFormValid) {
+      alert("Form submitted successfully!");
+      setFormData({
+        fullName: "",
+        email: "",
+        countryCode: "",
+        phone: "",
+        company: "",
+        projectDescription: "",
+      });
+    }
   };
 
   return (
-    <div className="py-20 text-white bg-[#FFCD57] overflow-hidden">
-      <div className="container px-6 mx-auto lg:px-16">
-        <motion.div
-          className="grid grid-cols-1 gap-12 lg:grid-cols-2"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Left Section */}
-          <motion.div
-            className="flex flex-col justify-center"
-            variants={itemVariants}
-          >
-            <motion.h2
-              className="mb-4 text-3xl font-semibold md:text-4xl"
-              whileHover={{ scale: 1.05 }}
-            >
-              Let's talk
-            </motion.h2>
-            <motion.p className="mb-4 text-gray-800" variants={itemVariants}>
-              Have a question? Want to talk about your project? We’re ready when
-              you are.
-            </motion.p>
-            {/* <motion.p className="text-gray-800" variants={itemVariants}>
-              To view our current job openings, please visit our
-              <a
-                href="#"
-                className="ml-1 text-pink-500 underline hover:text-pink-400"
+    <div className="flex h-screen bg-[#3B2C42]">
+      <div
+        className="flex-1 hidden bg-center bg-cover md:flex"
+        style={{
+          backgroundImage:
+            "url('https://raw.githubusercontent.com/liyucards/new1/refs/heads/main/contactadmission.png')",
+        }}
+      ></div>
+
+      <div className="flex flex-col items-center justify-center flex-1 scale-90">
+        <div className="relative w-full max-w-md p-8 bg-white rounded-lg shadow-xl bg-opacity-90">
+          <div className="absolute top-[-5px] left-[-5px] w-[calc(100%+10px)] h-[calc(100%+10px)] rounded-lg border-2 border-transparent bg-gradient-to-r from-blue-400 to-blue-600 animate-pulse z-0"></div>
+
+          <form className="relative z-10" onSubmit={handleSubmit} noValidate>
+            <div className="mb-4">
+              <label
+                htmlFor="fullName"
+                className="block text-sm font-medium text-gray-700"
               >
-                careers page
-              </a>
-              .
-            </motion.p> */}
-            <motion.div
-              className="mt-8"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1, transition: { duration: 1 } }}
-            >
-              <img
-                src="/img/services/accessibility.png"
-                alt="Illustration"
-                className="w-full max-w-md mx-auto lg:mx-0"
+                Full Name *
+              </label>
+              <input
+                type="text"
+                name="fullName"
+                id="fullName"
+                value={formData.fullName}
+                onChange={handleInputChange}
+                className="w-full p-2 mt-1 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
               />
-            </motion.div>
-          </motion.div>
+              {errors.fullName && (
+                <p className="mt-1 text-xs text-red-500">{errors.fullName}</p>
+              )}
+            </div>
 
-          {/* Right Section */}
-          <motion.div
-            className="p-8 text-gray-900 bg-white shadow-lg shadow-white "
-            initial={{ opacity: 0, rotateX: -15, scale: 0.9 }}
-            animate={{
-              opacity: 1,
-              rotateX: 0,
-              scale: 1,
-              transition: { duration: 1 },
-            }}
-            whileHover={{
-              rotateX: 5,
-              rotateY: -5,
-              scale: 1.02,
-              transition: { duration: 0.5 },
-            }}
-          >
-            <form className="space-y-6">
-              {[
-                { id: "first-name", label: "First Name *", type: "text" },
-                { id: "last-name", label: "Last Name *", type: "text" },
-                { id: "email", label: "Email *", type: "email" },
-                { id: "phone", label: "Phone", type: "tel" },
-                { id: "company", label: "Company", type: "text" },
-              ].map((field) => (
-                <motion.div key={field.id} variants={itemVariants}>
-                  <label
-                    htmlFor={field.id}
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    {field.label}
-                  </label>
-                  <motion.input
-                    type={field.type}
-                    id={field.id}
-                    placeholder={`Your ${field.label
-                      .toLowerCase()
-                      .replace(" *", "")}`}
-                    className="block w-full px-4 py-2 mt-1 border rounded= shadow-sm focus:ring-pink-500 focus:border-pink-500"
-                    whileFocus={{ scale: 1.05 }}
-                  />
-                </motion.div>
-              ))}
+            <div className="mb-4">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Email *
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full p-2 mt-1 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+              />
+              {errors.email && (
+                <p className="mt-1 text-xs text-red-500">{errors.email}</p>
+              )}
+            </div>
 
-              <motion.div variants={itemVariants}>
-                <label
-                  htmlFor="project-details"
-                  className="block text-sm font-medium text-gray-700"
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700">
+                Phone Number *
+              </label>
+              <div className="flex space-x-2">
+                <select
+                  name="countryCode"
+                  id="countryCode"
+                  value={formData.countryCode}
+                  onChange={handleInputChange}
+                  className="w-1/3 p-2 text-sm bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
                 >
-                  Tell us about your project
-                </label>
-                <motion.textarea
-                  id="project-details"
-                  placeholder="Enter project details"
-                  rows="4"
-                  className="block w-full px-4 py-2 mt-1 border rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500"
-                  whileFocus={{ scale: 1.05 }}
+                  {/* <option value="" disabled>
+                    Select Code *
+                  </option> */}
+                  <option value="" disabled>
+                    Select Code *
+                  </option>
+                  <option value="+251" data-length="9">
+                    🇪🇹 +251 (Ethiopia)
+                  </option>
+                  <option value="+1" data-length="10">
+                    🇺🇸 +1 (United States)
+                  </option>
+                  <option value="+44" data-length="10">
+                    🇬🇧 +44 (United Kingdom)
+                  </option>
+                  <option value="+91" data-length="10">
+                    🇮🇳 +91 (India)
+                  </option>
+                  <option value="+61" data-length="9">
+                    🇦🇺 +61 (Australia)
+                  </option>
+                  <option value="+81" data-length="10">
+                    🇯🇵 +81 (Japan)
+                  </option>
+                  <option value="+49" data-length="10">
+                    🇩🇪 +49 (Germany)
+                  </option>
+                  <option value="+33" data-length="10">
+                    🇫🇷 +33 (France)
+                  </option>
+                  <option value="+55" data-length="11">
+                    🇧🇷 +55 (Brazil)
+                  </option>
+                  <option value="+234" data-length="10">
+                    🇳🇬 +234 (Nigeria)
+                  </option>
+                  <option value="+27" data-length="9">
+                    🇿🇦 +27 (South Africa)
+                  </option>
+                  {/* Add other countries */}
+                </select>
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className="flex-1 p-2 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  placeholder="Number *"
                 />
-              </motion.div>
+              </div>
+              {errors.phone && (
+                <p className="mt-1 text-xs text-red-500">{errors.phone}</p>
+              )}
+            </div>
 
-              <motion.div variants={itemVariants}>
-                <motion.button
-                  type="submit"
-                  className="w-full px-4 py-2 font-medium text-white bg-blue-500 rounded-lg hover:bg-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Submit
-                </motion.button>
-              </motion.div>
-            </form>
-          </motion.div>
-        </motion.div>
+            <div className="mb-4">
+              <label
+                htmlFor="company"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Company
+              </label>
+              <input
+                type="text"
+                name="company"
+                id="company"
+                value={formData.company}
+                onChange={handleInputChange}
+                className="w-full p-2 mt-1 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label
+                htmlFor="projectDescription"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Project Description *
+              </label>
+              <textarea
+                name="projectDescription"
+                id="projectDescription"
+                value={formData.projectDescription}
+                onChange={handleInputChange}
+                rows="3"
+                className="w-full p-2 mt-1 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+              ></textarea>
+              {errors.projectDescription && (
+                <p className="mt-1 text-xs text-red-500">
+                  {errors.projectDescription}
+                </p>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className="w-full p-2 text-white transition bg-pink-500 rounded-md hover:bg-pink-600 disabled:bg-gray-300"
+              disabled={!isFormValid}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

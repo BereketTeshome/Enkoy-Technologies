@@ -44,7 +44,7 @@ const LeadershipDevelopment = () => {
 
   return (
     <div className="pt-20 ">
-      <div className="flex flex-col w-full items-center">
+      <div className="flex flex-col items-center w-full">
         <motion.div
           className="sm:w-[60%] pb-20 w-[80%]"
           initial="hidden"
@@ -69,8 +69,7 @@ const LeadershipDevelopment = () => {
             Leadership development training designed to motivate and achieve
             results.
           </motion.h2>
-          <motion.p className="mb-7" variants={childVariants}>
-
+          <motion.p className="text-justify mb-7" variants={childVariants}>
             At Enkoy Technologies, we are committed to cultivating leadership
             skills! Whether your team includes natural leaders or individuals
             ready to step into leadership roles, we can assist you in teaching
@@ -79,7 +78,7 @@ const LeadershipDevelopment = () => {
           </motion.p>
           <motion.a
             href="/contact"
-            className="py-3 px-6 bg-gray-900 text-white"
+            className="px-6 py-3 text-white bg-gray-900"
             variants={childVariants}
           >
             Contact Us
@@ -88,7 +87,7 @@ const LeadershipDevelopment = () => {
         <br />
         <br />
         <br />
-        <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+        <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
           <motion.div
             className="flex-1"
             initial={{ opacity: 0, y: 50 }}
@@ -109,7 +108,7 @@ const LeadershipDevelopment = () => {
             viewport={{ amount: 0.2, once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
+            <h2 className="text-3xl sm:text-5xl text-gray-950 mb-7">
               Transformative Leadership Development for Lasting Impact
             </h2>
             <p className="mb-2 text-justify">
@@ -131,26 +130,25 @@ const LeadershipDevelopment = () => {
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
+        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
           <motion.div
-            className="flex-1 flex "
+            className="flex flex-1 "
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ amount: 0.2, once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
+            <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
               Building Future-Ready Leaders
             </h2>
           </motion.div>
           <motion.div
-            className="flex-1 text-gray-900 text-[15px] *:mb-2"
+            className="flex-1 text-gray-900 text-[15px] *:mb-2 text-justify"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ amount: 0.2, once: true }}
             transition={{ duration: 0.8 }}
           >
-
             <p>
               As the business landscape evolves, so too must our leaders. At
               Enkoy Technologies, we specialize in building future-ready leaders
@@ -176,7 +174,7 @@ const LeadershipDevelopment = () => {
       <br />
       <br />
       <br />
-      <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+      <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
         <motion.div
           className="flex-1"
           initial={{ opacity: 0, y: 50 }}
@@ -203,15 +201,15 @@ const LeadershipDevelopment = () => {
       <br />
       <br />
       <br />
-      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-blue-300 md:flex-row flex-col">
+      <div className="flex flex-col w-full gap-32 px-5 py-32 bg-[#FFCD57] md:px-20 sm:px-10 md:flex-row">
         <motion.div
-          className="flex-1 flex "
+          className="flex flex-1 "
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.2, once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
+          <h2 className="inline-block text-3xl font-semibold text-gray-900 md:text-5xl">
             Key Components of Our <br /> Leadership Development <br /> Solutions
           </h2>
         </motion.div>
@@ -222,7 +220,7 @@ const LeadershipDevelopment = () => {
           viewport={{ amount: 0.2, once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Our comprehensive training approach focuses on:
           </h2>
           <ul className="list-disc pl-6 py-5 *:mb-5 *:text-justify">
@@ -245,15 +243,15 @@ const LeadershipDevelopment = () => {
               personalities while maintaining their own emotional balance.
             </li>
           </ul>
-          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Transformative Benefits for Your Organization
           </h2>
-          <p>
+          <p className="text-justify">
             The impact of our leadership development solutions extends far
             beyond individual leaders. As your leaders become more effective,
             the benefits ripple throughout your organization:
           </p>
-          <ul className="list-disc pl-6 py-5 *:mb-5">
+          <ul className="list-disc pl-6 py-5 *:mb-5 text-justify">
             <li>
               Teams achieve results that align with your organizational culture
               and objectives.
