@@ -9,7 +9,6 @@ const OurServices = () => {
       description:
         "Off-the-shelf eLearning might be a quick hack, but custom eLearning gets real results.",
       link: "/services/self-paced-learning",
-      // link: "/services/customized-learning",
     },
     {
       icon: "/img/services/gamificationImg.png",
@@ -17,7 +16,6 @@ const OurServices = () => {
       description:
         "We love a virtual approach, but sometimes, the best instructor is an actual instructor.",
       link: "/services/learning-experiences",
-      // link: "/services/consulting-and-advisory",
     },
     {
       icon: "/img/services/why_mobile_learning.png",
@@ -25,7 +23,6 @@ const OurServices = () => {
       description:
         "Scale your team with learning services and strategy from ELM Learning.",
       link: "/services/animation-videos",
-      // link: "/services/animation-and-video-production",
     },
     {
       icon: "/img/services/animatedVideosImg.png",
@@ -33,7 +30,6 @@ const OurServices = () => {
       description:
         "We have content and delivery for soft skills, corporate compliance training, and more.",
       link: "/services/LXD",
-      // link: "/services/capacity-building",
     },
   ];
 
@@ -42,20 +38,14 @@ const OurServices = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.4,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-    hover: {
-      scale: 1.1,
-      rotateX: 10,
-      rotateY: 10,
-      boxShadow: "0px 10px 30px rgba(0,0,0,0.2)",
-    },
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
@@ -64,8 +54,8 @@ const OurServices = () => {
         <motion.h2
           className="mb-12 text-4xl font-semibold text-center text-gray-700"
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
         >
           Our Services
         </motion.h2>
@@ -73,14 +63,20 @@ const OurServices = () => {
           className="grid grid-cols-1 gap-8 md:grid-cols-2"
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
         >
           {services.map((service, index) => (
             <motion.div
               key={index}
               className="flex items-start p-6 bg-white rounded-lg shadow-md"
               variants={itemVariants}
-              whileHover="hover"
+              whileHover={{
+                scale: 1.1,
+                rotateX: 10,
+                rotateY: 10,
+                boxShadow: "0px 10px 30px rgba(0,0,0,0.2)",
+              }}
             >
               <div className="flex-shrink-0">
                 <img

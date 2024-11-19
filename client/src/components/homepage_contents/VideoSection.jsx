@@ -3,17 +3,22 @@ import ReactPlayer from "react-player";
 
 const VideoSection = () => {
   return (
+
     <div className="py-16 bg-[#FFCD57] lg:py-12">
-      <div className="px-6 mx-auto text-center max-w-7xl sm:px-12">
-        {/* Heading */}
-        <h2 className="text-3xl font-semibold text-black sm:text-4xl lg:text-3xl">
-          Committed to <span className="text-white">continuous learning</span>
-        </h2>
-        <p className="px-4 mt-4 text-sm text-black sm:px-10 lg:text-base">
-          As an e-learning company, we support organizations on their journey to
-          change the way they <br className="hidden sm:block" /> train their
-          employees and leverage their knowledge.
-        </p>
+      <div className="bg-[#FFCD57] sticky top-0">
+        <div className="px-6 mx-auto text-center max-w-7xl sm:px-12">
+          {/* Heading */}
+          <h2 className="text-4xl font-semibold text-white">
+            <span className="text-black">Committed to</span>{" "}
+            <span className="font-semibold text-white">
+              continuous learning
+            </span>
+          </h2>
+          <p className="px-10 mt-4 text-sm text-black">
+            As an e-learning company, we support organizations on their journey
+            to change the way they <br /> train their employees and leverage
+            their knowledge.
+          </p>
 
         {/* Video Player */}
         <div

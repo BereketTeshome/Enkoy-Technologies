@@ -57,6 +57,7 @@ const Header = () => {
               className="text-white transition-transform duration-300 group-hover:text-orange-300 group-hover:scale-110"
               size={34}
             />
+
             <a href="#video-section">
               <h2 className="font-semibold text-white transition-transform duration-300 group-hover:text-orange-300">
                 Watch our video
@@ -82,7 +83,13 @@ const Header = () => {
         </motion.div>
       </div>
 
-      <div className="my-16 text-center text-white lg:my-28">
+      <motion.div
+        className="my-16 text-center text-white lg:my-28"
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ amount: "all", once: true }}
+        transition={{ duration: 0.5 }}
+      >
         <p className="px-4 mb-10 text-sm sm:px-8 lg:px-12 sm:text-base lg:text-lg">
           Empower your teams and communities with learning that truly resonates.
           Enkoy Technologies designs innovative, interactive learning
@@ -90,7 +97,10 @@ const Header = () => {
           industries.
         </p>
 
-        <div className="flex items-center justify-center gap-2 mt-4 transition-transform duration-300 cursor-pointer group">
+        <a
+          href="#start"
+          className="flex items-center justify-center gap-2 mt-4 transition-transform duration-300 cursor-pointer group"
+        >
           <h2 className="text-lg font-semibold text-white transition-transform duration-300 sm:text-xl lg:text-2xl group-hover:text-orange-300">
             Get Started
           </h2>
@@ -98,8 +108,8 @@ const Header = () => {
             className="text-white transition-transform duration-300 group-hover:text-orange-300 group-hover:scale-110"
             size={30}
           />
-        </div>
-      </div>
+        </a>
+      </motion.div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
 
 const Employability = () => {
@@ -6,8 +7,7 @@ const Employability = () => {
     {
       question: "Tailored Learning Solutions for Diverse Career Goals",
       answer: [
-        `At Enkoy Technologies, we recognize that each participant has unique career aspirations. Our training begins with an assessment to identify individual strengths, weaknesses, and goals. This allows us to create customized programs that align with their specific career paths, whether they aim to secure employment or start their own business.
-`,
+        `At Enkoy Technologies, we recognize that each participant has unique career aspirations. Our training begins with an assessment to identify individual strengths, weaknesses, and goals. This allows us to create customized programs that align with their specific career paths, whether they aim to secure employment or start their own business.`,
         "We emphasize a supportive and interactive learning environment, where participants can share ideas, ask questions, and collaborate with peers. Our instructors provide personalized guidance and feedback to help each individual develop their unique talents and skills.",
       ],
     },
@@ -18,23 +18,48 @@ const Employability = () => {
       ],
     },
   ];
-  console.log(faqData);
+
+  const fadeIn = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+    viewport: { once: true, amount: 0.2 },
+  };
+
+  const staggerContainer = {
+    animate: { transition: { staggerChildren: 0.2 } },
+  };
+
   return (
-    <div className="pt-20 ">
-      <div className="flex flex-col items-center w-full">
+    <motion.div className="pt-20">
+      <motion.div
+        className="flex flex-col w-full items-center"
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+      >
+
         <div className="sm:w-[60%] pb-20 w-[80%]">
-          <img
+          <motion.img
             src="/img/corporate-training/decentWork.webp"
             alt=""
             className="w-[70px]"
+            {...fadeIn}
           />
-          <p className="uppercase text-sm font-semibold text-[#FF8689] my-10 ">
+          <motion.p
+            className="uppercase text-sm font-semibold text-[#FF8689] my-10"
+            {...fadeIn}
+          >
             Employability and entrepreneurship
-          </p>
-          <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
+          </motion.p>
+          <motion.h2
+            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            {...fadeIn}
+          >
             Empowering Individuals for Career Success and Business Innovation
-          </h2>
-          <p className="text-justify mb-7">
+          </motion.h2>
+          <motion.p className="mb-7" {...fadeIn}>
+
             At Enkoy Technologies, we believe that equipping individuals with
             the skills for employability and entrepreneurship is essential in
             today’s dynamic job market. Our Employability and Entrepreneurship
@@ -43,24 +68,31 @@ const Employability = () => {
             individuals are seeking to enhance their job prospects or launch
             their own ventures, our programs provide the tools and knowledge
             needed to thrive.
-          </p>
-          <a href="/contact" className="px-6 py-3 text-white bg-gray-900">
+          </motion.p>
+          <motion.a
+            href="/contact"
+            className="py-3 px-6 bg-gray-900 text-white"
+            {...fadeIn}
+          >
+
             Get in touch
-          </a>
+          </motion.a>
         </div>
         <br />
         <br />
         <br />
-        <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
-          <div className="flex-1">
+        <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+          <motion.div className="flex-1" {...fadeIn}>
+
             <img
               src="/img/corporate-training/employabilityImg.webp"
               alt=""
               className="w-[90%]"
             />
-          </div>
-          <div className="flex-1">
-            <h2 className="text-3xl sm:text-5xl text-gray-950 mb-7">
+          </motion.div>
+          <motion.div className="flex-1" {...fadeIn}>
+            <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
+
               Transformative Learning for Career and Business Growth
             </h2>
             <p className="mb-2 text-justify">
@@ -73,18 +105,19 @@ const Employability = () => {
               confidently navigate their career paths or embark on their
               entrepreneurial journeys.
             </p>
-          </div>
+          </motion.div>
         </div>
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
-          <div className="flex flex-1 ">
-            <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
+        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
+          <motion.div className="flex-1 flex" {...fadeIn}>
+            <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
               Building Skills for a Competitive Edge
             </h2>
-          </div>
-          <div className="flex-1 text-gray-900 text-[15px] *:mb-2 text-justify">
+          </motion.div>
+          <motion.div className="flex-1 text-gray-900 text-[15px]" {...fadeIn}>
+
             <p>
               In a rapidly changing job landscape, having a competitive edge is
               crucial. At Enkoy Technologies, our training emphasizes critical
@@ -94,7 +127,6 @@ const Employability = () => {
               specific needs of your organization, ensuring relevance and impact
               for all participants.
             </p>
-
             <p>
               We collaborate closely with your organization to understand its
               goals and challenges, allowing us to create a customized training
@@ -107,36 +139,38 @@ const Employability = () => {
               help organizations cultivate a pipeline of leaders who are ready
               to meet tomorrow’s challenges head-on.
             </p>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
       <br />
       <br />
       <br />
-      <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
-        <div className="flex-1">
+      <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+        <motion.div className="flex-1" {...fadeIn}>
+
           <FAQSection faqData={faqData} />
-        </div>
-        <div className="flex-1">
+        </motion.div>
+        <motion.div className="flex-1" {...fadeIn}>
           <img
             src="/img/corporate-training/employabilityImg2.webp"
             alt=""
             className="w-[90%]"
           />
-        </div>
+        </motion.div>
       </div>
       <br />
       <br />
       <br />
-      <div className="flex flex-col w-full gap-32 px-5 py-32 bg-[#FFCD57] md:px-20 sm:px-10 md:flex-row ">
-        <div className="flex flex-1 ">
-          <h2 className="inline-block text-2xl font-semibold text-gray-800 md:text-5xl">
+      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-blue-300 md:flex-row flex-col">
+        <motion.div className="flex-1 flex" {...fadeIn}>
+          <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
             Key Components of Our Employability and Entrepreneurship Training
             Solutions
           </h2>
-        </div>
-        <div className="flex-1 text-gray-900 text-[15px] text-justify">
-          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
+        </motion.div>
+        <motion.div className="flex-1 text-gray-900 text-[15px]" {...fadeIn}>
+          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+
             Our comprehensive training approach focuses on:
           </h2>
           <ul className="list-disc pl-6 py-5 *:mb-5">
@@ -185,9 +219,9 @@ const Employability = () => {
             empower your workforce with the skills and confidence to succeed in
             their careers and beyond!
           </p>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
