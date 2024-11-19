@@ -1,49 +1,72 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const PersonalDev = () => {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+    viewport: { amount: 0.2, once: true },
+  };
+
   return (
-    <div className="py-20 ">
-      <div className="flex flex-col items-center w-full">
-        <div className="sm:w-[60%] pb-20 w-[80%]">
-          <img
+    <motion.div className="py-20">
+      <motion.div className="flex flex-col items-center w-full" {...fadeInUp}>
+        {/* Header Section */}
+        <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
+          <motion.img
             src="/img/services/storytelling.png"
-            alt=""
+            alt="Storytelling Icon"
             className="w-[70px]"
+            {...fadeInUp}
           />
-          <p className="uppercase text-sm font-semibold text-[#FF8689] my-10 ">
+          <motion.p
+            className="uppercase text-sm font-semibold text-[#FF8689] my-10"
+            {...fadeInUp}
+          >
             Personal Development Training
-          </p>
-          <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
+          </motion.p>
+          <motion.h2
+            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            {...fadeInUp}
+          >
             Unlock Your Potential with Personal Development Training
-          </h2>
-          <div className="text-justify">
-            <p className="mb-7">
+          </motion.h2>
+          <motion.div className="text-justify" {...fadeInUp}>
+            <motion.p className="mb-7" {...fadeInUp}>
               At Enkoy, we offer comprehensive personal development training
               designed to empower individuals to reach their full potential. Our
               program focuses on enhancing self-awareness, goal-setting, and
               critical life skills that contribute to personal and professional
               growth.
-            </p>
-            <p className="mb-7">
+            </motion.p>
+            <motion.p className="mb-7" {...fadeInUp}>
               Through interactive workshops and engaging activities,
               participants will explore areas such as time management, effective
               communication, and emotional intelligence. Our experienced
               trainers provide valuable insights and practical tools to help
               individuals overcome challenges and build confidence.
-            </p>
-            <p className="mb-7">
+            </motion.p>
+            <motion.p className="mb-7" {...fadeInUp}>
               By investing in personal development training, you can unlock new
               opportunities for success and fulfillment. With our support,
               participants will gain the skills and mindset needed to navigate
               their journeys and achieve their aspirations.
-            </p>
-          </div>
-          <a href="/contact" className="px-6 py-3 text-white bg-gray-900">
+            </motion.p>
+          </motion.div>
+          <motion.a
+            href="/contact"
+            className="px-6 py-3 text-white bg-gray-900"
+            {...fadeInUp}
+          >
             Contact Us
-          </a>
-        </div>
-      </div>
-    </div>
+          </motion.a>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 

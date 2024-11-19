@@ -1,51 +1,74 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const EmployabilitySkill = () => {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+    viewport: { amount: 0.2, once: true },
+  };
+
   return (
-    <div className="py-20 ">
-      <div className="flex flex-col items-center w-full">
-        <div className="sm:w-[60%] pb-20 w-[80%]">
-          <img
+    <motion.div className="py-20">
+      <motion.div className="flex flex-col items-center w-full" {...fadeInUp}>
+        {/* Header Section */}
+        <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
+          <motion.img
             src="/img/services/storytelling.png"
-            alt=""
+            alt="Storytelling Icon"
             className="w-[70px]"
+            {...fadeInUp}
           />
-          <p className="uppercase text-sm font-semibold text-[#FF8689] my-10 ">
+          <motion.p
+            className="uppercase text-sm font-semibold text-[#FF8689] my-10"
+            {...fadeInUp}
+          >
             Employability Skills Training
-          </p>
-          <h2 className="text-3xl sm:text-5xl text-gray-950 mb-7">
+          </motion.p>
+          <motion.h2
+            className="text-3xl sm:text-5xl text-gray-950 mb-7"
+            {...fadeInUp}
+          >
             Empowering Careers with Employability Skills Training
-          </h2>
-          <div className="text-justify">
-            <p className=" mb-7">
+          </motion.h2>
+          <motion.div className="text-justify" {...fadeInUp}>
+            <motion.p className="mb-7" {...fadeInUp}>
               At Enkoy, we provide specialized employability skills training
               designed to equip individuals with the essential competencies
               needed to thrive in the job market. Our program focuses on
               building key skills such as communication, teamwork,
               problem-solving, and adaptability, which are crucial for career
               success.
-            </p>
-            <p className=" mb-7">
+            </motion.p>
+            <motion.p className="mb-7" {...fadeInUp}>
               Through interactive workshops and hands-on activities,
               participants will engage in real-world scenarios that enhance
               their practical skills and boost their confidence. Our experienced
               trainers offer personalized guidance and feedback to help
               individuals identify their strengths and areas for improvement.
-            </p>
-            <p className=" mb-7">
+            </motion.p>
+            <motion.p className="mb-7" {...fadeInUp}>
               By participating in our employability skills training, you will
               gain the tools and knowledge necessary to stand out to employers
               and secure meaningful job opportunities. With our support, you can
               enhance your career readiness and take the next step toward your
               professional goals.
-            </p>
-          </div>
-          <a href="/contact" className="px-6 py-3 text-white bg-gray-900">
+            </motion.p>
+          </motion.div>
+          <motion.a
+            href="/contact"
+            className="px-6 py-3 text-white bg-gray-900"
+            {...fadeInUp}
+          >
             Contact Us
-          </a>
-        </div>
-      </div>
-    </div>
+          </motion.a>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 

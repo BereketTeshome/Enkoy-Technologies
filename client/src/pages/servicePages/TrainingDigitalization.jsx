@@ -1,22 +1,41 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const TrainingDigitalization = () => {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+    viewport: { amount: 0.2, once: true },
+  };
+
   return (
-    <div className="pt-20 ">
-      <div className="flex flex-col items-center w-full">
-        <div className="sm:w-[60%] pb-20 w-[80%]">
-          <img
+    <motion.div className="pt-20">
+      <motion.div className="flex flex-col items-center w-full" {...fadeInUp}>
+        {/* Header Section */}
+        <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
+          <motion.img
             src="/img/services/translation.svg"
-            alt=""
+            alt="In-House Training Digitalization Icon"
             className="w-[70px]"
+            {...fadeInUp}
           />
-          <p className="uppercase text-sm font-semibold text-[#FF8689] my-10 ">
+          <motion.p
+            className="uppercase text-sm font-semibold text-[#FF8689] my-10"
+            {...fadeInUp}
+          >
             In-House Training Digitalization
-          </p>
-          <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
+          </motion.p>
+          <motion.h2
+            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            {...fadeInUp}
+          >
             Revolutionizing Training Through Dynamic Digital Experiences
-          </h2>
-          <p className="text-justify mb-7">
+          </motion.h2>
+          <motion.p className="text-justify mb-7" {...fadeInUp}>
             At Enkoy, we specialize in transforming traditional in-house
             training into dynamic digital experiences. Our approach begins with
             understanding your organization’s specific training needs and
@@ -24,22 +43,26 @@ const TrainingDigitalization = () => {
             interactive content that resonates with your team. By leveraging the
             latest digital tools and technologies, we ensure that your training
             programs are not only accessible but also effective in enhancing
-            knowledge retention and skills development. <br /> <br /> Our
-            commitment to quality means we continuously evaluate and refine the
-            training materials based on learner feedback and performance
+            knowledge retention and skills development. <br /> <br />
+            Our commitment to quality means we continuously evaluate and refine
+            the training materials based on learner feedback and performance
             metrics. Through our digitalization process, we empower your
             workforce to learn at their own pace, fostering a culture of
-            continuous improvement and innovation within your organization
-          </p>
-          <a href="/contact" className="px-6 py-3 text-white bg-gray-900">
+            continuous improvement and innovation within your organization.
+          </motion.p>
+          <motion.a
+            href="/contact"
+            className="px-6 py-3 text-white bg-gray-900"
+            {...fadeInUp}
+          >
             Contact Us
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
         <br />
         <br />
         <br />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
