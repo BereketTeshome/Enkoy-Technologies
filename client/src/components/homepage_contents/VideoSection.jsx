@@ -3,7 +3,6 @@ import ReactPlayer from "react-player";
 
 const VideoSection = () => {
   return (
-
     <div className="py-16 bg-[#FFCD57] lg:py-12">
       <div className="bg-[#FFCD57] sticky top-0">
         <div className="px-6 mx-auto text-center max-w-7xl sm:px-12">
@@ -20,17 +19,18 @@ const VideoSection = () => {
             their knowledge.
           </p>
 
-        {/* Video Player */}
-        <div
-          className="relative mt-8 overflow-hidden rounded-lg shadow-lg aspect-w-16 aspect-h-9 sm:mt-10 lg:w-3/4 lg:mx-auto"
-          id="video-section"
-        >
-          <ReactPlayer
-            url="https://youtu.be/IfDGIsZPKMs"
-            controls
-            width="100%"
-            height="90%"
-          />
+          {/* Video Player */}
+          <div
+            className="relative mt-8 overflow-hidden rounded-lg shadow-lg aspect-w-16 aspect-h-9 sm:mt-10 lg:w-3/4 lg:mx-auto"
+            id="video-section"
+          >
+            <ReactPlayer
+              url="https://www.youtube.com/watch?v=IfDGIsZPKMs"
+              controls
+              width="100%"
+              height="100%" // Use 100% for full height coverage within the parent container
+            />
+          </div>
         </div>
       </div>
     </div>

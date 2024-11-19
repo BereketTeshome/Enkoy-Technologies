@@ -56,7 +56,6 @@ const PersonalDevelopment = () => {
             Empowering Individuals for Growth and Success
           </motion.h2>
           <motion.p className="mb-7 text-justify" {...fadeInUp}>
-
             At Enkoy Technologies, we recognize that personal development is
             essential for both individual satisfaction and organizational
             success. Our Personal Development Training is designed to empower
@@ -95,7 +94,6 @@ const PersonalDevelopment = () => {
               Transformative Personal Growth for Lasting Impact
             </motion.h2>
             <motion.p className="mb-2" {...fadeInUp}>
-
               Our approach to personal development focuses on creating
               transformative experiences that lead to lasting change. We blend
               practical strategies with self-reflection exercises, helping
@@ -172,20 +170,18 @@ const PersonalDevelopment = () => {
             className="flex-1 text-gray-900 text-[15px]"
             {...fadeInUp}
           >
-            <motion.p {...fadeInUp}>
-              Our comprehensive training approach focuses on:
-            </motion.p>
+            <p>Our comprehensive training approach focuses on:</p>
             <ul className="list-disc pl-6 py-5 *:mb-5">
               <li>
-                <b>Self-Awareness:</b> Helping individuals gain a deeper
+                <b>Self-Awareness:</b>Helping individuals gain a deeper
                 understanding of their strengths, values, and areas for growth.
               </li>
               <li>
-                <b>Goal Setting:</b> Guiding participants in setting realistic
+                <b>Goal Setting: </b> Guiding participants in setting realistic
                 and achievable personal and professional goals.
               </li>
               <li>
-                <b>Emotional Intelligence:</b> Teaching skills to recognize and
+                <b>Emotional Intelligence: </b>Teaching skills to recognize and
                 manage emotions, both in themselves and in others.
               </li>
               <li>
@@ -193,11 +189,32 @@ const PersonalDevelopment = () => {
                 stress and overcome obstacles.
               </li>
             </ul>
+            <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+              Transformative Benefits for Individuals and Organizations
+            </h2>
+            <p>
+              The impact of our Personal Development Training extends beyond the
+              individual, benefiting the entire organization. As participants
+              grow and develop, the advantages include:
+            </p>
+            <ul className="list-disc pl-6 py-5 *:mb-5">
+              <li>Increased self-confidence and motivation among employees.</li>
+              <li>Enhanced communication and collaboration within teams.</li>
+              <li>
+                Greater innovation and creativity as individuals feel empowered
+                to share ideas.
+              </li>
+              <li>Improved overall job satisfaction and employee retention.</li>
+              <li>A more positive and productive organizational culture.</li>
+            </ul>
+            <p>
+              Invest in personal development today and empower your workforce to
+              thrive both personally and professionally!
+            </p>
           </motion.div>
         </motion.div>
       </motion.div>
     </motion.div>
-
   );
 };
 
