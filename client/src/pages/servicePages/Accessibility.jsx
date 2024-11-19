@@ -16,7 +16,7 @@ const Accessibility = () => {
           {/* <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
             Elevate Your Learning through Gamification
           </h2> */}
-          <p className="mb-7">
+          <p className="mb-7 text-justify">
             At Enkoy, we believe that accessibility in eLearning is essential
             for creating inclusive learning experiences for everyone. Our
             products are designed with universal accessibility in mind, ensuring
@@ -47,7 +47,7 @@ const Accessibility = () => {
             <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
               Why Accessibility?
             </h2>
-            <p>
+            <p className="text-justify">
               Accessibility in eLearning is crucial for creating inclusive
               educational experiences that cater to all learners, regardless of
               their abilities or backgrounds. It accommodates diverse learning
@@ -65,14 +65,14 @@ const Accessibility = () => {
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
+        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
           <div className="flex-1 flex ">
             <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
               Our Accessibility <br /> Approach
             </h2>
           </div>
           <div className="flex-1 text-gray-900 text-[15px]">
-            <p>
+            <p className="text-justify">
               At Enkoy, we prioritize accessibility by providing both offline
               and online learning options to cater to diverse learner needs. Our
               online courses are designed with features like adjustable text

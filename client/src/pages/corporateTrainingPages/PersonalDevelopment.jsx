@@ -32,9 +32,9 @@ const PersonalDevelopment = () => {
             Personal development training
           </p>
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
-            LearnEmpowering Individuals for Growth and Success
+            Learn Empowering Individuals for Growth and Success
           </h2>
-          <p className="mb-7">
+          <p className="mb-7 text-justify">
             At Enkoy Technologies, we recognize that personal development is
             essential for both individual satisfaction and organizational
             success. Our Personal Development Training is designed to empower
@@ -63,7 +63,7 @@ const PersonalDevelopment = () => {
             <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
               Transformation Personal Growth for Lasting Impact
             </h2>
-            <p className="mb-2">
+            <p className="mb-2 text-justify">
               Our approach to personal development focuses on creating
               transformation experiences that lead to lasting change. We blend
               practical strategies with self-reflection exercises, helping
@@ -77,13 +77,13 @@ const PersonalDevelopment = () => {
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
+        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
           <div className="flex-1 flex ">
             <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
               Building Resilient and Agile Individuals
             </h2>
           </div>
-          <div className="flex-1 text-gray-900 text-[15px] *:mb-2">
+          <div className="flex-1 text-gray-900 text-[15px] *:mb-2 text-justify">
             <p>
               In today's fast-paced world, resilience and adaptability are vital
               traits for success. At Enkoy Technologies, we equip participants
@@ -115,13 +115,13 @@ const PersonalDevelopment = () => {
       <br />
       <br />
       <br />
-      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
+      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
         <div className="flex-1 flex ">
           <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
             Key Components of Our Personal Development Training Solutions
           </h2>
         </div>
-        <div className="flex-1 text-gray-900 text-[15px]">
+        <div className="flex-1 text-gray-900 text-[15px] text-justify">
           <p>Our comprehensive training approach focuses on:</p>
           <ul className="list-disc pl-6 py-5 *:mb-5">
             <li>

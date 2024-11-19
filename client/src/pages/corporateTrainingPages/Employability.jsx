@@ -21,7 +21,7 @@ const Employability = () => {
   console.log(faqData);
   return (
     <div className="pt-20 ">
-      <div className="flex flex-col w-full items-center">
+      <div className="flex flex-col items-center w-full">
         <div className="sm:w-[60%] pb-20 w-[80%]">
           <img
             src="/img/corporate-training/decentWork.webp"
@@ -34,7 +34,7 @@ const Employability = () => {
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
             Empowering Individuals for Career Success and Business Innovation
           </h2>
-          <p className="mb-7">
+          <p className="text-justify mb-7">
             At Enkoy Technologies, we believe that equipping individuals with
             the skills for employability and entrepreneurship is essential in
             today’s dynamic job market. Our Employability and Entrepreneurship
@@ -44,14 +44,14 @@ const Employability = () => {
             their own ventures, our programs provide the tools and knowledge
             needed to thrive.
           </p>
-          <a href="/contact" className="py-3 px-6 bg-gray-900 text-white">
+          <a href="/contact" className="px-6 py-3 text-white bg-gray-900">
             Get in touch
           </a>
         </div>
         <br />
         <br />
         <br />
-        <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+        <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
           <div className="flex-1">
             <img
               src="/img/corporate-training/employabilityImg.webp"
@@ -60,10 +60,10 @@ const Employability = () => {
             />
           </div>
           <div className="flex-1">
-            <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
+            <h2 className="text-3xl sm:text-5xl text-gray-950 mb-7">
               Transformative Learning for Career and Business Growth
             </h2>
-            <p className="mb-2">
+            <p className="mb-2 text-justify">
               Our approach to Employability and Entrepreneurship Training
               focuses on practical, hands-on experiences that prepare
               participants for real-world challenges. We cover essential topics
@@ -78,13 +78,13 @@ const Employability = () => {
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
-          <div className="flex-1 flex ">
-            <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
+        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
+          <div className="flex flex-1 ">
+            <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
               Building Skills for a Competitive Edge
             </h2>
           </div>
-          <div className="flex-1 text-gray-900 text-[15px] *:mb-2">
+          <div className="flex-1 text-gray-900 text-[15px] *:mb-2 text-justify">
             <p>
               In a rapidly changing job landscape, having a competitive edge is
               crucial. At Enkoy Technologies, our training emphasizes critical
@@ -113,7 +113,7 @@ const Employability = () => {
       <br />
       <br />
       <br />
-      <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+      <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
         <div className="flex-1">
           <FAQSection faqData={faqData} />
         </div>
@@ -128,15 +128,15 @@ const Employability = () => {
       <br />
       <br />
       <br />
-      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-blue-300 md:flex-row flex-col">
-        <div className="flex-1 flex ">
-          <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
+      <div className="flex flex-col w-full gap-32 px-5 py-32 bg-[#FFCD57] md:px-20 sm:px-10 md:flex-row ">
+        <div className="flex flex-1 ">
+          <h2 className="inline-block text-2xl font-semibold text-gray-800 md:text-5xl">
             Key Components of Our Employability and Entrepreneurship Training
             Solutions
           </h2>
         </div>
-        <div className="flex-1 text-gray-900 text-[15px]">
-          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+        <div className="flex-1 text-gray-900 text-[15px] text-justify">
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Our comprehensive training approach focuses on:
           </h2>
           <ul className="list-disc pl-6 py-5 *:mb-5">
@@ -157,16 +157,16 @@ const Employability = () => {
               innovation, and risk-taking in business ventures.
             </li>
           </ul>
-          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Transformative Benefits for Individuals and Organizations
           </h2>
-          <p>
+          <p className="text-justify">
             The impact of our Employability and Entrepreneurship Training
             extends beyond individual learners, benefiting the entire
             organization. As participants enhance their employability and
             entrepreneurial skills, the advantages include:
           </p>
-          <ul className="list-disc pl-6 py-5 *:mb-5">
+          <ul className="list-disc pl-6 py-5 *:mb-5 text-justify">
             <li>Increased job readiness and confidence among job seekers.</li>
             <li>
               Higher rates of successful job placements and career advancements.

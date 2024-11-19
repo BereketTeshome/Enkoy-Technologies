@@ -16,7 +16,7 @@ const GraphicsDesign = () => {
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
             Animated videos are a powerful tool for transforming digital content
           </h2>
-          <p className="mb-7">
+          <p className="mb-7 text-justify">
             At Enkoy, we specialize in creating captivating graphic design
             solutions, including unique and memorable logos that capture the
             essence of your brand. Our talented design team works closely with

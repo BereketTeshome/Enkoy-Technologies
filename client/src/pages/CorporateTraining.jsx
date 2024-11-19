@@ -66,12 +66,12 @@ const CorporateTraining = () => {
   ];
   return (
     <div className="pt-20">
-      <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row gap-10">
+      <div className="flex flex-col items-center w-full gap-10 px-5 md:px-20 sm:px-10 lg:flex-row">
         <div className="flex-1">
           <p className="uppercase text-sm font-semibold text-[#FF8689] my-10 ">
             Corporate Training overview
           </p>
-          <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7 font-semibold">
+          <h2 className="text-3xl font-semibold sm:text-5xl text-gray-950 mb-7">
             Corporate <br />
             Training Services
           </h2>
@@ -82,12 +82,12 @@ const CorporateTraining = () => {
             experiences that inspire and motivate learners.
           </p>
           <div className="flex justify-between sm:items-center flex-col sm:flex-row *:w-fit gap-y-4">
-            <a href="/contact" className="py-3 px-6 bg-gray-900 text-white ">
+            <a href="/contact" className="px-6 py-3 text-white bg-gray-900 ">
               Contact Us
             </a>
             <a
               href="#solutions"
-              className="py-3 sm:px-6 flex items-center gap-3 font-semibold text-gray-900"
+              className="flex items-center gap-3 py-3 font-semibold text-gray-900 sm:px-6"
             >
               <span className="p-4 rounded-full bg-[#FF8689]">
                 <IoIosArrowDown />
@@ -107,9 +107,9 @@ const CorporateTraining = () => {
       <br />
       <br />
       <br />
-      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#B7D6D8] md:flex-row flex-col">
-        <div className="flex-1 flex ">
-          <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
+      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
+        <div className="flex flex-1 ">
+          <h2 className="inline-block text-3xl font-semibold text-gray-900 md:text-5xl">
             Our method for delivering corporate training services.
           </h2>
         </div>
@@ -133,7 +133,7 @@ const CorporateTraining = () => {
       <br />
       <div className="px-5 sm:px-10 md:px-20">
         <div className="sm:text-center *:mb-8 text-gray-900">
-          <h2 className="sm:text-5xl text-4xl font-semibold ">
+          <h2 className="text-4xl font-semibold sm:text-5xl ">
             Our corporate <br /> training services
           </h2>
           <p>
@@ -143,7 +143,7 @@ const CorporateTraining = () => {
           </p>
         </div>
         <br />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 gap-20 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((item, index) => {
             return (
               <div className="text-gray-800" key={index}>
