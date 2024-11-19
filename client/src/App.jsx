@@ -27,6 +27,7 @@ import SoftSkill from "./pages/corporateTrainingPages/SoftSkill.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import OurTeam from "./pages/aboutAsPages/OurTeam.jsx";
 import OurDEI from "./pages/aboutAsPages/OurDEI.jsx";
+import Careers from "./pages/aboutAsPages/Careers.jsx";
 import InstructionalDesign from "./pages/servicePages/InstructionalDesign.jsx";
 import TrainingDigitalization from "./pages/servicePages/TrainingDigitalization.jsx";
 import VideoEditing from "./pages/servicePages/VideoEditing.jsx";
@@ -146,7 +147,7 @@ const App = () => {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/about-us/our-team" element={<OurTeam />} />
           <Route path="/about-us/our-DEI" element={<OurDEI />} />
-
+          <Route path="/about-us/careers" element={<Careers />} />
           {/* <Route
             path="/about-us/our-sustainability"
             element={<OurSustainability />}

@@ -18,7 +18,7 @@ const OurWork = () => {
           organizations.
         </p>
         <a
-          href="/case-studies"
+          href="/about-us/careers"
           className="font-medium text-pink-500 hover:underline"
         >
           See case studies
