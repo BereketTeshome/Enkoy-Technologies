@@ -54,9 +54,9 @@ const OurTeams = () => {
   }, []);
 
   return (
-    <div className="px-6 lg:px-32 py-12">
+    <div className="px-6 py-12 lg:px-32">
       <div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
         data-aos="fade-up"
       >
         {teamData.map((member, index) => (
@@ -67,18 +67,20 @@ const OurTeams = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="relative bg-white rounded-xl shadow-md overflow-hidden"
+            className="relative overflow-hidden bg-white shadow-md rounded-xl"
           >
             <div className="p-4">
               <motion.img
                 src={member.img}
                 alt={member.name}
-                className="w-full object-cover rounded-lg"
+                className="object-cover w-full rounded-lg"
                 whileHover={{ y: -20 }}
                 transition={{ type: "spring", stiffness: 200 }}
               />
               <div className="absolute top-0 left-0 w-full h-full bg-[#FFCD57]  opacity-0 hover:opacity-100 transition-opacity duration-300 flex p-4">
-                <p className="font-semibold text-gray-800">{member.about}</p>
+                <p className="font-semibold text-justify text-gray-800">
+                  {member.about}
+                </p>
               </div>
               <h2 className="mt-4 text-lg font-semibold text-gray-800">
                 {member.name}

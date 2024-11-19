@@ -14,28 +14,30 @@ const PersonalDev = () => {
             Personal Development Training
           </p>
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
-            LXD Training Services
+            Unlock Your Potential with Personal Development Training
           </h2>
-          <p className="mb-7">
-            At Enkoy, we offer comprehensive personal development training
-            designed to empower individuals to reach their full potential. Our
-            program focuses on enhancing self-awareness, goal-setting, and
-            critical life skills that contribute to personal and professional
-            growth.
-          </p>
-          <p className="mb-7">
-            Through interactive workshops and engaging activities, participants
-            will explore areas such as time management, effective communication,
-            and emotional intelligence. Our experienced trainers provide
-            valuable insights and practical tools to help individuals overcome
-            challenges and build confidence.
-          </p>
-          <p className="mb-7">
-            By investing in personal development training, you can unlock new
-            opportunities for success and fulfillment. With our support,
-            participants will gain the skills and mindset needed to navigate
-            their journeys and achieve their aspirations.
-          </p>
+          <div className="text-justify">
+            <p className="mb-7">
+              At Enkoy, we offer comprehensive personal development training
+              designed to empower individuals to reach their full potential. Our
+              program focuses on enhancing self-awareness, goal-setting, and
+              critical life skills that contribute to personal and professional
+              growth.
+            </p>
+            <p className="mb-7">
+              Through interactive workshops and engaging activities,
+              participants will explore areas such as time management, effective
+              communication, and emotional intelligence. Our experienced
+              trainers provide valuable insights and practical tools to help
+              individuals overcome challenges and build confidence.
+            </p>
+            <p className="mb-7">
+              By investing in personal development training, you can unlock new
+              opportunities for success and fulfillment. With our support,
+              participants will gain the skills and mindset needed to navigate
+              their journeys and achieve their aspirations.
+            </p>
+          </div>
           <a href="/contact" className="px-6 py-3 text-white bg-gray-900">
             Contact Us
           </a>

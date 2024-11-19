@@ -3,6 +3,7 @@ import Particle from "./particles";
 import { motion } from "framer-motion";
 import { MdOutlinePlayCircle } from "react-icons/md";
 import { IoArrowForward } from "react-icons/io5";
+import { TypeAnimation } from "react-type-animation";
 
 const Header = () => {
   return (
@@ -14,7 +15,7 @@ const Header = () => {
         </div>
 
         <motion.div
-          className="z-10 flex-1 mb-10 lg:mb-0" // Ensure text appears above particles
+          className="z-10 flex-1 mb-10 lg:mb-0"
           initial={{ x: "-100vw" }}
           animate={{ x: 0 }}
           transition={{
@@ -24,21 +25,43 @@ const Header = () => {
             stiffness: 100,
           }}
         >
-          <div className="mb-5 font-semibold text-sm capitalize text-[#FF8689]">
-            <h1 className="text-4xl text-white sm:text-5xl lg:text-6xl">
-              Engaging <br /> Digital Solutions for Lasting Impact
-            </h1>
+          <div className="mb-5">
+            {/* Typing Animation with Fixed Line Height */}
+            <TypeAnimation
+              sequence={[
+                "Engaging Experiences",
+                2000, // Pause for 2 seconds
+                "Innovative Solutions",
+                2000, // Pause for 2 seconds
+                "Digital Empowerment",
+                2000, // Pause for 2 seconds
+              ]}
+              wrapper="h1"
+              className="text-2xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl"
+              cursor={true}
+              repeat={Infinity}
+            />
           </div>
-          <div className="flex items-center gap-2 transition-transform duration-300 cursor-pointer group">
+          {/* Sub-header with emphasized span */}
+          <h2 className="text-lg text-gray-300 sm:text-xl lg:text-2xl">
+            Empower your teams with{" "}
+            <span className="text-[#FFCD57] font-bold">Digital Solutions</span>{" "}
+            that leave a{" "}
+            <span className="underline text-[#FFCD57] decoration-[#FFCD57]">
+              lasting impact
+            </span>
+            .
+          </h2>
+          <div className="flex items-center gap-2 mt-6 transition-transform duration-300 cursor-pointer group">
             <MdOutlinePlayCircle
               className="text-white transition-transform duration-300 group-hover:text-orange-300 group-hover:scale-110"
               size={34}
             />
-            <a
-              href="#video"
-              className="font-semibold text-white transition-transform duration-300 group-hover:text-orange-300"
-            >
-              Watch our video
+
+            <a href="#video-section">
+              <h2 className="font-semibold text-white transition-transform duration-300 group-hover:text-orange-300">
+                Watch our video
+              </h2>
             </a>
           </div>
         </motion.div>

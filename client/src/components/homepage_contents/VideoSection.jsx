@@ -3,7 +3,8 @@ import ReactPlayer from "react-player";
 
 const VideoSection = () => {
   return (
-    <div className="py-20 bg-[#FFCD57] " id="video">
+
+    <div className="py-16 bg-[#FFCD57] lg:py-12">
       <div className="bg-[#FFCD57] sticky top-0">
         <div className="px-6 mx-auto text-center max-w-7xl sm:px-12">
           {/* Heading */}
@@ -19,16 +20,17 @@ const VideoSection = () => {
             their knowledge.
           </p>
 
-          {/* Video Player */}
-          <div className="flex justify-center h-[400px] mt-10">
-            <ReactPlayer
-              url="https://youtu.be/IfDGIsZPKMs"
-              controls
-              width="100%"
-              height="100%"
-              className="max-w-xl overflow-hidden rounded-lg shadow-lg"
-            />
-          </div>
+        {/* Video Player */}
+        <div
+          className="relative mt-8 overflow-hidden rounded-lg shadow-lg aspect-w-16 aspect-h-9 sm:mt-10 lg:w-3/4 lg:mx-auto"
+          id="video-section"
+        >
+          <ReactPlayer
+            url="https://youtu.be/IfDGIsZPKMs"
+            controls
+            width="100%"
+            height="90%"
+          />
         </div>
       </div>
     </div>

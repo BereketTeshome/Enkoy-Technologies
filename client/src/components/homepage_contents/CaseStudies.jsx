@@ -42,7 +42,9 @@ const CaseStudies = () => {
                 />
               </div>
               <h3 className="text-xl font-semibold">{caseStudy.title}</h3>
-              <p className="mt-4 text-gray-400">{caseStudy.description}</p>
+              <p className="mt-4 text-gray-400 text-justify font-semibold">
+                {caseStudy.description}
+              </p>
               <a
                 href={caseStudy.link}
                 className="inline-block mt-6 font-medium text-pink-500 hover:text-pink-400"

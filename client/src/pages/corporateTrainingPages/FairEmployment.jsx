@@ -22,7 +22,7 @@ const FairEmployment = () => {
 
   return (
     <div className="pt-20 ">
-      <div className="flex flex-col w-full items-center">
+      <div className="flex flex-col items-center w-full">
         <div className="sm:w-[60%] pb-20 w-[80%]">
           <img
             src="/img/corporate-training/employability.webp"
@@ -35,7 +35,7 @@ const FairEmployment = () => {
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
             Promoting Equity and Inclusion in the Workplace
           </h2>
-          <p className="mb-7">
+          <p className="text-justify mb-7">
             At Enkoy Technologies, we believe that fair employment practices are
             essential for creating a thriving and inclusive workplace. Our Fair
             Employment Practice Training is designed to equip organizations and
@@ -44,14 +44,14 @@ const FairEmployment = () => {
             fair employment practices, businesses can enhance employee
             satisfaction, improve retention, and drive overall success.
           </p>
-          <a href="/contact" className="py-3 px-6 bg-gray-900 text-white">
+          <a href="/contact" className="px-6 py-3 text-white bg-gray-900">
             Get in touch
           </a>
         </div>
         <br />
         <br />
         <br />
-        <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+        <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
           <div className="flex-1">
             <img
               src="/img/corporate-training/fairEmploymentImg.webp"
@@ -60,10 +60,10 @@ const FairEmployment = () => {
             />
           </div>
           <div className="flex-1">
-            <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
+            <h2 className="text-3xl  sm:text-5xl text-gray-950 mb-7">
               Transformative Learning for a Fair Workplace
             </h2>
-            <p className="mb-2">
+            <p className="mb-2 text-justify">
               Our approach to Fair Employment Practice Training focuses on
               practical, actionable strategies that empower participants to
               recognize and address issues related to discrimination, bias, and
@@ -79,13 +79,13 @@ const FairEmployment = () => {
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
-          <div className="flex-1 flex ">
-            <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
+        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
+          <div className="flex flex-1 ">
+            <h2 className="inline-block text-4xl font-semibold text-gray-900  md:text-6xl">
               Building Awareness and Commitment to Responsible Practices
             </h2>
           </div>
-          <div className="flex-1 text-gray-900 text-[15px] *:mb-2">
+          <div className="flex-1 text-gray-900 text-[15px] *:mb-2 text-justify">
             <p>
               In today’s diverse work environment, understanding fair employment
               practices is critical for all employees. At Enkoy Technologies,
@@ -101,7 +101,7 @@ const FairEmployment = () => {
       <br />
       <br />
       <br />
-      <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+      <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
         <div className="flex-1">
           <FAQSection faqData={faqData} />
         </div>
@@ -116,14 +116,14 @@ const FairEmployment = () => {
       <br />
       <br />
       <br />
-      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-blue-300 md:flex-row flex-col">
-        <div className="flex-1 flex ">
-          <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
+      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
+        <div className="flex flex-1 ">
+          <h2 className="inline-block text-3xl font-semibold text-gray-900  md:text-5xl">
             Key Components of Our Fair Employment Practice Training Solutions
           </h2>
         </div>
-        <div className="flex-1 text-gray-900 text-[15px]">
-          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+        <div className="flex-1 text-gray-900 text-[15px] text-justify">
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Our comprehensive training approach focuses on:
           </h2>
           <ul className="list-disc pl-6 py-5 *:mb-5">
@@ -147,7 +147,7 @@ const FairEmployment = () => {
               developing and enforcing fair employment policies and practices.
             </li>
           </ul>
-          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Transformative Benefits for Individuals and Organizations
           </h2>
           <p>

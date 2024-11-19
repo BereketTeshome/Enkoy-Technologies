@@ -70,6 +70,7 @@ const LeadershipDevelopment = () => {
             results.
           </motion.h2>
           <motion.p className="mb-7" variants={childVariants}>
+
             At Enkoy Technologies, we are committed to cultivating leadership
             skills! Whether your team includes natural leaders or individuals
             ready to step into leadership roles, we can assist you in teaching
@@ -111,14 +112,14 @@ const LeadershipDevelopment = () => {
             <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
               Transformative Leadership Development for Lasting Impact
             </h2>
-            <p className="mb-2">
+            <p className="mb-2 text-justify">
               At Enkoy Technologies, we believe that effective leadership is the
               cornerstone of organizational success. Our transformative
               leadership development training helps cultivate leaders who not
               only excel in their roles but also inspire their teams to achieve
               greatness.
             </p>
-            <p>
+            <p className="text-justify">
               By combining practical skills with strategic insights, our
               programs are designed to challenge leaders to think critically and
               act decisively. We focus on real-world applications, ensuring that
@@ -149,6 +150,7 @@ const LeadershipDevelopment = () => {
             viewport={{ amount: 0.2, once: true }}
             transition={{ duration: 0.8 }}
           >
+
             <p>
               As the business landscape evolves, so too must our leaders. At
               Enkoy Technologies, we specialize in building future-ready leaders
@@ -223,7 +225,7 @@ const LeadershipDevelopment = () => {
           <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
             Our comprehensive training approach focuses on:
           </h2>
-          <ul className="list-disc pl-6 py-5 *:mb-5">
+          <ul className="list-disc pl-6 py-5 *:mb-5 *:text-justify">
             <li>
               <b>Realistic Obstacles:</b>Leaders confront challenging,
               real-world scenarios that test their skills and decision-making

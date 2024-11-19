@@ -21,7 +21,7 @@ const DecentWork = () => {
   console.log(faqData);
   return (
     <div className="pt-20 ">
-      <div className="flex flex-col w-full items-center">
+      <div className="flex flex-col items-center w-full">
         <div className="sm:w-[60%] pb-20 w-[80%]">
           <img
             src="/img/corporate-training/dream.webp"
@@ -34,7 +34,7 @@ const DecentWork = () => {
           <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
             Promoting Sustainable Employment and Responsible Practices
           </h2>
-          <p className="mb-7">
+          <p className="text-justify mb-7">
             At Enkoy Technologies, we understand the importance of decent work
             in achieving sustainable development. Our Decent Work and
             Sustainable Development Goals (SDG) Training is designed to equip
@@ -44,14 +44,14 @@ const DecentWork = () => {
             culture of respect, equity, and sustainability, we help build
             stronger workplaces and communities.
           </p>
-          <a href="/contact" className="py-3 px-6 bg-gray-900 text-white">
+          <a href="/contact" className="px-6 py-3 text-white bg-gray-900">
             Get in touch
           </a>
         </div>
         <br />
         <br />
         <br />
-        <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+        <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
           <div className="flex-1">
             <img
               src="/img/corporate-training/decentWorkImg.webp"
@@ -60,10 +60,10 @@ const DecentWork = () => {
             />
           </div>
           <div className="flex-1">
-            <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
+            <h2 className="text-3xl  sm:text-5xl text-gray-950 mb-7">
               Transformative Learning for Sustainable Employment
             </h2>
-            <p className="mb-2">
+            <p className="mb-2 text-justify">
               Our approach to Decent Work and SDG Training focuses on practical
               applications that empower participants to understand and implement
               the principles of decent work and sustainability. We cover
@@ -78,14 +78,14 @@ const DecentWork = () => {
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col">
-          <div className="flex-1 flex ">
-            <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
+        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
+          <div className="flex flex-1 ">
+            <h2 className="inline-block text-4xl font-semibold text-gray-900  md:text-6xl">
               Building Awareness and Commitment to Responsible Practices
             </h2>
           </div>
           <div className="flex-1 text-gray-900 text-[15px] *:mb-2">
-            <p>
+            <p className="text-justify">
               As the global job market evolves, it’s crucial for individuals and
               organizations to embrace responsible work practices. At Enkoy
               Technologies, our training emphasizes awareness of the SDGs,
@@ -101,7 +101,7 @@ const DecentWork = () => {
       <br />
       <br />
       <br />
-      <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+      <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
         <div className="flex-1">
           <FAQSection faqData={faqData} />
         </div>
@@ -116,14 +116,14 @@ const DecentWork = () => {
       <br />
       <br />
       <br />
-      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-blue-300 md:flex-row flex-col">
-        <div className="flex-1 flex ">
-          <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
+      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
+        <div className="flex flex-1 ">
+          <h2 className="inline-block text-3xl font-semibold text-gray-900  md:text-5xl">
             Key Components of Our Decent Work and SDG Training Solutions
           </h2>
         </div>
-        <div className="flex-1 text-gray-900 text-[15px]">
-          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+        <div className="flex-1 text-gray-900 text-[15px] text-justify">
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Our comprehensive training approach focuses on:
           </h2>
           <ul className="list-disc pl-6 py-5 *:mb-5">
@@ -146,7 +146,7 @@ const DecentWork = () => {
               decent work principles into organizational policies and practices.
             </li>
           </ul>
-          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Transformative Benefits for Individuals and Organizations
           </h2>
           <p>

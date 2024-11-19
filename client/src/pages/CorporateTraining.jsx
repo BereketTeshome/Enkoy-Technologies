@@ -89,10 +89,11 @@ const CorporateTraining = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
+
           <p className="uppercase text-sm font-semibold text-[#FF8689] my-10 ">
             Corporate Training overview
           </p>
-          <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7 font-semibold">
+          <h2 className="text-3xl font-semibold sm:text-5xl text-gray-950 mb-7">
             Corporate <br />
             Training Services
           </h2>
@@ -103,12 +104,12 @@ const CorporateTraining = () => {
             experiences that inspire and motivate learners.
           </p>
           <div className="flex justify-between sm:items-center flex-col sm:flex-row *:w-fit gap-y-4">
-            <a href="/contact" className="py-3 px-6 bg-gray-900 text-white ">
+            <a href="/contact" className="px-6 py-3 text-white bg-gray-900 ">
               Contact Us
             </a>
             <a
               href="#solutions"
-              className="py-3 sm:px-6 flex items-center gap-3 font-semibold text-gray-900"
+              className="flex items-center gap-3 py-3 font-semibold text-gray-900 sm:px-6"
             >
               <span className="p-4 rounded-full bg-[#FF8689]">
                 <IoIosArrowDown />
@@ -142,6 +143,7 @@ const CorporateTraining = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
+
             Our method for delivering corporate training services.
           </h2>
         </motion.div>
@@ -178,6 +180,7 @@ const CorporateTraining = () => {
             viewport={{ amount: 0.2, once: true }}
             transition={{ duration: 0.8 }}
           >
+
             Our corporate <br /> training services
           </motion.h2>
           <motion.p
@@ -200,6 +203,7 @@ const CorporateTraining = () => {
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
         >
+
           {services.map((item, index) => {
             return (
               <motion.div

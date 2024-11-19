@@ -44,7 +44,7 @@ const Testimonials = () => {
           {/* Text Section */}
           <div className="flex-1">
             <div className="mb-4 text-4xl text-blue-300">“</div>
-            <p className="mb-6 text-lg text-gray-700">
+            <p className="mb-6 text-lg text-gray-700 text-justify">
               {testimonials[activeIndex].quote}
             </p>
             <div className="flex items-center gap-4">

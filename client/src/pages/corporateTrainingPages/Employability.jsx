@@ -38,6 +38,7 @@ const Employability = () => {
         whileInView="animate"
         viewport={{ once: true }}
       >
+
         <div className="sm:w-[60%] pb-20 w-[80%]">
           <motion.img
             src="/img/corporate-training/decentWork.webp"
@@ -58,6 +59,7 @@ const Employability = () => {
             Empowering Individuals for Career Success and Business Innovation
           </motion.h2>
           <motion.p className="mb-7" {...fadeIn}>
+
             At Enkoy Technologies, we believe that equipping individuals with
             the skills for employability and entrepreneurship is essential in
             today’s dynamic job market. Our Employability and Entrepreneurship
@@ -72,6 +74,7 @@ const Employability = () => {
             className="py-3 px-6 bg-gray-900 text-white"
             {...fadeIn}
           >
+
             Get in touch
           </motion.a>
         </div>
@@ -80,6 +83,7 @@ const Employability = () => {
         <br />
         <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
           <motion.div className="flex-1" {...fadeIn}>
+
             <img
               src="/img/corporate-training/employabilityImg.webp"
               alt=""
@@ -88,9 +92,10 @@ const Employability = () => {
           </motion.div>
           <motion.div className="flex-1" {...fadeIn}>
             <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
+
               Transformative Learning for Career and Business Growth
             </h2>
-            <p className="mb-2">
+            <p className="mb-2 text-justify">
               Our approach to Employability and Entrepreneurship Training
               focuses on practical, hands-on experiences that prepare
               participants for real-world challenges. We cover essential topics
@@ -112,6 +117,7 @@ const Employability = () => {
             </h2>
           </motion.div>
           <motion.div className="flex-1 text-gray-900 text-[15px]" {...fadeIn}>
+
             <p>
               In a rapidly changing job landscape, having a competitive edge is
               crucial. At Enkoy Technologies, our training emphasizes critical
@@ -141,6 +147,7 @@ const Employability = () => {
       <br />
       <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
         <motion.div className="flex-1" {...fadeIn}>
+
           <FAQSection faqData={faqData} />
         </motion.div>
         <motion.div className="flex-1" {...fadeIn}>
@@ -163,6 +170,7 @@ const Employability = () => {
         </motion.div>
         <motion.div className="flex-1 text-gray-900 text-[15px]" {...fadeIn}>
           <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+
             Our comprehensive training approach focuses on:
           </h2>
           <ul className="list-disc pl-6 py-5 *:mb-5">
@@ -183,16 +191,16 @@ const Employability = () => {
               innovation, and risk-taking in business ventures.
             </li>
           </ul>
-          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Transformative Benefits for Individuals and Organizations
           </h2>
-          <p>
+          <p className="text-justify">
             The impact of our Employability and Entrepreneurship Training
             extends beyond individual learners, benefiting the entire
             organization. As participants enhance their employability and
             entrepreneurial skills, the advantages include:
           </p>
-          <ul className="list-disc pl-6 py-5 *:mb-5">
+          <ul className="list-disc pl-6 py-5 *:mb-5 text-justify">
             <li>Increased job readiness and confidence among job seekers.</li>
             <li>
               Higher rates of successful job placements and career advancements.

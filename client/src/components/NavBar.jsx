@@ -145,12 +145,13 @@ const NavBar = () => {
           >
             <motion.a
               href="/"
-              className="text-sm font-semibold text-gray-50"
+              className="text-sm font-semibold text-gray-50 transition-colors duration-300 hover:text-[#FFCD57]"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
             >
               Home
             </motion.a>
+
             {navItems.map((item, index) => (
               <motion.div key={index} className="w-full">
                 <button

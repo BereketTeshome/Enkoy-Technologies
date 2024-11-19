@@ -57,6 +57,7 @@ const LearningExperience = () => {
             Learning Experience Design (LXD) Training
           </motion.h2>
           <motion.p className="mb-7" {...fadeInUp}>
+
             At Enkoy Technologies, we believe that effective learning
             experiences are key to unlocking potential. Our Learning Experience
             Design (LXD) training is crafted to engage participants and promote
@@ -93,7 +94,7 @@ const LearningExperience = () => {
             <h2 className="text-3xl sm:text-5xl text-gray-950 mb-7">
               Transformative Learning Experiences for Lasting Change
             </h2>
-            <p className="mb-2">
+            <p className="mb-2 text-justify">
               Our LXD training focuses on creating transformative learning
               experiences that foster engagement and retention. By integrating
               innovative design principles with best practices in adult
@@ -120,6 +121,7 @@ const LearningExperience = () => {
             className="flex-1 text-gray-900 text-[15px]"
             {...fadeInUp}
           >
+
             <p>
               As the educational landscape evolves, so must our approaches to
               learning. At Enkoy Technologies, we specialize in designing
@@ -229,6 +231,7 @@ const LearningExperience = () => {
         </motion.div>
       </motion.div>
     </motion.div>
+
   );
 };
 

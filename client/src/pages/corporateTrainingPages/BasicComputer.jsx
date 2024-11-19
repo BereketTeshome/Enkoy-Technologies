@@ -55,6 +55,7 @@ const BasicComputer = () => {
             Empowering Individuals with Essential Digital Competencies
           </motion.h2>
           <motion.p className="mb-7" {...fadeInUp}>
+
             At Enkoy Technologies, we understand that basic computer skills are
             fundamental in today’s digital world. Our Basic Computer Skills
             Training is designed to equip individuals with the essential
@@ -94,6 +95,7 @@ const BasicComputer = () => {
               Transformative Learning for Digital Proficiency
             </motion.h2>
             <motion.p className="mb-2" {...fadeInUp}>
+
               Our approach to Basic Computer Skills Training focuses on creating
               engaging and practical learning experiences. Participants will
               learn to operate common software applications, manage files and
@@ -125,6 +127,7 @@ const BasicComputer = () => {
             {...fadeInUp}
           >
             <motion.p {...fadeInUp}>
+
               As technology continues to evolve, having a strong grasp of basic
               computer skills is crucial. At Enkoy Technologies, we aim to build
               confidence in individuals as they navigate digital tools and
@@ -231,6 +234,7 @@ const BasicComputer = () => {
         </motion.div>
       </motion.div>
     </motion.div>
+
   );
 };
 
