@@ -106,7 +106,7 @@ const FairEmployment = () => {
         </motion.div>
 
         <motion.div
-          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col"
+          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div className="flex-1 flex" {...fadeInUp}>
@@ -151,7 +151,7 @@ const FairEmployment = () => {
         </motion.div>
 
         <motion.div
-          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-blue-300 md:flex-row flex-col"
+          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div className="flex-1 flex" {...fadeInUp}>

@@ -34,7 +34,7 @@ const LearningExperience = () => {
   return (
     <motion.div className="pt-20">
       <motion.div
-        className="flex flex-col w-full items-center"
+        className="flex flex-col items-center w-full"
         variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
       >
         <motion.div className="sm:w-[60%] pb-20 w-[80%]" variants={fadeInUp}>
@@ -56,8 +56,7 @@ const LearningExperience = () => {
           >
             Learning Experience Design (LXD) Training
           </motion.h2>
-          <motion.p className="mb-7" {...fadeInUp}>
-
+          <motion.p className="text-justify mb-7" {...fadeInUp}>
             At Enkoy Technologies, we believe that effective learning
             experiences are key to unlocking potential. Our Learning Experience
             Design (LXD) training is crafted to engage participants and promote
@@ -67,7 +66,7 @@ const LearningExperience = () => {
           </motion.p>
           <motion.a
             href="/contact"
-            className="py-3 px-6 bg-gray-900 text-white"
+            className="px-6 py-3 text-white bg-gray-900"
             {...fadeInUp}
           >
             Contact Us
@@ -77,7 +76,7 @@ const LearningExperience = () => {
         <br />
         <br />
         <motion.div
-          className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row"
+          className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div className="flex-1" {...fadeInUp}>
@@ -109,19 +108,18 @@ const LearningExperience = () => {
         <br />
         <br />
         <motion.div
-          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col"
+          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
-          <motion.div className="flex-1 flex" {...fadeInUp}>
-            <h2 className="inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
+          <motion.div className="flex flex-1" {...fadeInUp}>
+            <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
               Building Future-Ready Learning Environments
             </h2>
           </motion.div>
           <motion.div
-            className="flex-1 text-gray-900 text-[15px]"
+            className="flex-1 text-gray-900 text-[15px] text-justify"
             {...fadeInUp}
           >
-
             <p>
               As the educational landscape evolves, so must our approaches to
               learning. At Enkoy Technologies, we specialize in designing
@@ -143,7 +141,7 @@ const LearningExperience = () => {
         <br />
         <br />
         <motion.div
-          className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row"
+          className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div className="flex-1" {...fadeInUp}>
@@ -164,11 +162,11 @@ const LearningExperience = () => {
         <br />
         <br />
         <motion.div
-          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col"
+          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
-          <motion.div className="flex-1 flex" {...fadeInUp}>
-            <h2 className="inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
+          <motion.div className="flex flex-1" {...fadeInUp}>
+            <h2 className="inline-block text-3xl font-semibold text-gray-900 md:text-5xl">
               Key Components of Our Learning Experience Design Solutions
             </h2>
           </motion.div>
@@ -177,7 +175,7 @@ const LearningExperience = () => {
             {...fadeInUp}
           >
             <p>Our comprehensive training approach focuses on:</p>
-            <ul className="list-disc pl-6 py-5">
+            <ul className="py-5 pl-6 text-justify list-disc">
               <li>
                 <b>Engaging Content:</b> Learning experiences that captivate and
                 motivate participants.
@@ -195,15 +193,15 @@ const LearningExperience = () => {
                 and improve learning effectiveness.
               </li>
             </ul>
-            <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+            <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
               Transformative Benefits for Your Organization
             </h2>
-            <p>
+            <p className="text-justify">
               The impact of our Learning Experience Design solutions extends
               throughout your organization. As your workforce engages with
               effective learning experiences, the benefits include:
             </p>
-            <ul className="list-disc pl-6 py-5">
+            <ul className="py-5 pl-6 text-justify list-disc">
               <li>
                 Improved knowledge retention and application among employees.
               </li>
@@ -231,7 +229,6 @@ const LearningExperience = () => {
         </motion.div>
       </motion.div>
     </motion.div>
-
   );
 };
 

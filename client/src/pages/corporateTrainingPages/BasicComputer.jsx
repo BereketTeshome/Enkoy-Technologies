@@ -55,7 +55,6 @@ const BasicComputer = () => {
             Empowering Individuals with Essential Digital Competencies
           </motion.h2>
           <motion.p className="mb-7" {...fadeInUp}>
-
             At Enkoy Technologies, we understand that basic computer skills are
             fundamental in today’s digital world. Our Basic Computer Skills
             Training is designed to equip individuals with the essential
@@ -95,7 +94,6 @@ const BasicComputer = () => {
               Transformative Learning for Digital Proficiency
             </motion.h2>
             <motion.p className="mb-2" {...fadeInUp}>
-
               Our approach to Basic Computer Skills Training focuses on creating
               engaging and practical learning experiences. Participants will
               learn to operate common software applications, manage files and
@@ -111,7 +109,7 @@ const BasicComputer = () => {
         <br />
         <br />
         <motion.div
-          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col"
+          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div className="flex-1 flex" {...fadeInUp}>
@@ -127,7 +125,6 @@ const BasicComputer = () => {
             {...fadeInUp}
           >
             <motion.p {...fadeInUp}>
-
               As technology continues to evolve, having a strong grasp of basic
               computer skills is crucial. At Enkoy Technologies, we aim to build
               confidence in individuals as they navigate digital tools and
@@ -164,7 +161,7 @@ const BasicComputer = () => {
         <br />
         <br />
         <motion.div
-          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#F4B9AF] md:flex-row flex-col"
+          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div className="flex-1 flex" {...fadeInUp}>
@@ -234,7 +231,6 @@ const BasicComputer = () => {
         </motion.div>
       </motion.div>
     </motion.div>
-
   );
 };
 
