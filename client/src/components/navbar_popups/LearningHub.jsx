@@ -47,11 +47,6 @@ const LearningHub = () => {
               eLearning Design and Development
             </a>
           </li>
-          <li className="mt-4 whitespace-nowrap">
-            <a href="/ELM" className="hover:text-gray-700">
-              ELM Learning Updates
-            </a>
-          </li>
         </ul>
       </div>
     </div>
