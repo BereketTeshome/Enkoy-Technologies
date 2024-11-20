@@ -40,6 +40,9 @@ import Contact from "./pages/Contact.jsx";
 import Portfolio from "./pages/Portfolio.jsx";
 import UnderConstruction from "./pages/UnderConstruction.jsx";
 import Blogs from "./pages/learningHub/Blogs.jsx";
+import Ebooks from "./pages/learningHub/Ebooks.jsx";
+import OurWork from "./pages/OurWork.jsx";
+import DetailedWork from "./pages/DetailedWork.jsx";
 
 const App = () => {
   return (
@@ -153,9 +156,12 @@ const App = () => {
 
           {/* Learning Hub */}
           <Route path="/blog" element={<Blogs />} />
+          <Route path="/ebooks" element={<Ebooks />} />
 
           {/* Our work */}
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/our-work" element={<OurWork />} />
+          <Route path="/our-work/:id" element={<DetailedWork />} />
 
           {/* Contact Us Page */}
           <Route path="/contact" element={<Contact />} />
