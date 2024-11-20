@@ -4,6 +4,7 @@ const app = express();
 const connectDB = require("./db/Connect");
 const authRouter = require("./routes/auth");
 const blogRouter = require("./routes/blogs");
+const ebookRouter = require("./routes/ebooks");
 const cors = require("cors");
 
 //middleware
@@ -13,6 +14,7 @@ app.use(cors());
 //routes
 app.use("/api/user", authRouter);
 app.use("/api/blog", blogRouter);
+app.use("/api/ebook", ebookRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
