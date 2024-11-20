@@ -1,22 +1,35 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Accessibility = () => {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+    viewport: { amount: 0.2, once: true },
+  };
+
   return (
-    <div className="pt-20 ">
-      <div className="flex flex-col w-full items-center">
-        <div className="sm:w-[60%] pb-20 w-[80%]">
-          <img
+    <motion.div className="pt-20">
+      <motion.div className="flex flex-col w-full items-center" {...fadeInUp}>
+        {/* Header Section */}
+        <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
+          <motion.img
             src="/img/services/accessibility.png"
-            alt=""
+            alt="Accessibility Icon"
             className="w-[70px]"
+            {...fadeInUp}
           />
-          <p className="uppercase text-sm font-semibold text-[#FF8689] my-10 ">
+          <motion.p
+            className="uppercase text-sm font-semibold text-[#FF8689] my-10"
+            {...fadeInUp}
+          >
             accessibility
-          </p>
-          {/* <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
-            Elevate Your Learning through Gamification
-          </h2> */}
-          <p className="mb-7 text-justify">
+          </motion.p>
+          <motion.p className="mb-7 text-justify" {...fadeInUp}>
             At Enkoy, we believe that accessibility in eLearning is essential
             for creating inclusive learning experiences for everyone. Our
             products are designed with universal accessibility in mind, ensuring
@@ -27,24 +40,33 @@ const Accessibility = () => {
             all. Our commitment to accessibility empowers every learner to reach
             their full potential, creating a diverse and thriving educational
             community.
-          </p>
-          <a href="/contact" className="py-3 px-6 bg-gray-900 text-white">
+          </motion.p>
+          <motion.a
+            href="/contact"
+            className="py-3 px-6 bg-gray-900 text-white"
+            {...fadeInUp}
+          >
             Contact Us
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
         <br />
         <br />
         <br />
-        <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
-          <div className="flex-1">
+
+        {/* Image and Text Section */}
+        <motion.div
+          className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row"
+          {...fadeInUp}
+        >
+          <motion.div className="flex-1" {...fadeInUp}>
             <img
               src="/img/services/accessibilityImg.png"
-              alt=""
+              alt="Accessibility Illustration"
               className="w-[90%]"
             />
-          </div>
-          <div className="flex-1">
-            <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
+          </motion.div>
+          <motion.div className="flex-1" {...fadeInUp}>
+            <h2 className="text-3xl sm:text-5xl text-gray-950 mb-7">
               Why Accessibility?
             </h2>
             <p className="text-justify">
@@ -60,19 +82,27 @@ const Accessibility = () => {
               creates a richer and more effective learning environment for
               everyone.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         <br />
         <br />
         <br />
-        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
-          <div className="flex-1 flex ">
-            <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
+
+        {/* Final Section */}
+        <motion.div
+          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
+          {...fadeInUp}
+        >
+          <motion.div className="flex-1 flex" {...fadeInUp}>
+            <h2 className="inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
               Our Accessibility <br /> Approach
             </h2>
-          </div>
-          <div className="flex-1 text-gray-900 text-[15px]">
-            <p className="text-justify">
+          </motion.div>
+          <motion.div
+            className="flex-1 text-gray-900 text-[15px] text-justify"
+            {...fadeInUp}
+          >
+            <p>
               At Enkoy, we prioritize accessibility by providing both offline
               and online learning options to cater to diverse learner needs. Our
               online courses are designed with features like adjustable text
@@ -85,13 +115,10 @@ const Accessibility = () => {
               preferences. By embracing accessibility, we create an inclusive
               learning environment that empowers everyone to thrive.
             </p>
-          </div>
-        </div>
-      </div>
-      <br />
-      <br />
-      <br />
-    </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 

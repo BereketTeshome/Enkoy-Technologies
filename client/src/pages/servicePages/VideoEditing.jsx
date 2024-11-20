@@ -1,22 +1,41 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const VideoEditing = () => {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+    viewport: { amount: 0.2, once: true },
+  };
+
   return (
-    <div className="py-20">
-      <div className="flex flex-col items-center w-full">
-        <div className="sm:w-[60%] pb-20 w-[80%]">
-          <img
+    <motion.div className="py-20">
+      <motion.div className="flex flex-col items-center w-full" {...fadeInUp}>
+        {/* Header Section */}
+        <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
+          <motion.img
             src="/img/services/microlearning.svg"
-            alt=""
+            alt="Video Editing Icon"
             className="w-[70px]"
+            {...fadeInUp}
           />
-          <p className="uppercase text-sm font-semibold text-[#FF8689] my-10 ">
+          <motion.p
+            className="uppercase text-sm font-semibold text-[#FF8689] my-10"
+            {...fadeInUp}
+          >
             Video Editing Services
-          </p>
-          <h2 className="text-4xl sm:text-5xl text-gray-950 mb-7">
+          </motion.p>
+          <motion.h2
+            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            {...fadeInUp}
+          >
             Animated videos are a powerful tool for transforming digital content
-          </h2>
-          <p className="mb-7 text-justify">
+          </motion.h2>
+          <motion.p className="mb-7 text-justify" {...fadeInUp}>
             At Enkoy, we provide professional video editing services that
             elevate your visual content and engage your audience. Our process
             starts with understanding your goals and the message you want to
@@ -29,13 +48,17 @@ const VideoEditing = () => {
             editing process, ensuring your complete satisfaction. With our video
             editing services, you can transform your content and make a lasting
             impact on your audience.
-          </p>
-          <a href="/contact" className="px-6 py-3 text-white bg-gray-900">
+          </motion.p>
+          <motion.a
+            href="/contact"
+            className="px-6 py-3 text-white bg-gray-900"
+            {...fadeInUp}
+          >
             Contact Us
-          </a>
-        </div>
-      </div>
-    </div>
+          </motion.a>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 
