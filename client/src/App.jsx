@@ -39,6 +39,7 @@ import LeadershipSkill from "./pages/servicePages/LeadershipSkill.jsx";
 import Contact from "./pages/Contact.jsx";
 import Portfolio from "./pages/Portfolio.jsx";
 import UnderConstruction from "./pages/UnderConstruction.jsx";
+import Blogs from "./pages/learningHub/Blogs.jsx";
 
 const App = () => {
   return (
@@ -47,8 +48,8 @@ const App = () => {
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* services */}
 
+          {/* services */}
           <Route
             path="/services/self-paced-learning"
             element={<SelfPacedLearning />}
@@ -143,18 +144,19 @@ const App = () => {
             path="/corporate-training/soft-skill"
             element={<SoftSkill />}
           />
+
           {/* aboutUs */}
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/about-us/our-team" element={<OurTeam />} />
           <Route path="/about-us/our-DEI" element={<OurDEI />} />
           <Route path="/about-us/careers" element={<Careers />} />
-          {/* <Route
-            path="/about-us/our-sustainability"
-            element={<OurSustainability />}
-          /> */}
+
+          {/* Learning Hub */}
+          <Route path="/blog" element={<Blogs />} />
 
           {/* Our work */}
           <Route path="/portfolio" element={<Portfolio />} />
+
           {/* Contact Us Page */}
           <Route path="/contact" element={<Contact />} />
 
