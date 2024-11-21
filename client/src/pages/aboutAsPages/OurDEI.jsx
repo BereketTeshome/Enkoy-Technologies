@@ -140,7 +140,7 @@ const OurDEI = () => {
                 should be an enjoyable journey, and we’re here to make that a
                 reality.
               </p>{" "}
-              <br />
+              <br />w
               <p>
                 Beyond our internal efforts, we also advocate for sustainability
                 in the solutions we provide to our clients. Our courses and

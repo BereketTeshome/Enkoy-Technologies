@@ -29,11 +29,11 @@ const NavBar = () => {
   }, [isLargeScreen]);
 
   const navItems = [
+    { name: "About Us", component: <AboutUs /> },
     { name: "Our Services", component: <OurServices /> },
-    { name: "Corporate Training", component: <CorporateTraining /> },
     { name: "Our Work", component: <OurWork /> },
     { name: "Learning Hub", component: <LearningHub /> },
-    { name: "About Us", component: <AboutUs /> },
+    { name: "Corporate Training", component: <CorporateTraining /> },
     {
       name: "*Digital Training",
       component: <DigitalTraining />,
