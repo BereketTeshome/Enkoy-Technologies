@@ -7,13 +7,14 @@ import { TypeAnimation } from "react-type-animation";
 
 const Header = () => {
   return (
-    <div className="relative z-0 w-full pt-14 bg-[#161628] px-8 sm:px-16 md:px-24 lg:px-36 overflow-hidden">
+    <div className="relative z-0 w-full py-32 bg-[#161628] px-8 sm:px-16 md:px-24 lg:px-36 overflow-hidden">
       <div className="flex flex-col items-center lg:flex-row">
         {/* Particle effect only within the header */}
         <div className="absolute top-0 left-0 z-0 w-full h-full max-h-screen pointer-events-none">
           <Particle />
         </div>
 
+        {/* Left Section */}
         <motion.div
           className="z-10 flex-1 mb-10 lg:mb-0"
           initial={{ x: "-100vw" }}
@@ -26,15 +27,14 @@ const Header = () => {
           }}
         >
           <div className="mb-5">
-            {/* Typing Animation with Fixed Line Height */}
             <TypeAnimation
               sequence={[
                 "Engaging Experiences",
-                2000, // Pause for 2 seconds
+                2000,
                 "Innovative Solutions",
-                2000, // Pause for 2 seconds
+                2000,
                 "Digital Empowerment",
-                2000, // Pause for 2 seconds
+                2000,
               ]}
               wrapper="h1"
               className="text-2xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl"
@@ -42,7 +42,6 @@ const Header = () => {
               repeat={Infinity}
             />
           </div>
-          {/* Sub-header with emphasized span */}
           <h2 className="text-lg text-gray-300 sm:text-xl lg:text-2xl">
             Empower your teams with{" "}
             <span className="text-[#FFCD57] font-bold">Digital Solutions</span>{" "}
@@ -57,15 +56,15 @@ const Header = () => {
               className="text-white transition-transform duration-300 group-hover:text-orange-300 group-hover:scale-110"
               size={34}
             />
-
-            <a href="#video-section">
-              <h2 className="font-semibold text-white transition-transform duration-300 group-hover:text-orange-300">
-                Watch our video
+            <a href="#video-section" className="w-fit">
+              <h2 className="font-semibold text-white transition-transform duration-300 group-hover:text-orange-300 w-fit">
+                Check Out Other Videos
               </h2>
             </a>
           </div>
         </motion.div>
 
+        {/* Right Section - Video */}
         <motion.div
           className="flex justify-center flex-1 lg:justify-end"
           initial={{ y: "100vh", scale: 1 }}
@@ -75,11 +74,24 @@ const Header = () => {
             scale: { duration: 5, repeat: Infinity, ease: "easeInOut" },
           }}
         >
-          <img
-            src="/headerImg.png"
-            alt="Header Illustration"
-            className="w-[80%] sm:w-[70%] lg:w-[87%]"
-          />
+          <motion.div
+            className="relative w-[90%] sm:w-[80%] lg:w-[85%] rounded-3xl shadow-2xl overflow-hidden"
+            whileHover={{
+              scale: 1.05,
+              transition: { duration: 0.5, ease: "easeInOut" },
+            }}
+          >
+            <video
+              src="/HomepageVideo.mp4"
+              controls
+              autoPlay={false}
+              className="w-full h-auto rounded-3xl shadow-lg"
+              style={{
+                border: "4px solid #FFCD57",
+                boxShadow: "0 10px 20px rgba(255, 205, 87, 0.5)",
+              }}
+            />
+          </motion.div>
         </motion.div>
       </div>
 

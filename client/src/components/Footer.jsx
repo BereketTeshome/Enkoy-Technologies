@@ -32,7 +32,10 @@ const Footer = () => {
           <p className="mb-6 text-lg font-semibold underline">Services</p>
           <ul className="space-y-3 text-sm">
             <li>
-              <a href="/" className="hover:text-indigo-400">
+              <a
+                href="/services/learning-experiences"
+                className="hover:text-indigo-400"
+              >
                 Adaptive Digital Learning
               </a>
             </li>
@@ -42,17 +45,20 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="/" className="hover:text-indigo-400">
-                Corporate Training - Professional Skills Training
+              <a href="/corporate-training" className="hover:text-indigo-400">
+                Corporate Training
               </a>
             </li>
             <li>
-              <a href="/" className="hover:text-indigo-400">
+              <a
+                href="/corporate-training/learning-experience"
+                className="hover:text-indigo-400"
+              >
                 Learning Strategy
               </a>
             </li>
             <li>
-              <a href="/case-studies" className="hover:text-indigo-400">
+              <a href="/our-work" className="hover:text-indigo-400">
                 Our Work
               </a>
             </li>

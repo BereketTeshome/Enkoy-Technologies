@@ -17,12 +17,12 @@ const LearningHub = () => {
         <p className="mb-4 text-sm text-gray-600">
           Keep up with the latest tips and news in the learning industry.
         </p>
-        <a
+        {/* <a
           href="/case-studies"
           className="font-medium text-pink-500 hover:underline"
         >
           See case studies
-        </a>
+        </a> */}
       </div>
 
       {/* Right Section */}

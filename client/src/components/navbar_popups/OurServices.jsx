@@ -81,7 +81,7 @@ const OurServices = () => {
 
   return (
     <motion.div
-      className="z-10 grid w-full md:w-[800px] grid-cols-1 gap-4 p-6 mx-auto bg-white rounded-md shadow-md sm:grid-cols-2 lg:grid-cols-4"
+      className="z-10 grid w-full md:w-[780px] grid-cols-1 gap-4 p-6 mx-auto bg-white rounded-md shadow-md sm:grid-cols-2 lg:grid-cols-4"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
