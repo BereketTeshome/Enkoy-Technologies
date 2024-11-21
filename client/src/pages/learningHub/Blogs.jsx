@@ -7,7 +7,9 @@ const Blogs = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get("http://localhost:3000/api/blog/get");
+      const { data } = await axios.get(
+        "https://enkoy-technologies-server.vercel.app/api/blog/get"
+      );
       console.log(data.blogs);
       setBlogs(data.blogs);
     };
@@ -15,22 +17,22 @@ const Blogs = () => {
   }, []);
 
   return (
-    <div className="md:px-20 px-5">
+    <div className="px-5 md:px-20">
       <br />
       <br />
       <br />
       <div>
-        <h2 className="text-gray-900 text-3xl md:text-5xl mb-14 text-center md:text-left">
+        <h2 className="text-3xl text-center text-gray-900 md:text-5xl mb-14 md:text-left">
           Latest Posts
         </h2>
-        <div className="flex flex-col md:flex-row items-center gap-8">
+        <div className="flex flex-col items-center gap-8 md:flex-row">
           {/* Image Section */}
           <div className="flex-1">
             <div className="w-full h-[250px] md:h-[350px] relative overflow-hidden rounded-lg">
               <img
                 src={blogs[0]?.image}
                 alt=""
-                className="w-full h-full object-cover object-center"
+                className="object-cover object-center w-full h-full"
               />
             </div>
           </div>
@@ -38,16 +40,16 @@ const Blogs = () => {
           {/* Text Section */}
           <div className="flex-1 my-auto">
             <div>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-5 text-center md:text-left">
+              <h2 className="mb-5 text-2xl font-semibold text-center md:text-3xl md:text-left">
                 {blogs[0]?.title}
               </h2>
-              <p className="text-gray-800 mb-10 text-center md:text-left">
+              <p className="mb-10 text-center text-gray-800 md:text-left">
                 {blogs[0]?.description}
               </p>
               <div className="text-center md:text-left">
                 <a
-                  href="#"
-                  className="px-6 py-3 text-white bg-gray-900 hover:bg-gray-700 transition rounded"
+                  href="#blogs"
+                  className="px-6 py-3 text-white transition bg-gray-900 rounded hover:bg-gray-700"
                 >
                   See More
                 </a>
@@ -61,7 +63,7 @@ const Blogs = () => {
       <br />
 
       {/* Blog Component Section */}
-      <div>
+      <div id="blogs">
         <Blog blogs={blogs} />
       </div>
     </div>

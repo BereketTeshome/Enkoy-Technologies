@@ -33,9 +33,9 @@ const GraphicsDesign = () => {
             className="text-4xl sm:text-5xl text-gray-950 mb-7"
             {...fadeInUp}
           >
-            Animated videos are a powerful tool for transforming digital content
+            Elevate Your Brand with Stunning Graphic and Logo Design Services
           </motion.h2>
-          <motion.p className="mb-7 text-justify" {...fadeInUp}>
+          <motion.p className="text-justify mb-7" {...fadeInUp}>
             At Enkoy, we specialize in creating captivating graphic design
             solutions, including unique and memorable logos that capture the
             essence of your brand. Our talented design team works closely with

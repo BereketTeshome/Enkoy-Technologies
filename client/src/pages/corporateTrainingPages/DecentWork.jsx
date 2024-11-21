@@ -32,7 +32,7 @@ const DecentWork = () => {
   return (
     <motion.div className="pt-20">
       <motion.div
-        className="flex flex-col w-full items-center"
+        className="flex flex-col items-center w-full"
         variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
       >
         <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
@@ -54,7 +54,7 @@ const DecentWork = () => {
           >
             Promoting Sustainable Employment and Responsible Practices
           </motion.h2>
-          <motion.p className="mb-7" {...fadeInUp}>
+          <motion.p className="text-justify mb-7" {...fadeInUp}>
             At Enkoy Technologies, we understand the importance of decent work
             in achieving sustainable development. Our Decent Work and
             Sustainable Development Goals (SDG) Training is designed to equip
@@ -66,7 +66,7 @@ const DecentWork = () => {
           </motion.p>
           <motion.a
             href="/contact"
-            className="py-3 px-6 bg-gray-900 text-white"
+            className="px-6 py-3 text-white bg-gray-900"
             {...fadeInUp}
           >
             Get in touch
@@ -78,7 +78,7 @@ const DecentWork = () => {
         <br />
 
         <motion.div
-          className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row"
+          className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div className="flex-1" {...fadeInUp}>
@@ -96,7 +96,7 @@ const DecentWork = () => {
             >
               Transformative Learning for Sustainable Employment
             </motion.h2>
-            <motion.p className="mb-2" {...fadeInUp}>
+            <motion.p className="mb-2 text-justify" {...fadeInUp}>
               Our approach to Decent Work and SDG Training focuses on practical
               applications that empower participants to understand and implement
               the principles of decent work and sustainability. We cover
@@ -116,9 +116,9 @@ const DecentWork = () => {
           className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
-          <motion.div className="flex-1 flex" {...fadeInUp}>
+          <motion.div className="flex flex-1" {...fadeInUp}>
             <motion.h2
-              className="inline-block md:text-6xl text-4xl text-gray-900 font-semibold"
+              className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl"
               {...fadeInUp}
             >
               Building Awareness and Commitment to Responsible Practices
@@ -128,7 +128,7 @@ const DecentWork = () => {
             className="flex-1 text-gray-900 text-[15px]"
             {...fadeInUp}
           >
-            <motion.p {...fadeInUp}>
+            <motion.p {...fadeInUp} className="text-justify">
               As the global job market evolves, it’s crucial for individuals and
               organizations to embrace responsible work practices. At Enkoy
               Technologies, our training emphasizes awareness of the SDGs,
@@ -145,7 +145,7 @@ const DecentWork = () => {
         <br />
         <br />
         <motion.div
-          className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row"
+          className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div className="flex-1" {...fadeInUp}>
@@ -168,9 +168,9 @@ const DecentWork = () => {
           className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
-          <motion.div className="flex-1 flex" {...fadeInUp}>
+          <motion.div className="flex flex-1" {...fadeInUp}>
             <motion.h2
-              className="inline-block md:text-5xl text-3xl text-gray-900 font-semibold"
+              className="inline-block text-3xl font-semibold text-gray-900 md:text-5xl"
               {...fadeInUp}
             >
               Key Components of Our Decent Work and SDG Training Solutions
@@ -181,12 +181,15 @@ const DecentWork = () => {
             {...fadeInUp}
           >
             <motion.h2
-              className="text-2xl font-semibold text-gray-950 mb-5 mt-2"
+              className="mt-2 mb-5 text-2xl font-semibold text-gray-950"
               {...fadeInUp}
             >
               Our comprehensive training approach focuses on:
             </motion.h2>
-            <motion.ul className="list-disc pl-6 py-5" {...fadeInUp}>
+            <motion.ul
+              className="py-5 pl-6 text-justify list-disc"
+              {...fadeInUp}
+            >
               <li>
                 <b>Understanding Decent Work:</b> Educating participants on the
                 principles of decent work and its significance in the SDGs.
@@ -208,18 +211,21 @@ const DecentWork = () => {
               </li>
             </motion.ul>
             <motion.h2
-              className="text-2xl font-semibold text-gray-950 mb-5 mt-2"
+              className="mt-2 mb-5 text-2xl font-semibold text-gray-950"
               {...fadeInUp}
             >
               Transformative Benefits for Individuals and Organizations
             </motion.h2>
-            <motion.p {...fadeInUp}>
+            <motion.p {...fadeInUp} className="text-justify">
               The impact of our Decent Work and SDG Training extends throughout
               your organization and beyond. As participants enhance their
               understanding of decent work and sustainability, the advantages
               include:
             </motion.p>
-            <motion.ul className="list-disc pl-6 py-5" {...fadeInUp}>
+            <motion.ul
+              className="py-5 pl-6 text-justify list-disc"
+              {...fadeInUp}
+            >
               <li>
                 Increased awareness of social and environmental responsibilities
                 among employees.
