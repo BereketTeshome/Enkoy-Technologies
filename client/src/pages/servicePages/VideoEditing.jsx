@@ -33,9 +33,10 @@ const VideoEditing = () => {
             className="text-4xl sm:text-5xl text-gray-950 mb-7"
             {...fadeInUp}
           >
-            Animated videos are a powerful tool for transforming digital content
+            Transform Your Visual Content with Professional Video Editing
+            Services
           </motion.h2>
-          <motion.p className="mb-7 text-justify" {...fadeInUp}>
+          <motion.p className="text-justify mb-7" {...fadeInUp}>
             At Enkoy, we provide professional video editing services that
             elevate your visual content and engage your audience. Our process
             starts with understanding your goals and the message you want to
