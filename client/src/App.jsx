@@ -43,6 +43,7 @@ import Blogs from "./pages/learningHub/Blogs.jsx";
 import Ebooks from "./pages/learningHub/Ebooks.jsx";
 import OurWork from "./pages/OurWork.jsx";
 import DetailedWork from "./pages/DetailedWork.jsx";
+import DigitalTraining from "./components/navbar_popups/DigitalTraining.jsx";
 
 const App = () => {
   return (
@@ -162,6 +163,9 @@ const App = () => {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/our-work" element={<OurWork />} />
           <Route path="/our-work/:id" element={<DetailedWork />} />
+
+          {/* DIgital training Page */}
+          <Route path="/digital-training" element={<DigitalTraining />} />
 
           {/* Contact Us Page */}
           <Route path="/contact" element={<Contact />} />

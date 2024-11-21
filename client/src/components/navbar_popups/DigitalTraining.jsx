@@ -16,7 +16,7 @@ const DigitalTraining = () => {
         assessments.
       </p>
       <a
-        href="/learning-solutions-overview"
+        href="/digital-training"
         className="text-sm font-medium text-pink-500 hover:underline"
       >
         See overview
