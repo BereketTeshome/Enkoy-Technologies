@@ -17,16 +17,15 @@ const Blogs = () => {
   }, []);
 
   return (
-    <div className="px-5 md:px-20">
+    <div className="px-5 md:px-20 py-7">
       <br />
       <br />
       <br />
       <div>
-        <h2 className="text-3xl text-center text-gray-900 md:text-5xl mb-14 md:text-left">
-          Latest Posts
+        <h2 className="mb-4 text-3xl text-center text-gray-900 md:text-5xl md:text-left">
+          Latest Blogs
         </h2>
-        <div className="flex flex-col items-center gap-8 md:flex-row">
-          {/* Image Section */}
+        {/* <div className="flex flex-col items-center gap-8 md:flex-row">
           <div className="flex-1">
             <div className="w-full h-[250px] md:h-[350px] relative overflow-hidden rounded-lg">
               <img
@@ -37,7 +36,6 @@ const Blogs = () => {
             </div>
           </div>
 
-          {/* Text Section */}
           <div className="flex-1 my-auto">
             <div>
               <h2 className="mb-5 text-2xl font-semibold text-center md:text-3xl md:text-left">
@@ -56,7 +54,7 @@ const Blogs = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <br />
