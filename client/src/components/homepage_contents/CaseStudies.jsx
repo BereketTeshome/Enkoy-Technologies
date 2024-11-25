@@ -1,4 +1,3 @@
-import React from "react";
 
 const CaseStudies = () => {
   const caseStudies = [
@@ -7,7 +6,7 @@ const CaseStudies = () => {
       title: "Decent Work in Ethiopia",
       description:
         "Ethiopia faces challenges in creating fair and ethical work environments, especially for its young and growing workforce. Together with GIZ-STEP, Enkoy Technologies took a bold step to transform traditional labor training into a dynamic, self-paced online experience—accessible to learners nationwide.",
-      link: "#",
+      link: "/our-work",
     },
     // {
     //   logo: "/img/contentsMenuImg.png",
@@ -42,7 +41,7 @@ const CaseStudies = () => {
                 />
               </div>
               <h3 className="text-xl font-semibold">{caseStudy.title}</h3>
-              <p className="mt-4 text-gray-400 text-justify font-semibold">
+              <p className="mt-4 font-semibold text-justify text-gray-400">
                 {caseStudy.description}
               </p>
               <a

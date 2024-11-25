@@ -1,91 +1,201 @@
-// Blogs.jsx
-import React, { useState } from "react";
+import { useState } from "react";
+import { dummyBlogs } from "../../assets/dummyBlogs";
+import { FaFacebookF, FaTwitter, FaCopy } from "react-icons/fa";
+import { motion } from "framer-motion";
+import NewsletterSubscription from "../NewsletterSubscription";
 
-// const blogs = [
-//   {
-//     title: "Breaking News: Market Shifts",
-//     date: "2024-09-10",
-//     description:
-//       "A significant shift in the market has been observed over the past few months, leading to a reevaluation of strategies among key industry players. The current economic climate has driven businesses to adapt quickly.",
-//     image: "/blog.png",
-//   },
-//   {
-//     title: "Tech Innovation on the Rise",
-//     date: "2024-09-12",
-//     description:
-//       "New advancements in AI and blockchain are rapidly changing the landscape of technology, creating new opportunities and challenges for businesses. These technologies are not only optimizing operations.",
-//     image: "/blog.png",
-//   },
-//   {
-//     title: "Advertising Trends of 2024",
-//     date: "2024-09-13",
-//     description:
-//       "In 2024, advertising strategies are shifting towards more personalized, data-driven approaches to better reach target audiences. Marketers are leveraging tools that analyze consumer.",
-//     image: "/blog.png",
-//   },
-//   {
-//     title: "Global Economic Update",
-//     date: "2024-09-14",
-//     description:
-//       "The global economy is witnessing a major transition as new financial policies and global trade deals reshape economic power balances. This period of change is characterized by new alliances forming and adjustments.",
-//     image: "/blog.png",
-//   },
-//   {
-//     title: "Sustainability in Business",
-//     date: "2024-09-15",
-//     description:
-//       "Businesses are increasingly focused on sustainability, with many companies implementing green practices and eco-friendly initiatives. This movement is driven by a combination of regulatory pressure, consumer demand, and a growing recognition of the need for long-term .",
-//     image: "/blog.png",
-//   },
-// ];
+const categories = [
+  "All",
+  "Foundation of learning",
+  "Design thinking",
+  "Best practices",
+  "Expert insights",
+  "Mind training",
+];
 
-const Blogs = ({ blogs }) => {
-  const [expanded, setExpanded] = useState(Array(blogs.length).fill(false));
+const Blogs = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOption, setSortOption] = useState("");
+  const [copiedLink, setCopiedLink] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  const toggleDescription = (index) => {
-    const newExpandedState = [...expanded];
-    newExpandedState[index] = !newExpandedState[index];
-    setExpanded(newExpandedState);
+
+
+  const shareOnFacebook = (title, url) => {
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      url
+    )}&quote=${encodeURIComponent(title)}`;
+    window.open(facebookShareUrl, "_blank", "noopener,noreferrer");
   };
 
+  const shareOnTwitter = (title, url) => {
+    const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+      title
+    )}&url=${encodeURIComponent(url)}`;
+    window.open(twitterShareUrl, "_blank", "noopener,noreferrer");
+  };
+
+  const handleCopyLink = (url, index) => {
+    navigator.clipboard.writeText(url);
+    setCopiedLink(index);
+    setTimeout(() => setCopiedLink(null), 2000);
+  };
+
+  const filteredBlogs = dummyBlogs
+  .filter((blog) => {
+    // Show all blogs if 'All' or no category is selected
+    if (selectedCategory === "All" || selectedCategory === "") {
+      return true;
+    }
+    // Otherwise, filter by category (adjust this logic if categories need dynamic mapping)
+    return blog.category === selectedCategory;
+  })
+  .filter((blog) =>
+    blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    blog.author.name.toLowerCase().includes(searchQuery.toLowerCase())
+  )
+  .sort((a, b) => {
+    if (sortOption === "alphabet") {
+      return a.title.localeCompare(b.title);
+    }
+    if (sortOption === "date") {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    }
+    return 0;
+  });
+
+
   return (
-    <div className="bg-white sm:p-10 p-5 min-h-screen">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {blogs.map((blog, index) => {
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      className="min-h-screen p-5 bg-gray-100 sm:py-28 sm:p-10"
+    >
+      {/* Search and Filter */}
+      <div className="flex flex-col items-center justify-between gap-4 mb-10 sm:flex-row">
+        <input
+          type="text"
+          placeholder="Search by title or author..."
+          className="w-full px-4 py-2 border rounded-lg sm:w-1/3 focus:outline-none focus:ring focus:ring-blue-300"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <select
+          className="w-full px-4 py-2 border rounded-lg sm:w-1/5 focus:outline-none focus:ring focus:ring-blue-300"
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+        >
+          <option value="">Sort by</option>
+          <option value="alphabet">Alphabetical</option>
+          <option value="date">Date</option>
+        </select>
+      </div>
+
+       {/* Category Filter */}
+       <div className="flex flex-wrap justify-center mb-10 space-x-2 overflow-auto sm:space-x-4">
+  {categories.map((category) => (
+    <motion.button
+      key={category}
+      onClick={() => setSelectedCategory(category)}
+      whileHover={{ scale: 1.1 }}
+      className={`px-4 py-2 mt-2 whitespace-nowrap rounded-full transition-all ${
+        selectedCategory === category
+          ? "bg-blue-500 text-white"
+          : "bg-gray-200 text-gray-800 hover:bg-blue-100"
+      }`}
+    >
+      {category}
+    </motion.button>
+  ))}
+</div>
+
+
+      {/* Blog Grid */}
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {filteredBlogs.map((blog, index) => {
           const date = new Date(blog.createdAt).toString().slice(0, 16);
+          const blogUrl = `https://example.com/blog/${index}`; // Simulated blog link
+
           return (
-            <div key={index} className="bg-gray-50 p-4 rounded-lg shadow-md">
+            <motion.div
+              key={index}
+              className="p-4 bg-white rounded-lg shadow-md"
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <div className="overflow-hidden rounded-lg">
-                <img
+                <motion.img
                   src={blog.image}
                   alt={blog.title}
-                  className="w-full h-48 object-cover"
+                  className="object-cover w-full h-48"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
                 />
               </div>
               <div className="mt-4">
-                <h3 className="text-xl font-semibold text-gray-900">
-                  {blog.title}
-                </h3>
+                <h3 className="text-2xl font-bold h-[100px] text-gray-800">{blog.title}</h3>
                 <p className="text-sm text-gray-500">{date}</p>
-                <p className="mt-2 text-gray-700">
-                  {expanded[index]
-                    ? blog.description
-                    : `${blog.description.slice(0, 50)}${
-                        blog.description.length > 50 ? "..." : ""
-                      }`}
+                <p className="mt-3 mb-10 text-gray-700">
+               
+                    {blog.description.slice(0, 100)}...
                 </p>
-                <button
-                  onClick={() => toggleDescription(index)}
-                  className="text-blue-500 mt-4"
+                <motion.a
+                  whileHover={{
+                    scale: 1.1,
+                    boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.2)",
+                  }}
+                  href={`/blog/${blog.id}`}
+                  className="p-2 mt-3 text-blue-500 rounded-lg cursor-pointer hover:text-blue-600 focus:outline-none"
                 >
-                  {expanded[index] ? "Show Less" : "See More"}
-                </button>
+                  See In Detail
+                </motion.a>
+                <div className="mt-4 text-sm text-gray-600">
+                  <span className="font-semibold">Author: </span>
+                  {blog.author.name} <span>({blog.author.postsCount} posts)</span>
+                </div>
+                <div className="flex items-center my-6 space-x-4">
+                  <b className="text-gray-600">Share Blog on: </b>
+                  <motion.button
+                    whileHover={{ scale: 1.2, rotate: -10 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="p-3 text-white bg-blue-500 rounded-full shadow-md hover:shadow-lg"
+                    onClick={() => shareOnFacebook(blog.title, blogUrl)}
+                  >
+                    <FaFacebookF size={18} />
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.2, rotate: 10 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="p-3 text-white bg-blue-400 rounded-full shadow-md hover:shadow-lg"
+                    onClick={() => shareOnTwitter(blog.title, blogUrl)}
+                  >
+                    <FaTwitter size={18} />
+                  </motion.button>
+                </div>
+                <motion.button
+                  whileHover={{ scale: 1.1, backgroundColor: "#FFC34D" }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className={`flex items-center gap-2 px-4 py-2 text-white rounded-full shadow-md hover:shadow-lg ${
+                    copiedLink === index ? "bg-green-500" : "bg-[#FFCD57]"
+                  }`}
+                  onClick={() => handleCopyLink(blogUrl, index)}
+                >
+                  <FaCopy size={18} />
+                  <span className="font-medium">
+                    {copiedLink === index ? "Copied!" : "Copy Link"}
+                  </span>
+                </motion.button>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
-    </div>
+
+      {/* Newsletter Signup */}
+      <NewsletterSubscription />
+    </motion.div>
   );
 };
 

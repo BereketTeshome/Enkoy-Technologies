@@ -22,7 +22,7 @@ const Ebooks = () => {
       <br />
       <div>
         <h2 className="text-3xl text-center text-gray-900 md:text-5xl mb-14 md:text-left">
-          Latest Posts
+          Latest Ebooks
         </h2>
         <div className="flex flex-col items-center gap-8 md:flex-row">
           {/* Image Section */}
