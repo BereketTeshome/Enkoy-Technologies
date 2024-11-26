@@ -9,6 +9,10 @@ const UserSchema = new mongoose.Schema(
       required: true,
       unique: [true, "email already exists"],
     },
+    username: {
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       required: true,
@@ -23,7 +27,7 @@ UserSchema.pre("save", async function () {
 
 UserSchema.methods.createToken = function () {
   return jwt.sign(
-    { userId: this._id, email: this.email },
+    { userId: this._id, email: this.email, username: this.username },
     process.env.JWT_SECRET,
     { expiresIn: "30d" }
   );

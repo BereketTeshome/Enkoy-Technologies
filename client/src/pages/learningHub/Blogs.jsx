@@ -7,9 +7,7 @@ const Blogs = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(
-        "https://enkoy-technologies-server.vercel.app/api/blog/get"
-      );
+      const { data } = await axios.get("http://localhost:3000/api/blog/get");
       console.log(data.blogs);
       setBlogs(data.blogs);
     };
@@ -25,7 +23,7 @@ const Blogs = () => {
         <h2 className="mb-4 text-3xl text-center text-gray-900 md:text-5xl md:text-left">
           Latest Blogs
         </h2>
-        {/* <div className="flex flex-col items-center gap-8 md:flex-row">
+        <div className="flex flex-col items-center gap-8 md:flex-row">
           <div className="flex-1">
             <div className="w-full h-[250px] md:h-[350px] relative overflow-hidden rounded-lg">
               <img
@@ -54,7 +52,7 @@ const Blogs = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
 
       <br />

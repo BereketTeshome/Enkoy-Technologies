@@ -14,6 +14,23 @@ const BlogSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    category: {
+      type: String,
+      required: true,
+    },
+    author: {
+      type: String,
+      required: true,
+    },
+    comments: [
+      {
+        _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
+        userId: { type: mongoose.Schema.Types.ObjectId },
+        username: { type: String },
+        text: { type: String },
+        createdAt: { type: Date, default: Date.now },
+      },
+    ],
   },
   {
     timestamps: true,

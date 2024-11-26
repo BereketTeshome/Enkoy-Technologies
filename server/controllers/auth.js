@@ -25,7 +25,7 @@ const Login = async (req, res) => {
 };
 
 const Register = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, username } = req.body;
 
   try {
     const existingUser = await User.findOne({ email });
@@ -33,7 +33,7 @@ const Register = async (req, res) => {
       return res.status(400).json({ error: "Email already exists" });
     }
 
-    const newUser = await User.create({ email, password });
+    const newUser = await User.create({ email, password, username });
     res.status(201).json({ newUser });
   } catch (err) {
     res.status(500).json({ error: "Server error" });

@@ -13,13 +13,11 @@ const categories = [
   "Mind training",
 ];
 
-const Blogs = () => {
+const Blogs = ({ blogs }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState("");
   const [copiedLink, setCopiedLink] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("");
-
-
 
   const shareOnFacebook = (title, url) => {
     const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
@@ -41,36 +39,36 @@ const Blogs = () => {
     setTimeout(() => setCopiedLink(null), 2000);
   };
 
-  const filteredBlogs = dummyBlogs
-  .filter((blog) => {
-    // Show all blogs if 'All' or no category is selected
-    if (selectedCategory === "All" || selectedCategory === "") {
-      return true;
-    }
-    // Otherwise, filter by category (adjust this logic if categories need dynamic mapping)
-    return blog.category === selectedCategory;
-  })
-  .filter((blog) =>
-    blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    blog.author.name.toLowerCase().includes(searchQuery.toLowerCase())
-  )
-  .sort((a, b) => {
-    if (sortOption === "alphabet") {
-      return a.title.localeCompare(b.title);
-    }
-    if (sortOption === "date") {
-      return new Date(b.createdAt) - new Date(a.createdAt);
-    }
-    return 0;
-  });
-
+  const filteredBlogs = blogs
+    .filter((blog) => {
+      // Show all blogs if 'All' or no category is selected
+      if (selectedCategory === "All" || selectedCategory === "") {
+        return true;
+      }
+      // Otherwise, filter by category (adjust this logic if categories need dynamic mapping)
+      return blog.category === selectedCategory;
+    })
+    .filter(
+      (blog) =>
+        blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        blog.author.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (sortOption === "alphabet") {
+        return a.title.localeCompare(b.title);
+      }
+      if (sortOption === "date") {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      }
+      return 0;
+    });
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="min-h-screen p-5 bg-gray-100 sm:py-28 sm:p-10"
+      className="min-h-screen p-5  sm:py-28 sm:p-10"
     >
       {/* Search and Filter */}
       <div className="flex flex-col items-center justify-between gap-4 mb-10 sm:flex-row">
@@ -92,35 +90,34 @@ const Blogs = () => {
         </select>
       </div>
 
-       {/* Category Filter */}
-       <div className="flex flex-wrap justify-center mb-10 space-x-2 overflow-auto sm:space-x-4">
-  {categories.map((category) => (
-    <motion.button
-      key={category}
-      onClick={() => setSelectedCategory(category)}
-      whileHover={{ scale: 1.1 }}
-      className={`px-4 py-2 mt-2 whitespace-nowrap rounded-full transition-all ${
-        selectedCategory === category
-          ? "bg-blue-500 text-white"
-          : "bg-gray-200 text-gray-800 hover:bg-blue-100"
-      }`}
-    >
-      {category}
-    </motion.button>
-  ))}
-</div>
-
+      {/* Category Filter */}
+      <div className="flex flex-wrap justify-center mb-10 space-x-2 overflow-auto sm:space-x-4">
+        {categories.map((category) => (
+          <motion.button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            whileHover={{ scale: 1.1 }}
+            className={`px-4 py-2 mt-2 whitespace-nowrap rounded-full transition-all ${
+              selectedCategory === category
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-gray-800 hover:bg-blue-100"
+            }`}
+          >
+            {category}
+          </motion.button>
+        ))}
+      </div>
 
       {/* Blog Grid */}
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {filteredBlogs.map((blog, index) => {
           const date = new Date(blog.createdAt).toString().slice(0, 16);
-          const blogUrl = `https://example.com/blog/${index}`; // Simulated blog link
+          const blogUrl = `https://example.com/blog/${blog._id}`; // Simulated blog link
 
           return (
             <motion.div
               key={index}
-              className="p-4 bg-white rounded-lg shadow-md"
+              className="p-4 bg-gray-50 rounded-lg shadow-md"
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -134,25 +131,26 @@ const Blogs = () => {
                 />
               </div>
               <div className="mt-4">
-                <h3 className="text-2xl font-bold h-[100px] text-gray-800">{blog.title}</h3>
+                <h3 className="text-2xl font-bold h-[80px] text-gray-800">
+                  {blog.title}
+                </h3>
                 <p className="text-sm text-gray-500">{date}</p>
                 <p className="mt-3 mb-10 text-gray-700">
-               
-                    {blog.description.slice(0, 100)}...
+                  {blog.description.slice(0, 100)}...
                 </p>
                 <motion.a
                   whileHover={{
                     scale: 1.1,
-                    boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.2)",
+                    boxShadow: "2px 8px 13px rgba(0, 0, 0, 0.2)",
                   }}
-                  href={`/blog/${blog.id}`}
+                  href={`/blog/${blog._id}`}
                   className="p-2 mt-3 text-blue-500 rounded-lg cursor-pointer hover:text-blue-600 focus:outline-none"
                 >
                   See In Detail
                 </motion.a>
                 <div className="mt-4 text-sm text-gray-600">
                   <span className="font-semibold">Author: </span>
-                  {blog.author.name} <span>({blog.author.postsCount} posts)</span>
+                  {blog.author}
                 </div>
                 <div className="flex items-center my-6 space-x-4">
                   <b className="text-gray-600">Share Blog on: </b>

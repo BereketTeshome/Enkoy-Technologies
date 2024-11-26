@@ -18,6 +18,16 @@ const getBlogs = async (req, res) => {
   }
 };
 
+const getSingleBlog = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const blogs = await Blog.findById(id);
+    res.status(200).json({ count: blogs.length, blogs });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 const updateBlog = async (req, res) => {
   const { id } = req.params;
   try {
@@ -48,9 +58,56 @@ const deleteBlog = async (req, res) => {
   }
 };
 
+const addBlogComment = async (req, res) => {
+  const { id } = req.params;
+  const { username, text, userId } = req.body;
+
+  try {
+    const post = await Blog.findById(id);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    post.comments.push({ username, text, createdAt: new Date(), userId });
+
+    await post.save();
+    res.status(201).json({ message: "Comment added successfully", post });
+  } catch (error) {
+    res.status(500).json({ message: "Error creating comment", error });
+  }
+};
+
+const deleteBlogComment = async (req, res) => {
+  const { id, commentId } = req.params;
+
+  try {
+    const post = await Blog.findById(id);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    const comment = post.comments.id(commentId);
+
+    if (!comment) {
+      return res.status(404).json({ message: "Comment not found" });
+    }
+
+    comment.remove();
+    await post.save();
+
+    res.status(200).json({ message: "Comment deleted successfully", post });
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting comment", error });
+  }
+};
 module.exports = {
   createBlog,
   getBlogs,
+  getSingleBlog,
   updateBlog,
   deleteBlog,
+  addBlogComment,
+  deleteBlogComment,
 };
