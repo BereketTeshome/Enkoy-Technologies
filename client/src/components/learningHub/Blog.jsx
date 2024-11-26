@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { dummyBlogs } from "../../assets/dummyBlogs";
-import { FaFacebookF, FaTwitter, FaCopy } from "react-icons/fa";
+// import { dummyBlogs } from "../../assets/dummyBlogs";
+import { FaFacebookF, FaCopy, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import NewsletterSubscription from "../NewsletterSubscription";
 
@@ -32,6 +33,16 @@ const Blogs = ({ blogs }) => {
     )}&url=${encodeURIComponent(url)}`;
     window.open(twitterShareUrl, "_blank", "noopener,noreferrer");
   };
+
+  // Function to share on LinkedIn
+const shareOnLinkedIn = (title, url, imageUrl) => {
+  const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+    url
+  )}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(
+    title
+  )}&source=${encodeURIComponent(imageUrl || url)}`;
+  window.open(linkedInShareUrl, "_blank", "noopener,noreferrer");
+};
 
   const handleCopyLink = (url, index) => {
     navigator.clipboard.writeText(url);
@@ -68,7 +79,7 @@ const Blogs = ({ blogs }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="min-h-screen p-5  sm:py-28 sm:p-10"
+      className="min-h-screen p-5 sm:py-28 sm:p-10"
     >
       {/* Search and Filter */}
       <div className="flex flex-col items-center justify-between gap-4 mb-10 sm:flex-row">
@@ -112,12 +123,12 @@ const Blogs = ({ blogs }) => {
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {filteredBlogs.map((blog, index) => {
           const date = new Date(blog.createdAt).toString().slice(0, 16);
-          const blogUrl = `https://example.com/blog/${blog._id}`; // Simulated blog link
+          const blogUrl = `https://enkoytechnologies.com/blog/${blog._id}`;
 
           return (
             <motion.div
               key={index}
-              className="p-4 bg-gray-50 rounded-lg shadow-md"
+              className="p-4 rounded-lg shadow-md bg-gray-50"
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -135,16 +146,17 @@ const Blogs = ({ blogs }) => {
                   {blog.title}
                 </h3>
                 <p className="text-sm text-gray-500">{date}</p>
-                <p className="mt-3 mb-10 text-gray-700">
-                  {blog.description.slice(0, 100)}...
-                </p>
+                <div className="mt-3 mb-4 text-gray-700" dangerouslySetInnerHTML={{ __html: blog.description.slice(0, 100) }}>
+                  
+                  {/* {blog.description.slice(0, 100)}... */}
+                </div>
                 <motion.a
                   whileHover={{
                     scale: 1.1,
                     boxShadow: "2px 8px 13px rgba(0, 0, 0, 0.2)",
                   }}
                   href={`/blog/${blog._id}`}
-                  className="p-2 mt-3 text-blue-500 rounded-lg cursor-pointer hover:text-blue-600 focus:outline-none"
+                  className="p-2 text-blue-500 rounded-lg cursor-pointer hover:text-blue-600 focus:outline-none"
                 >
                   See In Detail
                 </motion.a>
@@ -165,11 +177,19 @@ const Blogs = ({ blogs }) => {
                   <motion.button
                     whileHover={{ scale: 1.2, rotate: 10 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    className="p-3 text-white bg-blue-400 rounded-full shadow-md hover:shadow-lg"
+                    className="p-3 text-white bg-[#1F1F1F] rounded-full shadow-md hover:shadow-lg"
                     onClick={() => shareOnTwitter(blog.title, blogUrl)}
                   >
-                    <FaTwitter size={18} />
+                    <FaXTwitter size={18} />
                   </motion.button>
+                  <motion.button
+  whileHover={{ scale: 1.2, rotate: 10 }}
+  transition={{ type: "spring", stiffness: 300 }}
+  className="p-3 text-white bg-[#0A66C2] rounded-full shadow-md hover:shadow-lg"
+  onClick={() => shareOnLinkedIn(blog.title, blogUrl, blog.imageUrl)}
+>
+  <FaLinkedinIn size={18} />
+</motion.button>
                 </div>
                 <motion.button
                   whileHover={{ scale: 1.1, backgroundColor: "#FFC34D" }}
