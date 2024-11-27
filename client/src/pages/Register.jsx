@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 
-const Login = () => {
+const Register = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailErr, setEmailErr] = useState("");
-
+  const [nameErr, setNameErr] = useState(false);
   const [btnLoading, setBtnLoading] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
   const navigate = useNavigate();
@@ -17,31 +18,24 @@ const Login = () => {
     e.preventDefault();
     try {
       setBtnLoading(true);
-
-      const res = await axios.post("http://localhost:3000/api/user/login", {
+      const res = await axios.post("http://localhost:3000/api/user/register", {
+        username: name,
         email,
         password,
       });
-
-      // Save the token in cookies
-      cookie.set("user", res.data.token, { path: "/", httpOnly: false });
+      cookie.set("user", res.data.token);
       setBtnLoading(false);
-      navigate("/"); // Navigate to home page
+      navigate("/");
     } catch (error) {
-      console.log("Error:", error.response?.data || error.message);
+      setBtnLoading(true);
+      !name ? setNameErr(true) : setNameErr(false);
+      !password ? setPasswordErr(true) : setPasswordErr(false);
+      email
+        ? setEmailErr(error.response.data.email)
+        : setEmailErr("you must provide email");
       setBtnLoading(false);
-
-      if (error.response) {
-        // Set errors based on server responses
-        setEmailErr(error.response.data.email || "");
-        setPasswordErr(error.response.data.password || "");
-      } else {
-        // Handle network or unexpected errors
-        setEmailErr("Something went wrong. Please try again.");
-      }
     }
   };
-
   return (
     <div className="flex h-screen bg-gray-50">
       {/* Left side with the image */}
@@ -56,14 +50,25 @@ const Login = () => {
       {/* Right side with the form */}
       <div className="flex-1 flex flex-col justify-center items-center px-8">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">
-          <span className="text-[#FFCD57]">Welcome</span> Back
+          Create an <span className="text-[#FFCD57]">Account</span>
         </h2>
         <form
           className="w-full max-w-md flex flex-col gap-4"
-          onSubmit={(e) => handleRegister(e)}
+          onSubmit={handleRegister}
         >
           <input
-            required
+            onChange={(e) => setName(e.target.value)}
+            type="text"
+            placeholder="Enter your name..."
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          {nameErr && (
+            <p style={{ color: "red", fontSize: "12px", marginBottom: "10px" }}>
+              {" "}
+              you must provide name
+            </p>
+          )}
+          <input
             onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="Enter email..."
@@ -75,7 +80,6 @@ const Login = () => {
             </p>
           )}
           <input
-            required
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Enter password..."
@@ -91,13 +95,13 @@ const Login = () => {
             type="submit"
             className="w-full p-3 bg-[#FFCD57] text-white rounded-lg hover:bg-[#ffcd57bf] transition duration-300"
           >
-            {btnLoading ? "Loading..." : "Login"}
+            {btnLoading ? "Registering..." : "Register"}
           </button>
         </form>
         <p className="mt-4 text-gray-600">
-          Don't have an account?{" "}
-          <a href="/register" className="text-blue-600 hover:underline">
-            Register
+          Already have an account?{" "}
+          <a href="/login" className="text-blue-600 hover:underline">
+            Login
           </a>
         </p>
       </div>
@@ -105,4 +109,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

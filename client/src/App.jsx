@@ -49,6 +49,8 @@ import BlogDetail from "./pages/BlogDetail.jsx";
 import Login from "./pages/Login.jsx";
 import MyBlog from "./pages/MyBlog.jsx";
 import AddBlogPage from "./pages/AddBlogPage.jsx";
+import EbookDetail from "./pages/learningHub/EbookDetail.jsx";
+import Register from "./pages/Register.jsx";
 
 const App = () => {
   return (
@@ -163,13 +165,12 @@ const App = () => {
           {/* Learning Hub */}
           <Route path="/blog" element={<Blogs />} />
           <Route path="/ebooks" element={<Ebooks />} />
-           {/* Detailed blog page */}
-        <Route path="/blog/:id" element={<BlogDetail />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
+          <Route path="/ebooks/:id" element={<EbookDetail />} />
 
-           {/* Add blog page */}
-        <Route path="/my-blog" element={<MyBlog />} />
-        <Route path="/add-blog" element={<AddBlogPage />} />
-
+          {/* Add blog page */}
+          <Route path="/my-blog" element={<MyBlog />} />
+          <Route path="/add-blog" element={<AddBlogPage />} />
 
           {/* Our work */}
           <Route path="/portfolio" element={<Portfolio />} />
@@ -187,6 +188,7 @@ const App = () => {
 
           {/* Login and Registration Page */}
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
           {/* Add a fallback route (optional) */}
           <Route path="*" element={<UnderConstruction />} />

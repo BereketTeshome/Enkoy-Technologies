@@ -1,34 +1,63 @@
 import { useParams } from "react-router-dom";
-import { dummyBlogs } from "../assets/dummyBlogs";
+import { dummyBlogs } from "../../assets/dummyBlogs";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import BlogComments from "../components/learningHub/BlogComments";
+import { Delete, Star } from "@mui/icons-material";
+import Rating from "@mui/material/Rating";
+import Stack from "@mui/material/Stack";
+import EbookComments from "../../components/learningHub/EbookComments";
+// import BlogComments from "../../components/learningHub/BlogComments";
 
-const BlogDetail = () => {
+const EbookDetail = () => {
   const { id } = useParams();
   const blog = dummyBlogs.find((blog) => blog.id === parseInt(1));
-  const [blogs, setBlogs] = useState({});
+  const [ebooks, setEbooks] = useState({});
+  const [filteredComment, setFilteredComment] = useState([]);
   const [fetchAgain, setFetchAgain] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(
-        `http://localhost:3000/api/blog/get/${id}`
-      );
-
-      setBlogs(data.blogs);
+      try {
+        const { data } = await axios.get(
+          `http://localhost:3000/api/ebook/get/${id}`
+        );
+        setEbooks(data.ebooks);
+        setFilteredComment(data.ebooks.comments);
+      } catch (error) {
+        console.log(error.message);
+      }
     };
     fetchData();
   }, [fetchAgain]);
 
-  if (!blogs) {
+  if (!ebooks) {
     return (
       <div className="flex items-center justify-center h-screen text-xl">
         Blog not found!
       </div>
     );
   }
+
+  let ave = [];
+  const total = () =>
+    filteredComment.forEach((item) => {
+      ave = [...ave, item.rating];
+    });
+  total();
+  let average = 0;
+  const findAverage = () => {
+    if (ave.length === 0) {
+      average = 0;
+    } else {
+      for (let index = 0; index < ave.length; index++) {
+        let element = ave[index];
+        average += element;
+      }
+      average = Number(average / ave.length).toFixed(1);
+    }
+  };
+  findAverage();
 
   // Animation Variants
   const containerVariants = {
@@ -68,79 +97,52 @@ const BlogDetail = () => {
         className="mb-6 text-5xl font-extrabold leading-tight text-gray-900 dark:text-white"
         variants={textFadeIn}
       >
-        {blogs.title}
+        {ebooks.title}
       </motion.h1>
 
-      {/* Blogs Meta */}
+      {/* ebooks Meta */}
       <motion.div
         className="mb-8 text-gray-600 dark:text-gray-400"
         variants={textFadeIn}
       >
         <p className="mb-2">
-          <span className="font-semibold">Category:</span> {blogs.category}
+          {/* <span className="font-semibold">Category:</span> {ebooks.category} */}
         </p>
-        <p>
-          By{" "}
-          <span className="font-medium text-gray-800 dark:text-gray-200">
-            {blogs.author}
+        <p className="flex items-center gap-1">
+          Posted by:{" "}
+          <span className="font-medium text-gray-800 dark:text-gray-200 mr-1">
+            {ebooks.author}
           </span>{" "}
-          | {new Date(blogs.createdAt).toLocaleDateString()}
+          | {new Date(ebooks.createdAt).toLocaleDateString()} |{" "}
+          <span className=" grid grid-cols-2 w-fit ml-1">
+            <Star
+              size="small"
+              sx={{
+                color: "gold", // Optional, if you want rounded borders
+              }}
+            />{" "}
+            {average}
+          </span>
         </p>
       </motion.div>
 
-      {/* Blogs Image */}
+      {/* ebooks Image */}
       <motion.img
-        src={blogs.image}
-        alt={blogs.title}
+        src={ebooks.image}
+        alt={ebooks.title}
         className="w-[50%] mb-10 shadow-lg rounded-xl"
         variants={imageFadeIn}
       />
 
-      {/* Blogs Content */}
+      {/* ebooks Content */}
       <motion.p
         className="mb-12 text-lg leading-8 text-gray-800 dark:text-gray-200"
         variants={textFadeIn}
-        dangerouslySetInnerHTML={{ __html: blogs.description }}
+        dangerouslySetInnerHTML={{ __html: ebooks.description }}
       ></motion.p>
 
       <div className="mt-10">
-        <div>
-          <div></div>
-          <div>
-            <div>
-              <BlogComments blogs={blogs} setFetchAgain={setFetchAgain} />
-            </div>
-          </div>
-          {/* <form className="mt-5" onSubmit={(e) => addComment(e)}>
-                  <div className="mb-3">
-                    <p className="mb-2 text-sm font-semibold text-gray-500">
-                      Your Name
-                    </p>
-                    <input
-                      type="text"
-                      className="w-full px-2 py-1 border rounded-sm"
-                      onChange={(e) => setUsername(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <p className="mb-2 text-sm font-semibold text-gray-500">
-                      Your Comment
-                    </p>
-                    <textarea
-                      name=""
-                      id=""
-                      className="w-full px-2 py-1 border rounded-sm"
-                      rows={5}
-                      onChange={(e) => setText(e.target.value)}
-                      required
-                    ></textarea>
-                  </div>
-                  <button className="bg-[#ffa216] px-6 py-2 uppercase text-sm text-gray-50 rounded">
-                    {commentloading ? "submitting" : "Submit Comment"}
-                  </button>
-                </form> */}
-        </div>
+        <EbookComments ebooks={ebooks} setFetchAgain={setFetchAgain} />
       </div>
 
       {/* Related Posts */}
@@ -172,4 +174,4 @@ const BlogDetail = () => {
   );
 };
 
-export default BlogDetail;
+export default EbookDetail;

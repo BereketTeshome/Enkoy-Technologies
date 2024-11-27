@@ -2,16 +2,17 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const BlogComments = ({ blogs }) => {
+const BlogComments = ({ blogs, setFetchAgain }) => {
   const [commentLoading, setCommentLoading] = useState(false);
   const [text, setText] = useState("");
   const cookie = new Cookies();
   const token = cookie.get("user");
   const decode = token ? jwtDecode(token) : "";
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.95 },
@@ -31,20 +32,27 @@ const BlogComments = ({ blogs }) => {
   };
   const addComment = async (e) => {
     e.preventDefault();
-    if (!token) {
-      alert("you must login first");
-    } else {
-      setCommentLoading(true);
-      const res = await axios.post(
-        `http://localhost:3000/api/blog/get/${id}/comments`,
-        {
-          text,
-          username: decode.username,
-          userId: decode.userId,
-        }
-      );
+    try {
+      if (!token) {
+        alert("you must login first");
+        navigate("/login");
+      } else {
+        setCommentLoading(true);
+        const res = await axios.post(
+          `http://localhost:3000/api/blog/${id}/comments`,
+          {
+            text,
+            username: decode.username,
+            userId: decode.userId,
+          }
+        );
+        setCommentLoading(false);
+        setFetchAgain((pre) => !pre);
+        return res;
+      }
+    } catch (error) {
       setCommentLoading(false);
-      return res;
+      console.log(error);
     }
   };
   const deleteComment = async (commentId) => {
