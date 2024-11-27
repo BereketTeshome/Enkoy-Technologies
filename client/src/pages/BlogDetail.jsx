@@ -99,8 +99,8 @@ const BlogDetail = () => {
       <motion.p
         className="mb-12 text-lg leading-8 text-gray-800 dark:text-gray-200"
         variants={textFadeIn}
+        dangerouslySetInnerHTML={{ __html: blogs.description }}
       >
-        {blogs.description}
       </motion.p>
 
       <div className="mt-10">
@@ -113,24 +113,24 @@ const BlogDetail = () => {
           </div>
           {/* <form className="mt-5" onSubmit={(e) => addComment(e)}>
                   <div className="mb-3">
-                    <p className="text-sm text-gray-500 mb-2 font-semibold">
+                    <p className="mb-2 text-sm font-semibold text-gray-500">
                       Your Name
                     </p>
                     <input
                       type="text"
-                      className="w-full border rounded-sm py-1 px-2"
+                      className="w-full px-2 py-1 border rounded-sm"
                       onChange={(e) => setUsername(e.target.value)}
                       required
                     />
                   </div>
                   <div className="mb-3">
-                    <p className="text-sm text-gray-500 mb-2 font-semibold">
+                    <p className="mb-2 text-sm font-semibold text-gray-500">
                       Your Comment
                     </p>
                     <textarea
                       name=""
                       id=""
-                      className="w-full border rounded-sm py-1 px-2"
+                      className="w-full px-2 py-1 border rounded-sm"
                       rows={5}
                       onChange={(e) => setText(e.target.value)}
                       required

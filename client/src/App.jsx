@@ -43,9 +43,12 @@ import Blogs from "./pages/learningHub/Blogs.jsx";
 import Ebooks from "./pages/learningHub/Ebooks.jsx";
 import OurWork from "./pages/OurWork.jsx";
 import DetailedWork from "./pages/DetailedWork.jsx";
-import DigitalTraining from "./components/navbar_popups/DigitalTraining.jsx";
+// import DigitalTraining from "./components/navbar_popups/DigitalTraining.jsx";
 import DigitalTrainingOverview from "./pages/DigitalTrainingOverview.jsx";
 import BlogDetail from "./pages/BlogDetail.jsx";
+import Login from "./pages/Login.jsx";
+import MyBlog from "./pages/MyBlog.jsx";
+import AddBlogPage from "./pages/AddBlogPage.jsx";
 
 const App = () => {
   return (
@@ -163,6 +166,11 @@ const App = () => {
            {/* Detailed blog page */}
         <Route path="/blog/:id" element={<BlogDetail />} />
 
+           {/* Add blog page */}
+        <Route path="/my-blog" element={<MyBlog />} />
+        <Route path="/add-blog" element={<AddBlogPage />} />
+
+
           {/* Our work */}
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/our-work" element={<OurWork />} />
@@ -176,6 +184,9 @@ const App = () => {
 
           {/* Contact Us Page */}
           <Route path="/contact" element={<Contact />} />
+
+          {/* Login and Registration Page */}
+          <Route path="/login" element={<Login />} />
 
           {/* Add a fallback route (optional) */}
           <Route path="*" element={<UnderConstruction />} />
