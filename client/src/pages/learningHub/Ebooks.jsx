@@ -7,7 +7,9 @@ const Ebooks = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get("http://localhost:3000/api/ebook/get");
+      const { data } = await axios.get(
+        "https://enkoy-technologies-server.vercel.app/api/ebook/get"
+      );
 
       setEbooks(data.ebooks);
     };
