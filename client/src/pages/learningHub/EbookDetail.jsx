@@ -20,7 +20,7 @@ const EbookDetail = () => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3000/api/ebook/get/${id}`
+          `https://enkoy-technologies-server.vercel.app/api/ebook/get/${id}`
         );
         setEbooks(data.ebooks);
         setFilteredComment(data.ebooks.comments);
