@@ -2,41 +2,44 @@ const User = require("../models/User");
 
 const Login = async (req, res) => {
   const { email, password } = req.body;
-
-  if (!email || !password) {
-    return res
-      .status(400)
-      .json({ message: "Please provide email and password" });
-  }
-  const user = await User.findOne({ email });
-  if (!user) {
-    return res.status(401).json({ message: "Invalid email or password!" });
-  }
-  const compare = await user.comparePassword(password);
-  if (!compare) {
-    return res.status(401).json({ message: "Incorrect password!" });
-  }
   try {
-    const token = user.createToken();
-    res.status(201).json({ user, token });
-  } catch (err) {
-    res.status(500).json({ message: "Server error, please try again later" });
+    if (!email) {
+      return res.status(400).json({ email: "You must include an email." });
+    }
+    if (!password) {
+      return res.status(400).json({ password: "You must include a password." });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ email: "Email not found." }); // Use 404 for "not found"
+    }
+
+    const comparePassword = await user.compare(password);
+    if (!comparePassword) {
+      return res.status(401).json({ password: "Incorrect password." }); // Use 401 for "unauthorized"
+    }
+
+    const token = await user.createToken();
+    return res.status(200).json({ user, token });
+  } catch (error) {
+    console.error("Server error:", error.message);
+    return res
+      .status(500)
+      .json({ error: "Something went wrong. Please try again." });
   }
 };
 
 const Register = async (req, res) => {
-  const { email, password, username } = req.body;
-
   try {
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ error: "Email already exists" });
+    const user = await User.create(req.body);
+    const token = await user.createToken();
+    res.status(201).json({ user, token });
+  } catch (error) {
+    if (error.code === 11000) {
+      return res.status(500).json({ email: "email already used" });
     }
-
-    const newUser = await User.create({ email, password, username });
-    res.status(201).json({ newUser });
-  } catch (err) {
-    res.status(500).json({ error: "Server error" });
+    return res.status(500).json({ error: error.message });
   }
 };
 
