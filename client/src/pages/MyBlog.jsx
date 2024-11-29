@@ -49,7 +49,7 @@ const MyBlog = () => {
     <div className="flex flex-col min-h-screen bg-gray-100">
       <div className="flex-grow px-8 pb-10 lg:px-32 md:px-20">
         <motion.h1
-          className="text-center uppercase text-4xl font-extrabold text-[#070b22] mb-6 mt-10"
+          className="text-center uppercase text-4xl font-semibold text-[#070b22] mb-6 mt-10"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -123,12 +123,12 @@ const MyBlog = () => {
                           <td className="py-3">{date}</td>
                           <td className="py-3">{item.views}</td>
                           <td className="py-3 space-x-2">
-                            <a
+                            {/* <a
                               href={`/dashboard/edit-blog/${item._id}`}
                               className="bg-[#ffa216] px-4 py-1 rounded-md text-white"
                             >
                               Edit
-                            </a>
+                            </a> */}
                             <button
                               className="px-4 py-1 text-white bg-red-600 rounded-md"
                               onClick={() =>

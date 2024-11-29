@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Cookies from "universal-cookie";
+import { jwtDecode } from "jwt-decode";
 
 const NewsletterSubscription = () => {
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const cookie = new Cookies();
+  const token = cookie.get("user");
+  const decode = token ? jwtDecode(token) : "";
+  const email = decode?.email
 
   const handleSubscription = (e) => {
     e.preventDefault();
     if (email) {
       setShowModal(true);
-      setEmail("");
     }
   };
 
@@ -42,14 +47,14 @@ const NewsletterSubscription = () => {
           Subscribe to our Newsletter
         </h2>
         <form className="flex mt-6" onSubmit={handleSubscription}>
-          <motion.input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-2 border rounded-l-lg focus:outline-none focus:ring focus:ring-yellow-400"
-            whileFocus={{ scale: 1.02 }}
-          />
+        <motion.input
+  type="email"
+  placeholder="Enter your email"
+  value={email}
+  className="w-full px-4 py-2 !placeholder-gray-500 border rounded-l-lg focus:outline-none focus:ring focus:ring-yellow-400"
+  whileFocus={{ scale: 1.02 }}
+/>
+
           <motion.button
             type="submit"
             className="px-6 py-2 text-white rounded-r-lg"
