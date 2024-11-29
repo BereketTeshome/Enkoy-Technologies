@@ -1,8 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css"; // Import the styles for the editor
+import "react-quill/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import Cookies from "universal-cookie";
+import {jwtDecode} from "jwt-decode"; 
 
 const AddBlogPage = () => {
   const [description, setDescription] = useState("");
@@ -11,8 +14,16 @@ const AddBlogPage = () => {
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const cookie = new Cookies();
 
-  // Predefined categories
+  // Decode the JWT token
+  const token = cookie.get("user");
+  let author;
+  if (token) {
+    author = jwtDecode(token).userId;
+
+  }
+
   const categories = [
     "Foundation of learning",
     "Design thinking",
@@ -22,131 +33,118 @@ const AddBlogPage = () => {
   ];
 
   const toolbarOptions = [
-    ["bold", "italic", "underline", "strike"], // toggled buttons
+    ["bold", "italic", "underline", "strike"],
     ["blockquote", "code-block"],
     ["link", "image", "video", "formula"],
-    [{ header: 1 }, { header: 2 }], // custom button values
-    [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
-    [{ script: "sub" }, { script: "super" }], // superscript/subscript
-    [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
-    [{ direction: "rtl" }], // text direction
-    [{ size: ["small", false, "large", "huge"] }], // custom dropdown
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-    [{ font: [] }],
-    [{ align: [] }],
-    ["clean"], // remove formatting button
+    [{ header: 1 }, { header: 2 }],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ color: [] }, { background: [] }],
+    ["clean"],
   ];
-  const modules = {
-    toolbar: toolbarOptions, // Pass the custom toolbar options here
-  };
+  const modules = { toolbar: toolbarOptions };
 
-  const handleDescriptionChange = (value) => {
-    setDescription(value); // Update Description state
-  };
+  const handleDescriptionChange = (value) => setDescription(value);
 
   const addBlog = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      setLoading(true);
-      // Replace the `author` value with the actual logged-in user data if available
       const blogData = {
         title,
         description,
         image,
         category,
-        author: "Your Name", // Replace with dynamic author data if available
-        comments: [], // Initialize as an empty array
+        author: author,
+        comments: [],
+        createdAt: new Date().toISOString(),
       };
-      await axios.post(`http://localhost:3000/api/blog/create`, blogData);
-      setLoading(false);
-      navigate("/blogs");
+      await axios.post("http://localhost:3000/api/blog/create", blogData);
+      navigate("/blog");
       window.location.reload();
     } catch (error) {
-      setLoading(false);
-      alert("Sorry, something went wrong!");
+      alert("Something went wrong!");
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="flex justify-center px-0 pt-40 pb-5 md:px-20">
-      <div className="py-10 mx-8 bg-white rounded shadow-md">
-        <p className="mb-2 text-xl font-semibold text-center text-gray-900">
-          Add Blog Post
-        </p>
-        <form className="px-10" onSubmit={(e) => !loading && addBlog(e)}>
-          {/* Title */}
-          <div className="mb-3">
-            <p className="mb-2 text-sm font-semibold text-gray-500">Title:</p>
-            <input
-              type="text"
-              className="w-full px-2 py-2 text-xs border rounded"
-              required
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="min-h-screen py-20 bg-gradient-to-r from-white via-[#f8f8f8] to-[#f1f1f1] flex justify-center items-center"
+    >
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1, transition: { duration: 0.8 } }}
+        className="p-10 bg-white shadow-lg rounded-lg w-[90%] md:w-1/2"
+        whileHover={{ scale: 1.02, boxShadow: "0px 10px 30px rgba(0,0,0,0.1)" }}
+      >
+        <motion.h1
+          initial={{ scale: 0.9 }}
+          animate={{ scale: 1 }}
+          className="mb-6 text-3xl font-bold text-center text-gray-600"
+        >
+          Create a New Blog Post
+        </motion.h1>
 
-          {/* Image */}
-          <div className="mb-3">
-            <p className="mb-2 text-sm font-semibold text-gray-500">
-              Upload Blog Image URL:
-            </p>
-            <input
-              type="text"
-              className="w-full px-2 py-2 text-xs border rounded"
-              required
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-            />
-          </div>
+        <form onSubmit={(e) => !loading && addBlog(e)}>
+          {[{ label: "Title", value: title, onChange: setTitle }, { label: "Image URL", value: image, onChange: setImage }].map(
+            (field, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1, transition: { delay: idx * 0.1 } }}
+                className="mb-4"
+              >
+                <label className="block text-sm font-medium text-gray-700">{field.label}</label>
+                <motion.input
+                  type="text"
+                  className="w-full p-2 mt-1 border border-gray-300 rounded focus:border-[#ffa216]"
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+              </motion.div>
+            )
+          )}
 
-          {/* Category Dropdown */}
-          <div className="mb-3">
-            <p className="mb-2 text-sm font-semibold text-gray-500">
-              Category:
-            </p>
-            <select
-              className="w-full px-2 py-2 text-xs border rounded"
-              required
+          <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1, transition: { delay: 0.3 } }} className="mb-4">
+            <label className="block text-sm font-medium text-gray-700">Category</label>
+            <motion.select
+              className="w-full p-2 mt-1 border border-gray-300 rounded focus:border-[#ffa216]"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
-              <option value="" disabled>
-                Select a category
-              </option>
+              <option value="">Select a category</option>
               {categories.map((cat) => (
                 <option key={cat} value={cat}>
                   {cat}
                 </option>
               ))}
-            </select>
-          </div>
+            </motion.select>
+          </motion.div>
 
-          {/* Description */}
-          <div className="mb-3">
-            <p className="mb-2 text-sm font-semibold text-gray-500">
-              Description:
-            </p>
-            <ReactQuill
-              value={description}
-              onChange={handleDescriptionChange}
-              modules={modules} // Add modules to Quill
-              theme="snow" // Ensure snow theme is applied
-            />
-          </div>
+          <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1, transition: { delay: 0.4 } }} className="mb-4">
+            <label className="block text-sm font-medium text-gray-700">Description</label>
+            <ReactQuill value={description} onChange={handleDescriptionChange} modules={modules} theme="snow" />
+          </motion.div>
 
-          {/* Submit Button */}
-          <button
+          <motion.button
             type="submit"
-            className="bg-[#ffa216] px-6 py-2 uppercase text-sm text-gray-50 rounded"
+            className="w-full p-3 mt-4 text-white bg-[#ffa216] rounded hover:bg-[#ff8c00]"
+            whileHover={{ scale: 1.05 }}
           >
-            {loading ? "Posting..." : "Post Blog"}
-          </button>
+            {loading ? (
+              <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity }} className="loader"></motion.div>
+            ) : (
+              "Post Blog"
+            )}
+          </motion.button>
         </form>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
