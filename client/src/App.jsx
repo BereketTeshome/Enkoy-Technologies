@@ -51,6 +51,7 @@ import MyBlog from "./pages/MyBlog.jsx";
 import AddBlogPage from "./pages/AddBlogPage.jsx";
 import EbookDetail from "./pages/learningHub/EbookDetail.jsx";
 import Register from "./pages/Register.jsx";
+import BlogAuthor from "./pages/authors/BlogAuthor.jsx";
 import AddEbookPage from "./pages/AddEbookPage.jsx";
 import MyEbook from "./pages/MyEbook.jsx";
 
@@ -174,6 +175,8 @@ const App = () => {
           <Route path="/my-blog" element={<MyBlog />} />
           <Route path="/add-blog" element={<AddBlogPage />} />
 
+          {/* Authors page */}
+          <Route path="/blog/user/:id" element={<BlogAuthor />} />
           {/* Add ebook page */}
           <Route path="/my-ebook" element={<MyEbook />} />
           <Route path="/add-ebook" element={<AddEbookPage />} />
