@@ -11,7 +11,7 @@ const createBlog = async (req, res) => {
 
 const getBlogs = async (req, res) => {
   try {
-    const blogs = await Blog.find({});
+    const blogs = await Blog.find({}).populate("author", "-password");
     res.status(200).json({ count: blogs.length, blogs });
   } catch (error) {
     res.status(500).json({ error: error.message });
