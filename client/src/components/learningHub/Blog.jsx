@@ -169,10 +169,13 @@ const Blogs = ({ blogs }) => {
                 >
                   See In Detail
                 </motion.a>
-                <div className="mt-4 text-sm text-gray-600">
+                <a
+                  href={`/blog/user/${blog.author._id}`}
+                  className="mt-4 text-sm text-gray-600 block"
+                >
                   <span className="font-semibold">Author: </span>
-                  {blog.author}
-                </div>
+                  {blog.author.username}
+                </a>
                 <div className="flex items-center my-6 space-x-4">
                   <b className="text-gray-600">Share Blog on: </b>
                   <motion.button
