@@ -1,28 +1,14 @@
 import { useState } from "react";
-// import { dummyebooks } from "../../assets/dummyebooks";
 import { FaFacebookF, FaCopy, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import NewsletterSubscription from "../NewsletterSubscription";
 import { Star } from "@mui/icons-material";
 
-// const categories = [
-//   "All",
-//   "Foundation of learning",
-//   "Design thinking",
-//   "Best practices",
-//   "Expert insights",
-//   "Mind training",
-// ];
-
 const Ebook = ({ ebooks }) => {
-  // const [expanded, setExpanded] = useState(
-  //   Array(dummyebooks.length).fill(false)
-  // );
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState("");
   const [copiedLink, setCopiedLink] = useState(null);
-  // const [selectedCategory, setSelectedCategory] = useState("");
 
   const shareOnFacebook = (title, url) => {
     const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
@@ -38,7 +24,6 @@ const Ebook = ({ ebooks }) => {
     window.open(twitterShareUrl, "_blank", "noopener,noreferrer");
   };
 
-  // Function to share on LinkedIn
   const shareOnLinkedIn = (title, url, imageUrl) => {
     const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
       url
@@ -72,24 +57,17 @@ const Ebook = ({ ebooks }) => {
 
   const filterRating = (id) => {
     let ratings = [];
-
-    // Find the specific ebook by id
     ebooks.forEach((ebook) => {
       if (ebook._id === id) {
-        // Collect all ratings
         ratings = ebook.comments.map((item) => item.rating);
       }
     });
 
-    // Calculate the average
     if (ratings.length === 0) return 0;
-
     const total = ratings.reduce((sum, rating) => sum + rating, 0);
-    const average = (total / ratings.length).toFixed(1);
-
-    return Number(average);
+    return Number((total / ratings.length).toFixed(1));
   };
-  // console.log(filterRating("673dcb65aadf141954b1d3d1"));
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -97,7 +75,6 @@ const Ebook = ({ ebooks }) => {
       transition={{ duration: 1 }}
       className="min-h-screen p-5 sm:py-28 sm:p-10"
     >
-      {/* Search and Filter */}
       <div className="flex flex-col items-center justify-between gap-4 mb-10 sm:flex-row">
         <input
           type="text"
@@ -117,13 +94,11 @@ const Ebook = ({ ebooks }) => {
         </select>
       </div>
 
-      {/* Category Filter */}
-
-      {/* ebook Grid */}
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {filteredEbooks.map((ebook, index) => {
           const date = new Date(ebook.createdAt).toString().slice(0, 16);
           const ebookUrl = `https://enkoytechnologies.com/ebooks/${ebook._id}`;
+          const pdfUrl = ebook.pdf; // Assuming `ebook.pdf` contains the URL to the PDF file
 
           return (
             <motion.div
@@ -147,13 +122,8 @@ const Ebook = ({ ebooks }) => {
                 </h3>
                 <div className="flex items-center justify-between">
                   <p className="text-sm text-gray-500">{date}</p>
-                  <span className=" grid grid-cols-2 w-fit ml-1">
-                    <Star
-                      size="small"
-                      sx={{
-                        color: "gold", // Optional, if you want rounded borders
-                      }}
-                    />{" "}
+                  <span className="grid grid-cols-2 ml-1 w-fit">
+                    <Star size="small" sx={{ color: "gold" }} />
                     {filterRating(ebook._id)}
                   </span>
                 </div>
@@ -163,9 +133,8 @@ const Ebook = ({ ebooks }) => {
                   dangerouslySetInnerHTML={{
                     __html: ebook.description.slice(0, 100),
                   }}
-                >
-                  {/* {ebook.description.slice(0, 100)}... */}
-                </div>
+                ></div>
+
                 <motion.a
                   whileHover={{
                     scale: 1.1,
@@ -176,10 +145,7 @@ const Ebook = ({ ebooks }) => {
                 >
                   See In Detail
                 </motion.a>
-                {/* <div className="mt-4 text-sm text-gray-600">
-                  <span className="font-semibold">Author: </span>
-                  {ebook.author}
-                </div> */}
+
                 <div className="flex items-center my-6 space-x-4">
                   <b className="text-gray-600">Share ebook on: </b>
                   <motion.button
@@ -209,11 +175,30 @@ const Ebook = ({ ebooks }) => {
                     <FaLinkedinIn size={18} />
                   </motion.button>
                 </div>
+
+                <div className="flex justify-between mt-4">
+                  <a
+                    href={pdfUrl}
+                    download
+                    className="px-4 py-2 text-white bg-green-500 rounded-lg cursor-pointer hover:bg-green-600"
+                  >
+                    Download PDF
+                  </a>
+                  <a
+                    href={pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 text-white bg-blue-500 rounded-lg cursor-pointer hover:bg-blue-600"
+                  >
+                    Read Online
+                  </a>
+                </div>
+
                 <motion.button
                   whileHover={{ scale: 1.1, backgroundColor: "#FFC34D" }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className={`flex items-center gap-2 px-4 py-2 text-white rounded-full shadow-md hover:shadow-lg ${
+                  className={`flex items-center mt-4 gap-2 px-4 py-2 text-white rounded-full shadow-md hover:shadow-lg ${
                     copiedLink === index ? "bg-green-500" : "bg-[#FFCD57]"
                   }`}
                   onClick={() => handleCopyLink(ebookUrl, index)}
@@ -229,7 +214,6 @@ const Ebook = ({ ebooks }) => {
         })}
       </div>
 
-      {/* Newsletter Signup */}
       <NewsletterSubscription />
     </motion.div>
   );
