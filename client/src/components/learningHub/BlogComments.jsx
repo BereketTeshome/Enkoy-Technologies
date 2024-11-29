@@ -39,7 +39,7 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
       } else {
         setCommentLoading(true);
         const res = await axios.post(
-          `https://enkoy-technologies-server.vercel.app/api/blog/${id}/comments`,
+          `http://localhost:3000/api/blog/${id}/comments`,
           {
             text,
             username: decode.username,
@@ -58,7 +58,7 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
   const deleteComment = async (commentId) => {
     try {
       const res = await axios.delete(
-        `https://enkoy-technologies-server.vercel.app/api/blog/get/${id}/comments${commentId}`
+        `http://localhost:3000/api/blog/get/${id}/comments${commentId}`
       );
       return res;
     } catch (error) {
