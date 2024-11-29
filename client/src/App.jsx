@@ -52,6 +52,7 @@ import AddBlogPage from "./pages/AddBlogPage.jsx";
 import EbookDetail from "./pages/learningHub/EbookDetail.jsx";
 import Register from "./pages/Register.jsx";
 import BlogAuthor from "./pages/authors/BlogAuthor.jsx";
+import ImageUpload from "./pages/learningHub/ImageUpload.jsx";
 
 const App = () => {
   return (
@@ -193,6 +194,7 @@ const App = () => {
           {/* Login and Registration Page */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/image" element={<ImageUpload />} />
 
           {/* Add a fallback route (optional) */}
           <Route path="*" element={<UnderConstruction />} />
