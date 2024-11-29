@@ -21,7 +21,7 @@ const getBlogs = async (req, res) => {
 const getSingleBlog = async (req, res) => {
   const { id } = req.params;
   try {
-    const blogs = await Blog.findById(id);
+    const blogs = await Blog.findById(id).populate("author", "-password");
     res.status(200).json({ count: blogs.length, blogs });
   } catch (error) {
     res.status(500).json({ error: error.message });

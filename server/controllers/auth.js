@@ -52,4 +52,14 @@ const getUsers = async (req, res) => {
   }
 };
 
-module.exports = { Register, Login, getUsers };
+const getSingleUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const users = await User.findById(id);
+    res.status(201).json({ users });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+module.exports = { Register, Login, getUsers, getSingleUser };
