@@ -142,7 +142,8 @@ const Ebook = ({ ebooks }) => {
         {filteredEbooks.map((ebook, index) => {
           const date = new Date(ebook.createdAt).toString().slice(0, 16);
           const ebookUrl = `https://enkoytechnologies.com/ebooks/${ebook._id}`;
-          const pdfUrl = ebook.pdf; // Assuming `ebook.pdf` contains the URL to the PDF file
+          const pdfUrl = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"; 
+          // const pdfUrl = ebook.pdf; 
 
           return (
             <motion.div
@@ -207,10 +208,10 @@ const Ebook = ({ ebooks }) => {
                   <motion.button
                     whileHover={{ scale: 1.2, rotate: 10 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    className="p-3 text-white rounded-full shadow-md bg-twitter hover:shadow-lg"
+                    className="p-3 bg-black rounded-full shadow-md bg-twitter hover:shadow-lg"
                     onClick={() => shareOnTwitter(ebook.title, ebookUrl)}
                   >
-                    <FaXTwitter size={18} />
+                    <FaXTwitter size={18} color="white"/>
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.2, rotate: -10 }}
@@ -220,15 +221,47 @@ const Ebook = ({ ebooks }) => {
                   >
                     <FaLinkedinIn size={18} />
                   </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.2, rotate: 10 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="p-3 text-white bg-gray-500 rounded-full shadow-md hover:shadow-lg"
-                    onClick={() => handleCopyLink(ebookUrl, index)}
-                  >
-                    <FaCopy size={18} />
-                  </motion.button>
+                  
                 </div>
+                <div className="flex items-center justify-between my-4">
+  <motion.button
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.95 }}
+    transition={{ type: "spring", stiffness: 300 }}
+    className="px-4 py-2 text-white bg-blue-500 rounded-lg shadow hover:bg-blue-600"
+    onClick={() => window.open(pdfUrl, "_blank")} // Opens in a new tab
+  >
+    Read Online
+  </motion.button>
+  <motion.a
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.95 }}
+    transition={{ type: "spring", stiffness: 300 }}
+    className="px-4 py-2 text-white bg-green-500 rounded-lg shadow hover:bg-green-600"
+    href={pdfUrl} // Points to the local/sample PDF file
+    download={`${ebook.title}.pdf`} // Specifies file download
+  >
+    Download
+  </motion.a>
+</div>
+
+
+
+
+                <motion.button
+                  whileHover={{ scale: 1.1, backgroundColor: "#FFC34D" }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className={`flex items-center gap-2 px-4 py-2 text-white rounded-full shadow-md hover:shadow-lg ${
+                    copiedLink === index ? "bg-green-500" : "bg-[#FFCD57]"
+                  }`}
+                  onClick={() => handleCopyLink(ebookUrl, index)}
+                >
+                  <FaCopy size={18} />
+                  <span className="font-medium">
+                    {copiedLink === index ? "Copied!" : "Copy Link"}
+                  </span>
+                </motion.button>
               </div>
             </motion.div>
           );

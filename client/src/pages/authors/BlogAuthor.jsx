@@ -49,16 +49,16 @@ const BlogAuthor = () => {
         transition={{ duration: 0.8 }}
       >
         <h1 className="text-4xl font-bold text-gray-800 dark:text-white">
-          {user.username ? `Posted by ${user.username}` : "Loading Author..."}
+          {user.username ? `${user.username}'s Posts ` : "Loading Author... "} ({blogs?.length})
         </h1>
-        <motion.div
+        {/* <motion.div
           className="mt-3 text-gray-600 dark:text-gray-300"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.5 }}
         >
           <p>{`Blog Count: ${blogs.length}`}</p>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
 
       {/* Blog List */}

@@ -68,7 +68,7 @@ const FairEmployment = () => {
             className="py-3 px-6 bg-gray-900 text-white"
             {...fadeInUp}
           >
-            Get in touch
+            Contact Us
           </motion.a>
         </motion.div>
 
