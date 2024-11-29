@@ -13,7 +13,7 @@ const Blogs = () => {
   const handlePostBlogClick = () => {
     const token = cookie.get("user");
     if (token) {
-      navigate("/add-blog");
+      navigate("/manage-blogs");
     } else {
       setShowPopup(true);
     }
@@ -47,7 +47,7 @@ const Blogs = () => {
             className="px-6 py-2 text-gray-800 bg-[#FFCD57] rounded-lg shadow-md hover:bg-opacity-90 hover:shadow-lg transition-all duration-300"
             onClick={handlePostBlogClick}
           >
-            Post Blog
+            Manage Blog
           </button>
 
           {/* Pop-Up Modal */}

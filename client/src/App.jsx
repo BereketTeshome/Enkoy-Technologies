@@ -172,13 +172,13 @@ const App = () => {
           <Route path="/ebooks/:id" element={<EbookDetail />} />
 
           {/* Add blog page */}
-          <Route path="/my-blog" element={<MyBlog />} />
+          <Route path="/manage-blogs" element={<MyBlog />} />
           <Route path="/add-blog" element={<AddBlogPage />} />
 
           {/* Authors page */}
           <Route path="/blog/user/:id" element={<BlogAuthor />} />
           {/* Add ebook page */}
-          <Route path="/my-ebook" element={<MyEbook />} />
+          <Route path="/manage-ebooks" element={<MyEbook />} />
           <Route path="/add-ebook" element={<AddEbookPage />} />
 
           {/* Our work */}
