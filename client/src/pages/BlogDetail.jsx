@@ -82,7 +82,7 @@ const BlogDetail = () => {
         <p>
           By{" "}
           <span className="font-medium text-gray-800 dark:text-gray-200">
-            {blogs.author}
+            {blogs.author.username}
           </span>{" "}
           | {new Date(blogs.createdAt).toLocaleDateString()}
         </p>

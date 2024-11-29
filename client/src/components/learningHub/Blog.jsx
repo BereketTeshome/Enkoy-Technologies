@@ -63,7 +63,7 @@ const Blogs = ({ blogs }) => {
       // Search query filtering (defensive programming)
       return (
         blog.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        blog.author?.toLowerCase().includes(searchQuery.toLowerCase())
+        blog.author.username?.toLowerCase().includes(searchQuery.toLowerCase())
       );
     })
     .sort((a, b) => {
@@ -171,7 +171,7 @@ const Blogs = ({ blogs }) => {
                 </motion.a>
                 <a
                   href={`/blog/user/${blog.author._id}`}
-                  className="mt-4 text-sm text-gray-600 block"
+                  className="block mt-4 text-sm text-blue-600 underline"
                 >
                   <span className="font-semibold">Author: </span>
                   {blog.author.username}
