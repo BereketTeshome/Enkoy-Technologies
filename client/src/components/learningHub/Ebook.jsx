@@ -5,10 +5,20 @@ import { motion } from "framer-motion";
 import NewsletterSubscription from "../NewsletterSubscription";
 import { Star } from "@mui/icons-material";
 
+const categories = [
+  "All",
+  "Entrepreneurship",
+  "Marketing",
+  "Leadership",
+  "Innovation",
+  "Personal Development",
+];
+
 const Ebook = ({ ebooks }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState("");
   const [copiedLink, setCopiedLink] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const shareOnFacebook = (title, url) => {
     const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
@@ -48,7 +58,12 @@ const Ebook = ({ ebooks }) => {
       const authorMatch = ebook.author
         ?.toLowerCase()
         .includes(searchQuery.toLowerCase());
-      return titleMatch || authorMatch;
+
+      // Filter by category if selected
+      const categoryMatch =
+        selectedCategory === "All" || ebook.category === selectedCategory;
+
+      return (titleMatch || authorMatch) && categoryMatch;
     })
     .sort((a, b) => {
       if (sortOption === "alphabet") {
@@ -103,6 +118,26 @@ const Ebook = ({ ebooks }) => {
         </select>
       </div>
 
+      {/* Category Filter */}
+      <div className="flex flex-wrap justify-center py-4 mb-10 space-x-2 overflow-auto sm:space-x-4">
+        {categories.map((category) => (
+          <motion.button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 200, damping: 10 }} // Smooth hover transition
+            className={`px-4 py-2 mt-2 whitespace-nowrap rounded-full transition-colors duration-300 ease-in-out transform ${
+              selectedCategory === category
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-gray-800 hover:bg-blue-100"
+            }`}
+          >
+            {category}
+          </motion.button>
+        ))}
+      </div>
+
+      {/* Ebooks Grid */}
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {filteredEbooks.map((ebook, index) => {
           const date = new Date(ebook.createdAt).toString().slice(0, 16);
@@ -172,55 +207,28 @@ const Ebook = ({ ebooks }) => {
                   <motion.button
                     whileHover={{ scale: 1.2, rotate: 10 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    className="p-3 text-white bg-[#1F1F1F] rounded-full shadow-md hover:shadow-lg"
+                    className="p-3 text-white rounded-full shadow-md bg-twitter hover:shadow-lg"
                     onClick={() => shareOnTwitter(ebook.title, ebookUrl)}
                   >
                     <FaXTwitter size={18} />
                   </motion.button>
                   <motion.button
-                    whileHover={{ scale: 1.2, rotate: 10 }}
+                    whileHover={{ scale: 1.2, rotate: -10 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    className="p-3 text-white bg-[#0A66C2] rounded-full shadow-md hover:shadow-lg"
-                    onClick={() =>
-                      shareOnLinkedIn(ebook.title, ebookUrl, ebook.imageUrl)
-                    }
+                    className="p-3 text-white bg-blue-600 rounded-full shadow-md hover:shadow-lg"
+                    onClick={() => shareOnLinkedIn(ebook.title, ebookUrl, ebook.image)}
                   >
                     <FaLinkedinIn size={18} />
                   </motion.button>
-                </div>
-
-                <div className="flex justify-between mt-4">
-                  <a
-                    href={pdfUrl}
-                    download
-                    className="px-4 py-2 text-white bg-green-500 rounded-lg cursor-pointer hover:bg-green-600"
+                  <motion.button
+                    whileHover={{ scale: 1.2, rotate: 10 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="p-3 text-white bg-gray-500 rounded-full shadow-md hover:shadow-lg"
+                    onClick={() => handleCopyLink(ebookUrl, index)}
                   >
-                    Download PDF
-                  </a>
-                  <a
-                    href={pdfUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 text-white bg-blue-500 rounded-lg cursor-pointer hover:bg-blue-600"
-                  >
-                    Read Online
-                  </a>
+                    <FaCopy size={18} />
+                  </motion.button>
                 </div>
-
-                <motion.button
-                  whileHover={{ scale: 1.1, backgroundColor: "#FFC34D" }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className={`flex items-center mt-4 gap-2 px-4 py-2 text-white rounded-full shadow-md hover:shadow-lg ${
-                    copiedLink === index ? "bg-green-500" : "bg-[#FFCD57]"
-                  }`}
-                  onClick={() => handleCopyLink(ebookUrl, index)}
-                >
-                  <FaCopy size={18} />
-                  <span className="font-medium">
-                    {copiedLink === index ? "Copied!" : "Copy Link"}
-                  </span>
-                </motion.button>
               </div>
             </motion.div>
           );
