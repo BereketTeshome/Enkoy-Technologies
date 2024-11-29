@@ -156,7 +156,7 @@ const Ebook = ({ ebooks }) => {
                 </motion.a>
                 <div className="mt-4 text-sm text-gray-600">
                   <span className="font-semibold">Author: </span>
-                  {ebook.author}
+                  {ebook.author.username}
                 </div>
 
                 <div className="flex items-center my-6 space-x-4">

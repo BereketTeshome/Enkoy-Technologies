@@ -52,7 +52,8 @@ import AddBlogPage from "./pages/AddBlogPage.jsx";
 import EbookDetail from "./pages/learningHub/EbookDetail.jsx";
 import Register from "./pages/Register.jsx";
 import BlogAuthor from "./pages/authors/BlogAuthor.jsx";
-import ImageUpload from "./pages/learningHub/ImageUpload.jsx";
+import AddEbookPage from "./pages/AddEbookPage.jsx";
+import MyEbook from "./pages/MyEbook.jsx";
 
 const App = () => {
   return (
@@ -171,11 +172,14 @@ const App = () => {
           <Route path="/ebooks/:id" element={<EbookDetail />} />
 
           {/* Add blog page */}
-          <Route path="/my-blog" element={<MyBlog />} />
+          <Route path="/manage-blogs" element={<MyBlog />} />
           <Route path="/add-blog" element={<AddBlogPage />} />
 
           {/* Authors page */}
           <Route path="/blog/user/:id" element={<BlogAuthor />} />
+          {/* Add ebook page */}
+          <Route path="/manage-ebooks" element={<MyEbook />} />
+          <Route path="/add-ebook" element={<AddEbookPage />} />
 
           {/* Our work */}
           <Route path="/portfolio" element={<Portfolio />} />
@@ -194,7 +198,6 @@ const App = () => {
           {/* Login and Registration Page */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/image" element={<ImageUpload />} />
 
           {/* Add a fallback route (optional) */}
           <Route path="*" element={<UnderConstruction />} />
