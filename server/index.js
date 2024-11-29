@@ -10,6 +10,7 @@ const cors = require("cors");
 //
 const fileUpload = require("express-fileupload");
 const path = require("path");
+const { v4: uuidv4 } = require("uuid");
 
 //middleware
 app.use(express.json());
@@ -43,8 +44,12 @@ app.post("/upload", (req, res) => {
     return res.status(400).send("Only image files are allowed.");
   }
 
-  // Save the image to the upload directory
-  const uploadPath = path.join(UPLOAD_DIR, file.name);
+  // Generate a unique name for the image while preserving its extension
+  const fileExtension = path.extname(file.name); // Extract file extension
+  const uniqueFileName = `${uuidv4()}${fileExtension}`; // Combine UUID with extension
+
+  // Save the image to the upload directory with the unique name
+  const uploadPath = path.join(UPLOAD_DIR, uniqueFileName);
 
   file.mv(uploadPath, (err) => {
     if (err) {
@@ -53,7 +58,9 @@ app.post("/upload", (req, res) => {
     }
 
     // Construct the public URL for the uploaded image
-    const fileUrl = `${req.protocol}://${req.get("host")}/uploads/${file.name}`;
+    const fileUrl = `${req.protocol}://${req.get(
+      "host"
+    )}/uploads/${uniqueFileName}`;
 
     res.send({
       message: "Image uploaded successfully!",

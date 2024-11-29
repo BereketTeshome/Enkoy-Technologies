@@ -5,7 +5,8 @@ import "react-quill/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Cookies from "universal-cookie";
-import {jwtDecode} from "jwt-decode"; 
+import { jwtDecode } from "jwt-decode";
+import ImageUpload from "./learningHub/ImageUpload";
 
 const AddBlogPage = () => {
   const [description, setDescription] = useState("");
@@ -21,7 +22,6 @@ const AddBlogPage = () => {
   let author;
   if (token) {
     author = jwtDecode(token).userId;
-
   }
 
   const categories = [
@@ -91,7 +91,7 @@ const AddBlogPage = () => {
         </motion.h1>
 
         <form onSubmit={(e) => !loading && addBlog(e)}>
-          {[{ label: "Title", value: title, onChange: setTitle }, { label: "Image URL", value: image, onChange: setImage }].map(
+          {[{ label: "Title", value: title, onChange: setTitle }].map(
             (field, idx) => (
               <motion.div
                 key={idx}
@@ -99,7 +99,9 @@ const AddBlogPage = () => {
                 animate={{ x: 0, opacity: 1, transition: { delay: idx * 0.1 } }}
                 className="mb-4"
               >
-                <label className="block text-sm font-medium text-gray-700">{field.label}</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  {field.label}
+                </label>
                 <motion.input
                   type="text"
                   className="w-full p-2 mt-1 border border-gray-300 rounded focus:border-[#ffa216]"
@@ -109,9 +111,18 @@ const AddBlogPage = () => {
               </motion.div>
             )
           )}
-
-          <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1, transition: { delay: 0.3 } }} className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Category</label>
+          <div>
+            <ImageUpload setImage={setImage} />
+          </div>
+          <br />
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1, transition: { delay: 0.3 } }}
+            className="mb-4"
+          >
+            <label className="block text-sm font-medium text-gray-700">
+              Category
+            </label>
             <motion.select
               className="w-full p-2 mt-1 border border-gray-300 rounded focus:border-[#ffa216]"
               value={category}
@@ -126,9 +137,20 @@ const AddBlogPage = () => {
             </motion.select>
           </motion.div>
 
-          <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1, transition: { delay: 0.4 } }} className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Description</label>
-            <ReactQuill value={description} onChange={handleDescriptionChange} modules={modules} theme="snow" />
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
+            className="mb-4"
+          >
+            <label className="block text-sm font-medium text-gray-700">
+              Description
+            </label>
+            <ReactQuill
+              value={description}
+              onChange={handleDescriptionChange}
+              modules={modules}
+              theme="snow"
+            />
           </motion.div>
 
           <motion.button
@@ -137,7 +159,11 @@ const AddBlogPage = () => {
             whileHover={{ scale: 1.05 }}
           >
             {loading ? (
-              <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity }} className="loader"></motion.div>
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity }}
+                className="loader"
+              ></motion.div>
             ) : (
               "Post Blog"
             )}
