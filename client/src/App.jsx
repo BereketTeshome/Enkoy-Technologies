@@ -51,6 +51,8 @@ import MyBlog from "./pages/MyBlog.jsx";
 import AddBlogPage from "./pages/AddBlogPage.jsx";
 import EbookDetail from "./pages/learningHub/EbookDetail.jsx";
 import Register from "./pages/Register.jsx";
+import AddEbookPage from "./pages/AddEbookPage.jsx";
+import MyEbook from "./pages/MyEbook.jsx";
 
 const App = () => {
   return (
@@ -171,6 +173,10 @@ const App = () => {
           {/* Add blog page */}
           <Route path="/my-blog" element={<MyBlog />} />
           <Route path="/add-blog" element={<AddBlogPage />} />
+
+          {/* Add ebook page */}
+          <Route path="/my-ebook" element={<MyEbook />} />
+          <Route path="/add-ebook" element={<AddEbookPage />} />
 
           {/* Our work */}
           <Route path="/portfolio" element={<Portfolio />} />

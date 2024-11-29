@@ -1,29 +1,28 @@
 import { useEffect, useState } from "react";
-// import { blogs } from "../assets/blogs";
+// import { ebooks } from "../assets/ebooks";
 import axios from "axios";
 // import { useLocation } from "react-router-dom";
 
-const MyBlog = () => {
-  const [blogs, setBlogs] = useState([]);
+const MyEbook = () => {
+  const [ebooks, setEbooks] = useState([]);
   const [btnLoading, setBtnLoading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [deleted, setDeleted] = useState(false);
 
-  // `http://localhost:3000/api/blog/get/${id}`
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const res = await axios.get("http://localhost:3000/api/blog/get");
-      setBlogs(res.data.blogs);
+      const res = await axios.get("http://localhost:3000/api/ebook/get");
+      setEbooks(res.data.ebooks);
       setLoading(false);
     };
     fetchData();
   }, [deleted]);
 
-  const deleteBlog = async (id) => {
+  const deleteEbook = async (id) => {
     setBtnLoading(true);
-    const res = await axios.delete(`http://localhost:3000/api/blog/get/${id}`);
+    const res = await axios.delete(`http://localhost:3000/api/ebook/get/${id}`);
     setDeleted(!deleted);
     setBtnLoading(false);
     return res;
@@ -37,14 +36,14 @@ const MyBlog = () => {
         </h1>
         <div className="bg-white shadow-md">
           <p className="capitalize bg-[#070b22] py-1 px-3 text-gray-100 text-sm">
-            manage blog posts
+            manage ebook posts
           </p>
           <div className="px-3 py-3 ">
             <a
-              href="/add-blog"
+              href="/add-ebook"
               className="bg-[#ffa216] px-3 py-1 uppercase text-sm text-gray-50"
             >
-              create new blog post
+              create new ebook post
             </a>
             <div className="overflow-x-scroll">
               <table className="*:bg-[#f8f9fa] w-full mt-4 *:text-sm text-gray-600 min-w-[650px]">
@@ -62,7 +61,7 @@ const MyBlog = () => {
                   {loading ? (
                     <div className="w-full text-center">Loading...</div>
                   ) : (
-                    blogs.map((item, index) => {
+                    ebooks.map((item, index) => {
                       let date = new Date(item.createdAt)
                         .toString()
                         .slice(0, 16);
@@ -80,7 +79,7 @@ const MyBlog = () => {
                           <td>{item.views}</td>
                           <td>
                             <a
-                              href={`/dashboard/edit-blog/${item._id}`}
+                              href={`/dashboard/edit-ebook/${item._id}`}
                               className="bg-[#ffa216] px-6 py-1 uppercase text-sm text-gray-50 rounded mr-2"
                             >
                               edit
@@ -88,7 +87,7 @@ const MyBlog = () => {
                             <button
                               className="px-6 py-1 text-sm uppercase bg-red-600 rounded text-gray-50"
                               onClick={() =>
-                                !btnLoading && deleteBlog(item._id)
+                                !btnLoading && deleteEbook(item._id)
                               }
                             >
                               {btnLoading ? "deleting..." : "delete"}
@@ -108,4 +107,4 @@ const MyBlog = () => {
   );
 };
 
-export default MyBlog;
+export default MyEbook;
