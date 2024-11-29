@@ -18,14 +18,11 @@ const Register = () => {
     e.preventDefault();
     try {
       setBtnLoading(true);
-      const res = await axios.post(
-        "https://enkoy-technologies-server.vercel.app/api/user/register",
-        {
-          username: name,
-          email,
-          password,
-        }
-      );
+      const res = await axios.post("http://localhost:3000/api/user/register", {
+        username: name,
+        email,
+        password,
+      });
       cookie.set("user", res.data.token);
       setBtnLoading(false);
       navigate("/");

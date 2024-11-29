@@ -9,14 +9,12 @@ const MyBlog = () => {
   const [loading, setLoading] = useState(false);
   const [deleted, setdeleted] = useState(false);
 
-  // `https://enkoy-technologies-server.vercel.app/api/blog/get/${id}`
+  // `http://localhost:3000/api/blog/get/${id}`
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const res = await axios.get(
-        "https://enkoy-technologies-server.vercel.app/api/blog/get"
-      );
+      const res = await axios.get("http://localhost:3000/api/blog/get");
       setBlogs(res.data.blogs);
       setLoading(false);
     };
@@ -25,9 +23,7 @@ const MyBlog = () => {
 
   const deleteBlog = async (id) => {
     setBtnLoading(true);
-    const res = await axios.delete(
-      `https://enkoy-technologies-server.vercel.app/api/blog/get/${id}`
-    );
+    const res = await axios.delete(`http://localhost:3000/api/blog/get/${id}`);
     setdeleted(!deleted);
     setBtnLoading(false);
     return res;

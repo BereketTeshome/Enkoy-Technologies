@@ -58,10 +58,7 @@ const AddBlogPage = () => {
         author: "Your Name", // Replace with dynamic author data if available
         comments: [], // Initialize as an empty array
       };
-      await axios.post(
-        `https://enkoy-technologies-server.vercel.app/api/blog/create`,
-        blogData
-      );
+      await axios.post(`http://localhost:3000/api/blog/create`, blogData);
       setLoading(false);
       navigate("/blogs");
       window.location.reload();

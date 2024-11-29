@@ -55,19 +55,28 @@ const Ebook = ({ ebooks }) => {
   };
 
   const filteredEbooks = ebooks
-    .filter(
-      (ebook) =>
-        ebook.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        ebook.author.name.toLowerCase().includes(searchQuery.toLowerCase())
-    )
+    ?.filter((ebook) => {
+      // Ensure the title and author exist before filtering
+      const titleMatch = ebook.title
+        ?.toLowerCase()
+        .includes(searchQuery.toLowerCase());
+      const authorMatch = ebook.author
+        ?.toLowerCase()
+        .includes(searchQuery.toLowerCase());
+      return titleMatch || authorMatch;
+    })
     .sort((a, b) => {
       if (sortOption === "alphabet") {
-        return a.title.localeCompare(b.title);
+        // Sort alphabetically by title (case-insensitive)
+        return a.title?.localeCompare(b.title) || 0;
       }
       if (sortOption === "date") {
-        return new Date(b.createdAt) - new Date(a.createdAt);
+        // Sort by creation date (most recent first)
+        const dateA = new Date(a.createdAt);
+        const dateB = new Date(b.createdAt);
+        return dateB - dateA;
       }
-      return 0;
+      return 0; // No sorting if sortOption is empty or invalid
     });
 
   const filterRating = (id) => {
@@ -176,10 +185,10 @@ const Ebook = ({ ebooks }) => {
                 >
                   See In Detail
                 </motion.a>
-                {/* <div className="mt-4 text-sm text-gray-600">
+                <div className="mt-4 text-sm text-gray-600">
                   <span className="font-semibold">Author: </span>
                   {ebook.author}
-                </div> */}
+                </div>
                 <div className="flex items-center my-6 space-x-4">
                   <b className="text-gray-600">Share ebook on: </b>
                   <motion.button

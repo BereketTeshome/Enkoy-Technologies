@@ -35,14 +35,14 @@ const Blogs = ({ blogs }) => {
   };
 
   // Function to share on LinkedIn
-const shareOnLinkedIn = (title, url, imageUrl) => {
-  const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-    url
-  )}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(
-    title
-  )}&source=${encodeURIComponent(imageUrl || url)}`;
-  window.open(linkedInShareUrl, "_blank", "noopener,noreferrer");
-};
+  const shareOnLinkedIn = (title, url, imageUrl) => {
+    const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+      url
+    )}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(
+      title
+    )}&source=${encodeURIComponent(imageUrl || url)}`;
+    window.open(linkedInShareUrl, "_blank", "noopener,noreferrer");
+  };
 
   const handleCopyLink = (url, index) => {
     navigator.clipboard.writeText(url);
@@ -56,20 +56,25 @@ const shareOnLinkedIn = (title, url, imageUrl) => {
       if (selectedCategory === "All" || selectedCategory === "") {
         return true;
       }
-      // Otherwise, filter by category (adjust this logic if categories need dynamic mapping)
-      return blog.category === selectedCategory;
+      // Check if blog.category exists and matches selectedCategory
+      return blog.category?.toLowerCase() === selectedCategory.toLowerCase();
     })
-    .filter(
-      (blog) =>
-        blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        blog.author.name.toLowerCase().includes(searchQuery.toLowerCase())
-    )
+    .filter((blog) => {
+      // Search query filtering (defensive programming)
+      return (
+        blog.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        blog.author?.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    })
     .sort((a, b) => {
+      // Sorting logic
       if (sortOption === "alphabet") {
         return a.title.localeCompare(b.title);
       }
       if (sortOption === "date") {
-        return new Date(b.createdAt) - new Date(a.createdAt);
+        const dateA = new Date(a.createdAt);
+        const dateB = new Date(b.createdAt);
+        return dateB - dateA; // Most recent first
       }
       return 0;
     });
@@ -146,8 +151,12 @@ const shareOnLinkedIn = (title, url, imageUrl) => {
                   {blog.title}
                 </h3>
                 <p className="text-sm text-gray-500">{date}</p>
-                <div className="mt-3 mb-4 text-gray-700" dangerouslySetInnerHTML={{ __html: blog.description.slice(0, 100) }}>
-                  
+                <div
+                  className="mt-3 mb-4 text-gray-700"
+                  dangerouslySetInnerHTML={{
+                    __html: blog.description.slice(0, 100),
+                  }}
+                >
                   {/* {blog.description.slice(0, 100)}... */}
                 </div>
                 <motion.a
@@ -183,13 +192,15 @@ const shareOnLinkedIn = (title, url, imageUrl) => {
                     <FaXTwitter size={18} />
                   </motion.button>
                   <motion.button
-  whileHover={{ scale: 1.2, rotate: 10 }}
-  transition={{ type: "spring", stiffness: 300 }}
-  className="p-3 text-white bg-[#0A66C2] rounded-full shadow-md hover:shadow-lg"
-  onClick={() => shareOnLinkedIn(blog.title, blogUrl, blog.imageUrl)}
->
-  <FaLinkedinIn size={18} />
-</motion.button>
+                    whileHover={{ scale: 1.2, rotate: 10 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="p-3 text-white bg-[#0A66C2] rounded-full shadow-md hover:shadow-lg"
+                    onClick={() =>
+                      shareOnLinkedIn(blog.title, blogUrl, blog.imageUrl)
+                    }
+                  >
+                    <FaLinkedinIn size={18} />
+                  </motion.button>
                 </div>
                 <motion.button
                   whileHover={{ scale: 1.1, backgroundColor: "#FFC34D" }}
