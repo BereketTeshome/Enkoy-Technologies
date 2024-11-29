@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const ImageUpload = () => {
+const ImageUpload = ({ setImage }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileUrl, setFileUrl] = useState("");
   const [uploadStatus, setUploadStatus] = useState("");
@@ -38,7 +38,7 @@ const ImageUpload = () => {
           },
         }
       );
-
+      setImage(response.data.fileUrl);
       setFileUrl(response.data.fileUrl); // Extract and save the file URL
       setUploadStatus("Image uploaded successfully!");
     } catch (error) {
@@ -48,21 +48,57 @@ const ImageUpload = () => {
   };
 
   return (
-    <div>
-      <input
-        type="file"
-        accept="image/*" // Accept only image files
-        onChange={handleFileChange}
-      />
-      <button onClick={handleUpload}>Upload</button>
-      <p>{uploadStatus}</p>
+    <div className="p-6 space-y-4 border rounded-md shadow-md bg-gray-50">
+      {/* Styled file input */}
+      <div className="flex items-center gap-4">
+        <label
+          htmlFor="file-input"
+          className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+        >
+          Choose File
+        </label>
+        <input
+          id="file-input"
+          type="file"
+          accept="image/*"
+          onChange={handleFileChange}
+          className="hidden" // Hide default input
+        />
+        <span className="text-gray-600 text-sm truncate w-48">
+          {selectedFile ? selectedFile.name : "No file chosen"}
+        </span>
+      </div>
+
+      {/* Upload button */}
+      <button
+        onClick={handleUpload}
+        type="button"
+        className="px-5 py-2 text-white bg-[#ffa216] rounded hover:bg-[#ff8c00] transition"
+      >
+        Upload
+      </button>
+
+      {/* Upload status message */}
+      <p
+        className={`my-2 text-sm ${
+          uploadStatus.includes("successfully")
+            ? "text-green-600"
+            : "text-red-600"
+        }`}
+      >
+        {uploadStatus}
+      </p>
+
+      {/* Display uploaded image preview */}
       {fileUrl && (
-        <p>
-          Image URL:{" "}
-          <a href={fileUrl} target="_blank" rel="noopener noreferrer">
-            {fileUrl}
-          </a>
-        </p>
+        <div className="mt-4">
+          <p className="text-gray-600 text-sm">Uploaded Image:</p>
+          <img
+            src={fileUrl}
+            alt="Uploaded preview"
+            className="mt-2 w-48 h-48 object-cover border rounded-md shadow-sm"
+          />
+        </div>
       )}
     </div>
   );
