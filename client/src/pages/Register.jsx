@@ -18,7 +18,7 @@ const Register = () => {
     e.preventDefault();
     try {
       setBtnLoading(true);
-      const res = await axios.post("https://enkoy-technologies-server.vercel.app/api/user/register", {
+      const res = await axios.post("http://localhost:3000/api/user/register", {
         username: name,
         email,
         password,

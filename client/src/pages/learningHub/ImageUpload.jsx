@@ -51,33 +51,35 @@ const ImageUpload = ({ setImage }) => {
   return (
     <div className="p-6 space-y-4 border rounded-md shadow-md bg-gray-50">
       {/* Styled file input */}
-      <div className="flex items-center gap-4">
-        <label
-          htmlFor="image-file-input" // Unique ID for the file input
-          className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
-        >
-          Choose File
-        </label>
-        <input
-          id="image-file-input" // Unique ID
-          type="file"
-          accept="image/*"
-          onChange={handleFileChange}
-          className="hidden" // Hide default input
-        />
-        <span className="text-gray-600 text-sm truncate w-48">
-          {selectedFile ? selectedFile.name : "No file chosen"}
-        </span>
-      </div>
+      <div className="flex items-center gap-4 justify-between">
+        <div className="flex items-center gap-4">
+          <label
+            htmlFor="image-file-input" // Unique ID for the file input
+            className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+          >
+            Choose File
+          </label>
+          <input
+            id="image-file-input" // Unique ID
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="hidden" // Hide default input
+          />
+          <span className="text-gray-600 text-sm truncate w-48">
+            {selectedFile ? selectedFile.name : "No file chosen"}
+          </span>
+        </div>
 
-      {/* Upload button */}
-      <button
-        onClick={handleUpload}
-        type="button"
-        className="px-5 py-2 text-white bg-[#ffa216] rounded hover:bg-[#ff8c00] transition"
-      >
-        Upload
-      </button>
+        {/* Upload button */}
+        <button
+          onClick={handleUpload}
+          type="button"
+          className="px-5 py-2 text-white bg-[#ffa216] rounded hover:bg-[#ff8c00] transition"
+        >
+          Upload
+        </button>
+      </div>
 
       {/* Upload status message */}
       <p

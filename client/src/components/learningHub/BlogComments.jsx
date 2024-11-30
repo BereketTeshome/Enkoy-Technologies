@@ -4,6 +4,7 @@ import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { Delete } from "@mui/icons-material";
 
 const BlogComments = ({ blogs, setFetchAgain }) => {
   const [commentLoading, setCommentLoading] = useState(false);
@@ -39,7 +40,7 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
       } else {
         setCommentLoading(true);
         const res = await axios.post(
-          `https://enkoy-technologies-server.vercel.app/api/blog/${id}/comments`,
+          `http://localhost:3000/api/blog/${id}/comments`,
           {
             text,
             username: decode.username,
@@ -58,8 +59,9 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
   const deleteComment = async (commentId) => {
     try {
       const res = await axios.delete(
-        `https://enkoy-technologies-server.vercel.app/api/blog/get/${id}/comments${commentId}`
+        `http://localhost:3000/api/blog/${id}/comments/${commentId}`
       );
+      setFetchAgain((pre) => !pre);
       return res;
     } catch (error) {
       console.log(error);
@@ -91,24 +93,37 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
               .slice(0, 2);
 
             return (
-              <motion.div
+              <div
                 key={index}
-                variants={itemVariants}
-                className="flex items-start space-x-4 p-5 bg-gray-800 shadow-lg rounded-lg"
+                className="flex items-center justify-between p-5 bg-gray-800 shadow-lg rounded-lg"
               >
-                {/* Avatar */}
-                <div className="w-12 h-12 bg-cyan-500 flex items-center justify-center rounded-full text-lg font-bold text-black uppercase">
-                  {initials}
-                </div>
-                {/* Comment Details */}
-                <div className="flex-1">
-                  <p className="text-lg font-semibold text-cyan-300">
-                    {item.username}
-                  </p>
-                  <p className="text-sm text-gray-300 py-1">{item.text}</p>
-                  <p className="text-xs text-gray-500">{date}</p>
-                </div>
-              </motion.div>
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="flex items-start space-x-4 "
+                >
+                  {/* Avatar */}
+                  <div className="w-12 h-12 bg-cyan-500 flex items-center justify-center rounded-full text-lg font-bold text-black uppercase">
+                    {initials}
+                  </div>
+                  {/* Comment Details */}
+                  <div className="flex-1">
+                    <p className="text-lg font-semibold text-cyan-300">
+                      {item.username}
+                    </p>
+                    <p className="text-sm text-gray-300 py-1">{item.text}</p>
+                    <p className="text-xs text-gray-500">{date}</p>
+                  </div>
+                </motion.div>
+                {decode.userId === item.userId && (
+                  <div
+                    className="text-red-500 cursor-pointer"
+                    onClick={() => deleteComment(item._id)}
+                  >
+                    <Delete fontSize="small" />
+                  </div>
+                )}
+              </div>
             );
           })
         ) : (

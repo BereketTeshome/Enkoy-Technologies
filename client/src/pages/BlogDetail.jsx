@@ -14,7 +14,7 @@ const BlogDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
-        `https://enkoy-technologies-server.vercel.app/api/blog/get/${id}`
+        `http://localhost:3000/api/blog/get/${id}`
       );
 
       setBlogs(data.blogs);

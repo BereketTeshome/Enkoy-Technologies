@@ -42,7 +42,7 @@ const EbookComments = ({ ebooks, setFetchAgain }) => {
     } else {
       setCommentLoading(true);
       const res = await axios.post(
-        `https://enkoy-technologies-server.vercel.app/api/ebook/${id}/comments`,
+        `http://localhost:3000/api/ebook/${id}/comments`,
         {
           text,
           username: decode.username,
@@ -59,8 +59,9 @@ const EbookComments = ({ ebooks, setFetchAgain }) => {
   const deleteComment = async (commentId) => {
     try {
       const res = await axios.delete(
-        `https://enkoy-technologies-server.vercel.app/api/ebook/get/${id}/comments${commentId}`
+        `http://localhost:3000/api/ebook/${id}/comments/${commentId}`
       );
+      setFetchAgain((pre) => !pre);
       return res;
     } catch (error) {
       console.log(error);
@@ -110,7 +111,7 @@ const EbookComments = ({ ebooks, setFetchAgain }) => {
                     <p className="text-xs text-gray-500">{date}</p>
                   </div>
                 </div>
-                <div>
+                <div className="flex gap-2 items-center">
                   <Stack spacing={1}>
                     <Rating
                       name="read-only"
@@ -124,6 +125,14 @@ const EbookComments = ({ ebooks, setFetchAgain }) => {
                       }}
                     />
                   </Stack>
+                  {decode.userId === item.userId && (
+                    <div
+                      className="text-red-500 cursor-pointer"
+                      onClick={() => deleteComment(item._id)}
+                    >
+                      <Delete fontSize="small" />
+                    </div>
+                  )}
                 </div>
               </motion.div>
             );

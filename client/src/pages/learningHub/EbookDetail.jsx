@@ -20,7 +20,7 @@ const EbookDetail = () => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          `https://enkoy-technologies-server.vercel.app/api/ebook/get/${id}`
+          `http://localhost:3000/api/ebook/get/${id}`
         );
         setEbooks(data.ebooks);
         setFilteredComment(data.ebooks.comments);
@@ -111,7 +111,7 @@ const EbookDetail = () => {
         <p className="flex items-center gap-1">
           Posted by:{" "}
           <span className="font-medium text-gray-800 dark:text-gray-200 mr-1">
-            {ebooks.author}
+            {ebooks.author?.username}
           </span>{" "}
           | {new Date(ebooks.createdAt).toLocaleDateString()} |{" "}
           <span className=" grid grid-cols-2 w-fit ml-1">
@@ -121,7 +121,7 @@ const EbookDetail = () => {
                 color: "gold", // Optional, if you want rounded borders
               }}
             />{" "}
-            {average}
+            {average === 0 ? "new" : average}
           </span>
         </p>
       </motion.div>

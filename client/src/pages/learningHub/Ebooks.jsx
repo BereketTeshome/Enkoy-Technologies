@@ -4,7 +4,6 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 
-
 const Ebooks = () => {
   const [ebooks, setEbooks] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
@@ -13,7 +12,7 @@ const Ebooks = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get("https://enkoy-technologies-server.vercel.app/api/ebook/get");
+      const { data } = await axios.get("http://localhost:3000/api/ebook/get");
 
       setEbooks(data.ebooks);
     };
@@ -38,21 +37,20 @@ const Ebooks = () => {
       <br />
       <br />
       <div>
-      <div className="flex items-center justify-between mb-6">
-
-      <h2 className="mb-4 text-3xl text-center text-gray-900 md:text-5xl md:text-left">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="mb-4 text-3xl text-center text-gray-900 md:text-5xl md:text-left">
             Latest Ebooks
           </h2>
 
           <button
             className="px-6 py-2 text-gray-800 bg-[#FFCD57] rounded-lg shadow-md hover:bg-opacity-90 hover:shadow-lg transition-all duration-300"
             onClick={handlePostEbookClick}
-            >
+          >
             Manage Ebooks
           </button>
 
-           {/* Pop-Up Modal */}
-           {showPopup && (
+          {/* Pop-Up Modal */}
+          {showPopup && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
               <div className="w-11/12 max-w-md p-6 text-center bg-white rounded-lg shadow-lg">
                 <h3 className="mb-4 text-2xl font-semibold text-gray-800">
@@ -78,8 +76,8 @@ const Ebooks = () => {
               </div>
             </div>
           )}
-            </div>
-            
+        </div>
+
         <div className="flex flex-col items-center gap-8 md:flex-row">
           {/* Image Section */}
           <div className="flex-1">

@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion"; // Import Framer Motion
 import Blog from "../../components/learningHub/Blog";
+import Ebook from "../../components/learningHub/Ebook";
 
-const BlogAuthor = () => {
+const EbookAuthor = () => {
   const { id } = useParams();
   const [user, setUser] = useState({});
-  const [blogs, setBlogs] = useState([]);
+  const [ebooks, setEbooks] = useState([]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -24,19 +25,19 @@ const BlogAuthor = () => {
   }, [id]);
 
   useEffect(() => {
-    const fetchBlogs = async () => {
+    const fetchEbooks = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3000/api/blog/get");
-        const filteredBlog = data.blogs.filter(
+        const { data } = await axios.get("http://localhost:3000/api/ebook/get");
+        const filteredEbook = data.ebooks.filter(
           (item) => item.author?._id === user?._id
         );
-        setBlogs(filteredBlog);
+        setEbooks(filteredEbook);
       } catch (error) {
-        console.error("Error fetching blogs:", error);
-        setBlogs([]);
+        console.error("Error fetching ebooks:", error);
+        setEbooks([]);
       }
     };
-    if (user._id) fetchBlogs();
+    if (user._id) fetchEbooks();
   }, [user?._id]);
 
   return (
@@ -50,7 +51,7 @@ const BlogAuthor = () => {
       >
         <h1 className="text-4xl font-bold text-gray-800 dark:text-white">
           {user.username ? `${user.username}'s Posts ` : "Loading Author... "} (
-          {blogs?.length})
+          {ebooks?.length})
         </h1>
         {/* <motion.div
           className="mt-3 text-gray-600 dark:text-gray-300"
@@ -58,20 +59,20 @@ const BlogAuthor = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.5 }}
         >
-          <p>{`Blog Count: ${blogs.length}`}</p>
+          <p>{`Ebook Count: ${ebooks.length}`}</p>
         </motion.div> */}
       </motion.div>
 
-      {/* Blog List */}
+      {/* Ebook List */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.7 }}
       >
-        <Blog blogs={blogs} />
+        <Ebook ebooks={ebooks} />
       </motion.div>
     </div>
   );
 };
 
-export default BlogAuthor;
+export default EbookAuthor;
