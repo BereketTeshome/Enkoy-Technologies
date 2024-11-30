@@ -18,7 +18,7 @@ const MyEbook = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:3000/api/ebook/get");
+        const res = await axios.get("https://enkoy-technologies-server.vercel.app/api/ebook/get");
         const filteredEbooks = res.data.ebooks.filter(
           (ebook) => ebook.author?._id === userId
         );
@@ -36,7 +36,7 @@ const MyEbook = () => {
   const deleteEbook = async (id) => {
     setBtnLoading(true);
     try {
-      await axios.delete(`http://localhost:3000/api/ebook/delete/${id}`);
+      await axios.delete(`https://enkoy-technologies-server.vercel.app/api/ebook/delete/${id}`);
       setDeleted(!deleted);
     } catch (error) {
       console.error("Error deleting ebook:", error);

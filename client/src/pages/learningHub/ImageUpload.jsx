@@ -30,7 +30,7 @@ const ImageUpload = ({ setImage }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/upload",
+        "https://enkoy-technologies-server.vercel.app/upload",
         formData,
         {
           headers: {
