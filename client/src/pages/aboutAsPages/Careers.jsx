@@ -64,7 +64,7 @@ const Careers = () => {
             className="py-3 px-6 bg-gray-900 text-white mt-8 inline-block"
             {...fadeInUp}
           >
-            Get in touch
+            Contact Us
           </motion.a>
         </motion.div>
       </motion.div>

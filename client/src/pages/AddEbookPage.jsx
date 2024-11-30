@@ -35,7 +35,6 @@ const AddEbookPage = () => {
   const toolbarOptions = [
     ["bold", "italic", "underline", "strike"],
     ["blockquote", "code-block"],
-    ["link", "image", "video", "formula"],
     [{ header: 1 }, { header: 2 }],
     [{ list: "ordered" }, { list: "bullet" }],
     [{ color: [] }, { background: [] }],
@@ -58,7 +57,7 @@ const AddEbookPage = () => {
         comments: [],
         createdAt: new Date().toISOString(),
       };
-      await axios.post("http://localhost:3000/api/ebook/create", ebookData);
+      await axios.post("https://enkoy-technologies-server.vercel.app/api/ebook/create", ebookData);
       navigate("/ebook");
       window.location.reload();
     } catch (error) {
@@ -74,7 +73,7 @@ const AddEbookPage = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen py-20 bg-gradient-to-r from-white via-[#f8f8f8] to-[#f1f1f1] flex justify-center items-center"
+      className="min-h-screen py-20 bg-[#19192e] flex justify-center items-center"
     >
       <motion.div
         initial={{ y: 50, opacity: 0 }}

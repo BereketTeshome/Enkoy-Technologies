@@ -37,7 +37,6 @@ const AddBlogPage = () => {
   const toolbarOptions = [
     ["bold", "italic", "underline", "strike"],
     ["blockquote", "code-block"],
-    ["link", "image", "video", "formula"],
     [{ header: 1 }, { header: 2 }],
     [{ list: "ordered" }, { list: "bullet" }],
     [{ color: [] }, { background: [] }],
@@ -60,7 +59,7 @@ const AddBlogPage = () => {
         comments: [],
         createdAt: new Date().toISOString(),
       };
-      await axios.post("http://localhost:3000/api/blog/create", blogData);
+      await axios.post("https://enkoy-technologies-server.vercel.app/api/blog/create", blogData);
       navigate("/blog");
       window.location.reload();
     } catch (error) {
@@ -76,12 +75,12 @@ const AddBlogPage = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen py-20 bg-gradient-to-r from-white via-[#f8f8f8] to-[#f1f1f1] flex justify-center items-center"
+      className="min-h-screen py-20 bg-[#161628] flex justify-center items-center"
     >
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1, transition: { duration: 0.8 } }}
-        className="p-10 bg-white shadow-lg rounded-lg w-[90%] md:w-1/2"
+        className="p-10 bg-white shadow-lg shadow-yellow rounded-lg w-[90%] md:w-1/2"
         whileHover={{ scale: 1.02, boxShadow: "0px 10px 30px rgba(0,0,0,0.1)" }}
       >
         <motion.h1

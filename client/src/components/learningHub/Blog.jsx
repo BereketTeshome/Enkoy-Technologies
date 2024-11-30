@@ -127,7 +127,7 @@ const Blogs = ({ blogs }) => {
 
 
       {/* Blog Grid */}
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 ">
         {filteredBlogs.map((blog, index) => {
           const date = new Date(blog.createdAt).toString().slice(0, 16);
           const blogUrl = `https://enkoytechnologies.com/blog/${blog._id}`;

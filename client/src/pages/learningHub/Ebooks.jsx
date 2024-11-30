@@ -13,7 +13,7 @@ const Ebooks = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get("http://localhost:3000/api/ebook/get");
+      const { data } = await axios.get("https://enkoy-technologies-server.vercel.app/api/ebook/get");
 
       setEbooks(data.ebooks);
     };
@@ -27,7 +27,7 @@ const Ebooks = () => {
   const handlePostEbookClick = () => {
     const token = cookie.get("user");
     if (token) {
-      navigate("/add-ebook");
+      navigate("/manage-ebooks");
     } else {
       setShowPopup(true);
     }
@@ -48,7 +48,7 @@ const Ebooks = () => {
             className="px-6 py-2 text-gray-800 bg-[#FFCD57] rounded-lg shadow-md hover:bg-opacity-90 hover:shadow-lg transition-all duration-300"
             onClick={handlePostEbookClick}
             >
-            Post Ebook
+            Manage Ebooks
           </button>
 
            {/* Pop-Up Modal */}

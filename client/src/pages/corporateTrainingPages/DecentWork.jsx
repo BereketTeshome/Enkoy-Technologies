@@ -69,7 +69,7 @@ const DecentWork = () => {
             className="px-6 py-3 text-white bg-gray-900"
             {...fadeInUp}
           >
-            Get in touch
+            Contact Us
           </motion.a>
         </motion.div>
 

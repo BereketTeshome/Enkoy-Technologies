@@ -31,6 +31,7 @@ const ImageUpload = ({ setImage }) => {
     try {
       const response = await axios.post(
         "http://localhost:3000/upload/image",
+
         formData,
         {
           headers: {

@@ -177,6 +177,7 @@ const App = () => {
 
           {/* Authors page */}
           <Route path="/blog/user/:id" element={<BlogAuthor />} />
+          
           {/* Add ebook page */}
           <Route path="/manage-ebooks" element={<MyEbook />} />
           <Route path="/add-ebook" element={<AddEbookPage />} />
