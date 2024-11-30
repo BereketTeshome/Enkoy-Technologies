@@ -18,7 +18,7 @@ const Login = () => {
     try {
       setBtnLoading(true);
 
-      const res = await axios.post("https://enkoy-technologies-server.vercel.app/api/user/login", {
+      const res = await axios.post("http://localhost:3000/api/user/login", {
         email,
         password,
       });

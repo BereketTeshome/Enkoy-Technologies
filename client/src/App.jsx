@@ -54,6 +54,7 @@ import Register from "./pages/Register.jsx";
 import BlogAuthor from "./pages/authors/BlogAuthor.jsx";
 import AddEbookPage from "./pages/AddEbookPage.jsx";
 import MyEbook from "./pages/MyEbook.jsx";
+import EbookAuthor from "./pages/authors/EbookAuthor.jsx";
 
 const App = () => {
   return (
@@ -177,7 +178,8 @@ const App = () => {
 
           {/* Authors page */}
           <Route path="/blog/user/:id" element={<BlogAuthor />} />
-          
+          <Route path="/ebook/user/:id" element={<EbookAuthor />} />
+
           {/* Add ebook page */}
           <Route path="/manage-ebooks" element={<MyEbook />} />
           <Route path="/add-ebook" element={<AddEbookPage />} />

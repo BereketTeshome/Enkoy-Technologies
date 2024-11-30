@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import Cookies from "universal-cookie";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 const MyBlog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -18,7 +18,7 @@ const MyBlog = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("https://enkoy-technologies-server.vercel.app/api/blog/get");
+        const res = await axios.get("http://localhost:3000/api/blog/get");
         const filteredBlogs = res.data.blogs.filter(
           (blog) => blog.author?._id === userId
         );
@@ -36,7 +36,7 @@ const MyBlog = () => {
   const deleteBlog = async (id) => {
     setBtnLoading(true);
     try {
-      await axios.delete(`https://enkoy-technologies-server.vercel.app/api/blog/delete/${id}`);
+      await axios.delete(`http://localhost:3000/api/blog/delete/${id}`);
       setDeleted(!deleted);
     } catch (error) {
       console.error("Error deleting blog:", error);
@@ -90,7 +90,7 @@ const MyBlog = () => {
                     <th className="p-3">Image</th>
                     <th className="p-3">Title</th>
                     <th className="p-3">Posted Date</th>
-                    <th className="p-3">    </th>
+                    <th className="p-3"> </th>
                     <th className="p-3">Actions</th>
                   </tr>
                 </thead>

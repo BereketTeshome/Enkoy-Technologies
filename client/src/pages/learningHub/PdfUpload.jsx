@@ -54,34 +54,36 @@ const PdfUpload = ({ setPdfUrl }) => {
 
   return (
     <div className="p-6 space-y-4 border rounded-md shadow-md bg-gray-50">
-      {/* File input */}
-      <div className="flex items-center gap-4">
-        <label
-          htmlFor="pdf-file-input"
-          className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
-        >
-          Choose File
-        </label>
-        <input
-          id="pdf-file-input"
-          type="file"
-          accept=".pdf" // Restrict file selection to PDF
-          onChange={handleFileChange}
-          className="hidden"
-        />
-        <span className="text-gray-600 text-sm truncate w-48">
-          {selectedFile ? selectedFile.name : "No file chosen"}
-        </span>
-      </div>
+      <div className="flex items-center gap-4 justify-between">
+        {/* File input */}
+        <div className="flex items-center gap-4">
+          <label
+            htmlFor="pdf-file-input"
+            className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+          >
+            Choose File
+          </label>
+          <input
+            id="pdf-file-input"
+            type="file"
+            accept=".pdf" // Restrict file selection to PDF
+            onChange={handleFileChange}
+            className="hidden"
+          />
+          <span className="text-gray-600 text-sm truncate w-48">
+            {selectedFile ? selectedFile.name : "No file chosen"}
+          </span>
+        </div>
 
-      {/* Upload button */}
-      <button
-        onClick={handleUpload}
-        type="button"
-        className="px-5 py-2 text-white bg-[#ffa216] rounded hover:bg-[#ff8c00] transition"
-      >
-        Upload
-      </button>
+        {/* Upload button */}
+        <button
+          onClick={handleUpload}
+          type="button"
+          className="px-5 py-2 text-white bg-[#ffa216] rounded hover:bg-[#ff8c00] transition"
+        >
+          Upload
+        </button>
+      </div>
 
       {/* Upload status */}
       <p

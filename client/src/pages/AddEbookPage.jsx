@@ -5,13 +5,16 @@ import "react-quill/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Cookies from "universal-cookie";
-import {jwtDecode} from "jwt-decode"; 
+import { jwtDecode } from "jwt-decode";
+import PdfUpload from "./learningHub/PdfUpload";
+import ImageUpload from "./learningHub/ImageUpload";
 
 const AddEbookPage = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
+  const [pdfUrl, setPdfUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const cookie = new Cookies();
@@ -21,15 +24,14 @@ const AddEbookPage = () => {
   let author;
   if (token) {
     author = jwtDecode(token).userId;
-
   }
 
   const categories = [
-    "Foundation of learning",
-    "Design thinking",
-    "Best practices",
-    "Expert insights",
-    "Mind training",
+    "Entrepreneurship",
+    "Marketing",
+    "Leadership",
+    "Innovation",
+    "Personal Development",
   ];
 
   const toolbarOptions = [
@@ -55,10 +57,11 @@ const AddEbookPage = () => {
         category,
         author: author,
         comments: [],
+        pdfUrl,
         createdAt: new Date().toISOString(),
       };
-      await axios.post("https://enkoy-technologies-server.vercel.app/api/ebook/create", ebookData);
-      navigate("/ebook");
+      await axios.post("http://localhost:3000/api/ebook/create", ebookData);
+      navigate("/ebooks");
       window.location.reload();
     } catch (error) {
       alert("Something went wrong!");
@@ -90,7 +93,7 @@ const AddEbookPage = () => {
         </motion.h1>
 
         <form onSubmit={(e) => !loading && addEbook(e)}>
-          {[{ label: "Title", value: title, onChange: setTitle }, { label: "Image URL", value: image, onChange: setImage }].map(
+          {[{ label: "Title", value: title, onChange: setTitle }].map(
             (field, idx) => (
               <motion.div
                 key={idx}
@@ -98,7 +101,9 @@ const AddEbookPage = () => {
                 animate={{ x: 0, opacity: 1, transition: { delay: idx * 0.1 } }}
                 className="mb-4"
               >
-                <label className="block text-sm font-medium text-gray-700">{field.label}</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  {field.label}
+                </label>
                 <motion.input
                   type="text"
                   className="w-full p-2 mt-1 border border-gray-300 rounded focus:border-[#ffa216]"
@@ -108,9 +113,21 @@ const AddEbookPage = () => {
               </motion.div>
             )
           )}
-
-          <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1, transition: { delay: 0.3 } }} className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Category</label>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Image
+            </label>
+            <ImageUpload setImage={setImage} />
+          </div>
+          <br />
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1, transition: { delay: 0.3 } }}
+            className="mb-4"
+          >
+            <label className="block text-sm font-medium text-gray-700">
+              Category
+            </label>
             <motion.select
               className="w-full p-2 mt-1 border border-gray-300 rounded focus:border-[#ffa216]"
               value={category}
@@ -124,10 +141,27 @@ const AddEbookPage = () => {
               ))}
             </motion.select>
           </motion.div>
-
-          <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1, transition: { delay: 0.4 } }} className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Description</label>
-            <ReactQuill value={description} onChange={handleDescriptionChange} modules={modules} theme="snow" />
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              PDF File
+            </label>
+            <PdfUpload setPdfUrl={setPdfUrl} />
+          </div>
+          <br />
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
+            className="mb-4"
+          >
+            <label className="block text-sm font-medium text-gray-700">
+              Description
+            </label>
+            <ReactQuill
+              value={description}
+              onChange={handleDescriptionChange}
+              modules={modules}
+              theme="snow"
+            />
           </motion.div>
 
           <motion.button
@@ -136,7 +170,11 @@ const AddEbookPage = () => {
             whileHover={{ scale: 1.05 }}
           >
             {loading ? (
-              <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity }} className="loader"></motion.div>
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity }}
+                className="loader"
+              ></motion.div>
             ) : (
               "Post Ebook"
             )}
