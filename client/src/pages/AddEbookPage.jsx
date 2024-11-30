@@ -57,7 +57,7 @@ const AddEbookPage = () => {
         comments: [],
         createdAt: new Date().toISOString(),
       };
-      await axios.post("http://localhost:3000/api/ebook/create", ebookData);
+      await axios.post("https://enkoy-technologies-server.vercel.app/api/ebook/create", ebookData);
       navigate("/ebook");
       window.location.reload();
     } catch (error) {

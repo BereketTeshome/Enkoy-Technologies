@@ -18,7 +18,7 @@ const MyBlog = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:3000/api/blog/get");
+        const res = await axios.get("https://enkoy-technologies-server.vercel.app/api/blog/get");
         const filteredBlogs = res.data.blogs.filter(
           (blog) => blog.author?._id === userId
         );
@@ -36,7 +36,7 @@ const MyBlog = () => {
   const deleteBlog = async (id) => {
     setBtnLoading(true);
     try {
-      await axios.delete(`http://localhost:3000/api/blog/delete/${id}`);
+      await axios.delete(`https://enkoy-technologies-server.vercel.app/api/blog/delete/${id}`);
       setDeleted(!deleted);
     } catch (error) {
       console.error("Error deleting blog:", error);
