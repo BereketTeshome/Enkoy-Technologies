@@ -1,27 +1,29 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const ImageUpload = ({ setImage }) => {
+const PdfUpload = ({ setPdfUrl }) => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [fileUrl, setFileUrl] = useState("");
   const [uploadStatus, setUploadStatus] = useState("");
+  const [pdf, setPdf] = useState("");
 
+  // Handle file selection
   const handleFileChange = (event) => {
     const file = event.target.files[0];
 
-    // Check if a file is selected and ensure it's an image
-    if (file && file.type.startsWith("image/")) {
+    // Validate if the file is a PDF
+    if (file && file.type === "application/pdf") {
       setSelectedFile(file);
       setUploadStatus("");
     } else {
       setSelectedFile(null);
-      setUploadStatus("Please select a valid image file!");
+      setUploadStatus("Please select a valid PDF file!");
     }
   };
 
+  // Handle file upload
   const handleUpload = async () => {
     if (!selectedFile) {
-      alert("Please select a valid image file first!");
+      alert("Please select a valid PDF file first!");
       return;
     }
 
@@ -30,8 +32,7 @@ const ImageUpload = ({ setImage }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/upload/image",
-
+        "http://localhost:3000/upload/pdf",
         formData,
         {
           headers: {
@@ -39,31 +40,34 @@ const ImageUpload = ({ setImage }) => {
           },
         }
       );
-      setImage(response.data.fileUrl);
-      setFileUrl(response.data.fileUrl); // Extract and save the file URL
-      setUploadStatus("Image uploaded successfully!");
+
+      // Save the uploaded file's URL
+      const uploadedFileUrl = response.data.fileUrl;
+      setPdf(uploadedFileUrl);
+      if (setPdfUrl) setPdfUrl(uploadedFileUrl); // Check if setPdfUrl is defined
+      setUploadStatus("PDF uploaded successfully!");
     } catch (error) {
       console.error(error);
-      setUploadStatus("Failed to upload image.");
+      setUploadStatus("Failed to upload PDF.");
     }
   };
 
   return (
     <div className="p-6 space-y-4 border rounded-md shadow-md bg-gray-50">
-      {/* Styled file input */}
+      {/* File input */}
       <div className="flex items-center gap-4">
         <label
-          htmlFor="image-file-input" // Unique ID for the file input
+          htmlFor="pdf-file-input"
           className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
         >
           Choose File
         </label>
         <input
-          id="image-file-input" // Unique ID
+          id="pdf-file-input"
           type="file"
-          accept="image/*"
+          accept=".pdf" // Restrict file selection to PDF
           onChange={handleFileChange}
-          className="hidden" // Hide default input
+          className="hidden"
         />
         <span className="text-gray-600 text-sm truncate w-48">
           {selectedFile ? selectedFile.name : "No file chosen"}
@@ -79,7 +83,7 @@ const ImageUpload = ({ setImage }) => {
         Upload
       </button>
 
-      {/* Upload status message */}
+      {/* Upload status */}
       <p
         className={`my-2 text-sm ${
           uploadStatus.includes("successfully")
@@ -89,20 +93,22 @@ const ImageUpload = ({ setImage }) => {
       >
         {uploadStatus}
       </p>
-
-      {/* Display uploaded image preview */}
-      {fileUrl && (
+      {/* Uploaded file link */}
+      {pdf && (
         <div className="mt-4">
-          <p className="text-gray-600 text-sm">Uploaded Image:</p>
-          <img
-            src={fileUrl}
-            alt="Uploaded preview"
-            className="mt-2 w-48 h-48 object-cover border rounded-md shadow-sm"
-          />
+          <p className="text-gray-600 text-sm">Uploaded PDF:</p>
+          <a
+            href={pdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 underline"
+          >
+            View PDF
+          </a>
         </div>
       )}
     </div>
   );
 };
 
-export default ImageUpload;
+export default PdfUpload;

@@ -15,6 +15,10 @@ const EbookSchema = new mongoose.Schema(
       required: true,
     },
     author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    pdfUrl: {
       type: String,
       required: true,
     },
