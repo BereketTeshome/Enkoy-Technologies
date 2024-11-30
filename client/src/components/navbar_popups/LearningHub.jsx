@@ -42,11 +42,11 @@ const LearningHub = () => {
               E-Books
             </a>
           </li>
-          <li className="mt-4 whitespace-nowrap">
+          {/* <li className="mt-4 whitespace-nowrap">
             <a href="/design" className="hover:text-gray-700">
               eLearning Design and Development
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>
