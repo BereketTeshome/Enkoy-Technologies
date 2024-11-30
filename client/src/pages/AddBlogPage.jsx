@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
-import ImageUpload from "../components/ImageUpload";
+import ImageUpload from "./learningHub/ImageUpload";
+// import ImageUpload from "./learningHub/ImageUpload";
 // import ImageUpload from "../components/ImageUpload";
 
 const AddBlogPage = () => {
