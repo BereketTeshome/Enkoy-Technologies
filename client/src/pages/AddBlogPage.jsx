@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
-import ImageUpload from "./learningHub/ImageUpload";
+import ImageUpload from "../components/ImageUpload";
+// import ImageUpload from "../components/ImageUpload";
 
 const AddBlogPage = () => {
   const [description, setDescription] = useState("");
@@ -112,6 +113,9 @@ const AddBlogPage = () => {
             )
           )}
           <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Image
+            </label>
             <ImageUpload setImage={setImage} />
           </div>
           <br />

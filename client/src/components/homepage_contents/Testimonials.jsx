@@ -34,7 +34,7 @@ const Testimonials = () => {
   return (
     <div>
       <motion.div
-        className="sticky px-4 py-10 bg-gray-200 top-1"
+        className="sticky px-4 py-10 bg-blue-50 top-1"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ margin: "-50%", once: true }}

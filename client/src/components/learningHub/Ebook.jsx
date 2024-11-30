@@ -55,7 +55,7 @@ const Ebook = ({ ebooks }) => {
       const titleMatch = ebook.title
         ?.toLowerCase()
         .includes(searchQuery.toLowerCase());
-      const authorMatch = ebook.author
+      const authorMatch = ebook.author.username
         ?.toLowerCase()
         .includes(searchQuery.toLowerCase());
 
@@ -191,7 +191,7 @@ const Ebook = ({ ebooks }) => {
                 </motion.a>
                 <div className="mt-4 text-sm text-gray-600">
                   <span className="font-semibold">Author: </span>
-                  {ebook.author.username}
+                  {ebook.author?.username}
                 </div>
 
                 <div className="flex items-center my-6 space-x-4">
@@ -216,7 +216,9 @@ const Ebook = ({ ebooks }) => {
                     whileHover={{ scale: 1.2, rotate: -10 }}
                     transition={{ type: "spring", stiffness: 300 }}
                     className="p-3 text-white bg-blue-600 rounded-full shadow-md hover:shadow-lg"
-                    onClick={() => shareOnLinkedIn(ebook.title, ebookUrl, ebook.image)}
+                    onClick={() =>
+                      shareOnLinkedIn(ebook.title, ebookUrl, ebook.image)
+                    }
                   >
                     <FaLinkedinIn size={18} />
                   </motion.button>

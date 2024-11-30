@@ -7,16 +7,30 @@ const blogRouter = require("./routes/blogs");
 const ebookRouter = require("./routes/ebooks");
 const elearnRouter = require("./routes/elearnings");
 const cors = require("cors");
-//
 const fileUpload = require("express-fileupload");
 const path = require("path");
+const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 
-//middleware
+// Middleware
 app.use(express.json());
 app.use(cors());
+app.use(fileUpload());
 
-//routes
+// Directory setup
+const UPLOAD_DIR = path.join(__dirname, "uploads");
+const PDF_UPLOAD_DIR = path.join(UPLOAD_DIR, "pdfs");
+const IMAGE_UPLOAD_DIR = path.join(UPLOAD_DIR, "images");
+
+// Serve the uploads directory as static
+app.use("/uploads", express.static(UPLOAD_DIR));
+
+// Ensure directories exist
+[PDF_UPLOAD_DIR, IMAGE_UPLOAD_DIR].forEach((dir) => {
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+});
+
+// Routes
 app.use("/api/user", authRouter);
 app.use("/api/blog", blogRouter);
 app.use("/api/ebook", ebookRouter);
@@ -26,56 +40,82 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// testing
-app.use(fileUpload());
-
-const UPLOAD_DIR = path.join(__dirname, "uploads"); // Adjust to your cPanel directory
-app.use("/uploads", express.static(UPLOAD_DIR)); // Serve static files
-
-app.post("/upload", (req, res) => {
-  if (!req.files || Object.keys(req.files).length === 0) {
+// Image upload endpoint
+app.post("/upload/image", (req, res) => {
+  if (!req.files || !req.files.file) {
     return res.status(400).send("No file was uploaded.");
   }
 
   const file = req.files.file;
 
-  // Validate file type to ensure it's an image
+  // Validate file type
   if (!file.mimetype.startsWith("image/")) {
     return res.status(400).send("Only image files are allowed.");
   }
 
-  // Generate a unique name for the image while preserving its extension
-  const fileExtension = path.extname(file.name); // Extract file extension
-  const uniqueFileName = `${uuidv4()}${fileExtension}`; // Combine UUID with extension
+  const fileExtension = path.extname(file.name).toLowerCase();
+  const uniqueFileName = `${uuidv4()}${fileExtension}`;
+  const uploadPath = path.join(IMAGE_UPLOAD_DIR, uniqueFileName);
 
-  // Save the image to the upload directory with the unique name
-  const uploadPath = path.join(UPLOAD_DIR, uniqueFileName);
-
+  // Save the file
   file.mv(uploadPath, (err) => {
     if (err) {
-      console.error(err);
-      return res.status(500).send(err);
+      console.error("Error saving image:", err);
+      return res.status(500).send("Image upload failed.");
     }
 
-    // Construct the public URL for the uploaded image
     const fileUrl = `${req.protocol}://${req.get(
       "host"
-    )}/uploads/${uniqueFileName}`;
-
+    )}/uploads/images/${uniqueFileName}`;
     res.send({
       message: "Image uploaded successfully!",
-      fileUrl, // Return the image URL in the response
+      fileUrl,
     });
   });
 });
 
+// PDF upload endpoint
+app.post("/upload/pdf", (req, res) => {
+  if (!req.files || !req.files.file) {
+    return res.status(400).send("No file was uploaded.");
+  }
+
+  const file = req.files.file;
+
+  // Validate file type
+  if (file.mimetype !== "application/pdf") {
+    return res.status(400).send("Only PDF files are allowed.");
+  }
+
+  const fileExtension = path.extname(file.name).toLowerCase();
+  const uniqueFileName = `${uuidv4()}${fileExtension}`;
+  const uploadPath = path.join(PDF_UPLOAD_DIR, uniqueFileName);
+
+  // Save the file
+  file.mv(uploadPath, (err) => {
+    if (err) {
+      console.error("Error saving PDF:", err);
+      return res.status(500).send("PDF upload failed.");
+    }
+
+    const fileUrl = `${req.protocol}://${req.get(
+      "host"
+    )}/uploads/pdfs/${uniqueFileName}`;
+    res.send({
+      message: "PDF uploaded successfully!",
+      fileUrl,
+    });
+  });
+});
+
+// Start server
 const start = async () => {
   const port = 3000;
   try {
     await connectDB(process.env.MONGO_URL);
     app.listen(port, () => console.log(`Server is running on port ${port}`));
   } catch (error) {
-    console.error(error);
+    console.error("Database connection error:", error);
   }
 };
 

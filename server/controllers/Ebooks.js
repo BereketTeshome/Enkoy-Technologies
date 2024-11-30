@@ -11,7 +11,7 @@ const createEbook = async (req, res) => {
 
 const getEbooks = async (req, res) => {
   try {
-    const ebooks = await Ebook.find({});
+    const ebooks = await Ebook.find({}).populate("author", "-password");
     res.status(200).json({ count: ebooks.length, ebooks });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -21,7 +21,7 @@ const getEbooks = async (req, res) => {
 const getSingleEbook = async (req, res) => {
   const { id } = req.params;
   try {
-    const ebooks = await Ebook.findById(id);
+    const ebooks = await Ebook.findById(id).populate("author", "-password");
     res.status(200).json({ count: ebooks.length, ebooks });
   } catch (error) {
     res.status(500).json({ error: error.message });
