@@ -62,4 +62,26 @@ const getSingleUser = async (req, res) => {
   }
 };
 
-module.exports = { Register, Login, getUsers, getSingleUser };
+const updateUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const updates = req.body; // Add additional filtering if necessary
+
+    const user = await User.findByIdAndUpdate(id, updates, {
+      new: true,
+      runValidators: true, // Ensure validation is applied
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: "user not found" });
+    }
+    const token = await user.createToken();
+
+    res.status(200).json({ user, token });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { Register, Login, getUsers, getSingleUser, updateUser };

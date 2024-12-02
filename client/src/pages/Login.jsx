@@ -18,10 +18,13 @@ const Login = () => {
     try {
       setBtnLoading(true);
 
-      const res = await axios.post("http://localhost:3000/api/user/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://server.enkoytechnologies.com/api/user/login",
+        {
+          email,
+          password,
+        }
+      );
 
       // Save the token in cookies
       cookie.set("user", res.data.token, { path: "/", httpOnly: false });
