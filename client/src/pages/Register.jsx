@@ -21,15 +21,14 @@ const Register = () => {
     e.preventDefault();
     try {
       setBtnLoading(true);
-      const res = await axios.post(
-        "https://server.enkoytechnologies.com/api/user/register",
-        {
-          username: name,
-          email,
-          password,
-          profileImg,
-        }
-      );
+
+      const res = await axios.post("http://localhost:3000/api/user/register", {
+        username: name,
+        email,
+        password,
+        profileImg,
+      });
+
       cookie.set("user", res.data.token);
       setBtnLoading(false);
       navigate("/");
