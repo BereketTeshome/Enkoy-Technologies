@@ -59,7 +59,7 @@ const deleteEbook = async (req, res) => {
 
 const addEbookComment = async (req, res) => {
   const { id } = req.params;
-  const { username, text, userId, rating } = req.body;
+  const { username, text, userId, rating, profileImg } = req.body;
 
   try {
     const post = await Ebook.findById(id);
@@ -74,6 +74,7 @@ const addEbookComment = async (req, res) => {
       createdAt: new Date(),
       userId,
       rating,
+      profileImg,
     });
 
     await post.save();

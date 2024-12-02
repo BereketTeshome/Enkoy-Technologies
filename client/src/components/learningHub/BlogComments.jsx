@@ -45,6 +45,7 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
             text,
             username: decode.username,
             userId: decode.userId,
+            profileImg: decode.profileImg ? decode.profileImg : "",
           }
         );
         setCommentLoading(false);
@@ -56,6 +57,7 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
       console.log(error);
     }
   };
+  console.log(decode);
   const deleteComment = async (commentId) => {
     try {
       const res = await axios.delete(
@@ -80,6 +82,7 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
       >
         {blogs.comments?.length > 0 ? (
           blogs.comments.map((item, index) => {
+            console.log(item);
             const date = new Date(item.createdAt).toLocaleDateString("en-US", {
               weekday: "short",
               year: "numeric",
@@ -103,9 +106,20 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
                   className="flex items-start space-x-4 "
                 >
                   {/* Avatar */}
-                  <div className="flex items-center justify-center w-12 h-12 text-lg font-bold text-black uppercase rounded-full bg-cyan-500">
-                    {initials}
-                  </div>
+
+                  {item.profileImg ? (
+                    <div className="">
+                      <img
+                        src={item.profileImg}
+                        alt="Uploaded preview"
+                        className="mt-2 w-16 h-16 object-cover border shadow-sm rounded-full"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-12 h-12 bg-cyan-500 flex items-center justify-center rounded-full text-lg font-bold text-black uppercase">
+                      {initials}
+                    </div>
+                  )}
                   {/* Comment Details */}
                   <div className="flex-1">
                     <p className="text-lg font-semibold text-cyan-300">

@@ -29,6 +29,7 @@ const EbookSchema = new mongoose.Schema(
         username: { type: String },
         text: { type: String },
         rating: { type: Number },
+        profileImg: { type: String },
         createdAt: { type: Date, default: Date.now },
       },
     ],
