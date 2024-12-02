@@ -14,7 +14,7 @@ const BlogDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
-        `http://localhost:3000/api/blog/get/${id}`
+        `https://server.enkoytechnologies.com/api/blog/get/${id}`
       );
 
       setBlogs(data.blogs);
@@ -23,7 +23,7 @@ const BlogDetail = () => {
 
     const fetchAllBlogs = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3000/api/blog/get");
+        const { data } = await axios.get("https://server.enkoytechnologies.com/api/blog/get");
         console.log(data.blogs);
         setAllBlogs(data.blogs);
       } catch (error) {

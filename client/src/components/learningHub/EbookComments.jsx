@@ -42,7 +42,7 @@ const EbookComments = ({ ebooks, setFetchAgain }) => {
     } else {
       setCommentLoading(true);
       const res = await axios.post(
-        `http://localhost:3000/api/ebook/${id}/comments`,
+        `https://server.enkoytechnologies.com/api/ebook/${id}/comments`,
         {
           text,
           username: decode.username,
@@ -59,7 +59,7 @@ const EbookComments = ({ ebooks, setFetchAgain }) => {
   const deleteComment = async (commentId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:3000/api/ebook/${id}/comments/${commentId}`
+        `https://server.enkoytechnologies.com/api/ebook/${id}/comments/${commentId}`
       );
       setFetchAgain((pre) => !pre);
       return res;

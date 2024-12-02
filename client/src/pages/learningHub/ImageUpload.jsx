@@ -30,7 +30,7 @@ const ImageUpload = ({ setImage }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/upload/image",
+        "https://server.enkoytechnologies.com/upload/image",
 
         formData,
         {
