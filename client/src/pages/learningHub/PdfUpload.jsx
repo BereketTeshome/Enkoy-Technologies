@@ -32,7 +32,7 @@ const PdfUpload = ({ setPdfUrl }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/upload/pdf",
+        "https://server.enkoytechnologies.com/upload/pdf",
         formData,
         {
           headers: {

@@ -60,7 +60,7 @@ const AddEbookPage = () => {
         pdfUrl,
         createdAt: new Date().toISOString(),
       };
-      await axios.post("http://localhost:3000/api/ebook/create", ebookData);
+      await axios.post("https://server.enkoytechnologies.com/api/ebook/create", ebookData);
       navigate("/ebooks");
       window.location.reload();
     } catch (error) {

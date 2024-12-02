@@ -12,9 +12,14 @@ const Ebooks = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get("http://localhost:3000/api/ebook/get");
-
-      setEbooks(data.ebooks);
+      try {
+        const { data } = await axios.get("https://server.enkoytechnologies.com/api/ebook/get");
+        // Sort eBooks by latest (descending order of `createdAt` field)
+        const sortedEbooks = data.ebooks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        setEbooks(sortedEbooks);
+      } catch (error) {
+        console.error("Error fetching eBooks:", error);
+      }
     };
     fetchData();
   }, []);
@@ -96,9 +101,14 @@ const Ebooks = () => {
               <h2 className="mb-5 text-2xl font-semibold text-center md:text-3xl md:text-left">
                 {ebooks[0]?.title}
               </h2>
-              <p className="mb-10 text-center text-gray-800 md:text-left">
-                {ebooks[0]?.description}
-              </p>
+              <p
+                  className="mt-3 mb-4 text-gray-700"
+                  dangerouslySetInnerHTML={{
+                    __html: ebooks[0]?.description.slice(0, 500),
+                  }}
+                >
+                </p>
+            
               <div className="text-center md:text-left">
                 <a
                   href="#ebooks"

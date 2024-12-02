@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
 
@@ -9,6 +9,10 @@ const MyEbook = () => {
   const [btnLoading, setBtnLoading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [deleted, setDeleted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedEbook, setSelectedEbook] = useState(null);
+  const [formData, setFormData] = useState({ title: "", description: "", image: "" });
+
   const cookie = new Cookies();
   const token = cookie.get("user");
   const decode = token ? jwtDecode(token) : "";
@@ -18,7 +22,7 @@ const MyEbook = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:3000/api/ebook/get");
+        const res = await axios.get("https://server.enkoytechnologies.com/api/ebook/get");
         const filteredEbooks = res.data.ebooks.filter(
           (ebook) => ebook.author?._id === userId
         );
@@ -36,13 +40,40 @@ const MyEbook = () => {
   const deleteEbook = async (id) => {
     setBtnLoading(true);
     try {
-      await axios.delete(`http://localhost:3000/api/ebook/delete/${id}`);
+      await axios.delete(`https://server.enkoytechnologies.com/api/ebook/delete/${id}`);
       setDeleted(!deleted);
     } catch (error) {
       console.error("Error deleting ebook:", error);
     } finally {
       setBtnLoading(false);
     }
+  };
+
+  const openModal = (ebook) => {
+    setSelectedEbook(ebook);
+    setFormData({ title: ebook.title, description: ebook.description, image: ebook.image });
+    setIsModalOpen(true);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleUpdate = async () => {
+    try {
+      await axios.put(`https://server.enkoytechnologies.com/api/ebook/edit/${selectedEbook._id}`, formData);
+      setIsModalOpen(false);
+      setDeleted(!deleted); // Refresh ebooks list
+    } catch (error) {
+      console.error("Error updating ebook:", error);
+    }
+  };
+
+  const modalVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1 },
+    exit: { opacity: 0, scale: 0.8 },
   };
 
   return (
@@ -123,12 +154,12 @@ const MyEbook = () => {
                           <td className="py-3">{date}</td>
                           <td className="py-3">{item.views}</td>
                           <td className="py-3 space-x-2">
-                            {/* <a
-                              href={`/dashboard/edit-ebook/${item._id}`}
+                            <button
                               className="bg-[#ffa216] px-4 py-1 rounded-md text-white"
+                              onClick={() => openModal(item)}
                             >
                               Edit
-                            </a> */}
+                            </button>
                             <button
                               className="px-4 py-1 text-white bg-red-600 rounded-md"
                               onClick={() =>
@@ -154,6 +185,84 @@ const MyEbook = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            className="fixed inset-0 flex items-center z-50 justify-center bg-black bg-opacity-50"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={modalVariants}
+          >
+            <motion.div
+              className="bg-[#FFCD4C] rounded-md shadow-lg p-6 w-[95%] max-w-[800px] overflow-hidden"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 50 }}
+            >
+              <h2 className="mb-4 text-2xl font-semibold text-[#070b22]">
+                Edit Ebook
+              </h2>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-800">
+                    Title
+                  </label>
+                  <input
+                    type="text"
+                    name="title"
+                    placeholder="Title"
+                    value={formData.title}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border rounded-md"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-800">
+                    description
+                  </label>
+                  <textarea
+                    name="description"
+                    placeholder="description"
+                    value={formData.description}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border rounded-md h-[200px] resize-none overflow-y-auto"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-800">
+                    Image URL
+                  </label>
+                  <input
+                    type="text"
+                    name="image"
+                    placeholder="Image URL"
+                    value={formData.image}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border rounded-md"
+                  />
+                </div>
+              </div>
+              <div className="flex justify-end space-x-2 mt-6">
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="px-4 py-2 text-white bg-gray-600 rounded-md"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleUpdate}
+                  className="px-4 py-2 text-white bg-green-600 rounded-md"
+                >
+                  Update
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

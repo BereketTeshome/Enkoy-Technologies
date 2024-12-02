@@ -40,7 +40,7 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
       } else {
         setCommentLoading(true);
         const res = await axios.post(
-          `http://localhost:3000/api/blog/${id}/comments`,
+          `https://server.enkoytechnologies.com/api/blog/${id}/comments`,
           {
             text,
             username: decode.username,
@@ -61,7 +61,7 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
   const deleteComment = async (commentId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:3000/api/blog/${id}/comments/${commentId}`
+        `https://server.enkoytechnologies.com/api/blog/${id}/comments/${commentId}`
       );
       setFetchAgain((pre) => !pre);
       return res;
@@ -71,7 +71,7 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
   };
   return (
     <div className="">
-      <h3 className="text-3xl font-bold text-white mb-10">
+      <h3 className="mb-10 text-3xl font-bold text-white">
         Comments ({blogs.comments?.length || 0})
       </h3>
       <motion.div
@@ -98,7 +98,7 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
             return (
               <div
                 key={index}
-                className="flex items-center justify-between p-5 bg-gray-800 shadow-lg rounded-lg"
+                className="flex items-center justify-between p-5 bg-gray-800 rounded-lg shadow-lg"
               >
                 <motion.div
                   key={index}
@@ -106,6 +106,7 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
                   className="flex items-start space-x-4 "
                 >
                   {/* Avatar */}
+
                   {item.profileImg ? (
                     <div className="">
                       <img
@@ -124,7 +125,7 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
                     <p className="text-lg font-semibold text-cyan-300">
                       {item.username}
                     </p>
-                    <p className="text-sm text-gray-300 py-1">{item.text}</p>
+                    <p className="py-1 text-sm text-gray-300">{item.text}</p>
                     <p className="text-xs text-gray-500">{date}</p>
                   </div>
                 </motion.div>
@@ -141,7 +142,7 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
           })
         ) : (
           <motion.p
-            className="text-center text-gray-400 text-lg"
+            className="text-lg text-center text-gray-400"
             variants={itemVariants}
           >
             No reviews available.
@@ -150,13 +151,13 @@ const BlogComments = ({ blogs, setFetchAgain }) => {
       </motion.div>
       <form className="mt-5" onSubmit={(e) => addComment(e)}>
         <div className="mt-14">
-          <p className="text-sm text-gray-500 mb-2 font-semibold">
+          <p className="mb-2 text-sm font-semibold text-gray-500">
             Add Comment
           </p>
           <textarea
             name=""
             id=""
-            className="w-full md:w-1/2  rounded-sm py-1 px-2 bg-gray-600 border-none text-gray-50 text-sm mb-5"
+            className="w-full px-2 py-1 mb-5 text-sm bg-gray-600 border-none rounded-sm md:w-1/2 text-gray-50"
             rows={5}
             onChange={(e) => setText(e.target.value)}
             required

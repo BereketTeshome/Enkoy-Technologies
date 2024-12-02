@@ -142,8 +142,8 @@ const Ebook = ({ ebooks }) => {
         {filteredEbooks.map((ebook, index) => {
           const date = new Date(ebook.createdAt).toString().slice(0, 16);
           const ebookUrl = `https://enkoytechnologies.com/ebooks/${ebook._id}`;
-          const pdfUrl =
-            "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+          // const pdfUrl =
+          //   "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
           // const pdfUrl = ebook.pdf;
 
           return (
@@ -231,26 +231,28 @@ const Ebook = ({ ebooks }) => {
                   </motion.button>
                 </div>
                 <div className="flex items-center justify-between my-4">
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="px-4 py-2 text-white bg-blue-500 rounded-lg shadow hover:bg-blue-600"
-                    onClick={() => window.open(ebook.pdfUrl, "_blank")} // Opens in a new tab
-                  >
-                    Read Online
-                  </motion.button>
-                  <motion.a
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="px-4 py-2 text-white bg-green-500 rounded-lg shadow hover:bg-green-600"
-                    href={pdfUrl} // Points to the local/sample PDF file
-                    download={ebook.pdfUrl} // Specifies file download
-                  >
-                    Download
-                  </motion.a>
-                </div>
+  {/* <motion.a
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.95 }}
+    transition={{ type: "spring", stiffness: 300 }}
+    className="px-4 py-2 text-white bg-green-500 rounded-lg shadow hover:bg-green-600"
+    href={ebook.pdfUrl} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+  >
+    Read Online
+  </motion.a> */}
+  <motion.button
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.95 }}
+    transition={{ type: "spring", stiffness: 300 }}
+    className="px-4 py-2 text-white bg-blue-500 rounded-lg shadow hover:bg-blue-600"
+    onClick={() => window.open(ebook.pdfUrl, "_blank")} // Opens in a new tab
+  >
+    Download
+  </motion.button>
+</div>
+
 
                 <motion.button
                   whileHover={{ scale: 1.1, backgroundColor: "#FFC34D" }}

@@ -13,7 +13,7 @@ const BlogAuthor = () => {
     const fetchUser = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3000/api/user/users/${id}`
+          `https://server.enkoytechnologies.com/api/user/users/${id}`
         );
         setUser(data.users);
       } catch (error) {
@@ -26,7 +26,7 @@ const BlogAuthor = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3000/api/blog/get");
+        const { data } = await axios.get("https://server.enkoytechnologies.com/api/blog/get");
         const filteredBlog = data.blogs.filter(
           (item) => item.author?._id === user?._id
         );
