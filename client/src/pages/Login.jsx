@@ -2,18 +2,18 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailErr, setEmailErr] = useState("");
-
   const [btnLoading, setBtnLoading] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
   const navigate = useNavigate();
   const cookie = new Cookies();
 
-  const handleRegister = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
       setBtnLoading(true);
@@ -42,25 +42,31 @@ const Login = () => {
     }
   };
 
+  const handleGoogleLogin = () => {
+    // Redirect to your backend's Google OAuth endpoint
+    window.location.href = "http://localhost:5000/auth/google";
+    // window.location.href = "https://server.enkoytechnologies.com/auth/google";
+  };
+
   return (
     <div className="flex h-screen bg-gray-50">
       {/* Left side with the image */}
-      <div className="flex-1 flex justify-center items-center bg-gray-100">
+      <div className="items-center justify-center flex-1 hidden bg-gray-100 md:flex">
         <img
           src="/img/corporate-training/decentWorkImg.webp"
-          alt="Registration Visual"
+          alt="Login Visual"
           className="max-w-[90%] max-h-[80%] object-contain"
         />
       </div>
 
       {/* Right side with the form */}
-      <div className="flex-1 flex flex-col justify-center items-center px-8">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">
+      <div className="flex flex-col items-center justify-center flex-1 px-8">
+        <h2 className="mb-6 text-3xl font-bold text-gray-800">
           <span className="text-[#FFCD57]">Welcome</span> Back
         </h2>
         <form
-          className="w-full max-w-md flex flex-col gap-4"
-          onSubmit={(e) => handleRegister(e)}
+          className="flex flex-col w-full max-w-md gap-4"
+          onSubmit={(e) => handleLogin(e)}
         >
           <input
             required
@@ -71,7 +77,7 @@ const Login = () => {
           />
           {emailErr && (
             <p style={{ color: "red", fontSize: "12px", marginBottom: "10px" }}>
-              {emailErr}{" "}
+              {emailErr}
             </p>
           )}
           <input
@@ -83,8 +89,7 @@ const Login = () => {
           />
           {passwordErr && (
             <p style={{ color: "red", fontSize: "12px", marginBottom: "10px" }}>
-              {" "}
-              you must provide password
+              You must provide password
             </p>
           )}
           <button
@@ -94,6 +99,23 @@ const Login = () => {
             {btnLoading ? "Loading..." : "Login"}
           </button>
         </form>
+
+        {/* Divider */}
+        <div className="flex items-center justify-center w-full my-4">
+          <span className="block w-1/5 h-px bg-gray-300"></span>
+          <p className="mx-2 text-sm text-gray-500">or</p>
+          <span className="block w-1/5 h-px bg-gray-300"></span>
+        </div>
+
+        {/* Google Login Button */}
+        <button
+          onClick={handleGoogleLogin}
+          className="flex items-center justify-center w-full p-3 transition duration-300 bg-white border border-gray-300 rounded-lg hover:shadow-md"
+        >
+          <FcGoogle size={24} className="mr-2" />
+          <span className="font-medium text-gray-700">Sign in with Google</span>
+        </button>
+
         <p className="mt-4 text-gray-600">
           Don't have an account?{" "}
           <a href="/register" className="text-blue-600 hover:underline">

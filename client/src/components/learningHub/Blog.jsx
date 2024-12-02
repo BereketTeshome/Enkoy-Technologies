@@ -149,7 +149,7 @@ const Blogs = ({ blogs }) => {
                 />
               </div>
               <div className="mt-4">
-                <h3 className="text-2xl font-bold h-[80px] text-gray-800">
+                <h3 className="text-2xl font-bold min-h-[80px] text-gray-800">
                   {blog.title}
                 </h3>
                 <p className="text-sm text-gray-500">{date}</p>
