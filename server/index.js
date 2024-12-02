@@ -6,16 +6,62 @@ const authRouter = require("./routes/auth");
 const blogRouter = require("./routes/blogs");
 const ebookRouter = require("./routes/ebooks");
 const elearnRouter = require("./routes/elearnings");
+const session = require("express-session");
+const passport = require("passport");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const path = require("path");
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
+require("./auth");
+
+app.use(session({ secret: "cats" }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Middleware
 app.use(express.json());
 app.use(cors());
 app.use(fileUpload());
+
+const isLoggedIn = (req, res, next) => {
+  req.user ? next() : res.sendStatus(401);
+};
+
+app.get("/", (req, res) =>
+  res.send('<a href="/auth/google"> Authenticate with Google </a>')
+);
+
+app.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+  })
+);
+
+app.get(
+  "/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/protected",
+    failureRedirect: "/auth/failure",
+  })
+);
+
+app.get("/protected", isLoggedIn, (req, res) => {
+  res.send(`Hello ${req.user.displayName}!`);
+});
+
+app.get("/auth/failure", (req, res) => {
+  res.send("Something went wrong....");
+});
+
+app.get("/logout", (req, res) => {
+  req.logOut;
+  req.session.destroy();
+  res.send("Goodbye :(");
+});
+
+
 
 // Directory setup
 const UPLOAD_DIR = path.join(__dirname, "uploads");

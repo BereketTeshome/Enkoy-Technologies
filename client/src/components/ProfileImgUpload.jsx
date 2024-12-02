@@ -51,35 +51,36 @@ const ProfileImgUpload = ({ setProfileImg }) => {
   return (
     <div className="p-2 pt-3 border rounded-md shadow-md bg-gray-50">
       {/* Styled file input */}
-      <div className="flex items-center gap-4 justify-between">
-        <div className="flex items-center gap-4">
-          <label
-            htmlFor="image-file-input" // Unique ID for the file input
-            className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-sm"
-          >
-            Choose
-          </label>
-          <input
-            id="image-file-input" // Unique ID
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            className="hidden" // Hide default input
-          />
-          <span className="text-gray-600 text-sm truncate w-48">
-            {selectedFile ? selectedFile.name : "No file chosen"}
-          </span>
-        </div>
+      <div className="flex flex-wrap items-center justify-between gap-4">
+  <div className="flex flex-wrap items-center w-full gap-4 md:w-auto">
+    <label
+      htmlFor="image-file-input"
+      className="px-4 py-2 text-sm text-white transition bg-blue-500 rounded-md cursor-pointer hover:bg-blue-600"
+    >
+      Choose
+    </label>
+    <input
+      id="image-file-input"
+      type="file"
+      accept="image/*"
+      onChange={handleFileChange}
+      className="hidden"
+    />
+    <span className="w-full text-sm text-gray-600 truncate md:w-48">
+      {selectedFile ? selectedFile.name : "No file chosen"}
+    </span>
+  </div>
 
-        {/* Upload button */}
-        <button
-          onClick={handleUpload}
-          type="button"
-          className="px-5 py-2 text-white bg-[#ffa216] rounded hover:bg-[#ff8c00] transition text-sm"
-        >
-          Upload
-        </button>
-      </div>
+  {/* Upload button */}
+  <button
+    onClick={handleUpload}
+    type="button"
+    className="px-5 py-2 text-white bg-[#ffa216] rounded hover:bg-[#ff8c00] transition text-sm w-full md:w-auto"
+  >
+    Upload
+  </button>
+</div>
+
 
       {/* Upload status message */}
       <p
@@ -95,11 +96,11 @@ const ProfileImgUpload = ({ setProfileImg }) => {
       {/* Display uploaded image preview */}
       {fileUrl && (
         <div className="mt-4">
-          <p className="text-gray-600 text-sm">Uploaded Image:</p>
+          <p className="text-sm text-gray-600">Uploaded Image:</p>
           <img
             src={fileUrl}
             alt="Uploaded preview"
-            className="mt-2 w-20 h-20 object-cover border shadow-sm rounded-full"
+            className="object-cover w-20 h-20 mt-2 border rounded-full shadow-sm"
           />
         </div>
       )}
