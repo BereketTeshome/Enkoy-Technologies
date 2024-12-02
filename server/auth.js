@@ -1,9 +1,10 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
+require("dotenv").config(); // Load environment variables
 
-const GOOGLE_CLIENT_ID =
-  "194139603797-vu3ucka2ecrjnaho6ie9rdkocjbgjq79.apps.googleusercontent.com";
-const GOOGLE_CLIENT_SECRET = "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";
+// Load credentials from environment variables
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 
 passport.use(
   new GoogleStrategy(
@@ -14,15 +15,20 @@ passport.use(
       passReqToCallback: true,
     },
     function (request, accessToken, refreshToken, profile, done) {
+      // Custom logic for handling user profile
       return done(null, profile);
     }
   )
 );
 
+// Serialize user into session
 passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
+// Deserialize user from session
 passport.deserializeUser(function (user, done) {
   done(null, user);
 });
+
+module.exports = passport;
