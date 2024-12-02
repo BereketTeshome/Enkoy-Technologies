@@ -55,6 +55,7 @@ import BlogAuthor from "./pages/authors/BlogAuthor.jsx";
 import AddEbookPage from "./pages/AddEbookPage.jsx";
 import MyEbook from "./pages/MyEbook.jsx";
 import EbookAuthor from "./pages/authors/EbookAuthor.jsx";
+import UserProfilePage from "./pages/UserProfilePage.jsx";
 
 const App = () => {
   return (
@@ -188,6 +189,9 @@ const App = () => {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/our-work" element={<OurWork />} />
           <Route path="/our-work/:id" element={<DetailedWork />} />
+
+          {/* User Profile Page  */}
+          <Route path="/profile" element={<UserProfilePage />} />
 
           {/* DIgital training Page */}
           <Route
