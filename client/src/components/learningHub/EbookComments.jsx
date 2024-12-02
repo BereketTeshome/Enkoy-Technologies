@@ -48,6 +48,7 @@ const EbookComments = ({ ebooks, setFetchAgain }) => {
           username: decode.username,
           userId: decode.userId,
           rating: value,
+          profileImg: decode.profileImg ? decode.profileImg : "",
         }
       );
       setCommentLoading(false);
@@ -86,11 +87,7 @@ const EbookComments = ({ ebooks, setFetchAgain }) => {
               month: "short",
               day: "numeric",
             });
-            const initials = item.username
-              .split(" ")
-              .map((word) => word.charAt(0).toUpperCase())
-              .join("")
-              .slice(0, 2);
+            const initials = item.username.slice(0, 2);
 
             return (
               <motion.div
@@ -99,9 +96,20 @@ const EbookComments = ({ ebooks, setFetchAgain }) => {
                 className="flex items-center justify-between p-5 bg-gray-800 shadow-lg rounded-lg"
               >
                 <div className="flex items-start space-x-4  bg-gray-800 shadow-lg rounded-lg">
-                  <div className="w-12 h-12 bg-cyan-500 flex items-center justify-center rounded-full text-lg font-bold text-black uppercase">
-                    {initials}
-                  </div>
+                  {item.profileImg ? (
+                    <div className="">
+                      <img
+                        src={item.profileImg}
+                        alt="Uploaded preview"
+                        className="mt-2 w-16 h-16 object-cover border shadow-sm rounded-full"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-12 h-12 bg-cyan-500 flex items-center justify-center rounded-full text-lg font-bold text-black uppercase">
+                      {initials}
+                    </div>
+                  )}
+
                   {/* Comment Details */}
                   <div className="flex-1">
                     <p className="text-lg font-semibold text-cyan-300">

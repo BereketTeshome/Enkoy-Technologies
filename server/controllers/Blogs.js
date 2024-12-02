@@ -60,7 +60,7 @@ const deleteBlog = async (req, res) => {
 
 const addBlogComment = async (req, res) => {
   const { id } = req.params;
-  const { username, text, userId } = req.body;
+  const { username, text, userId, profileImg } = req.body;
 
   try {
     const post = await Blog.findById(id);
@@ -69,7 +69,13 @@ const addBlogComment = async (req, res) => {
       return res.status(404).json({ message: "Post not found" });
     }
 
-    post.comments.push({ username, text, createdAt: new Date(), userId });
+    post.comments.push({
+      username,
+      text,
+      createdAt: new Date(),
+      userId,
+      profileImg,
+    });
 
     await post.save();
     res.status(201).json({ message: "Comment added successfully", post });

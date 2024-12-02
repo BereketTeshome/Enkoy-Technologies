@@ -2,10 +2,12 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
+import ProfileImgUpload from "../components/ProfileImgUpload";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [profileImg, setProfileImg] = useState("");
   const [password, setPassword] = useState("");
   const [emailErr, setEmailErr] = useState("");
   const [nameErr, setNameErr] = useState(false);
@@ -22,6 +24,7 @@ const Register = () => {
         username: name,
         email,
         password,
+        profileImg,
       });
       cookie.set("user", res.data.token);
       setBtnLoading(false);
@@ -37,7 +40,7 @@ const Register = () => {
     }
   };
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex py-20 bg-gray-50">
       {/* Left side with the image */}
       <div className="flex-1 flex justify-center items-center bg-gray-100">
         <img
@@ -79,6 +82,12 @@ const Register = () => {
               {emailErr}{" "}
             </p>
           )}
+          <div>
+            <label htmlFor="" className="text-sm mb-3 text-gray-500">
+              Profile Image
+            </label>
+            <ProfileImgUpload setProfileImg={setProfileImg} />
+          </div>
           <input
             onChange={(e) => setPassword(e.target.value)}
             type="password"

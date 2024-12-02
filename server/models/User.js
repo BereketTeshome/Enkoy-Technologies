@@ -13,6 +13,9 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    profileImg: {
+      type: String,
+    },
     password: {
       type: String,
       required: true,
@@ -27,7 +30,12 @@ UserSchema.pre("save", async function () {
 
 UserSchema.methods.createToken = function () {
   return jwt.sign(
-    { userId: this._id, email: this.email, username: this.username },
+    {
+      userId: this._id,
+      email: this.email,
+      username: this.username,
+      profileImg: this.profileImg,
+    },
     process.env.JWT_SECRET,
     { expiresIn: "30d" }
   );

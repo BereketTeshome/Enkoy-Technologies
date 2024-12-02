@@ -44,11 +44,24 @@ const EbookAuthor = () => {
     <div className="min-h-screen p-5 bg-gray-100 dark:bg-gray-800">
       {/* Animated Header */}
       <motion.div
-        className="p-6 mb-8 text-center bg-white rounded-lg shadow-md dark:bg-gray-700"
+        className="p-6 mb-8 text-center bg-white rounded-lg shadow-md dark:bg-gray-700 flex items-center justify-center gap-4"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
+        {user.profileImg ? (
+          <div className="">
+            <img
+              src={user.profileImg}
+              alt="Uploaded preview"
+              className="mt-2 w-16 h-16 object-cover border shadow-sm rounded-full"
+            />
+          </div>
+        ) : (
+          <div className="w-16 h-16 bg-cyan-500 flex items-center justify-center rounded-full text-3xl font-bold text-black uppercase">
+            {user.username?.slice(0, 2) || ""}
+          </div>
+        )}
         <h1 className="text-4xl font-bold text-gray-800 dark:text-white">
           {user.username ? `${user.username}'s Posts ` : "Loading Author... "} (
           {ebooks?.length})

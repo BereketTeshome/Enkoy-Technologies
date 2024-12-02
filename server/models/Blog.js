@@ -28,6 +28,7 @@ const BlogSchema = new mongoose.Schema(
         userId: { type: mongoose.Schema.Types.ObjectId },
         username: { type: String },
         text: { type: String },
+        profileImg: { type: String, default: "" },
         createdAt: { type: Date, default: Date.now },
       },
     ],
