@@ -25,9 +25,14 @@ const Blogs = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get("http://localhost:3000/api/blog/get");
-      console.log(data.blogs);
-      setBlogs(data.blogs);
+      try {
+        const { data } = await axios.get("https://server.enkoytechnologies.com/api/blog/get");
+        const sortedBlogs = data.blogs.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        console.log(sortedBlogs);
+        setBlogs(sortedBlogs);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
     };
     fetchData();
   }, []);
@@ -94,9 +99,14 @@ const Blogs = () => {
               <h2 className="mb-5 text-2xl font-semibold text-center md:text-3xl md:text-left">
                 {blogs[0]?.title}
               </h2>
-              <p className="mb-10 text-center text-gray-800 md:text-left">
-                {blogs[0]?.description}
-              </p>
+              <p
+                  className="mt-3 mb-4 text-gray-700"
+                  dangerouslySetInnerHTML={{
+                    __html: blogs[0]?.description.slice(0, 500),
+                  }}
+                >
+                </p>
+            
               <div className="text-center md:text-left">
                 <a
                   href="#blogs"

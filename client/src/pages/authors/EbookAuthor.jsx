@@ -14,7 +14,7 @@ const EbookAuthor = () => {
     const fetchUser = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3000/api/user/users/${id}`
+          `https://server.enkoytechnologies.com/api/user/users/${id}`
         );
         setUser(data.users);
       } catch (error) {
@@ -27,7 +27,7 @@ const EbookAuthor = () => {
   useEffect(() => {
     const fetchEbooks = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3000/api/ebook/get");
+        const { data } = await axios.get("https://server.enkoytechnologies.com/api/ebook/get");
         const filteredEbook = data.ebooks.filter(
           (item) => item.author?._id === user?._id
         );

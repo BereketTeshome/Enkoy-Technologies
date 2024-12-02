@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { dummyBlogs } from "../assets/dummyBlogs";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -7,20 +6,43 @@ import BlogComments from "../components/learningHub/BlogComments";
 
 const BlogDetail = () => {
   const { id } = useParams();
-  const blog = dummyBlogs.find((blog) => blog.id === parseInt(1));
   const [blogs, setBlogs] = useState({});
-  const [fetchAgain, setFetchAgain] = useState(false);
+  const [_, setFetchAgain] = useState(false);
+  const [allBlogs, setAllBlogs] = useState([]);
+  const [relatedPosts, setRelatedPosts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
-        `http://localhost:3000/api/blog/get/${id}`
+        `https://server.enkoytechnologies.com/api/blog/get/${id}`
       );
 
       setBlogs(data.blogs);
     };
     fetchData();
-  }, [fetchAgain]);
+
+    const fetchAllBlogs = async () => {
+      try {
+        const { data } = await axios.get("https://server.enkoytechnologies.com/api/blog/get");
+        console.log(data.blogs);
+        setAllBlogs(data.blogs);
+      } catch (error) {
+        console.error("Error fetching all blogs:", error);
+      }
+    };
+
+    fetchData();
+    fetchAllBlogs();
+  }, []);
+
+  useEffect(() => {
+    if (blogs && allBlogs.length > 0) {
+      const filteredPosts = allBlogs
+        .filter((b) => b.category === blogs.category && b._id !== blogs._id)
+        .slice(0, 2); // Limit to 2 related posts
+      setRelatedPosts(filteredPosts);
+    }
+  }, [blogs, allBlogs]);
 
   if (!blogs) {
     return (
@@ -111,61 +133,35 @@ const BlogDetail = () => {
               <BlogComments blogs={blogs} setFetchAgain={setFetchAgain} />
             </div>
           </div>
-          {/* <form className="mt-5" onSubmit={(e) => addComment(e)}>
-                  <div className="mb-3">
-                    <p className="mb-2 text-sm font-semibold text-gray-500">
-                      Your Name
-                    </p>
-                    <input
-                      type="text"
-                      className="w-full px-2 py-1 border rounded-sm"
-                      onChange={(e) => setUsername(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <p className="mb-2 text-sm font-semibold text-gray-500">
-                      Your Comment
-                    </p>
-                    <textarea
-                      name=""
-                      id=""
-                      className="w-full px-2 py-1 border rounded-sm"
-                      rows={5}
-                      onChange={(e) => setText(e.target.value)}
-                      required
-                    ></textarea>
-                  </div>
-                  <button className="bg-[#ffa216] px-6 py-2 uppercase text-sm text-gray-50 rounded">
-                    {commentloading ? "submitting" : "Submit Comment"}
-                  </button>
-                </form> */}
+         
         </div>
       </div>
 
       {/* Related Posts */}
-      <motion.div
-        className="mt-12"
-        initial="hidden"
-        animate="visible"
-        transition={{ staggerChildren: 0.2 }}
-      >
+   
+
+    <motion.div className="mt-12" initial="hidden" animate="visible">
         <h2 className="mb-6 text-3xl font-bold text-gray-800 dark:text-white">
           Related Posts
         </h2>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {blog.relatedPosts.map((post) => (
+        {relatedPosts.length > 0 ? (
+          relatedPosts.map((post) => (
             <motion.li
-              key={post.id}
+              key={post._id}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="p-4 transition-shadow duration-300 bg-white shadow-md dark:bg-gray-700 rounded-xl hover:shadow-lg"
             >
-              <span className="block text-lg font-semibold text-blue-600 dark:text-blue-400">
-                {post.title}
-              </span>
-            </motion.li>
-          ))}
+          <a href={`/blog/${post._id}`} className="block text-lg font-semibold text-blue-600 dark:text-blue-400">
+            {post.title}
+          </a>
+    </motion.li>
+  ))
+) : (
+  <p className="text-gray-200">No related posts found.</p>
+)}
+
         </ul>
       </motion.div>
     </motion.div>

@@ -59,7 +59,7 @@ const AddBlogPage = () => {
         comments: [],
         createdAt: new Date().toISOString(),
       };
-      await axios.post("http://localhost:3000/api/blog/create", blogData);
+      await axios.post("https://server.enkoytechnologies.com/api/blog/create", blogData);
       navigate("/blog");
       window.location.reload();
     } catch (error) {
