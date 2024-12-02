@@ -163,7 +163,7 @@ const Ebook = ({ ebooks }) => {
                 />
               </div>
               <div className="mt-4">
-                <h3 className="text-2xl font-bold h-[80px] text-gray-800">
+                <h3 className="text-2xl font-bold min-h-[80px] text-gray-800">
                   {ebook.title}
                 </h3>
                 <div className="flex items-center justify-between">
