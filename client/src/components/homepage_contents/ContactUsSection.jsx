@@ -68,7 +68,7 @@ const ContactUsSection = () => {
   };
 
   return (
-    <div className="flex h-screen bg-[#3B2C42]">
+    <div className="flex h-screen ">
       <div
         className="flex-1 hidden bg-center bg-cover md:flex"
         style={{
