@@ -6,6 +6,7 @@ import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import ProfileImgUpload from "../components/ProfileImgUpload";
+import { useSelector } from "react-redux";
 
 const UserProfilePage = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -35,7 +36,7 @@ const UserProfilePage = () => {
   const closePopup = () => {
     setShowPopup(false);
   };
-  console.log(decode);
+
   const handleProfileChange = async () => {
     try {
       const { data } = await axios.put(
@@ -46,13 +47,17 @@ const UserProfilePage = () => {
           profileImg: profileImg ? profileImg : decode.profileImg,
         }
       );
-      console.log(data);
+
       cookie.set("user", data.token, { path: "/", httpOnly: false });
       window.location.reload();
     } catch (error) {
       console.log(error.message);
     }
   };
+
+  const theme = useSelector((state) => state.theme?.theme);
+
+  console.log(theme);
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-5">
       {showPopup && (
