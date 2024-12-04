@@ -28,9 +28,10 @@ const isLoggedIn = (req, res, next) => {
   req.user ? next() : res.sendStatus(401);
 };
 
-app.get("/", (req, res) =>
-  res.send('<a href="/auth/google"> Authenticate with Google </a>')
-);
+app.get("/", (req, res) => {
+  res.redirect("http://localhost:5173");
+});
+
 
 app.get(
   "/auth/google",
@@ -39,15 +40,49 @@ app.get(
   })
 );
 
+const jwt = require("jsonwebtoken");
+
 app.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: "/protected",
     failureRedirect: "/auth/failure",
-  })
+  }),
+  (req, res) => {
+    if (req.user && req.user.emails && req.user.emails[0]) {
+      const userEmail = req.user.emails[0].value;
+
+      // Create a JWT
+      const token = jwt.sign({ email: userEmail }, process.env.JWT_SECRET, {
+        expiresIn: "1d", // Token valid for 1 day
+      });
+
+      // Set the cookie
+      res.cookie("googleUser", token, {
+        httpOnly: true, // Secure cookie
+        secure: false,  // Use true in production with HTTPS
+        maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
+      });
+    }
+
+    // Redirect to the intended route or home
+    const redirectUrl = req.session.returnTo || "http://localhost:5173";
+    delete req.session.returnTo;
+    res.redirect(redirectUrl);
+  }
 );
 
-app.get("/protected", isLoggedIn, (req, res) => {
+
+
+// Middleware to store the original URL
+const saveReturnTo = (req, res, next) => {
+  if (!req.isAuthenticated() && req.originalUrl !== "/auth/google") {
+    req.session.returnTo = req.originalUrl;
+  }
+  next();
+};
+
+// Apply middleware to protected routes
+app.get("/protected", saveReturnTo, isLoggedIn, (req, res) => {
   res.send(`Hello ${req.user.displayName}!`);
 });
 
