@@ -1,37 +1,73 @@
-import React from "react";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 const OurServices = () => {
-  const services = [
-    {
-      icon: "/img/services/learningExperiences.png",
-      title: "Customized learning",
-      description:
-        "Off-the-shelf eLearning might be a quick hack, but custom eLearning gets real results.",
-      link: "/services/self-paced-learning",
-    },
-    {
-      icon: "/img/services/gamificationImg.png",
-      title: "Consulting and advisory",
-      description:
-        "We love a virtual approach, but sometimes, the best instructor is an actual instructor.",
-      link: "/services/learning-experiences",
-    },
-    {
-      icon: "/img/services/why_mobile_learning.png",
-      title: "Animation and video production",
-      description:
-        "Scale your team with learning services and strategy from ELM Learning.",
-      link: "/services/animation-videos",
-    },
-    {
-      icon: "/img/services/animatedVideosImg.png",
-      title: "Capacity Building",
-      description:
-        "We have content and delivery for soft skills, corporate compliance training, and more.",
-      link: "/services/LXD",
-    },
-  ];
+  const language = useSelector((state) => state.language.language);
+
+  const translations = {
+    eng: [
+      {
+        icon: "/img/services/learningExperiences.png",
+        title: "Customized learning",
+        description:
+          "Off-the-shelf eLearning might be a quick hack, but custom eLearning gets real results.",
+        link: "/services/self-paced-learning",
+      },
+      {
+        icon: "/img/services/gamificationImg.png",
+        title: "Consulting and advisory",
+        description:
+          "We love a virtual approach, but sometimes, the best instructor is an actual instructor.",
+        link: "/services/learning-experiences",
+      },
+      {
+        icon: "/img/services/why_mobile_learning.png",
+        title: "Animation and video production",
+        description:
+          "Scale your team with learning services and strategy from ELM Learning.",
+        link: "/services/animation-videos",
+      },
+      {
+        icon: "/img/services/animatedVideosImg.png",
+        title: "Capacity Building",
+        description:
+          "We have content and delivery for soft skills, corporate compliance training, and more.",
+        link: "/services/LXD",
+      },
+    ],
+    amh: [
+      {
+        icon: "/img/services/learningExperiences.png",
+        title: "ቅንብር የተሠራ ትምህርት",
+        description:
+          "ዝርዝር የተዘጋጀ ኢ-ትምህርት ፈጣን መፍትሔ ሊሆን ቢችልም፣ ቅንብር የተሠራ ኢ-ትምህርት እውነተኛ ውጤት ያመጣል።",
+        link: "/services/self-paced-learning",
+      },
+      {
+        icon: "/img/services/gamificationImg.png",
+        title: "አማካሪነት እና ምክር",
+        description:
+          "ምናባዊ አቀራረብን እንወዳለን, ግን አንዳንድ ጊዜ, ምርጡ አስተማሪ ትክክለኛ አስተማሪ ነው።",
+        link: "/services/learning-experiences",
+      },
+      {
+        icon: "/img/services/why_mobile_learning.png",
+        title: "አኒሜሽን እና ቪዲዮ ማምረት",
+        description:
+          "ቡድንዎን ከኤልኤም ትምህርት የመማር አገልግሎቶች እና ስትራቴጂ ጋር ያስመዝኑት።",
+        link: "/services/animation-videos",
+      },
+      {
+        icon: "/img/services/animatedVideosImg.png",
+        title: "የአቅም ግንባታ",
+        description:
+          "ለስላሳ ክህሎት፣ ለድርጅት ተገዢነት ስልጠና እና ለሌሎችም ይዘት እና አቅርቦት አለን።",
+        link: "/services/LXD",
+      },
+    ],
+  };
+
+  const services = translations[language] || translations.eng;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -57,7 +93,7 @@ const OurServices = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
         >
-          Our Services
+          {language === "amh" ? "አገልግሎቶቻችን" : "Our Services"}
         </motion.h2>
         <motion.div
           className="grid grid-cols-1 gap-8 md:grid-cols-2"
@@ -94,7 +130,7 @@ const OurServices = () => {
                   href={service.link}
                   className="mt-4 font-medium text-indigo-600 hover:text-indigo-800"
                 >
-                  Learn more →
+                  {language === "amh" ? "ተማሩ በተጨማሪ →" : "Learn more →"}
                 </a>
               </div>
             </motion.div>
