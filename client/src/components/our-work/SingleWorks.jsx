@@ -48,7 +48,7 @@ const SingleWorks = () => {
             <p className="text-gray-300 mb-6">{work.description}</p>
             <a
               href={`/our-work/${work.id}`}
-              className="flex items-center gap-2 px-6 py-3 text-white bg-pink-600 hover:bg-pink-500 rounded transition w-fit"
+              className="flex items-center gap-2 px-6 py-3 text-white bg-yellow-600 hover:bg-yellow-500 rounded transition w-fit"
             >
               <span>Read the story</span>
               <svg
@@ -73,7 +73,7 @@ const SingleWorks = () => {
             className="mt-8 md:mt-0 md:ml-10 flex-shrink-0 w-full md:w-1/3"
             {...fadeInUp}
           >
-            <h4 className="text-pink-500 font-semibold uppercase mb-4">
+            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               Project Highlights
             </h4>
             <ul className="text-gray-400 list-disc pl-5 space-y-2">

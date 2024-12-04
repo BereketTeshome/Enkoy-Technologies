@@ -104,7 +104,7 @@ const OurServices = () => {
           </div>
           <a
             href={service.overviewLink}
-            className="text-[#F1858C] text-sm mb-4 block hover:underline"
+            className="text-yellow-400 text-sm mb-4 block hover:underline"
           >
             See overview
           </a>

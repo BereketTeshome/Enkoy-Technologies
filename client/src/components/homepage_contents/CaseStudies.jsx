@@ -20,12 +20,14 @@ const CaseStudies = () => {
     },
     amh: {
       title: "የጉዳይ ጥናቶች",
-      subtitle: "አነሳሽ ሀሳቦችን እንዴት እንደወሰድን እና ለደንበኞቻችን ወደ ተግባራዊ እውነታዎች እንደቀየርናቸው ይመልከቱ",
+      subtitle:
+        "አነሳሽ ሀሳቦችን እንዴት እንደወሰድን እና ለደንበኞቻችን ወደ ተግባራዊ እውነታዎች እንደቀየርናቸው ይመልከቱ",
       caseStudies: [
         {
           logo: "/img/contentsMenuImg.png",
           title: "ጥሩ ስራ በኢትዮጵያ",
-          description: "ኢትዮጵያ ፍትሃዊ እና ስነምግባርን የተላበሰ የስራ አካባቢን በመፍጠር ረገድ ተግዳሮቶች ከፊቷ ተጋርጦባታል፣በተለይም ለወጣት እና እያደገ ለሚሄደው የሰው ሃይል። ከGIZ-STEP ጋር፣ እንኮይ ቴክኖሎጂዎች ባህላዊ የሰው ኃይል ስልጠናን ወደ ተለዋዋጭ እና በራስ የመመራት የመስመር ላይ ተሞክሮ ለመቀየር ደፋር እርምጃ ወስደዋል—በአገር አቀፍ ደረጃ ለተማሪዎች ተደራሽ።",
+          description:
+            "ኢትዮጵያ ፍትሃዊ እና ስነምግባርን የተላበሰ የስራ አካባቢን በመፍጠር ረገድ ተግዳሮቶች ከፊቷ ተጋርጦባታል፣በተለይም ለወጣት እና እያደገ ለሚሄደው የሰው ሃይል። ከGIZ-STEP ጋር፣ እንኮይ ቴክኖሎጂዎች ባህላዊ የሰው ኃይል ስልጠናን ወደ ተለዋዋጭ እና በራስ የመመራት የመስመር ላይ ተሞክሮ ለመቀየር ደፋር እርምጃ ወስደዋል—በአገር አቀፍ ደረጃ ለተማሪዎች ተደራሽ።",
           link: "/our-work",
         },
       ],
@@ -62,7 +64,7 @@ const CaseStudies = () => {
               </p>
               <a
                 href={caseStudy.link}
-                className="inline-block mt-6 font-medium text-pink-500 hover:text-pink-400"
+                className="inline-block mt-6 font-medium text-yellow-500 hover:text-yellow-400"
               >
                 {language === "amh" ? "ታሪኩን ያንብቡ" : "Read the story"} →
               </a>

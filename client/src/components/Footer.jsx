@@ -103,7 +103,7 @@ const Footer = () => {
               href="https://www.instagram.com/enkoy_1/profilecard/?igsh=dHRzYmI5N2hrZXRm"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-pink-500"
+              className="hover:text-yellow-500"
             >
               <FaInstagram size={24} />
             </a>

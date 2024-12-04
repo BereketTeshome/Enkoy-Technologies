@@ -50,19 +50,19 @@ const DetailedWork = () => {
           {...fadeInUp}
         >
           <div>
-            <h4 className="text-pink-500 font-semibold uppercase mb-4">
+            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               What we made
             </h4>
             <p>{work.whatWeMade}</p>
           </div>
           <div>
-            <h4 className="text-pink-500 font-semibold uppercase mb-4">
+            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               The issue
             </h4>
             <p>{work.shortIssus}</p>
           </div>
           <div>
-            <h4 className="text-pink-500 font-semibold uppercase mb-4">
+            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               Project Highlights
             </h4>
             <ul className="list-disc pl-5 space-y-2">
@@ -88,7 +88,7 @@ const DetailedWork = () => {
           {...fadeInUp}
         >
           <div className="flex-1">
-            <h4 className="text-pink-500 font-semibold uppercase mb-4">
+            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               The issue
             </h4>
             <h2 className="text-3xl md:text-5xl w-[90%]">
@@ -112,7 +112,7 @@ const DetailedWork = () => {
           {...fadeInUp}
         >
           <div>
-            <h4 className="text-pink-500 font-semibold uppercase mb-4">
+            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               The journey
             </h4>
             <h2 className="text-3xl md:text-5xl w-[90%]">
@@ -137,7 +137,7 @@ const DetailedWork = () => {
       >
         <motion.div className="flex flex-col gap-5 text-gray-800" {...fadeInUp}>
           <div>
-            <h4 className="text-pink-500 font-semibold uppercase mb-4">
+            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               The Outcomes
             </h4>
           </div>

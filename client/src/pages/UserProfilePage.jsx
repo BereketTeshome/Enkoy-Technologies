@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IconButton, Select, MenuItem } from "@mui/material";
 import { LightMode, DarkMode } from "@mui/icons-material";
@@ -7,14 +7,16 @@ import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import ProfileImgUpload from "../components/ProfileImgUpload";
-import { useDispatch, useSelector } from "react-redux";
-import { changeLanguage } from "../store/LanguageSlice"
 
+import { setTheme } from "../store/ThemeSlice";
+
+import { useDispatch, useSelector } from "react-redux";
+import { changeLanguage } from "../store/LanguageSlice";
 
 const UserProfilePage = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
-  
+
   const [darkMode, setDarkMode] = useState(false);
   const [profileImg, setProfileImg] = useState("");
   const [showPopup, setShowPopup] = useState(false);
@@ -22,11 +24,12 @@ const UserProfilePage = () => {
   const cookie = new Cookies();
   const token = cookie.get("user");
   const decode = token ? jwtDecode(token) : "";
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const toggleTheme = () => {
     setDarkMode(!darkMode);
-    document.documentElement.classList.toggle("dark", !darkMode);
+    dispatch(setTheme(darkMode ? "light" : "dark"));
   };
 
   const handleLogout = () => {
@@ -72,7 +75,10 @@ const UserProfilePage = () => {
         >
           <div className="w-11/12 max-w-md p-6 text-center bg-white rounded-lg shadow-lg">
             <div className="pb-5">
-              <label htmlFor="profileImg" className="mb-3 text-sm text-gray-500">
+              <label
+                htmlFor="profileImg"
+                className="mb-3 text-sm text-gray-500"
+              >
                 Profile Image
               </label>
               <ProfileImgUpload setProfileImg={setProfileImg} />
@@ -133,64 +139,62 @@ const UserProfilePage = () => {
 
         {/* Language Preference */}
         <div className="mb-4">
-      <h2 className="mb-3 text-base font-medium text-gray-700 dark:text-gray-300">
-        Language Preference
-      </h2>
-      <motion.div
-        className="flex items-center justify-between p-3 border rounded-md shadow-sm bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-      >
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-600 dark:text-gray-300">
-            Selected Language:
-          </span>
-          <span className="text-sm font-medium text-gray-800 dark:text-white">
-            {language}
-          </span>
-        </div>
-        <motion.div
-          className="relative"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <Select
-            value={language}
-            onChange={(e) => dispatch(changeLanguage(e.target.value))}
-            className="text-white bg-white rounded shadow dark:bg-gray-700"
-            sx={{
-              '.MuiSelect-select': {
-                padding: '6px 16px',
-              },
-              '.MuiMenuItem-root': {
-                display: 'flex',
-                gap: '8px',
-                alignItems: 'center',
-              },
-            }}
+          <h2 className="mb-3 text-base font-medium text-gray-700 dark:text-gray-300">
+            Language Preference
+          </h2>
+          <motion.div
+            className="flex items-center justify-between p-3 border rounded-md shadow-sm bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <MenuItem value="eng">
-              {/* <img
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-600 dark:text-gray-300">
+                Selected Language:
+              </span>
+              <span className="text-sm font-medium text-gray-800 dark:text-white">
+                {language}
+              </span>
+            </div>
+            <motion.div
+              className="relative"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Select
+                value={language}
+                onChange={(e) => dispatch(changeLanguage(e.target.value))}
+                className="text-white bg-white rounded shadow dark:bg-gray-700"
+                sx={{
+                  ".MuiSelect-select": {
+                    padding: "6px 16px",
+                  },
+                  ".MuiMenuItem-root": {
+                    display: "flex",
+                    gap: "8px",
+                    alignItems: "center",
+                  },
+                }}
+              >
+                <MenuItem value="eng">
+                  {/* <img
                 src="https://flagcdn.com/w40/us.png"
                 alt="eng"
                 className="w-5 h-5 rounded"
               /> */}
-              English
-            </MenuItem>
-            <MenuItem value="amh">
-              {/* <img
+                  English
+                </MenuItem>
+                <MenuItem value="amh">
+                  {/* <img
                 src="https://flagcdn.com/w40/et.png"
                 alt="amh"
                 className="w-5 h-5 rounded"
               /> */}
-              Amharic
-            </MenuItem>
-          </Select>
-        </motion.div>
-      </motion.div>
+                  Amharic
+                </MenuItem>
+              </Select>
+            </motion.div>
+          </motion.div>
         </div>
-
-
 
         {/* Action Buttons */}
         <div className="space-y-4">
