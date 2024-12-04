@@ -7,11 +7,13 @@ import LearningHub from "./navbar_popups/LearningHub";
 import AboutUs from "./navbar_popups/AboutUs";
 import DigitalTraining from "./navbar_popups/DigitalTraining";
 import { HiMenu, HiX } from "react-icons/hi";
+import { useSelector, useDispatch } from "react-redux";
 
 const NavBar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+  const theme = useSelector((state) => state.theme?.theme);
 
   const handleResize = () => {
     setIsLargeScreen(window.innerWidth >= 1024);
@@ -46,7 +48,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="w-full bg-[#161628] py-5 px-6 lg:px-10 flex justify-between items-center relative">
+    <nav className={`${"navDarkContainer"} `}>
       {/* Logo */}
       <div>
         <img src="/navLogo.png" alt="logo" className="w-[40px]" />
@@ -67,7 +69,7 @@ const NavBar = () => {
       >
         <motion.a
           href="/"
-          className="text-sm font-semibold text-gray-50"
+          className={`text-sm font-semibold ${"navDarkLinkColor"}`}
           variants={{
             hidden: { opacity: 0, y: -20 },
             visible: { opacity: 1, y: 0 },
@@ -90,7 +92,9 @@ const NavBar = () => {
             <a
               href="#"
               className={`relative text-xs font-semibold lg:text-sm ${
-                item.special ? "text-[#FFCD57] font-bold" : "text-gray-50"
+                item.special
+                  ? "text-[#FFCD57] font-bold"
+                  : `${"navDarkLinkColor"}`
               } group`}
             >
               {item.name}
@@ -127,9 +131,9 @@ const NavBar = () => {
       <div className="block lg:hidden">
         <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? (
-            <HiX className="w-8 h-8 text-gray-50" />
+            <HiX className={`w-8 h-8 ${"navDarkLinkColor"}`} />
           ) : (
-            <HiMenu className="w-8 h-8 text-gray-50" />
+            <HiMenu className={`w-8 h-8 ${"navDarkLinkColor"}`} />
           )}
         </button>
       </div>
@@ -145,7 +149,7 @@ const NavBar = () => {
           >
             <motion.a
               href="/"
-              className="text-sm font-semibold text-gray-50 transition-colors duration-300 hover:text-[#FFCD57]"
+              className={`text-sm font-semibold ${"navDarkLinkColor"} transition-colors duration-300 hover:text-[#FFCD57]`}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
             >
@@ -157,7 +161,9 @@ const NavBar = () => {
                 <button
                   onClick={() => toggleDropdown(item.name)}
                   className={`w-full text-left px-4 py-2 text-sm font-semibold ${
-                    item.special ? "text-[#FFCD57] font-bold" : "text-gray-50"
+                    item.special
+                      ? "text-[#FFCD57] font-bold"
+                      : `${"navDarkLinkColor"}`
                   } bg-[#1f1f38] hover:bg-[#2a2a46] focus:outline-none`}
                 >
                   {item.name}
@@ -179,7 +185,7 @@ const NavBar = () => {
             ))}
             <motion.a
               href="/Contact"
-              className="relative text-sm font-semibold max-w-[110px] bg-gradient-to-r from-pink-500 to-yellow-500 text-white flex items-center justify-center px-5 py-2 rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-pink-500/50"
+              className="navLightLinkContactUs"
               initial={{ y: -16 }}
               animate={{ y: 0 }}
             >

@@ -6,7 +6,8 @@ import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import ProfileImgUpload from "../components/ProfileImgUpload";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setTheme } from "../store/ThemeSlice";
 
 const UserProfilePage = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -15,11 +16,12 @@ const UserProfilePage = () => {
   const cookie = new Cookies();
   const token = cookie.get("user");
   const decode = token ? jwtDecode(token) : "";
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const toggleTheme = () => {
     setDarkMode(!darkMode);
-    document.documentElement.classList.toggle("dark", !darkMode);
+    dispatch(setTheme(darkMode ? "light" : "dark"));
   };
 
   const user = {
