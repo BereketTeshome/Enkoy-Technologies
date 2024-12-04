@@ -1,8 +1,10 @@
-import React from "react";
 import { motion } from "framer-motion";
 import "aos/dist/aos.css";
+import { useSelector } from "react-redux";
 
 const Partners = () => {
+    const language = useSelector((state) => state.language.language);
+
   // List of partner logos with their names
   const logos = [
     { src: "/img/partners/GIZ.PNG", alt: "GIZ" },
@@ -37,11 +39,11 @@ const Partners = () => {
       id="start"
       transition={{ delay: 0.3, duration: 0.5 }}
     >
-      <h2 className="text-4xl text-gray-700 font-semibold text-center mb-10">
-        Who we work with
+      <h2 className="mb-10 text-4xl font-semibold text-center text-gray-700">
+        {language === "amh" ? "ከማን ጋር ነው የምንሰራው" : "Who we work with"}
       </h2>
       <motion.div
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 px-6"
+        className="grid grid-cols-2 gap-8 px-6 sm:grid-cols-3 md:grid-cols-4"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -50,7 +52,7 @@ const Partners = () => {
         {logos.map((logo, index) => (
           <motion.div
             key={index}
-            className="flex justify-center items-center"
+            className="flex items-center justify-center"
             variants={childVariants} // Apply variants to child elements
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.5 }}
@@ -58,7 +60,7 @@ const Partners = () => {
             <img
               src={logo.src}
               alt={logo.alt}
-              className="w-36 h-auto object-contain"
+              className="object-contain h-auto w-36"
             />
           </motion.div>
         ))}
