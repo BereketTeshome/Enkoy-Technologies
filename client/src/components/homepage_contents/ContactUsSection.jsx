@@ -107,7 +107,7 @@ const ContactUsSection = () => {
                 id="fullName"
                 value={formData.fullName}
                 onChange={handleInputChange}
-                className="w-full p-2 mt-1 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+                className="w-full p-2 mt-1 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 whileFocus={{ boxShadow: "0 0 8px rgba(255, 105, 180, 0.6)" }}
               />
               {errors.fullName && (
@@ -133,7 +133,7 @@ const ContactUsSection = () => {
                 id="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full p-2 mt-1 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+                className="w-full p-2 mt-1 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 whileFocus={{ boxShadow: "0 0 8px rgba(255, 105, 180, 0.6)" }}
               />
               {errors.email && (
@@ -156,7 +156,7 @@ const ContactUsSection = () => {
                   id="countryCode"
                   value={formData.countryCode}
                   onChange={handleInputChange}
-                  className="w-1/3 p-2 text-sm bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-1/3 p-2 text-sm bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   whileFocus={{ boxShadow: "0 0 8px rgba(255, 105, 180, 0.6)" }}
                 >
                   <option value="" disabled>
@@ -172,7 +172,7 @@ const ContactUsSection = () => {
                   id="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="flex-1 p-2 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="flex-1 p-2 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   placeholder="Number *"
                   whileFocus={{ boxShadow: "0 0 8px rgba(255, 105, 180, 0.6)" }}
                 />
@@ -200,7 +200,7 @@ const ContactUsSection = () => {
                 id="company"
                 value={formData.company}
                 onChange={handleInputChange}
-                className="w-full p-2 mt-1 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+                className="w-full p-2 mt-1 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 whileFocus={{ boxShadow: "0 0 8px rgba(255, 105, 180, 0.6)" }}
               />
             </motion.div>
@@ -223,7 +223,7 @@ const ContactUsSection = () => {
                 value={formData.projectDescription}
                 onChange={handleInputChange}
                 rows="3"
-                className="w-full p-2 mt-1 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+                className="w-full p-2 mt-1 bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 whileFocus={{ boxShadow: "0 0 8px rgba(255, 105, 180, 0.6)" }}
               ></motion.textarea>
               {errors.projectDescription && (
@@ -235,7 +235,7 @@ const ContactUsSection = () => {
 
             <motion.button
               type="submit"
-              className="w-full p-2 text-white transition bg-pink-500 rounded-md hover:bg-pink-600 disabled:bg-gray-300"
+              className="w-full p-2 text-white transition bg-yellow-500 rounded-md hover:bg-yellow-600 disabled:bg-gray-300"
               disabled={!isFormValid}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

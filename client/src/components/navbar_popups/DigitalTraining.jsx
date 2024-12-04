@@ -17,7 +17,7 @@ const DigitalTraining = () => {
         </p>
         <a
           href="/digital-training"
-          className="text-sm font-medium text-pink-500 hover:underline"
+          className="text-sm font-medium text-yellow-500 hover:underline"
         >
           See overview
         </a>
@@ -25,10 +25,11 @@ const DigitalTraining = () => {
 
       {/* Right Section */}
       <div className="pl-4">
-        <a href="/create-course" className="text-sm text-red-400 ">
+        <a href="/create-course" className="text-sm text-[#8B3A3A] ">
           Create Course
-        </a> <br/>
-        <a href="/published-trainings" className="text-sm text-red-400">
+        </a>{" "}
+        <br />
+        <a href="/published-trainings" className="text-sm text-[#8B3A3A]">
           Published Trainings
         </a>
       </div>

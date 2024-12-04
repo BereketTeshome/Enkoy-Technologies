@@ -19,7 +19,7 @@ const LearningHub = () => {
         </p>
         {/* <a
           href="/case-studies"
-          className="font-medium text-pink-500 hover:underline"
+          className="font-medium text-yellow-500 hover:underline"
         >
           See case studies
         </a> */}

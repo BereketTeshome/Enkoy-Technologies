@@ -17,7 +17,7 @@ const CorporateTraining = () => {
       {/* Overview Link */}
       <a
         href="/corporate-training"
-        className="text-[#F1858C] text-sm mb-4 inline-block"
+        className="text-yellow-400 text-sm mb-4 inline-block"
       >
         See overview
       </a>

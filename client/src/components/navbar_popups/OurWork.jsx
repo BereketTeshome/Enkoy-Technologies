@@ -19,7 +19,7 @@ const OurWork = () => {
         </p>
         <a
           href="/our-work"
-          className="font-medium text-pink-500 hover:underline"
+          className="font-medium text-yellow-500 hover:underline"
         >
           See case studies
         </a>
@@ -32,7 +32,7 @@ const OurWork = () => {
         </h3>
         <a
           href="/portfolio"
-          className="font-medium text-pink-500 hover:underline"
+          className="font-medium text-yellow-500 hover:underline"
         >
           Portfolio
         </a>

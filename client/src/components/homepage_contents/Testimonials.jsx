@@ -78,7 +78,7 @@ const Testimonials = () => {
         <div className="flex items-center justify-center gap-4 mt-8">
           <button
             onClick={handlePrev}
-            className="flex items-center justify-center w-10 h-10 text-white transition bg-pink-200 rounded-full hover:bg-pink-300"
+            className="flex items-center justify-center w-10 h-10 text-white transition bg-yellow-200 rounded-full hover:bg-yellow-300"
           >
             &lt;
           </button>
@@ -88,15 +88,15 @@ const Testimonials = () => {
                 key={index}
                 className={`w-3 h-3 rounded-full ${
                   index === activeIndex
-                    ? "bg-pink-500"
-                    : "bg-gray-300 hover:bg-pink-300"
+                    ? "bg-yellow-500"
+                    : "bg-gray-300 hover:bg-yellow-300"
                 } transition`}
               />
             ))}
           </div>
           <button
             onClick={handleNext}
-            className="flex items-center justify-center w-10 h-10 text-white transition bg-pink-300 rounded-full hover:bg-pink-400"
+            className="flex items-center justify-center w-10 h-10 text-white transition bg-yellow-300 rounded-full hover:bg-yellow-400"
           >
             &gt;
           </button>

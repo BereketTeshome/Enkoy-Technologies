@@ -16,7 +16,7 @@ const AboutUs = () => {
         <p className="mb-4 text-sm text-gray-600">
           Find out about our mission, purpose, and how we got here.
         </p>
-        <a href="/about-us" className="text-sm text-pink-500 hover:underline">
+        <a href="/about-us" className="text-sm text-yellow-500 hover:underline">
           Learn more about us
         </a>
       </div>
