@@ -7,11 +7,14 @@ import LearningHub from "./navbar_popups/LearningHub";
 import AboutUs from "./navbar_popups/AboutUs";
 import DigitalTraining from "./navbar_popups/DigitalTraining";
 import { HiMenu, HiX } from "react-icons/hi";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+  const language = useSelector((state) => state.language.language);
+  
 
   const handleResize = () => {
     setIsLargeScreen(window.innerWidth >= 1024);
@@ -29,17 +32,18 @@ const NavBar = () => {
   }, [isLargeScreen]);
 
   const navItems = [
-    { name: "About Us", component: <AboutUs /> },
-    { name: "Our Services", component: <OurServices /> },
-    { name: "Our Work", component: <OurWork /> },
-    { name: "Learning Hub", component: <LearningHub /> },
-    { name: "Corporate Training", component: <CorporateTraining /> },
+    { name: language === "amh" ? "ስለ እኛ" : "About Us", component: <AboutUs /> },
+    { name: language === "amh" ? "አገልግሎቶቻችን" : "Our Services", component: <OurServices /> },
+    { name: language === "amh" ? "የእኛ ስራ" : "Our Work", component: <OurWork /> },
+    { name: language === "amh" ? "የመማሪያ ማዕከል" : "Learning Hub", component: <LearningHub /> },
+    { name: language === "amh" ? "የኮርፖሬት ስልጠና" : "Corporate Training", component: <CorporateTraining /> },
     {
-      name: "*Digital Training",
+      name: language === "amh" ? "*ዲጂታል ስልጠና" : "*Digital Training",
       component: <DigitalTraining />,
       special: true,
     },
   ];
+  
 
   const toggleDropdown = (name) => {
     setActiveDropdown(activeDropdown === name ? null : name);
@@ -73,7 +77,7 @@ const NavBar = () => {
             visible: { opacity: 1, y: 0 },
           }}
         >
-          Home
+          {language === "amh" ?  "ቤት" : "Home"}
         </motion.a>
         {navItems.map((item, index) => (
           <motion.div
