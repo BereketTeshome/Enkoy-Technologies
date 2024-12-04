@@ -48,7 +48,7 @@ const Register = () => {
 
   const handleGoogleSignup = () => {
     // Redirect to your backend's Google OAuth endpoint
-    window.location.href = "http://localhost:5000/auth/google";
+    window.location.href = "http://localhost:3000/auth/google";
   };
 
   return (
