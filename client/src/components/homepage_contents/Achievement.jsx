@@ -1,30 +1,59 @@
 import React from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import { useSelector } from "react-redux";
 
 const Achievement = () => {
-  const stats = [
-    {
-      value: 2,
-      description: "years of professional experience",
-      duration: 2,
-    },
-    {
-      value: 1,
-      description: "Ideal length of an animation in (Minutes)",
-      duration: 1,
-    },
-    {
-      value: 4068,
-      description: "Total project hours completed",
-      duration: 3,
-    },
-    {
-      value: 50,
-      description: "illustrations we create for a course",
-      duration: 2,
-    },
-  ];
+  const language = useSelector((state) => state.language.language);
+
+  const translations = {
+    eng: [
+      {
+        value: 2,
+        description: "years of professional experience",
+        duration: 2,
+      },
+      {
+        value: 1,
+        description: "Ideal length of an animation in (Minutes)",
+        duration: 1,
+      },
+      {
+        value: 4068,
+        description: "Total project hours completed",
+        duration: 3,
+      },
+      {
+        value: 50,
+        description: "illustrations we create for a course",
+        duration: 2,
+      },
+    ],
+    amh: [
+      {
+        value: 2,
+        description: "የዓመታት ሙያዊ ልምድ",
+        duration: 2,
+      },
+      {
+        value: 1,
+        description: "ትክክለኛው የአኒሜሽን ርዝመት በ (ደቂቃዎች) ውስጥ",
+        duration: 1,
+      },
+      {
+        value: 4068,
+        description: "የተጠናቀቁ የፕሮጀክት ሰዓታት",
+        duration: 3,
+      },
+      {
+        value: 50,
+        description: "ለአንድ ኮርስ የምንፈጽም ማብራሪያዎች",
+        duration: 2,
+      },
+    ],
+  };
+
+  const stats = translations[language] || translations.eng;
 
   const { ref, inView } = useInView({
     threshold: 0.3, // Start counting when 30% of the component is visible
