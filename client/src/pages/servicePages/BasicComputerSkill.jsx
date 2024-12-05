@@ -1,7 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import { useSelector } from "react-redux";
 const BasicComputerSkill = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
   const fadeInUp = {
     initial: { opacity: 0, y: 50 },
     whileInView: {
@@ -13,7 +15,9 @@ const BasicComputerSkill = () => {
   };
 
   return (
-    <motion.div className="py-20">
+    <motion.div
+      className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
+    >
       <motion.div className="flex flex-col items-center w-full" {...fadeInUp}>
         {/* Header Section */}
         <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
@@ -30,27 +34,49 @@ const BasicComputerSkill = () => {
             Basic Computer Skills Training
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            className={`text-4xl sm:text-5xl mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+            }`}
             {...fadeInUp}
           >
             Master the Basics: Essential Computer Skills Training
           </motion.h2>
-          <motion.div className="text-justify" {...fadeInUp}>
-            <motion.p className="mb-7" {...fadeInUp}>
+          <motion.div
+            className={`text-justify ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+            }`}
+            {...fadeInUp}
+          >
+            <motion.p
+              className={`mb-7 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-800"
+              }`}
+              {...fadeInUp}
+            >
               At Enkoy, we provide essential basic computer skills training
               designed to help individuals navigate today’s digital world with
               confidence. Our program focuses on teaching fundamental skills
               such as using operating systems, managing files, and utilizing
               essential software applications.
             </motion.p>
-            <motion.p className="mb-7" {...fadeInUp}>
+            <motion.p
+              className={`mb-7 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-800"
+              }`}
+              {...fadeInUp}
+            >
               Through interactive lessons and hands-on practice, participants
               will learn how to effectively use tools like word processors,
               spreadsheets, and presentation software. Our experienced
               instructors provide clear guidance and support to ensure that each
               learner feels comfortable and proficient with technology.
             </motion.p>
-            <motion.p className="mb-7" {...fadeInUp}>
+            <motion.p
+              className={`mb-7 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-800"
+              }`}
+              {...fadeInUp}
+            >
               By participating in our basic computer skills training, you will
               gain the foundational knowledge needed to enhance your
               productivity and efficiency in both personal and professional
@@ -60,7 +86,9 @@ const BasicComputerSkill = () => {
           </motion.div>
           <motion.a
             href="/contact"
-            className="px-6 py-3 text-white bg-gray-900"
+            className={`px-6 py-3 text-white ${
+              isDarkTheme ? "bg-yellow-500" : "bg-gray-900"
+            }`}
             {...fadeInUp}
           >
             Contact Us

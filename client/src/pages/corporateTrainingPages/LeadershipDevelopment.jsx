@@ -1,7 +1,11 @@
 import React from "react";
 import FAQSection from "../../components/corporateTraining/FAQSection";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+
 const LeadershipDevelopment = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
   const faqData = [
     {
       question: "Tailored Leadership Development for Your Unique Context",
@@ -43,7 +47,7 @@ const LeadershipDevelopment = () => {
   };
 
   return (
-    <div className="pt-20 ">
+    <div className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}>
       <div className="flex flex-col items-center w-full">
         <motion.div
           className="sm:w-[60%] pb-20 w-[80%]"
@@ -63,13 +67,20 @@ const LeadershipDevelopment = () => {
             Leadership development training
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            className={`text-4xl sm:text-5xl mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+            }`}
             variants={childVariants}
           >
             Leadership development training designed to motivate and achieve
             results.
           </motion.h2>
-          <motion.p className="text-justify mb-7" variants={childVariants}>
+          <motion.p
+            className={`text-justify mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-900"
+            }`}
+            variants={childVariants}
+          >
             At Enkoy Technologies, we are committed to cultivating leadership
             skills! Whether your team includes natural leaders or individuals
             ready to step into leadership roles, we can assist you in teaching
@@ -78,7 +89,9 @@ const LeadershipDevelopment = () => {
           </motion.p>
           <motion.a
             href="/contact"
-            className="px-6 py-3 text-white bg-gray-900"
+            className={`px-6 py-3 text-white ${
+              isDarkTheme ? "bg-yellow-500" : "bg-gray-900"
+            }`}
             variants={childVariants}
           >
             Contact Us
@@ -108,17 +121,29 @@ const LeadershipDevelopment = () => {
             viewport={{ amount: 0.2, once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl sm:text-5xl text-gray-950 mb-7">
+            <h2
+              className={`text-4xl sm:text-5xl mb-7 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-950"
+              }`}
+            >
               Transformative Leadership Development for Lasting Impact
             </h2>
-            <p className="mb-2 text-justify">
+            <p
+              className={`mb-2 text-justify ${
+                isDarkTheme ? "text-gray-300" : "text-gray-900"
+              }`}
+            >
               At Enkoy Technologies, we believe that effective leadership is the
               cornerstone of organizational success. Our transformative
               leadership development training helps cultivate leaders who not
               only excel in their roles but also inspire their teams to achieve
               greatness.
             </p>
-            <p className="text-justify">
+            <p
+              className={`text-justify ${
+                isDarkTheme ? "text-gray-300" : "text-gray-900"
+              }`}
+            >
               By combining practical skills with strategic insights, our
               programs are designed to challenge leaders to think critically and
               act decisively. We focus on real-world applications, ensuring that
@@ -246,7 +271,7 @@ const LeadershipDevelopment = () => {
           <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Transformative Benefits for Your Organization
           </h2>
-          <p className="text-justify">
+          <p className={`text-justify ${"text-gray-900"}`}>
             The impact of our leadership development solutions extends far
             beyond individual leaders. As your leaders become more effective,
             the benefits ripple throughout your organization:

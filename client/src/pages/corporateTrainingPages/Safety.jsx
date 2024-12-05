@@ -1,8 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
+import { useSelector } from "react-redux";
 
 const Safety = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
   const faqData = [
     {
       question: "Tailored Learning Solutions for Organizational Needs",
@@ -30,7 +33,9 @@ const Safety = () => {
   };
 
   return (
-    <motion.div className="pt-20">
+    <motion.div
+      className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
+    >
       <motion.div
         className="flex flex-col w-full items-center"
         variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
@@ -49,12 +54,19 @@ const Safety = () => {
             Safety and Health at workplace training
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            className={`text-4xl sm:text-5xl mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+            }`}
             {...fadeInUp}
           >
             Ensuring a Safe and Healthy Work Environment
           </motion.h2>
-          <motion.p className="mb-7" {...fadeInUp}>
+          <motion.p
+            className={`mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-800"
+            }`}
+            {...fadeInUp}
+          >
             At Enkoy Technologies, we prioritize the well-being of employees as
             a fundamental aspect of organizational success. Our Safety and
             Health at Workplace Training is designed to equip individuals and
@@ -65,7 +77,9 @@ const Safety = () => {
           </motion.p>
           <motion.a
             href="/contact"
-            className="py-3 px-6 bg-gray-900 text-white"
+            className={`px-6 py-3 text-white ${
+              isDarkTheme ? "bg-yellow-500" : "bg-gray-900"
+            }`}
             {...fadeInUp}
           >
             Contact Us
@@ -86,12 +100,19 @@ const Safety = () => {
           </motion.div>
           <motion.div className="flex-1" {...fadeInUp}>
             <motion.h2
-              className="text-3xl sm:text-5xl text-gray-950 mb-7"
+              className={`text-4xl sm:text-5xl mb-7 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-950"
+              }`}
               {...fadeInUp}
             >
               Transformative Learning for Workplace Safety
             </motion.h2>
-            <motion.p className="mb-2" {...fadeInUp}>
+            <motion.p
+              className={`mb-2 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-800"
+              }`}
+              {...fadeInUp}
+            >
               Our approach to Safety and Health Training focuses on practical
               applications that empower participants to recognize, assess, and
               mitigate workplace hazards. We cover essential topics such as

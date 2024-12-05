@@ -1,8 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
+import { useSelector } from "react-redux";
 
 const DecentWork = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
   const faqData = [
     {
       question: "Tailored Learning Solutions for Organizational Impact",
@@ -30,7 +33,9 @@ const DecentWork = () => {
   };
 
   return (
-    <motion.div className="pt-20">
+    <motion.div
+      className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
+    >
       <motion.div
         className="flex flex-col items-center w-full"
         variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
@@ -49,12 +54,19 @@ const DecentWork = () => {
             Decent work and SDG training
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            className={`text-4xl sm:text-5xl mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+            }`}
             {...fadeInUp}
           >
             Promoting Sustainable Employment and Responsible Practices
           </motion.h2>
-          <motion.p className="text-justify mb-7" {...fadeInUp}>
+          <motion.p
+            className={`text-justify mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-900"
+            }`}
+            {...fadeInUp}
+          >
             At Enkoy Technologies, we understand the importance of decent work
             in achieving sustainable development. Our Decent Work and
             Sustainable Development Goals (SDG) Training is designed to equip
@@ -66,7 +78,9 @@ const DecentWork = () => {
           </motion.p>
           <motion.a
             href="/contact"
-            className="px-6 py-3 text-white bg-gray-900"
+            className={`px-6 py-3 text-white ${
+              isDarkTheme ? "bg-yellow-500" : "bg-gray-900"
+            }`}
             {...fadeInUp}
           >
             Contact Us
@@ -91,12 +105,19 @@ const DecentWork = () => {
           </motion.div>
           <motion.div className="flex-1" {...fadeInUp}>
             <motion.h2
-              className="text-3xl sm:text-5xl text-gray-950 mb-7"
+              className={`text-4xl sm:text-5xl mb-7 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-950"
+              }`}
               {...fadeInUp}
             >
               Transformative Learning for Sustainable Employment
             </motion.h2>
-            <motion.p className="mb-2 text-justify" {...fadeInUp}>
+            <motion.p
+              className={`mb-2 text-justify ${
+                isDarkTheme ? "text-gray-300" : "text-gray-900"
+              }`}
+              {...fadeInUp}
+            >
               Our approach to Decent Work and SDG Training focuses on practical
               applications that empower participants to understand and implement
               the principles of decent work and sustainability. We cover
@@ -128,7 +149,10 @@ const DecentWork = () => {
             className="flex-1 text-gray-900 text-[15px]"
             {...fadeInUp}
           >
-            <motion.p {...fadeInUp} className="text-justify">
+            <motion.p
+              {...fadeInUp}
+              className={`text-justify ${"text-gray-900"}`}
+            >
               As the global job market evolves, it’s crucial for individuals and
               organizations to embrace responsible work practices. At Enkoy
               Technologies, our training emphasizes awareness of the SDGs,
@@ -216,7 +240,10 @@ const DecentWork = () => {
             >
               Transformative Benefits for Individuals and Organizations
             </motion.h2>
-            <motion.p {...fadeInUp} className="text-justify">
+            <motion.p
+              {...fadeInUp}
+              className={`text-justify ${"text-gray-900"}`}
+            >
               The impact of our Decent Work and SDG Training extends throughout
               your organization and beyond. As participants enhance their
               understanding of decent work and sustainability, the advantages

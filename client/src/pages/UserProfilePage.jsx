@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IconButton, Select, MenuItem } from "@mui/material";
 import { LightMode, DarkMode } from "@mui/icons-material";
@@ -14,10 +14,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeLanguage } from "../store/LanguageSlice";
 
 const UserProfilePage = () => {
-  // const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
+  const theme = useSelector((state) => state.theme.theme); // Get the theme from Redux
 
-  const [darkMode, setDarkMode] = useState(false);
   const [profileImg, setProfileImg] = useState("");
   const [showPopup, setShowPopup] = useState(false);
 
@@ -28,9 +27,20 @@ const UserProfilePage = () => {
   const navigate = useNavigate();
 
   const toggleTheme = () => {
-    setDarkMode(!darkMode);
-    dispatch(setTheme(darkMode ? "light" : "dark"));
+    const newTheme = theme === "dark" ? "light" : "dark";
+    dispatch(setTheme(newTheme)); // Dispatch the theme change to Redux
+
+    // Save the theme to localStorage
+    localStorage.setItem("theme", newTheme);
   };
+
+  useEffect(() => {
+    // Check if there's a theme saved in localStorage when the component mounts
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      dispatch(setTheme(savedTheme)); // Update the Redux store with the saved theme
+    }
+  }, [dispatch]);
 
   const handleLogout = () => {
     cookie.remove("user");
@@ -64,7 +74,9 @@ const UserProfilePage = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex items-center justify-center min-h-screen p-5 bg-gray-100 dark:bg-gray-800"
+      className={`flex items-center justify-center min-h-screen p-5 ${
+        theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+      }`} // Dynamically set background color based on the theme
     >
       {showPopup && (
         <motion.div
@@ -106,7 +118,7 @@ const UserProfilePage = () => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 30, opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="w-full max-w-md p-6 bg-white rounded-lg shadow-md dark:bg-gray-900"
+        className={`w-full max-w-md p-6 bg-white rounded-lg shadow-md dark:bg-gray-900`} // Dynamically set background color for the inner container
       >
         {/* User Info Section */}
         <div className="flex items-center gap-4 mb-6">
@@ -129,8 +141,8 @@ const UserProfilePage = () => {
               <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
                 {decode.username}
               </h1>
-              <IconButton onClick={toggleTheme}>
-                {darkMode ? <LightMode /> : <DarkMode />}
+              <IconButton onClick={toggleTheme} sx={{ color: "#fff" }}>
+                {theme === "dark" ? <LightMode /> : <DarkMode />}
               </IconButton>
             </div>
             <p className="text-gray-600 dark:text-gray-400">{decode.email}</p>
@@ -175,22 +187,8 @@ const UserProfilePage = () => {
                   },
                 }}
               >
-                <MenuItem value="eng">
-                  {/* <img
-                src="https://flagcdn.com/w40/us.png"
-                alt="eng"
-                className="w-5 h-5 rounded"
-              /> */}
-                  English
-                </MenuItem>
-                <MenuItem value="amh">
-                  {/* <img
-                src="https://flagcdn.com/w40/et.png"
-                alt="amh"
-                className="w-5 h-5 rounded"
-              /> */}
-                  Amharic
-                </MenuItem>
+                <MenuItem value="eng">English</MenuItem>
+                <MenuItem value="amh">Amharic</MenuItem>
               </Select>
             </motion.div>
           </motion.div>

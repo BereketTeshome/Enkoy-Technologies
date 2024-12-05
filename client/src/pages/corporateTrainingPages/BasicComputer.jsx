@@ -1,8 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
+import { useSelector } from "react-redux";
 
 const BasicComputer = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
   const faqData = [
     {
       question: "Tailored Development Solutions for Individual Needs",
@@ -30,7 +33,9 @@ const BasicComputer = () => {
   };
 
   return (
-    <motion.div className="pt-20">
+    <motion.div
+      className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
+    >
       <motion.div
         className="flex flex-col w-full items-center"
         variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
@@ -49,12 +54,19 @@ const BasicComputer = () => {
             Basic computer skill training
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            className={`text-4xl sm:text-5xl mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+            }`}
             {...fadeInUp}
           >
             Empowering Individuals with Essential Digital Competencies
           </motion.h2>
-          <motion.p className="mb-7" {...fadeInUp}>
+          <motion.p
+            className={`mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-800"
+            }`}
+            {...fadeInUp}
+          >
             At Enkoy Technologies, we understand that basic computer skills are
             fundamental in today’s digital world. Our Basic Computer Skills
             Training is designed to equip individuals with the essential
@@ -64,7 +76,9 @@ const BasicComputer = () => {
           </motion.p>
           <motion.a
             href="/contact"
-            className="py-3 px-6 bg-gray-900 text-white"
+            className={`px-6 py-3 text-white ${
+              isDarkTheme ? "bg-yellow-500" : "bg-gray-900"
+            }`}
             {...fadeInUp}
           >
             Contact Us
@@ -88,12 +102,19 @@ const BasicComputer = () => {
           </motion.div>
           <motion.div className="flex-1" {...fadeInUp}>
             <motion.h2
-              className="text-3xl sm:text-5xl text-gray-950 mb-7"
+              className={`text-4xl sm:text-5xl mb-7 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-950"
+              }`}
               {...fadeInUp}
             >
               Transformative Learning for Digital Proficiency
             </motion.h2>
-            <motion.p className="mb-2" {...fadeInUp}>
+            <motion.p
+              className={`mb-2 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-800"
+              }`}
+              {...fadeInUp}
+            >
               Our approach to Basic Computer Skills Training focuses on creating
               engaging and practical learning experiences. Participants will
               learn to operate common software applications, manage files and

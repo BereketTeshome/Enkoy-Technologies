@@ -1,8 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
+import { useSelector } from "react-redux";
 
 const SoftSkill = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
   const faqData = [
     {
       question: "Tailored Learning Solutions for Organizational Goals",
@@ -30,7 +33,9 @@ const SoftSkill = () => {
   };
 
   return (
-    <motion.div className="pt-20">
+    <motion.div
+      className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
+    >
       <motion.div
         className="flex flex-col w-full items-center"
         variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
@@ -49,12 +54,19 @@ const SoftSkill = () => {
             Soft skill training
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            className={`text-4xl sm:text-5xl mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+            }`}
             {...fadeInUp}
           >
             Cultivating Essential Interpersonal Skills for Success
           </motion.h2>
-          <motion.p className="mb-7" {...fadeInUp}>
+          <motion.p
+            className={`mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-800"
+            }`}
+            {...fadeInUp}
+          >
             At Enkoy Technologies, we recognize that technical skills alone are
             not enough to thrive in today’s workplace. Our Soft Skills Training
             is designed to equip individuals with the essential interpersonal
@@ -65,7 +77,9 @@ const SoftSkill = () => {
           </motion.p>
           <motion.a
             href="/contact"
-            className="py-3 px-6 bg-gray-900 text-white"
+            className={`px-6 py-3 text-white ${
+              isDarkTheme ? "bg-yellow-500" : "bg-gray-900"
+            }`}
             {...fadeInUp}
           >
             Contact Us
@@ -88,13 +102,20 @@ const SoftSkill = () => {
           </motion.div>
           <motion.div className="flex-1" {...fadeInUp}>
             <motion.h2
-              className="text-3xl sm:text-5xl text-gray-950 mb-7"
+              className={`text-4xl sm:text-5xl mb-7 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-950"
+              }`}
               {...fadeInUp}
             >
               Transformative Learning for Enhanced Communication and
               Collaboration
             </motion.h2>
-            <motion.p className="mb-2" {...fadeInUp}>
+            <motion.p
+              className={`mb-2 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-800"
+              }`}
+              {...fadeInUp}
+            >
               Our approach to Soft Skills Training focuses on practical
               applications that empower participants to improve their
               interpersonal skills. We cover essential topics such as

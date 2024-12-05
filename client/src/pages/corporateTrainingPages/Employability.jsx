@@ -1,8 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
+import { useSelector } from "react-redux";
 
 const Employability = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
   const faqData = [
     {
       question: "Tailored Learning Solutions for Diverse Career Goals",
@@ -30,7 +33,9 @@ const Employability = () => {
   };
 
   return (
-    <motion.div className="pt-20">
+    <motion.div
+      className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
+    >
       <motion.div
         className="flex flex-col w-full items-center"
         variants={staggerContainer}
@@ -52,12 +57,19 @@ const Employability = () => {
             Employability and entrepreneurship
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            className={`text-4xl sm:text-5xl mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+            }`}
             {...fadeIn}
           >
             Empowering Individuals for Career Success and Business Innovation
           </motion.h2>
-          <motion.p className="mb-7" {...fadeIn}>
+          <motion.p
+            className={`mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+            }`}
+            {...fadeIn}
+          >
             At Enkoy Technologies, we believe that equipping individuals with
             the skills for employability and entrepreneurship is essential in
             today’s dynamic job market. Our Employability and Entrepreneurship
@@ -69,7 +81,9 @@ const Employability = () => {
           </motion.p>
           <motion.a
             href="/contact"
-            className="py-3 px-6 bg-gray-900 text-white"
+            className={`px-6 py-3 text-white ${
+              isDarkTheme ? "bg-yellow-500" : "bg-gray-900"
+            }`}
             {...fadeIn}
           >
             Contact Us
@@ -87,10 +101,18 @@ const Employability = () => {
             />
           </motion.div>
           <motion.div className="flex-1" {...fadeIn}>
-            <h2 className=" text-3xl sm:text-5xl text-gray-950 mb-7">
+            <h2
+              className={`text-4xl sm:text-5xl mb-7 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-950"
+              }`}
+            >
               Transformative Learning for Career and Business Growth
             </h2>
-            <p className="mb-2 text-justify">
+            <p
+              className={`mb-2 text-justify ${
+                isDarkTheme ? "text-gray-300" : "text-gray-900"
+              }`}
+            >
               Our approach to Employability and Entrepreneurship Training
               focuses on practical, hands-on experiences that prepare
               participants for real-world challenges. We cover essential topics
@@ -186,7 +208,7 @@ const Employability = () => {
           <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Transformative Benefits for Individuals and Organizations
           </h2>
-          <p className="text-justify">
+          <p className={`text-justify ${"text-gray-900"}`}>
             The impact of our Employability and Entrepreneurship Training
             extends beyond individual learners, benefiting the entire
             organization. As participants enhance their employability and
