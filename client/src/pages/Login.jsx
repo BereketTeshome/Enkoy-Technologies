@@ -26,13 +26,15 @@ const Login = () => {
 				}
 			);
 
-			// Save the token in cookies
-			cookie.set("user", res.data.token, { path: "/", httpOnly: false });
-			setBtnLoading(false);
-			navigate("/"); // Navigate to home page
-		} catch (error) {
-			console.log("Error:", error.response?.data || error.message);
-			setBtnLoading(false);
+      // Save the token in cookies
+      cookie.set("user", res.data.token, { path: "/", httpOnly: false });
+      setBtnLoading(false);
+      navigate("/");
+      window.location.reload();
+      // Navigate to home page
+    } catch (error) {
+      console.log("Error:", error.response?.data || error.message);
+      setBtnLoading(false);
 
 			if (error.response) {
 				// Set errors based on server responses

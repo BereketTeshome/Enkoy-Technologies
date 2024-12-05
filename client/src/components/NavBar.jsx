@@ -7,14 +7,17 @@ import LearningHub from "./navbar_popups/LearningHub";
 import AboutUs from "./navbar_popups/AboutUs";
 import DigitalTraining from "./navbar_popups/DigitalTraining";
 import { HiMenu, HiX } from "react-icons/hi";
-
+import Cookies from "universal-cookie";
+import { jwtDecode } from "jwt-decode";
 import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
-
+  const cookie = new Cookies();
+  const token = cookie.get("user");
+  const decode = token ? jwtDecode(token) : "";
   const theme = useSelector((state) => state.theme?.theme);
 
   const language = useSelector((state) => state.language.language);
@@ -131,16 +134,35 @@ const NavBar = () => {
             </AnimatePresence>
           </motion.div>
         ))}
-        <motion.a
-          href="/Contact"
-          className="relative text-sm font-semibold max-w-[110px] bg-gradient-to-r from-yellow-500 to-yellow-500 text-white flex items-center justify-center px-5 py-2 rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-yellow-500/50"
-          variants={{
-            hidden: { opacity: 0, y: -20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
-          Contact Us
-        </motion.a>
+        {decode ? (
+          <a href="/profile" className="ml-16">
+            {decode.profileImg ? (
+              <img
+                src={decode.profileImg}
+                alt="Profile"
+                className="object-cover w-12 h-12 border rounded-full shadow-md"
+              />
+            ) : (
+              <motion.div
+                className="flex items-center justify-center w-12 h-12 text-xl font-bold text-gray-800 uppercase rounded-full bg-cyan-500"
+                whileHover={{ scale: 1.1 }}
+              >
+                {decode.username?.slice(0, 2) || ""}
+              </motion.div>
+            )}
+          </a>
+        ) : (
+          <motion.a
+            href="/login"
+            className="relative text-sm font-semibold max-w-[110px] bg-gradient-to-r from-yellow-500 to-yellow-500 text-white flex items-center justify-center px-5 py-2 rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-yellow-500/50 ml-10"
+            variants={{
+              hidden: { opacity: 0, y: -20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+          >
+            login
+          </motion.a>
+        )}
       </motion.div>
 
       {/* Mobile Menu Icon */}

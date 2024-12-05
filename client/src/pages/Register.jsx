@@ -32,19 +32,21 @@ const Register = () => {
 				}
 			);
 
-			cookie.set("user", res.data.token);
-			setBtnLoading(false);
-			navigate("/");
-		} catch (error) {
-			setBtnLoading(true);
-			!name ? setNameErr(true) : setNameErr(false);
-			!password ? setPasswordErr(true) : setPasswordErr(false);
-			email
-				? setEmailErr(error.response.data.email)
-				: setEmailErr("You must provide email");
-			setBtnLoading(false);
-		}
-	};
+
+      cookie.set("user", res.data.token);
+      setBtnLoading(false);
+      navigate("/");
+      window.location.reload();
+    } catch (error) {
+      setBtnLoading(true);
+      !name ? setNameErr(true) : setNameErr(false);
+      !password ? setPasswordErr(true) : setPasswordErr(false);
+      email
+        ? setEmailErr(error.response.data.email)
+        : setEmailErr("You must provide email");
+      setBtnLoading(false);
+    }
+  };
 
 	const handleGoogleSignup = () => {
 		// Redirect to your backend's Google OAuth endpoint
