@@ -1,8 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
+import { useSelector } from "react-redux";
 
 const FairEmployment = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
   const faqData = [
     {
       question: "Tailored Learning Solutions for Organizational Success",
@@ -30,7 +33,9 @@ const FairEmployment = () => {
   };
 
   return (
-    <motion.div className="pt-20">
+    <motion.div
+      className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
+    >
       <motion.div
         className="flex flex-col w-full items-center"
         variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
@@ -49,12 +54,19 @@ const FairEmployment = () => {
             Fair employment practice training
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            className={`text-4xl sm:text-5xl mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+            }`}
             {...fadeInUp}
           >
             Promoting Equity and Inclusion in the Workplace
           </motion.h2>
-          <motion.p className="mb-7" {...fadeInUp}>
+          <motion.p
+            className={`mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-800"
+            }`}
+            {...fadeInUp}
+          >
             At Enkoy Technologies, we believe that fair employment practices are
             essential for creating a thriving and inclusive workplace. Our Fair
             Employment Practice Training is designed to equip organizations and
@@ -65,13 +77,17 @@ const FairEmployment = () => {
           </motion.p>
           <motion.a
             href="/contact"
-            className="py-3 px-6 bg-gray-900 text-white"
+            className={`px-6 py-3 text-white ${
+              isDarkTheme ? "bg-yellow-500" : "bg-gray-900"
+            }`}
             {...fadeInUp}
           >
             Contact Us
           </motion.a>
         </motion.div>
-
+        <br />
+        <br />
+        <br />
         <motion.div
           className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
@@ -86,12 +102,19 @@ const FairEmployment = () => {
           </motion.div>
           <motion.div className="flex-1" {...fadeInUp}>
             <motion.h2
-              className="text-3xl sm:text-5xl text-gray-950 mb-7"
+              className={`text-4xl sm:text-5xl mb-7 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-950"
+              }`}
               {...fadeInUp}
             >
               Transformative Learning for a Fair Workplace
             </motion.h2>
-            <motion.p className="mb-2" {...fadeInUp}>
+            <motion.p
+              className={`mb-2 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-800"
+              }`}
+              {...fadeInUp}
+            >
               Our approach to Fair Employment Practice Training focuses on
               practical, actionable strategies that empower participants to
               recognize and address issues related to discrimination, bias, and
@@ -104,7 +127,9 @@ const FairEmployment = () => {
             </motion.p>
           </motion.div>
         </motion.div>
-
+        <br />
+        <br />
+        <br />
         <motion.div
           className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
@@ -132,7 +157,9 @@ const FairEmployment = () => {
             </motion.p>
           </motion.div>
         </motion.div>
-
+        <br />
+        <br />
+        <br />
         <motion.div
           className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
@@ -149,7 +176,9 @@ const FairEmployment = () => {
             />
           </motion.div>
         </motion.div>
-
+        <br />
+        <br />
+        <br />
         <motion.div
           className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}

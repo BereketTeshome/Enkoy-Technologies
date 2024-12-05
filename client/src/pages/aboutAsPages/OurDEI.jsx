@@ -49,7 +49,11 @@ const OurDEI = () => {
               <h3 className="mb-5 text-4xl text-gray-900">
                 What Makes Us Unique
               </h3>
-              <p className="text-justify">
+              <p
+                className={`text-justify ${
+                  isDarkTheme ? "text-gray-300" : "text-gray-900"
+                }`}
+              >
                 At Enkoy Technologies, we take Diversity, Equity, and Inclusion
                 (DEI) seriously because we believe that diverse perspectives
                 lead to more innovative solutions. What truly sets us apart is
@@ -73,7 +77,11 @@ const OurDEI = () => {
               <h3 className="mb-5 text-4xl text-gray-900">
                 Inclusive Learning Experiences
               </h3>
-              <p className="text-justify">
+              <p
+                className={`text-justify ${
+                  isDarkTheme ? "text-gray-300" : "text-gray-900"
+                }`}
+              >
                 At <b>Enkoy Technologies</b>, we believe learning should be an
                 enjoyable journey. We incorporate DEI principles into our
                 Learning Experience Design (LXD), ensuring that our content is
@@ -89,7 +97,11 @@ const OurDEI = () => {
               <h3 className="mb-5 text-4xl text-gray-900">
                 Supplier Diversity and Partnerships
               </h3>
-              <p className="text-justify">
+              <p
+                className={`text-justify ${
+                  isDarkTheme ? "text-gray-300" : "text-gray-900"
+                }`}
+              >
                 We are also committed to fostering partnerships with diverse
                 suppliers, ensuring that our collaborations reflect our values
                 of equity and inclusion. Our partnerships prioritize businesses
@@ -106,7 +118,11 @@ const OurDEI = () => {
               <h3 className="mb-5 text-4xl text-gray-900">
                 Our Role in Promoting DEI
               </h3>
-              <p className="text-justify">
+              <p
+                className={`text-justify ${
+                  isDarkTheme ? "text-gray-300" : "text-gray-900"
+                }`}
+              >
                 At Enkoy Technologies, we ensure our workplace is a space where
                 every team member feels included, valued, and empowered. We
                 bring our whole selves to the work we do, and our diversity
@@ -124,7 +140,11 @@ const OurDEI = () => {
               <h3 className="mb-5 text-4xl text-gray-900">
                 Our Promise to Sustainable Practices
               </h3>
-              <p className="text-justify">
+              <p
+                className={`text-justify ${
+                  isDarkTheme ? "text-gray-300" : "text-gray-900"
+                }`}
+              >
                 At Enkoy Technologies, we take Diversity, Equity, and Inclusion
                 (DEI) seriously because we believe that diverse perspectives
                 lead to more innovative solutions. What truly sets us apart is
@@ -161,7 +181,11 @@ const OurDEI = () => {
               <h3 className="mb-5 text-4xl text-gray-900">
                 Inclusive Growth Journey
               </h3>
-              <p className="text-justify">
+              <p
+                className={`text-justify ${
+                  isDarkTheme ? "text-gray-300" : "text-gray-900"
+                }`}
+              >
                 We are committed to fostering a diverse, inclusive, and positive
                 work culture where every voice is valued. Our team thrives in an
                 environment that encourages collaboration, continuous learning,

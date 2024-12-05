@@ -1,8 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
+import { useSelector } from "react-redux";
 
 const LearningExperience = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
   const faqData = [
     {
       question: "Tailored Learning Solutions for Your Unique Context",
@@ -32,7 +35,9 @@ const LearningExperience = () => {
   };
 
   return (
-    <motion.div className="pt-20">
+    <motion.div
+      className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
+    >
       <motion.div
         className="flex flex-col items-center w-full"
         variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
@@ -51,12 +56,19 @@ const LearningExperience = () => {
             Enhancing Learning Through Thoughtful Design
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            className={`text-4xl sm:text-5xl mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+            }`}
             {...fadeInUp}
           >
             Learning Experience Design (LXD) Training
           </motion.h2>
-          <motion.p className="text-justify mb-7" {...fadeInUp}>
+          <motion.p
+            className={`text-justify mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-900"
+            }`}
+            {...fadeInUp}
+          >
             At Enkoy Technologies, we believe that effective learning
             experiences are key to unlocking potential. Our Learning Experience
             Design (LXD) training is crafted to engage participants and promote
@@ -66,7 +78,9 @@ const LearningExperience = () => {
           </motion.p>
           <motion.a
             href="/contact"
-            className="px-6 py-3 text-white bg-gray-900"
+            className={`px-6 py-3 text-white ${
+              isDarkTheme ? "bg-yellow-500" : "bg-gray-900"
+            }`}
             {...fadeInUp}
           >
             Contact Us
@@ -90,10 +104,18 @@ const LearningExperience = () => {
             />
           </motion.div>
           <motion.div className="flex-1" {...fadeInUp}>
-            <h2 className="text-3xl sm:text-5xl text-gray-950 mb-7">
+            <h2
+              className={`text-4xl sm:text-5xl mb-7 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-950"
+              }`}
+            >
               Transformative Learning Experiences for Lasting Change
             </h2>
-            <p className="mb-2 text-justify">
+            <p
+              className={`mb-2 text-justify ${
+                isDarkTheme ? "text-gray-300" : "text-gray-900"
+              }`}
+            >
               Our LXD training focuses on creating transformative learning
               experiences that foster engagement and retention. By integrating
               innovative design principles with best practices in adult
@@ -196,7 +218,7 @@ const LearningExperience = () => {
             <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
               Transformative Benefits for Your Organization
             </h2>
-            <p className="text-justify">
+            <p className={`text-justify ${"text-gray-900"}`}>
               The impact of our Learning Experience Design solutions extends
               throughout your organization. As your workforce engages with
               effective learning experiences, the benefits include:

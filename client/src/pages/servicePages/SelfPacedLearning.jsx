@@ -1,7 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 const SelfPacedLearning = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
+
   const fadeInUp = {
     initial: { opacity: 0, y: 50 },
     whileInView: {
@@ -13,9 +17,14 @@ const SelfPacedLearning = () => {
   };
 
   return (
-    <motion.div className="pt-20">
+    <motion.div
+      className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
+    >
       {/* Hero Section */}
-      <motion.div className="flex flex-col items-center w-full" {...fadeInUp}>
+      <motion.div
+        className={`flex flex-col items-center w-full `}
+        {...fadeInUp}
+      >
         <div className="sm:w-[60%] pb-20 w-[80%]">
           <motion.img
             src="/img/services/mobileElearning.svg"
@@ -30,12 +39,19 @@ const SelfPacedLearning = () => {
             Self-paced learning
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            className={`text-4xl sm:text-5xl mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+            }`}
             {...fadeInUp}
           >
             Self-paced learning solution
           </motion.h2>
-          <motion.p className="text-justify mb-7" {...fadeInUp}>
+          <motion.p
+            className={`text-justify mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-900"
+            }`}
+            {...fadeInUp}
+          >
             In today's fast-paced digital world, individuals increasingly seek
             the freedom to learn at their own pace through their devices.
             Self-paced learning empowers learners to navigate their educational
@@ -44,7 +60,9 @@ const SelfPacedLearning = () => {
           </motion.p>
           <motion.a
             href="/contact"
-            className="px-6 py-3 text-white bg-gray-900"
+            className={`px-6 py-3 text-white ${
+              isDarkTheme ? "bg-yellow-500" : "bg-gray-900"
+            }`}
             {...fadeInUp}
           >
             Contact Us
@@ -67,10 +85,18 @@ const SelfPacedLearning = () => {
           />
         </motion.div>
         <motion.div className="flex-1" {...fadeInUp}>
-          <h2 className="text-3xl sm:text-5xl text-gray-950 mb-7">
+          <h2
+            className={`text-3xl sm:text-5xl mb-7 ${
+              isDarkTheme ? "text-gray-100" : "text-gray-950"
+            }`}
+          >
             Why self-paced learning?
           </h2>
-          <p className="text-justify">
+          <p
+            className={`text-justify ${
+              isDarkTheme ? "text-gray-300" : "text-gray-900"
+            }`}
+          >
             Self-paced learning is an effective educational approach that offers
             flexibility. It allows learners to study at their convenience while
             accommodating personal and professional commitments. It promotes
@@ -88,16 +114,18 @@ const SelfPacedLearning = () => {
       <br />
       {/* Our Approach Section */}
       <motion.div
-        className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
+        className={`w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 ${"bg-[#FFCD57]"} md:flex-row flex-col`}
         {...fadeInUp}
       >
         <motion.div className="flex flex-1" {...fadeInUp}>
-          <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
+          <h2
+            className={`inline-block text-4xl font-semibold md:text-6xl ${"text-gray-900"}`}
+          >
             Our Self-Paced <br /> Learning <br /> Approach
           </h2>
         </motion.div>
         <motion.div
-          className="flex-1 text-gray-900 text-[15px] text-justify"
+          className={`flex-1 text-[15px] text-justify ${"text-gray-900"}`}
           {...fadeInUp}
         >
           <p>
@@ -109,7 +137,7 @@ const SelfPacedLearning = () => {
             By empowering our learners to take charge of their education, we
             help them achieve their goals in a way that fits their lives.
           </p>
-          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
+          <h2 className={`mt-2 mb-5 text-2xl font-semibold ${"text-gray-950"}`}>
             Why self-paced learning?
           </h2>
           <p>

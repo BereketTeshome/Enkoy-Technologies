@@ -3,7 +3,8 @@ import "aos/dist/aos.css";
 import { useSelector } from "react-redux";
 
 const Partners = () => {
-    const language = useSelector((state) => state.language.language);
+  const language = useSelector((state) => state.language.language);
+  const theme = useSelector((state) => state.theme?.theme);
 
   // List of partner logos with their names
   const logos = [
@@ -35,11 +36,15 @@ const Partners = () => {
 
   return (
     <motion.div
-      className="py-20 bg-white"
+      className={`py-20 ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}
       id="start"
       transition={{ delay: 0.3, duration: 0.5 }}
     >
-      <h2 className="mb-10 text-4xl font-semibold text-center text-gray-700">
+      <h2
+        className={`mb-10 text-4xl font-semibold text-center ${
+          theme === "dark" ? "text-gray-50" : "text-gray-700"
+        }`}
+      >
         {language === "amh" ? "ከማን ጋር ነው የምንሰራው" : "Who we work with"}
       </h2>
       <motion.div

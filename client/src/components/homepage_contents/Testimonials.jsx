@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const theme = useSelector((state) => state.theme?.theme);
+
   const testimonials = [
     {
       quote:
@@ -14,7 +17,7 @@ const Testimonials = () => {
     },
     {
       quote:
-        "We are delighted to recommend Enkoy Technologies for their exceptional work in transforming our 'Decent Work in Ethiopia' training into a 6-hour self-paced online course. The course, now hosted on the atingi platform, met all our expectations in terms of quality and engagement. Enkoy’s team applied a minimal viable product (MVP) approach, incorporating multiple feedback loops and iterations, to effectively convert our in-person training for company managers and workers into an engaging online format for young Ethiopians, especially fresh graduates. Their expertise in learning experience design and online course development made this collaboration a success, and we look forward to working with them on future projects",
+        "We are delighted to recommend Enkoy Technologies for their exceptional work in transforming our 'Decent Work in Ethiopia' training into a 6-hour self-paced online course. The course, now hosted on the atingi platform, met all our expectations in terms of quality and engagement. Enkoy’s team applied a minimal viable product (MVP) approach, incorporating multiple feedback loops and iterations, to effectively convert our in-person training for company managers and workers into an engaging online format for young Ethiopians, especially fresh graduates. Their expertise in learning experience design and online course development made this collaboration a success, and we look forward to working with them on future projects.",
       author: "GIZ Ethiopia and Djibouti",
       organization: "German Development Cooperation",
       logo: "/img/contentsMenuImg.png",
@@ -31,10 +34,14 @@ const Testimonials = () => {
     );
   };
 
+  const isDarkTheme = theme === "dark";
+
   return (
     <div>
       <motion.div
-        className="sticky px-4 py-10 bg-blue-50 top-1"
+        className={`sticky px-4 py-10 ${
+          isDarkTheme ? "bg-gray-800" : "bg-blue-50"
+        } top-1`}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ margin: "-50%", once: true }}
@@ -43,8 +50,18 @@ const Testimonials = () => {
         <div className="flex flex-col items-center max-w-6xl gap-8 mx-auto lg:flex-row">
           {/* Text Section */}
           <div className="flex-1">
-            <div className="mb-4 text-4xl text-blue-300">“</div>
-            <p className="mb-6 text-lg text-gray-700 text-justify">
+            <div
+              className={`mb-4 text-4xl ${
+                isDarkTheme ? "text-gray-500" : "text-blue-300"
+              }`}
+            >
+              “
+            </div>
+            <p
+              className={`mb-6 text-lg ${
+                isDarkTheme ? "text-gray-300" : "text-gray-700"
+              } text-justify`}
+            >
               {testimonials[activeIndex].quote}
             </p>
             <div className="flex items-center gap-4">
@@ -54,10 +71,18 @@ const Testimonials = () => {
                 className="h-8"
               />
               <div>
-                <p className="font-semibold text-gray-900">
+                <p
+                  className={`font-semibold ${
+                    isDarkTheme ? "text-gray-100" : "text-gray-900"
+                  }`}
+                >
                   {testimonials[activeIndex].author}
                 </p>
-                <p className="text-sm text-gray-500">
+                <p
+                  className={`text-sm ${
+                    isDarkTheme ? "text-gray-400" : "text-gray-500"
+                  }`}
+                >
                   {testimonials[activeIndex].organization}
                 </p>
               </div>
@@ -69,7 +94,7 @@ const Testimonials = () => {
             <img
               src="./headerImg.png"
               alt="Illustration"
-              className="w-full max-w-sm mx-auto"
+              className="w-full max-w-sm mx-auto rounded-lg shadow-lg"
             />
           </div>
         </div>
@@ -78,7 +103,11 @@ const Testimonials = () => {
         <div className="flex items-center justify-center gap-4 mt-8">
           <button
             onClick={handlePrev}
-            className="flex items-center justify-center w-10 h-10 text-white transition bg-yellow-200 rounded-full hover:bg-yellow-300"
+            className={`flex items-center justify-center w-10 h-10 transition rounded-full ${
+              isDarkTheme
+                ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                : "bg-yellow-200 text-gray-900 hover:bg-yellow-300"
+            }`}
           >
             &lt;
           </button>
@@ -86,17 +115,25 @@ const Testimonials = () => {
             {testimonials.map((_, index) => (
               <span
                 key={index}
-                className={`w-3 h-3 rounded-full ${
+                className={`w-3 h-3 rounded-full transition ${
                   index === activeIndex
-                    ? "bg-yellow-500"
+                    ? isDarkTheme
+                      ? "bg-yellow-500"
+                      : "bg-yellow-500"
+                    : isDarkTheme
+                    ? "bg-gray-600 hover:bg-yellow-500"
                     : "bg-gray-300 hover:bg-yellow-300"
-                } transition`}
+                }`}
               />
             ))}
           </div>
           <button
             onClick={handleNext}
-            className="flex items-center justify-center w-10 h-10 text-white transition bg-yellow-300 rounded-full hover:bg-yellow-400"
+            className={`flex items-center justify-center w-10 h-10 transition rounded-full ${
+              isDarkTheme
+                ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                : "bg-yellow-300 text-gray-900 hover:bg-yellow-400"
+            }`}
           >
             &gt;
           </button>

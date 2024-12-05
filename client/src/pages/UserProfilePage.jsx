@@ -30,6 +30,12 @@ const UserProfilePage = () => {
   const toggleTheme = () => {
     setDarkMode(!darkMode);
     dispatch(setTheme(darkMode ? "light" : "dark"));
+
+    if (darkMode) {
+      localStorage.setItem("theme", "light"); // Save to localStorage
+    } else {
+      localStorage.setItem("theme", "dark"); // Save to localStorage
+    }
   };
 
   const handleLogout = () => {
@@ -129,7 +135,7 @@ const UserProfilePage = () => {
               <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
                 {decode.username}
               </h1>
-              <IconButton onClick={toggleTheme}>
+              <IconButton onClick={toggleTheme} sx={{ color: "#fff" }}>
                 {darkMode ? <LightMode /> : <DarkMode />}
               </IconButton>
             </div>

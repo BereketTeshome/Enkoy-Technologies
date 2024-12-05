@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 
 const OurServices = () => {
   const language = useSelector((state) => state.language.language);
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
 
   const translations = {
     eng: [
@@ -53,15 +55,13 @@ const OurServices = () => {
       {
         icon: "/img/services/why_mobile_learning.png",
         title: "አኒሜሽን እና ቪዲዮ ማምረት",
-        description:
-          "ቡድንዎን ከኤልኤም ትምህርት የመማር አገልግሎቶች እና ስትራቴጂ ጋር ያስመዝኑት።",
+        description: "ቡድንዎን ከኤልኤም ትምህርት የመማር አገልግሎቶች እና ስትራቴጂ ጋር ያስመዝኑት።",
         link: "/services/animation-videos",
       },
       {
         icon: "/img/services/animatedVideosImg.png",
         title: "የአቅም ግንባታ",
-        description:
-          "ለስላሳ ክህሎት፣ ለድርጅት ተገዢነት ስልጠና እና ለሌሎችም ይዘት እና አቅርቦት አለን።",
+        description: "ለስላሳ ክህሎት፣ ለድርጅት ተገዢነት ስልጠና እና ለሌሎችም ይዘት እና አቅርቦት አለን።",
         link: "/services/LXD",
       },
     ],
@@ -85,10 +85,12 @@ const OurServices = () => {
   };
 
   return (
-    <div className="py-12 bg-gray-50">
+    <div className={`py-12 ${isDarkTheme ? "bg-gray-800" : "bg-gray-50"}`}>
       <div className="px-6 mx-auto max-w-7xl sm:px-12">
         <motion.h2
-          className="mb-12 text-4xl font-semibold text-center text-gray-700"
+          className={`mb-12 text-4xl font-semibold text-center ${
+            isDarkTheme ? "text-gray-100" : "text-gray-700"
+          }`}
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
@@ -105,13 +107,17 @@ const OurServices = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="flex items-start p-6 bg-white rounded-lg shadow-md"
+              className={`flex items-start p-6 rounded-lg shadow-md ${
+                isDarkTheme ? "bg-gray-700" : "bg-white"
+              }`}
               variants={itemVariants}
               whileHover={{
                 scale: 1.1,
                 rotateX: 10,
                 rotateY: 10,
-                boxShadow: "0px 10px 30px rgba(0,0,0,0.2)",
+                boxShadow: isDarkTheme
+                  ? "0px 10px 30px rgba(255, 255, 255, 0.2)"
+                  : "0px 10px 30px rgba(0,0,0,0.2)",
               }}
             >
               <div className="flex-shrink-0">
@@ -122,13 +128,27 @@ const OurServices = () => {
                 />
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-900">
+                <h3
+                  className={`text-xl font-semibold ${
+                    isDarkTheme ? "text-gray-100" : "text-gray-900"
+                  }`}
+                >
                   {service.title}
                 </h3>
-                <p className="mt-2 text-gray-600">{service.description}</p>
+                <p
+                  className={`mt-2 ${
+                    isDarkTheme ? "text-gray-300" : "text-gray-600"
+                  }`}
+                >
+                  {service.description}
+                </p>
                 <a
                   href={service.link}
-                  className="mt-4 font-medium text-indigo-600 hover:text-indigo-800"
+                  className={`mt-4 font-medium ${
+                    isDarkTheme
+                      ? "text-indigo-400 hover:text-indigo-300"
+                      : "text-indigo-600 hover:text-indigo-800"
+                  }`}
                 >
                   {language === "amh" ? "ተማሩ በተጨማሪ →" : "Learn more →"}
                 </a>

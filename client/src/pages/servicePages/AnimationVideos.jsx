@@ -1,7 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import { useSelector } from "react-redux";
 const AnimationVideos = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
   const fadeInUp = {
     initial: { opacity: 0, y: 50 },
     whileInView: {
@@ -13,7 +15,9 @@ const AnimationVideos = () => {
   };
 
   return (
-    <motion.div className="pt-20">
+    <motion.div
+      className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
+    >
       <motion.div className="flex flex-col w-full items-center" {...fadeInUp}>
         {/* Header Section */}
         <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
@@ -30,12 +34,19 @@ const AnimationVideos = () => {
             Animation and video production
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl text-gray-950 mb-7"
+            className={`text-4xl sm:text-5xl mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+            }`}
             {...fadeInUp}
           >
             Animated videos are a powerful tool for transforming digital content
           </motion.h2>
-          <motion.p className="mb-7 text-justify" {...fadeInUp}>
+          <motion.p
+            className={`text-justify mb-7 ${
+              isDarkTheme ? "text-gray-100 " : "text-gray-900"
+            }`}
+            {...fadeInUp}
+          >
             Animated videos in our modules help learners visualize complex
             concepts, making information easier to grasp. At Enkoy, we harness
             our animators' expertise to create engaging visuals that keep
@@ -43,7 +54,9 @@ const AnimationVideos = () => {
           </motion.p>
           <motion.a
             href="/contact"
-            className="py-3 px-6 bg-gray-900 text-white"
+            className={`px-6 py-3 text-white ${
+              isDarkTheme ? "bg-yellow-500" : "bg-gray-900"
+            }`}
             {...fadeInUp}
           >
             Contact Us
@@ -65,12 +78,19 @@ const AnimationVideos = () => {
           </motion.div>
           <motion.div className="flex-1" {...fadeInUp}>
             <motion.h2
-              className="text-3xl sm:text-5xl text-gray-950 mb-7"
+              className={`text-4xl sm:text-5xl mb-7 ${
+                isDarkTheme ? "text-gray-100 " : "text-gray-950"
+              }`}
               {...fadeInUp}
             >
               Everyone adores animated videos for learning
             </motion.h2>
-            <motion.p className="text-justify" {...fadeInUp}>
+            <motion.p
+              className={`text-justify ${
+                isDarkTheme ? "text-gray-300" : "text-gray-900"
+              }`}
+              {...fadeInUp}
+            >
               Most people are visual learners, so creating visual content can
               capture their attention and evoke emotions. At Enkoy, we use our
               expertise to produce engaging animated videos that provide
@@ -78,7 +98,9 @@ const AnimationVideos = () => {
             </motion.p>
           </motion.div>
         </motion.div>
-
+        <br />
+        <br />
+        <br />
         {/* Process Section */}
         <motion.div
           className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"

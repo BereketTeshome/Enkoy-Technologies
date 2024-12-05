@@ -1,8 +1,11 @@
 import React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 const CorporateTraining = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
   const services = [
     {
       img: "/img/corporate-training/customerTraining.webp",
@@ -65,6 +68,7 @@ const CorporateTraining = () => {
       path: "/corporate-training/soft-skill",
     },
   ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -80,8 +84,9 @@ const CorporateTraining = () => {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
   };
+
   return (
-    <div className="pt-20">
+    <div className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}>
       <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row gap-10 overflow-hidden">
         <motion.div
           className="flex-1"
@@ -89,29 +94,51 @@ const CorporateTraining = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
-
-          <p className="uppercase text-sm font-semibold text-[#FF8689] my-10 ">
+          <p
+            className={`uppercase text-sm font-semibold ${
+              isDarkTheme ? "text-[#F28D8F]" : "text-[#FF8689]"
+            } my-10 `}
+          >
             Corporate Training overview
           </p>
-          <h2 className="text-3xl font-semibold sm:text-5xl text-gray-950 mb-7">
+          <h2
+            className={`text-3xl font-semibold sm:text-5xl ${
+              isDarkTheme ? "text-gray-100" : "text-gray-950"
+            } mb-7`}
+          >
             Corporate <br />
             Training Services
           </h2>
-          <p className="mb-7">
+          <p
+            className={`mb-7 ${
+              isDarkTheme ? "text-gray-300" : "text-gray-900"
+            }`}
+          >
             Corporate training often has a negative reputation, and for good
             reason. It can be lengthy, outdated, and unengaging. At Enkoy
             Technologies, we develop tailored and interactive corporate learning
             experiences that inspire and motivate learners.
           </p>
-          <div className="flex justify-between sm:items-center flex-col sm:flex-row *:w-fit gap-y-4">
-            <a href="/contact" className="px-6 py-3 text-white bg-gray-900 ">
+          <div className="flex justify-between sm:items-center flex-col sm:flex-row gap-y-4">
+            <a
+              href="/contact"
+              className={`px-6 py-3 text-white ${
+                isDarkTheme ? "bg-[#FFCD57]" : "bg-gray-900"
+              } `}
+            >
               Contact Us
             </a>
             <a
               href="#solutions"
-              className="flex items-center gap-3 py-3 font-semibold text-gray-900 sm:px-6"
+              className={`flex items-center gap-3 py-3 font-semibold ${
+                isDarkTheme ? "text-gray-300" : "text-gray-900"
+              } sm:px-6`}
             >
-              <span className="p-4 rounded-full bg-[#FF8689]">
+              <span
+                className={`p-4 rounded-full ${
+                  isDarkTheme ? "bg-[#F28D8F]" : "bg-[#FF8689]"
+                }`}
+              >
                 <IoIosArrowDown />
               </span>
               See our solutions
@@ -134,7 +161,9 @@ const CorporateTraining = () => {
       <br />
       <br />
       <br />
-      <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#B7D6D8] md:flex-row flex-col">
+      <div
+        className={`w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 ${"bg-[#B7D6D8]"} md:flex-row flex-col`}
+      >
         <motion.div
           className="flex-1 flex "
           initial={{ opacity: 0, y: 50 }}
@@ -142,13 +171,14 @@ const CorporateTraining = () => {
           viewport={{ amount: 0.2, once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
-
+          <h2
+            className={`inline-block md:text-5xl text-3xl ${"text-gray-900"} font-semibold`}
+          >
             Our method for delivering corporate training services.
           </h2>
         </motion.div>
         <motion.div
-          className="flex-1 text-gray-900 text-[15px] *:mb-3"
+          className={`flex-1 text-[15px] ${"text-gray-900"}`}
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.2, once: true }}
@@ -172,19 +202,20 @@ const CorporateTraining = () => {
       <br id="solutions" />
       <br />
       <div className="px-5 sm:px-10 md:px-20">
-        <div className="sm:text-center *:mb-8 text-gray-900">
+        <div className="sm:text-center">
           <motion.h2
-            className="sm:text-5xl text-4xl font-semibold "
+            className={`sm:text-5xl text-4xl font-semibold ${
+              isDarkTheme ? "text-gray-100" : "text-gray-950"
+            }`}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ amount: 0.2, once: true }}
             transition={{ duration: 0.8 }}
           >
-
             Our corporate <br /> training services
           </motion.h2>
           <motion.p
-            className=""
+            className={`${isDarkTheme ? "text-gray-300" : "text-gray-900"}`}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ amount: 0.2, once: true }}
@@ -203,11 +234,10 @@ const CorporateTraining = () => {
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
         >
-
           {services.map((item, index) => {
             return (
               <motion.div
-                className="text-gray-800"
+                className={`${isDarkTheme ? "text-gray-100" : "text-gray-800"}`}
                 key={index}
                 variants={childVariants}
                 whileHover={{ scale: 1.1 }}
@@ -218,7 +248,9 @@ const CorporateTraining = () => {
                 <p className="mb-6">{item.desc}</p>
                 <a
                   href={item.path}
-                  className="mb-6 font-semibold border-b-2 pb-2 border-[#F3858D]"
+                  className={`mb-6 font-semibold border-b-2 pb-2 ${
+                    isDarkTheme ? "border-[#FFB450]" : "border-[#F3858D]"
+                  }`}
                 >
                   Learn More
                 </a>
