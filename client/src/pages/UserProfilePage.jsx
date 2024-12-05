@@ -58,7 +58,7 @@ const UserProfilePage = () => {
 	const handleProfileChange = async () => {
 		try {
 			const { data } = await axios.put(
-				`http://localhost:3000/api/user/users/${decode.userId}`,
+				`https://server.enkoytechnologies.com/api/user/users/${decode.userId}`,
 				{
 					username: decode.username,
 					email: decode.email,
