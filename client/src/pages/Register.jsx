@@ -35,6 +35,7 @@ const Register = () => {
       cookie.set("user", res.data.token);
       setBtnLoading(false);
       navigate("/");
+      window.location.reload();
     } catch (error) {
       setBtnLoading(true);
       !name ? setNameErr(true) : setNameErr(false);
