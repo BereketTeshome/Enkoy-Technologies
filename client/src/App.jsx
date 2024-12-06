@@ -58,6 +58,8 @@ import EbookAuthor from "./pages/authors/EbookAuthor.jsx";
 import UserProfilePage from "./pages/UserProfilePage.jsx";
 import EventCalendarPage from "./pages/EventCalendarPage.jsx";
 import { useSelector } from "react-redux";
+import ChatBot from "./components/ChatBot.jsx";
+import ChatbotLauncher from "./components/ChatbotLauncher.jsx";
 
 const App = () => {
   const theme = useSelector((state) => state.theme?.theme);
@@ -66,6 +68,7 @@ const App = () => {
   return (
     <div className={`${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}>
       <NavBar />
+      <ChatbotLauncher />
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -213,6 +216,7 @@ const App = () => {
           {/* Login and Registration Page */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/bot" element={<ChatBot />} />
 
           {/* Add a fallback route (optional) */}
           <Route path="*" element={<UnderConstruction />} />
