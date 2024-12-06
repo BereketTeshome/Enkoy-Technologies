@@ -106,25 +106,24 @@ const Blogs = ({ blogs }) => {
         </select>
       </div>
 
-   {/* Category Filter */}
-<div className="flex flex-wrap justify-center py-4 mb-10 space-x-2 overflow-auto sm:space-x-4">
-  {categories.map((category) => (
-    <motion.button
-      key={category}
-      onClick={() => setSelectedCategory(category)}
-      whileHover={{ scale: 1.1 }}
-      transition={{ type: "spring", stiffness: 200, damping: 10 }} // Smooth hover transition
-      className={`px-4 py-2 mt-2 whitespace-nowrap rounded-full transition-colors duration-300 ease-in-out transform ${
-        selectedCategory === category
-          ? "bg-blue-500 text-white"
-          : "bg-gray-200 text-gray-800 hover:bg-blue-100"
-      }`}
-    >
-      {category}
-    </motion.button>
-  ))}
-</div>
-
+      {/* Category Filter */}
+      <div className="flex flex-wrap justify-center py-4 mb-10 space-x-2 overflow-auto sm:space-x-4">
+        {categories.map((category) => (
+          <motion.button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 200, damping: 10 }} // Smooth hover transition
+            className={`px-4 py-2 mt-2 whitespace-nowrap rounded-full transition-colors duration-300 ease-in-out transform ${
+              selectedCategory === category
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-gray-800 hover:bg-blue-100"
+            }`}
+          >
+            {category}
+          </motion.button>
+        ))}
+      </div>
 
       {/* Blog Grid */}
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 ">

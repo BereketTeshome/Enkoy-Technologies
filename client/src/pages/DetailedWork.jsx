@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { works } from "../assets/ourWork";
+import { useSelector } from "react-redux";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 50 },
@@ -21,11 +22,13 @@ const DetailedWork = () => {
   const { id } = useParams();
   const filterWork = works.filter((work) => work.id == id);
   const work = filterWork[0];
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
 
   return (
     <motion.div className="">
       <motion.div
-        className="bg-[#161628] md:px-20 sm:px-10 px-5 text-white py-20"
+        className="bg-[#161628] md:px-20 sm:px-10 px-5 py-20"
         variants={staggerContainer}
         initial="initial"
         animate="animate"
@@ -36,7 +39,13 @@ const DetailedWork = () => {
         >
           <motion.div className="flex-1" {...fadeInUp}>
             <img src={work.icon} alt="" className="w-[80px] mb-8" />
-            <h1 className="text-4xl lg:text-5xl">{work.title}</h1>
+            <h1
+              className={`text-4xl lg:text-5xl ${
+                isDarkTheme ? "text-white" : "text-black"
+              }`}
+            >
+              {work.title}
+            </h1>
           </motion.div>
           <motion.div className="flex-1" {...fadeInUp}>
             <img src={work.image} alt="" className="w-full max-w-[80%]" />
@@ -53,19 +62,27 @@ const DetailedWork = () => {
             <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               What we made
             </h4>
-            <p>{work.whatWeMade}</p>
+            <p className={isDarkTheme ? "text-gray-300" : "text-gray-700"}>
+              {work.whatWeMade}
+            </p>
           </div>
           <div>
             <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               The issue
             </h4>
-            <p>{work.shortIssus}</p>
+            <p className={isDarkTheme ? "text-gray-300" : "text-gray-700"}>
+              {work.shortIssus}
+            </p>
           </div>
           <div>
             <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               Project Highlights
             </h4>
-            <ul className="list-disc pl-5 space-y-2">
+            <ul
+              className={`list-disc pl-5 space-y-2 ${
+                isDarkTheme ? "text-gray-300" : "text-gray-700"
+              }`}
+            >
               {work.projectOverview.map((highlight, idx) => (
                 <li key={idx}>{highlight}</li>
               ))}
@@ -91,11 +108,19 @@ const DetailedWork = () => {
             <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               The issue
             </h4>
-            <h2 className="text-3xl md:text-5xl w-[90%]">
+            <h2
+              className={`text-3xl md:text-5xl w-[90%] ${
+                isDarkTheme ? "text-white" : "text-black"
+              }`}
+            >
               {work.longIssus.title}
             </h2>
           </div>
-          <div className="flex-1 text-gray-800">
+          <div
+            className={`flex-1 ${
+              isDarkTheme ? "text-gray-300" : "text-gray-700"
+            }`}
+          >
             {work.longIssus.description}
           </div>
         </motion.div>
@@ -108,14 +133,20 @@ const DetailedWork = () => {
         animate="animate"
       >
         <motion.div
-          className="flex flex-col gap-10 text-gray-800"
+          className={`flex flex-col gap-10 ${
+            isDarkTheme ? "text-gray-300" : "text-gray-700"
+          }`}
           {...fadeInUp}
         >
           <div>
             <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               The journey
             </h4>
-            <h2 className="text-3xl md:text-5xl w-[90%]">
+            <h2
+              className={`text-3xl md:text-5xl w-[90%] ${
+                isDarkTheme ? "text-white" : "text-black"
+              }`}
+            >
               {work.journey.title}
             </h2>
           </div>
@@ -135,7 +166,12 @@ const DetailedWork = () => {
         initial="initial"
         animate="animate"
       >
-        <motion.div className="flex flex-col gap-5 text-gray-800" {...fadeInUp}>
+        <motion.div
+          className={`flex flex-col gap-5 ${
+            isDarkTheme ? "text-gray-300" : "text-gray-700"
+          }`}
+          {...fadeInUp}
+        >
           <div>
             <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               The Outcomes

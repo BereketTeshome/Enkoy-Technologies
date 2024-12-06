@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useSelector } from "react-redux";
 
+// Animated Section Component
 const AnimatedSection = ({ children }) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
@@ -9,7 +11,7 @@ const AnimatedSection = ({ children }) => {
     threshold: 0.2,
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       controls.start("visible");
     }
@@ -32,7 +34,11 @@ const AnimatedSection = ({ children }) => {
   );
 };
 
+// OurDEI Component
 const OurDEI = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
+
   return (
     <div>
       <div className="bg-[#161628] text-center text-white text-4xl font-semibold py-20">
@@ -41,12 +47,11 @@ const OurDEI = () => {
       <br />
       <br />
       <br />
-      <br />
       <div className="flex flex-col items-center">
         <div className="w-[70%] text-gray-900 mb-20 *:mb-20">
           <AnimatedSection>
             <div>
-              <h3 className="mb-5 text-4xl text-gray-900">
+              <h3 className="mb-5 text-4xl text-gray-200">
                 What Makes Us Unique
               </h3>
               <p
@@ -57,7 +62,7 @@ const OurDEI = () => {
                 At Enkoy Technologies, we take Diversity, Equity, and Inclusion
                 (DEI) seriously because we believe that diverse perspectives
                 lead to more innovative solutions. What truly sets us apart is
-                our commitment to user-centred design and our innovative
+                our commitment to user-centered design and our innovative
                 approach to learning. We don’t just convert content; we
                 transform it into immersive experiences that captivate and
                 inspire. Our game-like elements foster engagement, making
@@ -74,7 +79,7 @@ const OurDEI = () => {
 
           <AnimatedSection>
             <div>
-              <h3 className="mb-5 text-4xl text-gray-900">
+              <h3 className="mb-5 text-4xl text-gray-200">
                 Inclusive Learning Experiences
               </h3>
               <p
@@ -94,7 +99,7 @@ const OurDEI = () => {
 
           <AnimatedSection>
             <div>
-              <h3 className="mb-5 text-4xl text-gray-900">
+              <h3 className="mb-5 text-4xl text-gray-200">
                 Supplier Diversity and Partnerships
               </h3>
               <p
@@ -115,7 +120,7 @@ const OurDEI = () => {
 
           <AnimatedSection>
             <div>
-              <h3 className="mb-5 text-4xl text-gray-900">
+              <h3 className="mb-5 text-4xl text-gray-200">
                 Our Role in Promoting DEI
               </h3>
               <p
@@ -137,7 +142,7 @@ const OurDEI = () => {
 
           <AnimatedSection>
             <div>
-              <h3 className="mb-5 text-4xl text-gray-900">
+              <h3 className="mb-5 text-4xl text-gray-200">
                 Our Promise to Sustainable Practices
               </h3>
               <p
@@ -148,7 +153,7 @@ const OurDEI = () => {
                 At Enkoy Technologies, we take Diversity, Equity, and Inclusion
                 (DEI) seriously because we believe that diverse perspectives
                 lead to more innovative solutions. What truly sets us apart is
-                our commitment to user-centred design and our innovative
+                our commitment to user-centered design and our innovative
                 approach to learning. We don’t just convert content; we
                 transform it into immersive experiences that captivate and
                 inspire. Our game-like elements foster engagement, making
@@ -159,9 +164,13 @@ const OurDEI = () => {
                 needs of our clients. At Enkoy Technologies, we believe learning
                 should be an enjoyable journey, and we’re here to make that a
                 reality.
-              </p>{" "}
-              <br />w
-              <p>
+              </p>
+              <br />
+              <p
+                className={`text-justify ${
+                  isDarkTheme ? "text-gray-300" : "text-gray-900"
+                }`}
+              >
                 Beyond our internal efforts, we also advocate for sustainability
                 in the solutions we provide to our clients. Our courses and
                 modules often incorporate elements that raise awareness about
@@ -178,7 +187,7 @@ const OurDEI = () => {
 
           <AnimatedSection>
             <div>
-              <h3 className="mb-5 text-4xl text-gray-900">
+              <h3 className="mb-5 text-4xl text-gray-200">
                 Inclusive Growth Journey
               </h3>
               <p
