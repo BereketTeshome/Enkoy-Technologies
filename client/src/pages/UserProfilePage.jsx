@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeLanguage } from "../store/LanguageSlice";
 
 const UserProfilePage = () => {
-
   const language = useSelector((state) => state.language.language);
   const theme = useSelector((state) => state.theme.theme); // Get the theme from Redux
 
@@ -229,7 +228,6 @@ const UserProfilePage = () => {
       </motion.div>
     </motion.div>
   );
-
 };
 
 export default UserProfilePage;
