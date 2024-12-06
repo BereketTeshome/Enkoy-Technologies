@@ -6,6 +6,7 @@ const authRouter = require("./routes/auth");
 const blogRouter = require("./routes/blogs");
 const ebookRouter = require("./routes/ebooks");
 const elearnRouter = require("./routes/elearnings");
+const chatbot = require("./routes/chatbot");
 const session = require("express-session");
 const passport = require("passport");
 const cors = require("cors");
@@ -31,7 +32,6 @@ const isLoggedIn = (req, res, next) => {
 app.get("/", (req, res) => {
   res.redirect("http://localhost:5173");
 });
-
 
 app.get(
   "/auth/google",
@@ -59,7 +59,7 @@ app.get(
       // Set the cookie
       res.cookie("googleUser", token, {
         httpOnly: true, // Secure cookie
-        secure: false,  // Use true in production with HTTPS
+        secure: false, // Use true in production with HTTPS
         maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
       });
     }
@@ -70,8 +70,6 @@ app.get(
     res.redirect(redirectUrl);
   }
 );
-
-
 
 // Middleware to store the original URL
 const saveReturnTo = (req, res, next) => {
@@ -96,8 +94,6 @@ app.get("/logout", (req, res) => {
   res.send("Goodbye :(");
 });
 
-
-
 // Directory setup
 const UPLOAD_DIR = path.join(__dirname, "uploads");
 const PDF_UPLOAD_DIR = path.join(UPLOAD_DIR, "pdfs");
@@ -116,6 +112,7 @@ app.use("/api/user", authRouter);
 app.use("/api/blog", blogRouter);
 app.use("/api/ebook", ebookRouter);
 app.use("/api/elearn", elearnRouter);
+app.use("/api/bot", chatbot);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
