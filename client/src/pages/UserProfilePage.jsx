@@ -237,6 +237,7 @@ const UserProfilePage = () => {
 			</motion.div>
 		</motion.div>
 	);
+
 };
 
 export default UserProfilePage;
