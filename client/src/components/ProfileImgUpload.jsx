@@ -30,7 +30,7 @@ const ProfileImgUpload = ({ setProfileImg }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/upload/image",
+        "https://server.enkoytechnologies.com/upload/image",
 
         formData,
         {
@@ -52,35 +52,34 @@ const ProfileImgUpload = ({ setProfileImg }) => {
     <div className="p-2 pt-3 border rounded-md shadow-md bg-gray-50">
       {/* Styled file input */}
       <div className="flex flex-wrap items-center justify-between gap-4">
-  <div className="flex flex-wrap items-center w-full gap-4 md:w-auto">
-    <label
-      htmlFor="image-file-input"
-      className="px-4 py-2 text-sm text-white transition bg-blue-500 rounded-md cursor-pointer hover:bg-blue-600"
-    >
-      Choose
-    </label>
-    <input
-      id="image-file-input"
-      type="file"
-      accept="image/*"
-      onChange={handleFileChange}
-      className="hidden"
-    />
-    <span className="w-full text-sm text-gray-600 truncate md:w-48">
-      {selectedFile ? selectedFile.name : "No file chosen"}
-    </span>
-  </div>
+        <div className="flex flex-wrap items-center w-full gap-4 md:w-auto">
+          <label
+            htmlFor="image-file-input"
+            className="px-4 py-2 text-sm text-white transition bg-blue-500 rounded-md cursor-pointer hover:bg-blue-600"
+          >
+            Choose
+          </label>
+          <input
+            id="image-file-input"
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="hidden"
+          />
+          <span className="w-full text-sm text-gray-600 truncate md:w-48">
+            {selectedFile ? selectedFile.name : "No file chosen"}
+          </span>
+        </div>
 
-  {/* Upload button */}
-  <button
-    onClick={handleUpload}
-    type="button"
-    className="px-5 py-2 text-white bg-[#ffa216] rounded hover:bg-[#ff8c00] transition text-sm w-full md:w-auto"
-  >
-    Upload
-  </button>
-</div>
-
+        {/* Upload button */}
+        <button
+          onClick={handleUpload}
+          type="button"
+          className="px-5 py-2 text-white bg-[#ffa216] rounded hover:bg-[#ff8c00] transition text-sm w-full md:w-auto"
+        >
+          Upload
+        </button>
+      </div>
 
       {/* Upload status message */}
       <p
