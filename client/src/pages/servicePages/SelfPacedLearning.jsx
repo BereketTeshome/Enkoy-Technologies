@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
@@ -38,7 +37,7 @@ const SelfPacedLearning = () => {
 						className="uppercase text-sm font-semibold text-[#FF8689] my-10"
 						{...fadeInUp}
 					>
-						{isAmharic ? "በራስ ስራ ተመራ መማር" : "Self-paced learning"}
+						{isAmharic ? "የተሻሻለ eLearning መፍትሔ" : "Self-paced learning"}
 					</motion.p>
 					<motion.h2
 						className={`text-4xl sm:text-5xl mb-7 ${
@@ -135,7 +134,7 @@ const SelfPacedLearning = () => {
 							? "ራስ ስራ ተመራ መማር ተማሪዎች በተመረጠ ዘዴ በሚዛመድ አካባቢ ያካተተናል:"
 							: "Self-paced learning can be the right approach for many learners due to several key benefits:"}
 					</p>
-					<ul className="list-disc pl-6 py-5">
+					<ul className="py-5 pl-6 list-disc">
 						<li>
 							<b>{isAmharic ? "ተለዋዋጭነት:" : "Flexibility:"}</b>{" "}
 							{isAmharic

@@ -31,7 +31,7 @@ const AboutUs = () => {
 					<span className="text-lg font-bold text-gray-800">{texts.title}</span>
 				</div>
 				<p className="mb-4 text-sm text-gray-600">{texts.description}</p>
-				<a href="/about-us" className="text-sm text-yellow-500 hover:underline">
+				<a href="/about-us" className="text-sm font-bold text-yellow-500 hover:underline">
 					{texts.learnMore}
 				</a>
 			</div>

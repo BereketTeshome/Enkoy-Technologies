@@ -87,14 +87,14 @@ const CorporateTraining = () => {
 					alt={texts.title}
 					className="w-10 h-10"
 				/>
-				<span className="ml-2 text-lg text-gray-600 font-bold">
+				<span className="ml-2 text-lg font-bold text-gray-600">
 					{texts.title}
 				</span>
 			</div>
 			{/* Overview Link */}
 			<a
 				href="/corporate-training"
-				className="text-yellow-400 text-sm mb-4 inline-block hover:underline"
+				className="inline-block mb-4 text-sm font-bold text-yellow-400 hover:underline"
 			>
 				{texts.overview}
 			</a>
@@ -105,7 +105,7 @@ const CorporateTraining = () => {
 						<li>
 							<a
 								href={item.link}
-								className="cursor-pointer block hover:text-yellow-400 transition"
+								className="block transition cursor-pointer hover:text-yellow-400"
 							>
 								{item.text}
 							</a>
@@ -117,7 +117,7 @@ const CorporateTraining = () => {
 						<li>
 							<a
 								href={item.link}
-								className="cursor-pointer block hover:text-yellow-400 transition"
+								className="block transition cursor-pointer hover:text-yellow-400"
 							>
 								{item.text}
 							</a>

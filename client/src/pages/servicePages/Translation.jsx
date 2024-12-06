@@ -5,6 +5,9 @@ import { useSelector } from "react-redux";
 const Translation = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
+  const language = useSelector((state) => state.language?.language);
+  const isAmharic = language === "amh";
+
   const fadeInUp = {
     initial: { opacity: 0, y: 50 },
     whileInView: {
@@ -19,12 +22,12 @@ const Translation = () => {
     <motion.div
       className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
     >
-      <motion.div className="flex flex-col w-full items-center" {...fadeInUp}>
+      <motion.div className="flex flex-col items-center w-full" {...fadeInUp}>
         {/* Content Section */}
         <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
           <motion.img
             src="/img/services/translation.svg"
-            alt="Translation Icon"
+            alt={isAmharic ? "ትርጉም እና አካባቢያዊነት" : "Translation Icon"}
             className="w-[70px]"
             {...fadeInUp}
           />
@@ -32,7 +35,7 @@ const Translation = () => {
             className="uppercase text-sm font-semibold text-[#FF8689] my-10"
             {...fadeInUp}
           >
-            Translation and localization
+            {isAmharic ? "ትርጉም እና አካባቢያዊነት" : "Translation and localization"}
           </motion.p>
           <motion.h2
             className={`text-4xl sm:text-5xl mb-7 ${
@@ -40,7 +43,9 @@ const Translation = () => {
             }`}
             {...fadeInUp}
           >
-            Bringing everyone together with translation and localization
+            {isAmharic
+              ? "ሁሉንም ሰው ከትርጉም ጋር ማምጣት"
+              : "Bringing everyone together with translation and localization"}
           </motion.h2>
           <motion.p
             className={`text-justify mb-7 ${
@@ -48,13 +53,9 @@ const Translation = () => {
             }`}
             {...fadeInUp}
           >
-            Translation and localization empower learners to access courses in
-            their preferred language, enhancing understanding and retention. By
-            tailoring content to suit cultural nuances and language preferences,
-            we ensure that learners engage more deeply with the material. This
-            personalized approach not only facilitates better comprehension but
-            also fosters a more inclusive learning environment, allowing
-            everyone to thrive in their educational journey.
+            {isAmharic
+              ? "መተርጎም እና አካባቢያዊ ማድረግ ተማሪዎች በተመረጡት ቋንቋ ኮርሶችን እንዲደርሱ ያስችላቸዋል፣ ይህም ግንዛቤን እና ማቆየትን ያሳድጋል። ይዘትን ከባህላዊ ልዩነቶች እና የቋንቋ ምርጫዎች ጋር በማስማማት ተማሪዎች ከቁሱ ጋር በጥልቀት እንዲሳተፉ እናረጋግጣለን። ይህ ግላዊነት የተላበሰ አካሄድ የተሻለ ግንዛቤን ከማሳለጥ ባለፈ ሁሉንም ያሳተፈ የትምህርት አካባቢን ያሳድጋል፣ ይህም ሁሉም በትምህርታዊ ጉዟቸው እንዲበለጽግ ያስችለዋል።"
+              : "Translation and localization empower learners to access courses in their preferred language, enhancing understanding and retention. By tailoring content to suit cultural nuances and language preferences, we ensure that learners engage more deeply with the material. This personalized approach not only facilitates better comprehension but also fosters a more inclusive learning environment, allowing everyone to thrive in their educational journey."}
           </motion.p>
           <motion.a
             href="/contact"
@@ -63,7 +64,7 @@ const Translation = () => {
             }`}
             {...fadeInUp}
           >
-            Contact Us
+            {isAmharic ? "ያግኙን" : "Contact Us"}
           </motion.a>
         </motion.div>
         <br />

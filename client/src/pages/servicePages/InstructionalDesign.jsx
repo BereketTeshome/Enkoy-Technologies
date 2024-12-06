@@ -4,7 +4,10 @@ import { useSelector } from "react-redux";
 
 const InstructionalDesign = () => {
   const theme = useSelector((state) => state.theme?.theme);
+  const language = useSelector((state) => state.language?.language);
   const isDarkTheme = theme === "dark";
+  const isAmharic = language === "amh";
+
   const fadeInUp = {
     initial: { opacity: 0, y: 50 },
     whileInView: {
@@ -16,15 +19,17 @@ const InstructionalDesign = () => {
   };
 
   return (
-    <motion.div
-      className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
-    >
+    <motion.div className={`pt-20 ${isDarkTheme ? "bg-gray-800" : "bg-white"}`}>
       <motion.div className="flex flex-col items-center w-full" {...fadeInUp}>
         {/* Header Section */}
         <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
           <motion.img
             src="/img/services/translation.svg"
-            alt="Instructional Design Icon"
+            alt={
+              isAmharic
+                ? "የመማሪያ ንድፍ አዶ"
+                : "Instructional Design Icon"
+            }
             className="w-[70px]"
             {...fadeInUp}
           />
@@ -32,26 +37,29 @@ const InstructionalDesign = () => {
             className="uppercase text-sm font-semibold text-[#FF8689] my-10"
             {...fadeInUp}
           >
-            Instructional design consulting
+            {isAmharic
+              ? "የመምሪያ ንድፍ አማራጭ"
+              : "Instructional Design Consulting"}
           </motion.p>
           <motion.h2
             className={`text-4xl sm:text-5xl mb-7 ${
-              isDarkTheme ? "text-gray-100 " : "text-gray-950"
+              isDarkTheme ? "text-gray-100" : "text-gray-950"
             }`}
             {...fadeInUp}
           >
-            Crafting Engaging eLearning Experiences with Passion and Expertise
+            {isAmharic
+              ? "ከስሜታዊነት እና ከባለሙያ ጋር አሳታፊ ኢ-ትምህርት ተሞክሮዎችን መፍጠር"
+              : "Crafting Engaging eLearning Experiences with Passion and Expertise"}
           </motion.h2>
           <motion.p
             className={`text-justify mb-7 ${
-              isDarkTheme ? "text-gray-100 " : "text-gray-900"
+              isDarkTheme ? "text-gray-100" : "text-gray-900"
             }`}
             {...fadeInUp}
           >
-            At Enkoy, creativity is our passion; we live and breathe it! With
-            our expertise in designing eLearning courses, we offer exceptional
-            instructional design consulting services to help you create engaging
-            and effective learning experiences.
+            {isAmharic
+              ? "በእንኮይ, ፈጠራ የእኛ ፍላጎት ነው; እንኖራለን እና እንተነፍሳለን! የeLearning ኮርሶችን በመንደፍ ባለን እውቀት፣ አሳታፊ እና ውጤታማ የመማር ተሞክሮዎችን ለመፍጠር የሚያግዙዎትን ልዩ የማስተማሪያ ንድፍ የማማከር አገልግሎት እናቀርባለን"
+              : "At Enkoy, creativity is our passion; we live and breathe it! With our expertise in designing eLearning courses, we offer exceptional instructional design consulting services to help you create engaging and effective learning experiences."}
           </motion.p>
           <motion.a
             href="/contact"
@@ -60,7 +68,7 @@ const InstructionalDesign = () => {
             }`}
             {...fadeInUp}
           >
-            Contact Us
+            {isAmharic ? "ያግኙን" : "Contact Us"}
           </motion.a>
         </motion.div>
         <br />
