@@ -53,6 +53,7 @@ const UserProfilePage = () => {
 	const handleLogout = () => {
 		cookie.remove("user");
 		navigate("/");
+		window.location.reload();
 	};
 
 	const handleProfileChange = async () => {

@@ -29,7 +29,9 @@ const Login = () => {
 			// Save the token in cookies
 			cookie.set("user", res.data.token, { path: "/", httpOnly: false });
 			setBtnLoading(false);
-			navigate("/"); // Navigate to home page
+			navigate("/");
+			window.location.reload();
+			// Navigate to home page
 		} catch (error) {
 			console.log("Error:", error.response?.data || error.message);
 			setBtnLoading(false);
