@@ -60,7 +60,7 @@ const ChatBot = () => {
 
       const res = await axios.post(
         // https://chat-bot-server-azure.vercel.app/gemini
-        `http://localhost:3000/api/bot`,
+        `https://server.enkoytechnologies.com/api/bot`,
         {
           prompt: input,
         }
@@ -103,10 +103,10 @@ const ChatBot = () => {
             <img
               src={msg.isAi ? botIcon : userIcon}
               alt={msg.isAi ? "bot" : "user"}
-              className="w-3/5 h-3/5 object-contain"
+              className="object-contain w-3/5 h-3/5"
             />
           </div>
-          <div className="flex-1 text-gray-300 text-xs max-w-full overflow-x-auto whitespace-pre-wrap scrollbar-hide">
+          <div className="flex-1 max-w-full overflow-x-auto text-xs text-gray-300 whitespace-pre-wrap scrollbar-hide">
             {msg.value || (loading && "...")}
           </div>
         </div>
@@ -115,16 +115,16 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="w-full h-full bg-gray-800 flex flex-col items-center justify-between px-4 pt-2">
+    <div className="flex flex-col items-center justify-between w-full h-full px-4 pt-2 bg-gray-800">
       <div
         id="chat_container"
         ref={chatContainerRef}
-        className="flex-1 w-full h-full overflow-y-scroll flex flex-col gap-3 pb-5 scrollbar-hide"
+        className="flex flex-col flex-1 w-full h-full gap-3 pb-5 overflow-y-scroll scrollbar-hide"
       >
         {renderMessages()}
         {messages.length === 0 && (
-          <div className="h-full w-full flex items-center">
-            <p className="text-center w-full text-gray-500 text-xl">
+          <div className="flex items-center w-full h-full">
+            <p className="w-full text-xl text-center text-gray-500">
               Ask me anything about Enkoy Tech...
             </p>
           </div>
@@ -132,7 +132,7 @@ const ChatBot = () => {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-5xl mx-auto bg-gray-700 flex flex-row gap-3 mb-5 rounded-full px-5 py-2"
+        className="flex flex-row w-full max-w-5xl gap-3 px-5 py-2 mx-auto mb-5 bg-gray-700 rounded-full"
       >
         <textarea
           name="prompt"
@@ -143,11 +143,11 @@ const ChatBot = () => {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           required
-          className="flex-1 text-white text-xs p-2 bg-transparent rounded-md border-none outline-none"
+          className="flex-1 p-2 text-xs text-white bg-transparent border-none rounded-md outline-none"
         ></textarea>
         <button
           type="submit"
-          className="outline-none border-none cursor-pointer bg-transparent"
+          className="bg-transparent border-none outline-none cursor-pointer"
         >
           <img src={send} alt="send" className="w-7 h-7" />
         </button>

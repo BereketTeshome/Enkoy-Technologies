@@ -144,7 +144,7 @@ const NavBar = () => {
               />
             ) : (
               <motion.div
-                className="flex items-center justify-center w-12 h-12 text-xl font-bold text-gray-800 uppercase rounded-full bg-cyan-500"
+                className="flex items-center justify-center w-12 h-12 text-xl font-bold text-gray-700 uppercase rounded-full bg-[#E6C354]"
                 whileHover={{ scale: 1.1 }}
               >
                 {decode.username?.slice(0, 2) || ""}

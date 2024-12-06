@@ -1,4 +1,3 @@
-import React from "react";
 import { works } from "../../assets/ourWork";
 import { motion } from "framer-motion";
 
@@ -19,7 +18,7 @@ const staggerContainer = {
 const SingleWorks = () => {
   return (
     <motion.div
-      className="text-white py-16 "
+      className="py-16 text-white "
       variants={staggerContainer}
       initial="initial"
       animate="animate"
@@ -34,7 +33,7 @@ const SingleWorks = () => {
         >
           {/* Icon Section */}
           <motion.div
-            className="flex-shrink-0 w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center md:mr-10"
+            className="flex items-center justify-center flex-shrink-0 w-16 h-16 bg-gray-800 rounded-full md:mr-10"
             {...fadeInUp}
           >
             <img src={work.icon} alt="Work Icon" className="w-10 h-10" />
@@ -42,13 +41,13 @@ const SingleWorks = () => {
 
           {/* Text Section */}
           <motion.div className="flex-1" {...fadeInUp}>
-            <h3 className="text-xl md:text-2xl font-semibold mb-4">
+            <h3 className="mb-4 text-xl font-semibold md:text-2xl">
               {work.title}
             </h3>
-            <p className="text-gray-300 mb-6">{work.description}</p>
+            <p className="mb-6 text-gray-300">{work.description}</p>
             <a
               href={`/our-work/${work.id}`}
-              className="flex items-center gap-2 px-6 py-3 text-white bg-yellow-600 hover:bg-yellow-500 rounded transition w-fit"
+              className="flex items-center gap-2 px-6 py-3 text-white transition bg-yellow-600 rounded hover:bg-yellow-500 w-fit"
             >
               <span>Read the story</span>
               <svg
@@ -70,13 +69,13 @@ const SingleWorks = () => {
 
           {/* projectOverview Section */}
           <motion.div
-            className="mt-8 md:mt-0 md:ml-10 flex-shrink-0 w-full md:w-1/3"
+            className="flex-shrink-0 w-full mt-8 md:mt-0 md:ml-10 md:w-1/3"
             {...fadeInUp}
           >
-            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
+            <h4 className="mb-4 font-semibold text-yellow-500 uppercase">
               Project Highlights
             </h4>
-            <ul className="text-gray-400 list-disc pl-5 space-y-2">
+            <ul className="pl-5 space-y-2 text-gray-400 list-disc">
               {work.projectOverview.map((highlight, idx) => (
                 <li key={idx}>{highlight}</li>
               ))}

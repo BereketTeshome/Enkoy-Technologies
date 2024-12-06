@@ -15,12 +15,12 @@ const ChatbotLauncher = () => {
       {!isChatbotVisible && (
         <div
           onClick={toggleChatbot}
-          className="w-12 h-12 fixed right-6 bottom-10 z-50 bg-teal-500 rounded-full flex items-center justify-center cursor-pointer shadow-lg"
+          className="fixed z-50 flex items-center justify-center w-12 h-12 bg-teal-500 rounded-full shadow-lg cursor-pointer right-6 bottom-10"
         >
           <img
             src={botIcon}
             alt="Chatbot Icon"
-            className="w-2/3 h-2/3 object-contain"
+            className="object-contain w-2/3 h-2/3"
           />
         </div>
       )}
@@ -28,10 +28,10 @@ const ChatbotLauncher = () => {
       {/* Chatbot Component */}
       {isChatbotVisible && (
         <div className="w-[350px] sm:w-[400px] h-[500px] fixed right-6 top-10 z-50 shadow-lg">
-          <div className="relative w-full h-full bg-gray-700 rounded-lg overflow-hidden">
+          <div className="relative w-full h-full overflow-hidden bg-gray-700 rounded-lg">
             <button
               onClick={toggleChatbot}
-              className="absolute top-2 right-2 text-gray-200 bg-gray-600 hover:bg-gray-500 rounded-full p-1"
+              className="absolute p-1 text-gray-200 bg-gray-600 rounded-full top-2 right-2 hover:bg-gray-500"
             >
               ✖
             </button>

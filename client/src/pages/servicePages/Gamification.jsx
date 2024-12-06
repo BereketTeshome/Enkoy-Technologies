@@ -1,9 +1,12 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
+
 const Gamification = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
+  const language = useSelector((state) => state.language.language);
+	const isAmharic = language === "amh";
+
   const fadeInUp = {
     initial: { opacity: 0, y: 50 },
     whileInView: {
@@ -31,7 +34,7 @@ const Gamification = () => {
             className="uppercase text-sm font-semibold text-[#FF8689] my-10"
             {...fadeInUp}
           >
-            Custom eLearning solution
+            {isAmharic ? "የተሻሻለ eLearning መፍትሔ" :  "Custom eLearning solution"}
           </motion.p>
           <motion.h2
             className={`text-4xl sm:text-5xl mb-7 ${
@@ -39,7 +42,7 @@ const Gamification = () => {
             }`}
             {...fadeInUp}
           >
-            Elevate Your Learning through Gamification
+            {isAmharic ? "በመጫወት ትምህርትዎን ያሳድጉ" : "Elevate Your Learning through Gamification"}
           </motion.h2>
           <motion.p
             className={`text-justify mb-7 ${
@@ -47,13 +50,7 @@ const Gamification = () => {
             }`}
             {...fadeInUp}
           >
-            Gamification training integrates game elements into the learning
-            experience to boost engagement and motivation. At Enkoy, we leverage
-            Learning Experience Design (LXD) to create immersive and meaningful
-            learning environments. Our approach combines innovative game
-            mechanics with effective design principles, enhancing knowledge
-            retention and skill development. This strategy empowers learners to
-            thrive in their educational journeys.
+            {isAmharic ? "የግማሽ ስልጠና የጨዋታ ክፍሎችን ከትምህርቱ ጋር ያዋህዳል ተሳትፎን እና ተነሳሽነትን ለማሳደግ ልምድ። በእንኮይ፣ እንጠቀማለን። መሳጭ እና ትርጉም ያለው ለመፍጠር የመማር ልምድ ንድፍ (LXD) የመማሪያ አካባቢዎች. የእኛ አቀራረብ ፈጠራ ጨዋታን ያጣምራል። ሜካኒክስ ውጤታማ የንድፍ መርሆዎች, እውቀትን ማሳደግ ማቆየት እና ችሎታ ማዳበር. ይህ ስልት ተማሪዎችን ያበረታታል። በትምህርታዊ ጉዟቸው ያዳብራሉ።" : "Gamification training integrates game elements into the learning experience to boost engagement and motivation. At Enkoy, we leverage Learning Experience Design (LXD) to create immersive and meaningful learning environments. Our approach combines innovative game mechanics with effective design principles, enhancing knowledge retention and skill development. This strategy empowers learners to thrive in their educational journeys."}
           </motion.p>
           <motion.a
             href="/contact"
@@ -62,7 +59,7 @@ const Gamification = () => {
             }`}
             {...fadeInUp}
           >
-            Contact Us
+            {isAmharic ? "ያግኙን" : "Contact Us"}
           </motion.a>
         </div>
       </motion.div>
@@ -88,20 +85,14 @@ const Gamification = () => {
               isDarkTheme ? "text-gray-100 " : "text-gray-950"
             }`}
           >
-            Why Gamification in Digital Learning?
+            {isAmharic ? "በዲጂታል ትምህርት መጫወት ለምን አስፈለገ?" : "Why Gamification in Digital Learning?"}
           </h2>
           <p
             className={`text-justify ${
               isDarkTheme ? "text-gray-300" : "text-gray-900"
             }`}
           >
-            Gamification in digital learning boosts engagement and motivation by
-            making the process interactive and enjoyable. It enhances knowledge
-            retention through practice and provides immediate feedback on
-            progress. Personalized experiences allow learners to focus on their
-            interests while community-building elements foster collaboration.
-            Overall, gamification creates a dynamic environment that keeps
-            learners motivated and involved.
+            {isAmharic ? "በዲጂታል ትምህርት ውስጥ መተዋወቅ ሂደቱን በይነተገናኝ እና አስደሳች በማድረግ ተሳትፎን እና ተነሳሽነትን ይጨምራል። የእውቀት ማቆየትን በተግባር ያሳድጋል እና በሂደት ላይ ፈጣን አስተያየት ይሰጣል። ለግል የተበጁ ተሞክሮዎች ተማሪዎች በፍላጎታቸው ላይ እንዲያተኩሩ ያስችላቸዋል የማህበረሰብ ግንባታ አካላት ትብብርን ያሳድጋሉ። ባጠቃላይ፣ ጋሜዲኬሽን ተማሪዎችን እንዲነቃቁ እና እንዲሳተፉ የሚያደርግ ተለዋዋጭ አካባቢን ይፈጥራል።" : "Gamification in digital learning boosts engagement and motivation by making the process interactive and enjoyable. It enhances knowledge retention through practice and provides immediate feedback on progress. Personalized experiences allow learners to focus on their interests while community-building elements foster collaboration. Overall, gamification creates a dynamic environment that keeps learners motivated and involved."}
           </p>
         </motion.div>
       </motion.div>
@@ -115,23 +106,22 @@ const Gamification = () => {
         {...fadeInUp}
       >
         <motion.div className="flex flex-1" {...fadeInUp}>
+          {isAmharic ? 
+           <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
+           የእኛ አቀራረብ <br /> ወደ ጨዋታ
+         </h2>
+          : 
           <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
             Our Approach <br /> to gamification
           </h2>
+          }
         </motion.div>
         <motion.div
           className="flex-1 text-gray-900 text-[15px] text-justify"
           {...fadeInUp}
         >
           <p>
-            At Enkoy, our approach to gamification begins with understanding the
-            unique needs and preferences of our learners. We design immersive
-            and interactive experiences that integrate game elements to enhance
-            engagement and motivation. By leveraging Learning Experience Design
-            (LXD), we create meaningful challenges and rewards that promote
-            knowledge retention and skill development. Our goal is to foster a
-            dynamic learning environment where learners feel empowered to
-            achieve their educational objectives while enjoying the process.
+            {isAmharic ? "በእንኮይ፣ የጨዋታ አካሄዳችን የሚጀምረው ይህንን በመረዳት ነው። የተማሪዎቻችን ልዩ ፍላጎቶች እና ምርጫዎች። አስማጭ ዲዛይን እናደርጋለን እና ለማሻሻል የጨዋታ አካላትን የሚያዋህዱ በይነተገናኝ ተሞክሮዎች ተሳትፎ እና ተነሳሽነት. የመማር ልምድ ንድፍን በመጠቀም (LXD)፣ የሚያስተዋውቁ ጠቃሚ ፈተናዎችን እና ሽልማቶችን እንፈጥራለን እውቀትን ማቆየት እና ክህሎት ማዳበር. ግባችን ሀ ተለዋዋጭ የመማሪያ አካባቢ ተማሪዎች አቅም እንዳላቸው የሚሰማቸው በሂደቱ እየተደሰቱ ትምህርታዊ አላማቸውን ማሳካት።" : " At Enkoy, our approach to gamification begins with understanding the unique needs and preferences of our learners. We design immersive and interactive experiences that integrate game elements to enhance engagement and motivation. By leveraging Learning Experience Design (LXD), we create meaningful challenges and rewards that promote knowledge retention and skill development. Our goal is to foster a dynamic learning environment where learners feel empowered to achieve their educational objectives while enjoying the process."}
           </p>
         </motion.div>
       </motion.div>

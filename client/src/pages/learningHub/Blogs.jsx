@@ -11,6 +11,8 @@ const Blogs = () => {
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
   const cookie = new Cookies();
+  const language = useSelector((state) => state.language?.language);
+  const isAmharic = language === "amh";
 
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
@@ -76,7 +78,7 @@ const Blogs = () => {
           } md:text-5xl md:text-left`}
           {...fadeInUp}
         >
-          Latest Blogs
+          {isAmharic ? "የቅርብ ጊዜ ብሎጎች" : "Latest Blogs"}
         </motion.h2>
 
         <button
@@ -87,7 +89,7 @@ const Blogs = () => {
           } rounded-lg shadow-md hover:bg-opacity-90 hover:shadow-lg transition-all duration-300`}
           onClick={handlePostBlogClick}
         >
-          Manage Blog
+          {isAmharic ? "ብሎግ አስተዳድር" : "Manage Blog"}
         </button>
 
         {/* Pop-Up Modal */}
@@ -95,23 +97,23 @@ const Blogs = () => {
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <div className="w-11/12 max-w-md p-6 text-center bg-white rounded-lg shadow-lg">
               <h3 className="mb-4 text-2xl font-semibold text-gray-800">
-                You are not logged in!
+                {isAmharic ? "አልተመዘገቡም!" : "You are not logged in!"}
               </h3>
               <p className="mb-6 text-gray-600">
-                Please log in to post a blog.
+                {isAmharic ? "እባክዎ ብሎግ ለመለጠፍ ይመዝገቡ" : "Please log in to post a blog."}
               </p>
               <div className="flex items-center justify-center space-x-4">
                 <button
                   className="px-6 py-2 bg-[#FFCD57] text-gray-800 rounded-lg shadow-md hover:bg-opacity-90 transition-all duration-300"
                   onClick={() => navigate("/login")}
                 >
-                  Log In
+                  {isAmharic ? "ግባ" : "Log In"}
                 </button>
                 <button
                   className="px-6 py-2 text-gray-800 transition-all duration-300 bg-gray-300 rounded-lg shadow-md hover:bg-gray-400"
                   onClick={closePopup}
                 >
-                  Cancel
+                  {isAmharic ? "ሰርዝ" : "Cancel"}
                 </button>
               </div>
             </div>
@@ -165,7 +167,7 @@ const Blogs = () => {
                 }`}
                 {...fadeInUp}
               >
-                See More
+                {isAmharic ? "የበለጠ ይመልከቱ" : "See More"}
               </motion.a>
             </div>
           </div>

@@ -5,6 +5,9 @@ import { useSelector } from "react-redux";
 const Story = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
+  const language = useSelector((state) => state.language.language);
+  const isAmharic = language === "amh";
+
   const fadeInUp = {
     initial: { opacity: 0, y: 50 },
     whileInView: {
@@ -19,7 +22,7 @@ const Story = () => {
     <motion.div
       className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
     >
-      <motion.div className="flex flex-col w-full items-center" {...fadeInUp}>
+      <motion.div className="flex flex-col items-center w-full" {...fadeInUp}>
         {/* Content Section */}
         <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
           <motion.img
@@ -32,7 +35,9 @@ const Story = () => {
             className="uppercase text-sm font-semibold text-[#FF8689] my-10"
             {...fadeInUp}
           >
-            Custom eLearning solution
+            {isAmharic
+              ? "የተሻሻለ eLearning መፍትሔ"
+              : "Custom eLearning solution"}
           </motion.p>
           <motion.h2
             className={`text-4xl sm:text-5xl mb-7 ${
@@ -40,7 +45,9 @@ const Story = () => {
             }`}
             {...fadeInUp}
           >
-            Storytelling brings the modules to life
+            {isAmharic
+              ? "ታሪክ መተረክ ሞጁሎቹን ወደ ሕይወት ያመጣል"
+              : "Storytelling brings the modules to life"}
           </motion.h2>
           <motion.p
             className={`text-justify mb-7 ${
@@ -48,15 +55,9 @@ const Story = () => {
             }`}
             {...fadeInUp}
           >
-            Storytelling, combined with a well-crafted learning strategy,
-            creates an exceptional learning experience centered on narrative.
-            But the real magic lies in the outcome: highly engaged and focused
-            learners. Our custom visual stories, designed with Learning
-            Experience Design (LXD) principles, ensure that your team retains
-            knowledge longer and applies it effectively. By prioritizing LXD, we
-            create meaningful and immersive learning experiences that resonate
-            with learners, making education not just informative but truly
-            transformative.
+            {isAmharic
+              ? "ተረት መተረክ፣ በደንብ ከተሰራ የትምህርት ስልት ጋር ተዳምሮ፣ ትረካ ላይ ያማከለ ልዩ የመማሪያ ልምድ ይፈጥራል። ነገር ግን እውነተኛው አስማት በውጤቱ ላይ ነው፡ ከፍተኛ ተሳትፎ ያላቸው እና ትኩረት ያደረጉ ተማሪዎች። በመማር ልምድ ንድፍ (LXD) መርሆዎች የተነደፉ የእኛ ብጁ ምስላዊ ታሪኮች ቡድንዎ እውቀቱን ረዘም ላለ ጊዜ እንዲቆይ እና በብቃት መጠቀሙን ያረጋግጡ። ለኤልኤክስዲ ቅድሚያ በመስጠት፣ ተማሪዎችን የሚያስተጋቡ ትርጉም ያላቸው እና መሳጭ የመማሪያ ልምዶችን እንፈጥራለን፣ ይህም ትምህርት መረጃ ሰጪ ብቻ ሳይሆን እውነተኛ ለውጥ ያመጣል።"
+              : "Storytelling, combined with a well-crafted learning strategy, creates an exceptional learning experience centered on narrative. But the real magic lies in the outcome: highly engaged and focused learners. Our custom visual stories, designed with Learning Experience Design (LXD) principles, ensure that your team retains knowledge longer and applies it effectively. By prioritizing LXD, we create meaningful and immersive learning experiences that resonate with learners, making education not just informative but truly transformative."}
           </motion.p>
           <motion.a
             href="/contact"
@@ -65,7 +66,7 @@ const Story = () => {
             }`}
             {...fadeInUp}
           >
-            Contact Us
+            {isAmharic ? "ያግኙን" : "Contact Us"}
           </motion.a>
         </motion.div>
         <br />

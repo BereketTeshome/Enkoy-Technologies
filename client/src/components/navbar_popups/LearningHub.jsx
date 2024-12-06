@@ -21,7 +21,7 @@ const LearningHub = () => {
 		<div className="flex flex-col sm:flex-row items-start gap-9 p-6 bg-white text-gray-500 rounded-md shadow-md md:w-[400px]">
 			{/* Left Section */}
 			<div className="border-r-[1px] border-gray-400 pr-4 min-w-[130px]">
-				<div className="mb-4 flex items-center">
+				<div className="flex items-center mb-4">
 					<img
 						src="/img/contentsMenuImg.png"
 						alt={texts.title}
@@ -34,23 +34,23 @@ const LearningHub = () => {
 
 			{/* Right Section */}
 			<div className="w-full">
-				<h3 className="mb-2 text-sm text-gray-600 font-semibold">
+				<h3 className="mb-2 text-sm font-semibold text-gray-700">
 					{texts.latestPosts}
 				</h3>
 				{/* Links Section */}
-				<ul className="mt-4 text-xs space-y-4">
+				<ul className="mt-4 space-y-4 text-xs">
 					<li>
-						<a href="/blog" className="hover:text-yellow-400 transition">
+						<a href="/blog" className="transition hover:text-yellow-400">
 							{texts.blog}
 						</a>
 					</li>
 					<li>
-						<a href="/ebooks" className="hover:text-yellow-400 transition">
+						<a href="/ebooks" className="transition hover:text-yellow-400">
 							{texts.ebooks}
 						</a>
 					</li>
 					<li>
-						<a href="/events" className="hover:text-yellow-400 transition">
+						<a href="/events" className="transition hover:text-yellow-400">
 							{texts.events}
 						</a>
 					</li>

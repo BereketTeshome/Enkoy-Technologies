@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
@@ -131,7 +130,7 @@ const OurServices = () => {
 
 	return (
 		<motion.div
-			className="z-10 grid w-full md:w-[780px] grid-cols-1 gap-4 p-6 mx-auto bg-white rounded-md shadow-md sm:grid-cols-2 lg:grid-cols-4"
+			className="z-10 grid w-full md:w-[790px] grid-cols-1 gap-4 p-6 mx-auto bg-white rounded-md shadow-md sm:grid-cols-2 lg:grid-cols-4"
 			variants={containerVariants}
 			initial="hidden"
 			animate="visible"
@@ -148,13 +147,13 @@ const OurServices = () => {
 							alt={service.title}
 							className="w-8 h-8"
 						/>
-						<span className="ml-2 font-bold text-gray-800">
+						<span className="ml-2 min-h-[50px] font-bold text-gray-800">
 							{service.title}
 						</span>
 					</div>
 					<a
 						href={service.overviewLink}
-						className="text-sm text-blue-500 hover:underline"
+						className="text-sm text-[#FFCD57] font-bold hover:underline"
 					>
 						{language === "amh" ? "ማጠቃለያን ይመልከቱ" : "See Overview"}
 					</a>
@@ -173,7 +172,7 @@ const OurServices = () => {
 					{service.solutionsLink && (
 						<a
 							href={service.solutionsLink}
-							className="mt-4 text-sm text-blue-500 hover:underline"
+							className="mt-4 text-sm text-[#fcb633] font-bold hover:underline"
 						>
 							{language === "amh" ? "ተጨማሪ መፍትሄዎችን ይመልከቱ" : "See More Solutions"}
 						</a>
