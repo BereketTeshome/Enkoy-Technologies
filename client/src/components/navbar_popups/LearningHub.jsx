@@ -1,57 +1,59 @@
-import React from "react";
+import { useSelector } from "react-redux";
 
 const LearningHub = () => {
+	// Get the current language from Redux
+	const language = useSelector((state) => state.language.language);
+
+	// Dynamic text based on the selected language
+	const texts = {
+		title: language === "amh" ? "የመማር ማዕከል" : "Learning Hub",
+		description:
+			language === "amh"
+				? "በመማሪያ ኢንዱስትሪ ውስጥ የቅርብ ጊዜ ምክሮችን እና ዜናዎችን ይከታተሉ"
+				: "Keep up with the latest tips and news in the learning industry.",
+		latestPosts: language === "amh" ? "የቅርብ ጊዜ ጽሑፎች" : "Latest Posts",
+		blog: language === "amh" ? "ብሎግ" : "Blog",
+		ebooks: language === "amh" ? "ኢ-መጽሐፍት" : "E-Books",
+		events: language === "amh" ? "መጪ ክስተቶች" : "Upcoming Events",
+	};
+
 	return (
-		<div className="flex items-start gap-9 justify-between p-6 bg-white rounded-md shadow-md shadow-white md:w-[400px] sm:flex-row flex-col">
+		<div className="flex flex-col sm:flex-row items-start gap-9 p-6 bg-white text-gray-500 rounded-md shadow-md md:w-[400px]">
 			{/* Left Section */}
-			<div className=" border-r-[1px]  border-gray-200 min-w-[130px] pr-1">
-				<div className="mb-4">
+			<div className="border-r-[1px] border-gray-400 pr-4 min-w-[130px]">
+				<div className="mb-4 flex items-center">
 					<img
 						src="/img/contentsMenuImg.png"
-						alt="Our Work Icon"
+						alt={texts.title}
 						className="w-12 h-12 mr-3"
 					/>
-
-					<span className="text-lg font-bold text-gray-800">Learning Hub</span>
+					<span className="text-lg font-bold text-gray-600">{texts.title}</span>
 				</div>
-				<p className="mb-4 text-sm text-gray-600">
-					Keep up with the latest tips and news in the learning industry.
-				</p>
-				{/* <a
-          href="/case-studies"
-          className="font-medium text-yellow-500 hover:underline"
-        >
-          See case studies
-        </a> */}
+				<p className="mb-4 text-sm">{texts.description}</p>
 			</div>
 
 			{/* Right Section */}
-			<div className="w-full ">
-				<h3 className="mb-2 text-sm font-semibold text-gray-900">
-					Latest Posts
+			<div className="w-full">
+				<h3 className="mb-2 text-sm text-gray-600 font-semibold">
+					{texts.latestPosts}
 				</h3>
 				{/* Links Section */}
-				<ul className="mt-4 text-xs text-gray-500">
-					<li className="mt-4 whitespace-nowrap">
-						<a href="/blog" className="hover:text-gray-700">
-							Blog
+				<ul className="mt-4 text-xs space-y-4">
+					<li>
+						<a href="/blog" className="hover:text-yellow-400 transition">
+							{texts.blog}
 						</a>
 					</li>
-					<li className="mt-4 whitespace-nowrap">
-						<a href="/ebooks" className="hover:text-gray-700">
-							E-Books
+					<li>
+						<a href="/ebooks" className="hover:text-yellow-400 transition">
+							{texts.ebooks}
 						</a>
 					</li>
-					<li className="mt-4 whitespace-nowrap">
-						<a href="/events" className="hover:text-gray-700">
-							Upcoming Events
+					<li>
+						<a href="/events" className="hover:text-yellow-400 transition">
+							{texts.events}
 						</a>
 					</li>
-					{/* <li className="mt-4 whitespace-nowrap">
-            <a href="/design" className="hover:text-gray-700">
-              eLearning Design and Development
-            </a>
-          </li> */}
 				</ul>
 			</div>
 		</div>
