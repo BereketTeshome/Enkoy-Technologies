@@ -25,28 +25,38 @@ const UserProfilePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // Toggle theme
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     dispatch(setTheme(newTheme)); // Dispatch the theme change to Redux
-
-    // Save the theme to localStorage
-    localStorage.setItem("theme", newTheme);
+    localStorage.setItem("theme", newTheme); // Save the theme to localStorage
   };
 
+  // Set the saved theme and language on component mount
   useEffect(() => {
-    // Check if there's a theme saved in localStorage when the component mounts
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
-      dispatch(setTheme(savedTheme)); // Update the Redux store with the saved theme
+      dispatch(setTheme(savedTheme));
+    }
+
+    const savedLanguage = localStorage.getItem("language");
+    if (savedLanguage) {
+      dispatch(changeLanguage(savedLanguage));
     }
   }, [dispatch]);
+
+  // Handle language change
+  const handleLanguageChange = (newLanguage) => {
+    dispatch(changeLanguage(newLanguage)); // Dispatch language change to Redux
+    localStorage.setItem("language", newLanguage); // Save the language to localStorage
+  };
 
   const handleLogout = () => {
     cookie.remove("user");
     navigate("/");
     window.location.reload();
   };
-
+  console.log(decode);
   const handleProfileChange = async () => {
     try {
       const { data } = await axios.put(
@@ -118,7 +128,7 @@ const UserProfilePage = () => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 30, opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className={`w-full max-w-md p-6 bg-white rounded-lg shadow-md dark:bg-gray-900`} // Dynamically set background color for the inner container
+        className={`w-full max-w-md p-6 bg-white rounded-lg shadow-md dark:bg-gray-900`}
       >
         {/* User Info Section */}
         <div className="flex items-center gap-4 mb-6">
@@ -174,7 +184,7 @@ const UserProfilePage = () => {
             >
               <Select
                 value={language}
-                onChange={(e) => dispatch(changeLanguage(e.target.value))}
+                onChange={(e) => handleLanguageChange(e.target.value)}
                 className="text-white bg-white rounded shadow dark:bg-gray-700"
                 sx={{
                   ".MuiSelect-select": {

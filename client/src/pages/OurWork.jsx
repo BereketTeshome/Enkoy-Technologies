@@ -3,9 +3,13 @@ import SingleWorks from "../components/our-work/SingleWorks";
 import Partners from "../components/homepage_contents/partners";
 import Testimonials from "../components/homepage_contents/Testimonials";
 import Contact from "./Contact";
+import { useSelector } from "react-redux";
+
 const OurWork = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
   return (
-    <div>
+    <div className={`${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}>
       <div className="px-5 md:px-16 lg:px-32 bg-[#161628]">
         {/* Header Section */}
         <div className="py-12 md:py-24">

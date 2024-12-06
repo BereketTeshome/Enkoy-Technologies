@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useSelector } from "react-redux";
 
 const teamData = [
   {
@@ -53,18 +54,36 @@ const OurTeams = () => {
     AOS.init({ duration: 1000 });
   }, []);
 
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+    viewport: { amount: 0.2, once: true },
+  };
+
   return (
-    <div className="px-6 py-12 lg:px-32 bg-gradient-to-b from-white via-gray-100 to-gray-200">
-      <h1
-        className="mb-12 text-4xl font-bold text-center text-gray-800"
-        data-aos="fade-down"
+    <div
+      className={`px-6 py-12 lg:px-32 ${
+        isDarkTheme
+          ? "bg-gray-800"
+          : "bg-gradient-to-b from-white via-gray-100 to-gray-200"
+      }`}
+    >
+      <motion.h1
+        className={`mb-12 text-4xl font-bold text-center ${
+          isDarkTheme ? "text-gray-100" : "text-gray-800"
+        }`}
+        {...fadeInUp}
       >
         Meet Our Team
-      </h1>
-      <div
-        className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-        data-aos="fade-up"
-      >
+      </motion.h1>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {teamData.map((member, index) => (
           <motion.div
             key={index}
@@ -76,7 +95,12 @@ const OurTeams = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="relative overflow-hidden bg-white shadow-lg hover:shadow-xl rounded-xl"
+            className={`relative overflow-hidden bg-white shadow-lg hover:shadow-xl rounded-xl ${
+              isDarkTheme
+                ? "bg-gray-700 text-gray-800"
+                : "bg-white text-gray-800"
+            }`}
+            {...fadeInUp}
           >
             <div className="p-6">
               <motion.div
@@ -98,9 +122,7 @@ const OurTeams = () => {
                   {member.about}
                 </p>
               </div>
-              <h2 className="mt-6 text-xl font-bold text-gray-800">
-                {member.name}
-              </h2>
+              <h2 className="mt-6 text-xl font-bold">{member.name}</h2>
               <p className="text-gray-500">{member.title}</p>
             </div>
           </motion.div>
