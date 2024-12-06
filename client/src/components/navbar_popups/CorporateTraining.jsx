@@ -101,7 +101,7 @@ const CorporateTraining = () => {
 			{/* Two-Column Layout */}
 			<div className="grid grid-cols-2 gap-x-6">
 				{texts.items.slice(0, 5).map((item, index) => (
-					<ul key={index} className="space-y-4 text-sm">
+					<ul key={index} className="mt-3 text-sm">
 						<li>
 							<a
 								href={item.link}
@@ -113,7 +113,7 @@ const CorporateTraining = () => {
 					</ul>
 				))}
 				{texts.items.slice(5).map((item, index) => (
-					<ul key={index} className="space-y-4 text-sm">
+					<ul key={index} className="mt-3 text-sm">
 						<li>
 							<a
 								href={item.link}
