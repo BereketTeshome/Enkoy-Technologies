@@ -28,9 +28,11 @@ const ProfileImgUpload = ({ setProfileImg }) => {
 		const formData = new FormData();
 		formData.append("file", selectedFile);
 
+
 		try {
 			const response = await axios.post(
 				"https://server.enkoytechnologies.com/upload/image",
+
 
 				formData,
 				{
@@ -47,6 +49,9 @@ const ProfileImgUpload = ({ setProfileImg }) => {
 			setUploadStatus("Failed to upload image.");
 		}
 	};
+
+
+
 
 	return (
 		<div className="p-2 pt-3 border rounded-md shadow-md bg-gray-50">
@@ -91,6 +96,7 @@ const ProfileImgUpload = ({ setProfileImg }) => {
 			>
 				{uploadStatus}
 			</p>
+
 
 			{/* Display uploaded image preview */}
 			{fileUrl && (

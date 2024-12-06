@@ -48,10 +48,13 @@ const Register = () => {
     }
   };
 
-	const handleGoogleSignup = () => {
-		// Redirect to your backend's Google OAuth endpoint
-		window.location.href = "https://server.enkoytechnologies.com/auth/google";
-	};
+
+  const handleGoogleSignup = () => {
+    // Redirect to your backend's Google OAuth endpoint
+    // window.location.href = "http://localhost:3000/auth/google";
+    window.location.href = "https://server.enkoytechnologies.com/auth/google";
+  };
+
 
 	return (
 		<div className="flex flex-col py-10 md:flex-row bg-gray-50">
