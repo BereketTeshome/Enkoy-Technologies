@@ -1,76 +1,80 @@
-import React from "react";
+import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import HomePage from "./pages/HomePage";
 import Footer from "./components/Footer";
-import SelfPacedLearning from "./pages/servicePages/SelfPacedLearning";
-import Gamification from "./pages/servicePages/Gamification";
-import AnimatedVideos from "./pages/servicePages/AnimatedVideos";
-import Translation from "./pages/servicePages/Translation";
-import Accessibility from "./pages/servicePages/Accessibility";
-import LearningExperiences from "./pages/servicePages/LearningExperiences";
-import AnimationVideos from "./pages/servicePages/AnimationVideos";
-import LXD from "./pages/servicePages/LXD";
-import CorporateTraining from "./pages/CorporateTraining.jsx";
-import LeadershipDevelopment from "./pages/corporateTrainingPages/LeadershipDevelopment.jsx";
-import LearningExperience from "./pages/corporateTrainingPages/LearningExperience.jsx";
 import "./App.css";
-import Story from "./pages/servicePages/Story";
-import PersonalDevelopment from "./pages/corporateTrainingPages/PersonalDevelopment.jsx";
-import BasicComputer from "./pages/corporateTrainingPages/BasicComputer.jsx";
-import Employability from "./pages/corporateTrainingPages/Employability.jsx";
-import DecentWork from "./pages/corporateTrainingPages/DecentWork.jsx";
-import FairEmployment from "./pages/corporateTrainingPages/FairEmployment.jsx";
-import Safety from "./pages/corporateTrainingPages/Safety.jsx";
-import WorkLife from "./pages/corporateTrainingPages/WorkLife.jsx";
-import SoftSkill from "./pages/corporateTrainingPages/SoftSkill.jsx";
-import AboutUs from "./pages/AboutUs.jsx";
-import OurTeam from "./pages/aboutAsPages/OurTeam.jsx";
-import OurDEI from "./pages/aboutAsPages/OurDEI.jsx";
-import Careers from "./pages/aboutAsPages/Careers.jsx";
-import InstructionalDesign from "./pages/servicePages/InstructionalDesign.jsx";
-import TrainingDigitalization from "./pages/servicePages/TrainingDigitalization.jsx";
-import VideoEditing from "./pages/servicePages/VideoEditing.jsx";
-import GraphicsDesign from "./pages/servicePages/GraphicsDesign.jsx";
-import BasicComputerSkill from "./pages/servicePages/BasicComputerSkill.jsx";
-import EmployabilitySkill from "./pages/servicePages/EmployabilitySkill.jsx";
-import PersonalDev from "./pages/servicePages/PersonalDev.jsx";
-import LeadershipSkill from "./pages/servicePages/LeadershipSkill.jsx";
-import Contact from "./pages/Contact.jsx";
-import Portfolio from "./pages/Portfolio.jsx";
-import UnderConstruction from "./pages/UnderConstruction.jsx";
-import Blogs from "./pages/learningHub/Blogs.jsx";
-import Ebooks from "./pages/learningHub/Ebooks.jsx";
-import OurWork from "./pages/OurWork.jsx";
-import DetailedWork from "./pages/DetailedWork.jsx";
-// import DigitalTraining from "./components/navbar_popups/DigitalTraining.jsx";
-import DigitalTrainingOverview from "./pages/DigitalTrainingOverview.jsx";
-import BlogDetail from "./pages/BlogDetail.jsx";
-import Login from "./pages/Login.jsx";
-import MyBlog from "./pages/MyBlog.jsx";
-import AddBlogPage from "./pages/AddBlogPage.jsx";
-import EbookDetail from "./pages/learningHub/EbookDetail.jsx";
-import Register from "./pages/Register.jsx";
-import BlogAuthor from "./pages/authors/BlogAuthor.jsx";
-import AddEbookPage from "./pages/AddEbookPage.jsx";
-import MyEbook from "./pages/MyEbook.jsx";
-import EbookAuthor from "./pages/authors/EbookAuthor.jsx";
-import UserProfilePage from "./pages/UserProfilePage.jsx";
-import EventCalendarPage from "./pages/EventCalendarPage.jsx";
 import { useSelector } from "react-redux";
 import ChatBot from "./components/ChatBot.jsx";
 import ChatbotLauncher from "./components/ChatbotLauncher.jsx";
-import Jobs from "./pages/learningHub/Jobs.jsx";
+import Loader from "./components/Loader.jsx";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
+const SelfPacedLearning = lazy(() => import("./pages/servicePages/SelfPacedLearning"));
+const Gamification = lazy(() => import("./pages/servicePages/Gamification"));
+const AnimatedVideos = lazy(() => import("./pages/servicePages/AnimatedVideos"));
+const Translation = lazy(() => import("./pages/servicePages/Translation"));
+const Accessibility = lazy(() => import("./pages/servicePages/Accessibility"));
+const LearningExperiences = lazy(() => import("./pages/servicePages/LearningExperiences"));
+const AnimationVideos = lazy(() => import("./pages/servicePages/AnimationVideos"));
+const LXD = lazy(() => import("./pages/servicePages/LXD"));
+const CorporateTraining = lazy(() => import("./pages/CorporateTraining"));
+const LeadershipDevelopment = lazy(() => import("./pages/corporateTrainingPages/LeadershipDevelopment"));
+const LearningExperience = lazy(() => import("./pages/corporateTrainingPages/LearningExperience"));
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const Story = lazy(() => import("./pages/servicePages/Story"));
+const PersonalDevelopment = lazy(() => import("./pages/corporateTrainingPages/PersonalDevelopment"));
+const BasicComputer = lazy(() => import("./pages/corporateTrainingPages/BasicComputer"));
+const Employability = lazy(() => import("./pages/corporateTrainingPages/Employability"));
+const DecentWork = lazy(() => import("./pages/corporateTrainingPages/DecentWork"));
+const Safety = lazy(() => import("./pages/corporateTrainingPages/Safety"));
+const FairEmployment = lazy(() => import("./pages/corporateTrainingPages/FairEmployment"));
+const WorkLife = lazy(() => import("./pages/corporateTrainingPages/WorkLife"));
+const Blogs = lazy(() => import("./pages/learningHub/Blogs"));
+const Contact = lazy(() => import("./pages/Contact"));
+const UnderConstruction = lazy(() => import("./pages/UnderConstruction"));
+const SoftSkill = lazy(() => import("./pages/corporateTrainingPages/SoftSkill.jsx"));
+const OurTeam = lazy(() => import("./pages/aboutAsPages/OurTeam.jsx"));
+const OurDEI = lazy(() => import("./pages/aboutAsPages/OurDEI.jsx"));
+const Careers = lazy(() => import("./pages/aboutAsPages/Careers.jsx"));
+const InstructionalDesign = lazy(() => import("./pages/servicePages/InstructionalDesign.jsx"));
+const TrainingDigitalization = lazy(() => import("./pages/servicePages/TrainingDigitalization.jsx"));
+const VideoEditing = lazy(() => import("./pages/servicePages/VideoEditing.jsx"));
+const GraphicsDesign = lazy(() => import("./pages/servicePages/GraphicsDesign.jsx"));
+const BasicComputerSkill = lazy(() => import("./pages/servicePages/BasicComputerSkill.jsx"));
+const EmployabilitySkill = lazy(() => import("./pages/servicePages/EmployabilitySkill.jsx"));
+const PersonalDev = lazy(() => import("./pages/servicePages/PersonalDev.jsx"));
+const LeadershipSkill = lazy(() => import("./pages/servicePages/LeadershipSkill.jsx"));
+const Portfolio = lazy(() => import("./pages/Portfolio.jsx"));
+const Ebooks = lazy(() => import("./pages/learningHub/Ebooks.jsx"));
+const OurWork = lazy(() => import("./pages/OurWork.jsx"));
+const DetailedWork = lazy(() => import("./pages/DetailedWork.jsx"));
+const DigitalTrainingOverview = lazy(() => import("./pages/DigitalTrainingOverview.jsx"));
+const BlogDetail = lazy(() => import("./pages/BlogDetail.jsx"));
+const Login = lazy(() => import("./pages/Login.jsx"));
+const MyBlog = lazy(() => import("./pages/MyBlog.jsx"));
+const AddBlogPage = lazy(() => import("./pages/AddBlogPage.jsx"));
+const EbookDetail = lazy(() => import("./pages/learningHub/EbookDetail.jsx"));
+const Register = lazy(() => import("./pages/Register.jsx"));
+const BlogAuthor = lazy(() => import("./pages/authors/BlogAuthor.jsx"));
+const AddEbookPage = lazy(() => import("./pages/AddEbookPage.jsx"));
+const MyEbook = lazy(() => import("./pages/MyEbook.jsx"));
+const EbookAuthor = lazy(() => import("./pages/authors/EbookAuthor.jsx"));
+const UserProfilePage = lazy(() => import("./pages/UserProfilePage.jsx"));
+const EventCalendarPage = lazy(() => import("./pages/EventCalendarPage.jsx"));
+const Jobs = lazy(() => import("./pages/learningHub/Jobs.jsx"));
 
 const App = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
 
   return (
+        <Suspense fallback={<Loader />}>
     <div className={`${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}>
       <NavBar />
       <ChatbotLauncher />
       <div>
+
+        
         <Routes>
           <Route path="/" element={<HomePage />} />
 
@@ -226,6 +230,7 @@ const App = () => {
       </div>
       <Footer />
     </div>
+        </Suspense>
   );
 };
 
