@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 const Careers = () => {
@@ -32,7 +31,7 @@ const Careers = () => {
           {...fadeInUp}
         >
           <motion.p
-            className="text-2xl sm:text-3xl text-gray-900"
+            className="text-2xl text-gray-900 sm:text-3xl"
             {...fadeInUp}
           >
             We’ve consciously built a team of people who understand that
@@ -51,7 +50,7 @@ const Careers = () => {
           </motion.p>
 
           <motion.p
-            className="text-xl sm:text-2xl text-gray-900 font-semibold mt-4"
+            className="mt-4 text-xl font-semibold text-gray-900 sm:text-2xl"
             {...fadeInUp}
           >
             Sound like something you want to be a part of? Check out our open
@@ -61,7 +60,7 @@ const Careers = () => {
           <br />
           <motion.a
             href="/contact"
-            className="py-3 px-6 bg-gray-900 text-white mt-8 inline-block"
+            className="inline-block px-6 py-3 mt-8 text-white bg-gray-900"
             {...fadeInUp}
           >
             Contact Us
@@ -79,29 +78,29 @@ const Careers = () => {
           {...fadeInUp}
         >
           <motion.h2
-            className="text-4xl sm:text-5xl text-gray-900 mb-8"
+            className="mb-8 text-4xl text-gray-900 sm:text-5xl"
             {...fadeInUp}
           >
             Benefits of working at Enkoy
           </motion.h2>
           <motion.div
-            className="flex flex-col sm:flex-row gap-8 lg:gap-10"
+            className="flex flex-col gap-8 sm:flex-row lg:gap-10"
             {...fadeInUp}
           >
             {/* Left Benefits */}
             <motion.div className="flex-1 text-gray-900" {...fadeInUp}>
               <motion.div className="mb-5" {...fadeInUp}>
-                <p className="text-xl font-semibold mb-2">For your health</p>
+                <p className="mb-2 text-xl font-semibold">For your health</p>
                 <p>Medical, vision, dental, and basic life insurance</p>
               </motion.div>
               <motion.div className="mb-5" {...fadeInUp}>
-                <p className="text-xl font-semibold mb-2">
+                <p className="mb-2 text-xl font-semibold">
                   Be with your family
                 </p>
                 <p>Maternity and paternity leave</p>
               </motion.div>
               <motion.div className="mb-5" {...fadeInUp}>
-                <p className="text-xl font-semibold mb-2">
+                <p className="mb-2 text-xl font-semibold">
                   Spend time with the team
                 </p>
                 <p>
@@ -110,7 +109,7 @@ const Careers = () => {
                 </p>
               </motion.div>
               <motion.div {...fadeInUp}>
-                <p className="text-xl font-semibold mb-2">Save money</p>
+                <p className="mb-2 text-xl font-semibold">Save money</p>
                 <p>FSA, HSA, and pre-tax commuter benefits</p>
               </motion.div>
             </motion.div>
@@ -118,24 +117,24 @@ const Careers = () => {
             {/* Right Benefits */}
             <motion.div className="flex-1 text-gray-900" {...fadeInUp}>
               <motion.div className="mb-5" {...fadeInUp}>
-                <p className="text-xl font-semibold mb-2">Keep learning</p>
+                <p className="mb-2 text-xl font-semibold">Keep learning</p>
                 <p>
                   Quarterly speakers, DEI workshops, and monthly training
                   sessions
                 </p>
               </motion.div>
               <motion.div className="mb-5" {...fadeInUp}>
-                <p className="text-xl font-semibold mb-2">Stay fit</p>
+                <p className="mb-2 text-xl font-semibold">Stay fit</p>
                 <p>
                   Reimbursement for fitness classes or gym/wellness membership
                 </p>
               </motion.div>
               <motion.div className="mb-5" {...fadeInUp}>
-                <p className="text-xl font-semibold mb-2">For your future</p>
+                <p className="mb-2 text-xl font-semibold">For your future</p>
                 <p>401(k) plans available after three months of employment</p>
               </motion.div>
               <motion.div {...fadeInUp}>
-                <p className="text-xl font-semibold mb-2">Take time off</p>
+                <p className="mb-2 text-xl font-semibold">Take time off</p>
                 <p>Vacation time, paid holidays, unlimited sick leave</p>
               </motion.div>
             </motion.div>

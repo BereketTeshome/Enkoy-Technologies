@@ -1,4 +1,3 @@
-import React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
@@ -6,67 +5,110 @@ import { useSelector } from "react-redux";
 const CorporateTraining = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
+  const language = useSelector((state) => state.language?.language);
+  const isAmharic = language === "amh";
+
   const services = [
     {
       img: "/img/corporate-training/customerTraining.webp",
-      title: "Leadership development training",
-      desc: "Leadership development training designed to motivate and achieve results.",
+      title: isAmharic
+        ? "መሪነት ልማት ስልጠና"
+        : "Leadership development training",
+      desc: isAmharic
+        ? "ስልጠናው የተሰራው ለማነቃትና ውጤትን ለማግኘት ነው።"
+        : "Leadership development training designed to motivate and achieve results.",
       path: "/corporate-training/leadership",
     },
     {
       img: "/img/corporate-training/bb.webp",
-      title: "Learning Experience Design (LXD) Training",
-      desc: "Enhancing Learning Through Thoughtful Design.",
+      title: isAmharic
+        ? "ማማረሻ ተሞክሮ ዲዛይን ስልጠና (LXD)"
+        : "Learning Experience Design (LXD) Training",
+      desc: isAmharic
+        ? "በበለጠ አስተያየት ትምህርትን ማሻሻል።"
+        : "Enhancing Learning Through Thoughtful Design.",
       path: "/corporate-training/learning-experience",
     },
     {
       img: "/img/corporate-training/workLife.png",
-      title: "Personal development training ",
-      desc: "Leadership development training designed to motivate and achieve results.",
+      title: isAmharic
+        ? "የግል ልማት ስልጠና"
+        : "Personal development training",
+      desc: isAmharic
+        ? "ስልጠናው የተሰራው ለማነቃትና ውጤትን ለማግኘት ነው።"
+        : "Leadership development training designed to motivate and achieve results.",
       path: "/corporate-training/personal-development",
     },
     {
       img: "/img/corporate-training/basicComputer.svg",
-      title: "Basic computer skill training",
-      desc: "Empowering Individuals with Essential Digital Competencies",
+      title: isAmharic
+        ? "የመሠረታዊ ኮምፒዩተር ክህሎት ስልጠና"
+        : "Basic computer skill training",
+      desc: isAmharic
+        ? "እንደአለምአቀፍ ዜና ማድረግ የሚረዳ።"
+        : "Empowering Individuals with Essential Digital Competencies",
       path: "/corporate-training/basic-computer",
     },
     {
       img: "/img/corporate-training/decentWork.webp",
-      title: "Employability and entrepreneurship",
-      desc: "Empowering Individuals for Career Success and Business Innovation",
+      title: isAmharic
+        ? "የሥራ አቅምና ኢንተርፕርነርሺፕ ስልጠና"
+        : "Employability and entrepreneurship",
+      desc: isAmharic
+        ? "ኢንተርፕርነርሺፕ ማሻሻል።"
+        : "Empowering Individuals for Career Success and Business Innovation",
       path: "/corporate-training/employability",
     },
     {
       img: "/img/corporate-training/dream.webp",
-      title: "Decent work and SDG training",
-      desc: "Promoting Sustainable Employment and Responsible Practices",
+      title: isAmharic
+        ? "አክብሮት ሥራና እና ኤስ.ዲ.ጂ ስልጠና"
+        : "Decent work and SDG training",
+      desc: isAmharic
+        ? "ተግባራዊ ሥራና ታማኝ ልምድን ማስቻል።"
+        : "Promoting Sustainable Employment and Responsible Practices",
       path: "/corporate-training/decent-work",
     },
     {
       img: "/img/corporate-training/employability.webp",
-      title: "Fair employment practice training",
-      desc: "Promoting Equity and Inclusion in the Workplace",
+      title: isAmharic
+        ? "እውቀትና ሥራ ልምድ ዝርጋት"
+        : "Fair employment practice training",
+      desc: isAmharic
+        ? "በሥራ ቦታ ተቀባይነትንና ተስማማትን ማሳደግ።"
+        : "Promoting Equity and Inclusion in the Workplace",
       path: "/corporate-training/fair-employment",
     },
     {
       img: "/img/corporate-training/safety.svg",
-      title: "Safety and Health at workplace training",
-      desc: "Ensuring a Safe and Healthy Work Environment",
+      title: isAmharic
+        ? "እንደ ሥራ ቦታ ደህንነትና ጤና"
+        : "Safety and Health at workplace training",
+      desc: isAmharic
+        ? "በሥራ ቦታ ደህንነትና ጤና አለመኖርን ማስቻል።"
+        : "Ensuring a Safe and Healthy Work Environment",
       path: "/corporate-training/safety",
     },
     {
       img: "/img/corporate-training/aa.webp",
-      title: "Work life balance training",
-      desc: "Promoting Well-Being and Productivity",
+      title: isAmharic
+        ? "የሥራ እና አሳልፎ ማስተዋወቅ"
+        : "Work life balance training",
+      desc: isAmharic
+        ? "በማህበራዊነት እና ውጤት ላይ የተሰማሩ ምርጫዎችን ማስቻል።"
+        : "Promoting Well-Being and Productivity",
       path: "/corporate-training/work-life",
     },
     {
       img: "/img/corporate-training/personalDevelopment.webp",
-      title: "Soft skill training",
-      desc: "Cultivating Essential Interpersonal Skills for Success",
+      title: isAmharic
+        ? "የሴራ ችሎታ ስልጠና"
+        : "Soft skill training",
+      desc: isAmharic
+        ? "ለስራ ሳንንቅ አስፈላጊ ተሟላቸው ክህሎቶችን ማሳደግ።"
+        : "Cultivating Essential Interpersonal Skills for Success",
       path: "/corporate-training/soft-skill",
-    },
+    },    
   ];
 
   const containerVariants = {
@@ -87,8 +129,8 @@ const CorporateTraining = () => {
 
   return (
     <div className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}>
-      <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row gap-10 overflow-hidden">
-        <motion.div
+      <div className="flex flex-col items-center w-full gap-10 px-5 overflow-hidden md:px-20 sm:px-10 lg:flex-row">
+      <motion.div
           className="flex-1"
           initial={{ opacity: 0, y: 150 }}
           animate={{ opacity: 1, y: 0 }}
@@ -99,34 +141,32 @@ const CorporateTraining = () => {
               isDarkTheme ? "text-[#F28D8F]" : "text-[#FF8689]"
             } my-10 `}
           >
-            Corporate Training overview
+            {isAmharic ? "የኩባንያ ስልጠና አጠቃላይ መግለጫ" : "Corporate Training Overview"}
           </p>
           <h2
             className={`text-3xl font-semibold sm:text-5xl ${
               isDarkTheme ? "text-gray-100" : "text-gray-950"
             } mb-7`}
           >
-            Corporate <br />
-            Training Services
+            {isAmharic ? "ኩባንያዊ ስልጠና" : "Corporate Training Services"}
           </h2>
           <p
             className={`mb-7 ${
               isDarkTheme ? "text-gray-300" : "text-gray-900"
             }`}
           >
-            Corporate training often has a negative reputation, and for good
-            reason. It can be lengthy, outdated, and unengaging. At Enkoy
-            Technologies, we develop tailored and interactive corporate learning
-            experiences that inspire and motivate learners.
+            {isAmharic
+              ? "የኮርፖሬት ስልጠና ብዙውን ጊዜ አሉታዊ ስም አለው, እና በጥሩ ምክንያት. ረጅም፣ ጊዜ ያለፈበት እና የማይረባ ሊሆን ይችላል። በእንኮይ ቴክኖሎጂዎች፣ ተማሪዎችን የሚያነሳሱ እና የሚያበረታቱ ብጁ እና በይነተገናኝ የኮርፖሬት ትምህርት ተሞክሮዎችን እናዳብራለን።"
+              : "Corporate training often has a negative reputation, and for good reason. It can be lengthy, outdated, and unengaging. At Enkoy Technologies, we develop tailored and interactive corporate learning experiences that inspire and motivate learners."}
           </p>
-          <div className="flex justify-between sm:items-center flex-col sm:flex-row gap-y-4">
+          <div className="flex flex-col justify-between sm:items-center sm:flex-row gap-y-4">
             <a
               href="/contact"
               className={`px-6 py-3 text-white ${
                 isDarkTheme ? "bg-[#FFCD57]" : "bg-gray-900"
               } `}
             >
-              Contact Us
+              {isAmharic ? "አግኙን" : "Contact Us"}
             </a>
             <a
               href="#solutions"
@@ -141,7 +181,7 @@ const CorporateTraining = () => {
               >
                 <IoIosArrowDown />
               </span>
-              See our solutions
+              {isAmharic ? "መፍትሄዎቻችንን ይመልከቱ" : "See our solutions"}
             </a>
           </div>
         </motion.div>
@@ -165,7 +205,7 @@ const CorporateTraining = () => {
         className={`w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 ${"bg-[#B7D6D8]"} md:flex-row flex-col`}
       >
         <motion.div
-          className="flex-1 flex "
+          className="flex flex-1 "
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.2, once: true }}
@@ -174,7 +214,7 @@ const CorporateTraining = () => {
           <h2
             className={`inline-block md:text-5xl text-3xl ${"text-gray-900"} font-semibold`}
           >
-            Our method for delivering corporate training services.
+            {isAmharic ? "የኮርፖሬት ስልጠና አገልግሎቶችን ለማቅረብ የእኛ ዘዴ." : "Our method for delivering corporate training services."}
           </h2>
         </motion.div>
         <motion.div
@@ -185,17 +225,25 @@ const CorporateTraining = () => {
           transition={{ duration: 0.8 }}
         >
           <p>
-            “Captivating” and “fun” are rarely linked to corporate training,
-            which is unfortunate. Corporate learning should be viewed as an act
-            of care rather than a mere obligation.
+            {isAmharic ? "“አስደሳች” እና “አዝናኝ” ከድርጅት ስልጠና ጋር ብዙም አይገናኙም። የሚያሳዝነው. የድርጅት ትምህርት እንደ ድርጊት መታየት አለበት። ከተራ ግዴታ ይልቅ እንክብካቤ።" 
+            : " “Captivating” and “fun” are rarely linked to corporate training, which is unfortunate. Corporate learning should be viewed as an actof care rather than a mere obligation."}
           </p>
-          <p>
-            At <b>Enkoy Technologies</b>, we aim for learners to connect with
-            and engage with the content. That’s why we employ creative
-            storytelling, interactive graphics and animations, and user
-            preferences to foster genuine connections and provide more effective
-            training.
-          </p>
+          {isAmharic ? 
+            <p>
+              At <b>Enkoy Technologies</b>, we aim for learners to connect with
+              and engage with the content. That’s why we employ creative
+              storytelling, interactive graphics and animations, and user
+              preferences to foster genuine connections and provide more effective
+              training.
+            </p>
+          : <p>
+              በ <b>Enkoy Technologies</b>፣ ተማሪዎች እንዲገናኙ ዓላማ እናደርጋለን
+              እና ከይዘቱ ጋር ይሳተፉ። ለዚህ ነው ፈጠራን የምንቀጥረው
+              ተረት ተረት፣ በይነተገናኝ ግራፊክስ እና እነማዎች፣ እና ተጠቃሚ
+              እውነተኛ ግንኙነቶችን ለመፍጠር እና የበለጠ ውጤታማ ለማቅረብ ምርጫዎች
+              ስልጠና.
+            </p>
+            }
         </motion.div>
       </div>
       <br />
@@ -204,7 +252,7 @@ const CorporateTraining = () => {
       <div className="px-5 sm:px-10 md:px-20">
         <div className="sm:text-center">
           <motion.h2
-            className={`sm:text-5xl text-4xl font-semibold ${
+            className={`sm:text-5xl mb-10 text-4xl font-semibold ${
               isDarkTheme ? "text-gray-100" : "text-gray-950"
             }`}
             initial={{ opacity: 0, y: 50 }}
@@ -212,9 +260,20 @@ const CorporateTraining = () => {
             viewport={{ amount: 0.2, once: true }}
             transition={{ duration: 0.8 }}
           >
-            Our corporate <br /> training services
+            {isAmharic ? `የእኛ የድርጅት የሥልጠና አገልግሎቶች` :  `Our corporate training services`}
           </motion.h2>
-          <motion.p
+          {isAmharic ? 
+            <motion.p
+            className={`${isDarkTheme ? "text-gray-300" : "text-gray-900"}`}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ amount: 0.2, once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            
+            ድርጅትዎ የታዛዥነት ስልጠና የሚያስፈልገው ወይም ለማሳደግ ያለመ ከሆነ የቡድን ስራ እና ርህራሄ፣ <br/> የኛ የድርጅት ማሰልጠኛ አገልግሎቶች ናቸው። የእርስዎን የስራ ኃይል ለማሳተፍ እና ለማበረታታት የተዘጋጀ።
+          </motion.p>
+          : <motion.p
             className={`${isDarkTheme ? "text-gray-300" : "text-gray-900"}`}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -224,11 +283,11 @@ const CorporateTraining = () => {
             Whether your organization needs compliance training or aims to boost
             teamwork and empathy, <br /> our corporate training services are
             tailored to engage and motivate your workforce.
-          </motion.p>
+          </motion.p>}
         </div>
         <br />
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-7"
+          className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 mt-7"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
@@ -237,7 +296,7 @@ const CorporateTraining = () => {
           {services.map((item, index) => {
             return (
               <motion.div
-                className={`${isDarkTheme ? "text-gray-100" : "text-gray-800"}`}
+                className={`${isDarkTheme ? "text-gray-100 mt-10" : "text-gray-800 mt-10"}`}
                 key={index}
                 variants={childVariants}
                 whileHover={{ scale: 1.1 }}
@@ -245,7 +304,7 @@ const CorporateTraining = () => {
               >
                 <img src={item.img} alt="" className="w-[60px] mb-6" />
                 <p className="mb-6 text-lg font-semibold">{item.title}</p>
-                <p className="mb-6">{item.desc}</p>
+                <p className="mb-2">{item.desc}</p>
                 <a
                   href={item.path}
                   className={`mb-6 font-semibold border-b-2 pb-2 ${
