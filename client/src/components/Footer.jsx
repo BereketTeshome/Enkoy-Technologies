@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Mail, Phone } from "@mui/icons-material";
 import {
   FaLinkedin,
@@ -7,17 +8,38 @@ import {
   FaFacebookF,
   FaTwitter,
 } from "react-icons/fa";
-import React from "react";
 
 const Footer = () => {
+  const language = useSelector((state) => state.language?.language);
+  const isAmharic = language === "amh";
+
+  const content = {
+    services: isAmharic ? "አገልግሎቶች" : "Services",
+    company: isAmharic ? "ኩባንያ" : "Company",
+    socialLinks: isAmharic ? "ማህበራዊ ግንኙነቶች" : "Social Links",
+    aboutUs: isAmharic ? "ስለ እኛ" : "About us",
+    career: isAmharic ? "ሥራ እድሎች" : "Career",
+    contactUs: isAmharic ? "አግኙን" : "Contact us",
+    adaptiveLearning: isAmharic ? "አስማሚ ዲጂታል ትምህርት" : "Adaptive Digital Learning",
+    selfPacedLearning: isAmharic ? "በራስ የተሰራ ትምህርት" : "Self-paced learning",
+    corporateTraining: isAmharic ? "የኩባንያ ምርምር" : "Corporate Training",
+    learningStrategy: isAmharic ? "የትምህርት ስልት" : "Learning Strategy",
+    ourWork: isAmharic ? "ሥራችን" : "Our Work",
+    footerText: isAmharic
+      ? "© የእንቆይ ቴክኖሎጂዎች 2024 ፣ ንብረት መብት የተጠበቀ"
+      : "© Enkoy Technologies 2024, All Rights Reserved",
+    privacyPolicy: isAmharic ? "የግላዊነት መመሪያ" : "Privacy Policy",
+  };
+
   return (
     <div className="bg-[#161628] w-full px-6 md:px-12 lg:px-36">
       <div className="flex flex-wrap justify-between gap-12 pt-12 text-white">
-        {/* Logo and Contact */}
         <div className="flex-1 min-w-[250px]">
           <img src="/navLogo.png" alt="logo" className="w-[50px]" />
           <h2 className="mt-4 mb-8 text-lg">
-            Empowering Learning <br /> through digital excellence
+            {isAmharic
+              ? "በዲጂታል እድገት ላይ የተመሰረተ ትምህርት"
+              : "Empowering Learning through digital excellence"}
           </h2>
           <p className="flex items-center gap-3 mb-2 text-sm">
             <Phone fontSize="small" /> +251970010047
@@ -27,26 +49,27 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Services Section */}
         <div className="flex-1 min-w-[150px]">
-          <p className="mb-6 text-lg font-semibold underline">Services</p>
+          <p className="mb-6 text-lg font-semibold underline">
+            {content.services}
+          </p>
           <ul className="space-y-3 text-sm">
             <li>
               <a
                 href="/services/learning-experiences"
                 className="hover:text-indigo-400"
               >
-                Adaptive Digital Learning
+                {content.adaptiveLearning}
               </a>
             </li>
             <li>
               <a href="/self-pace-learning" className="hover:text-indigo-400">
-                Self-paced learning
+                {content.selfPacedLearning}
               </a>
             </li>
             <li>
               <a href="/corporate-training" className="hover:text-indigo-400">
-                Corporate Training
+                {content.corporateTraining}
               </a>
             </li>
             <li>
@@ -54,42 +77,46 @@ const Footer = () => {
                 href="/corporate-training/learning-experience"
                 className="hover:text-indigo-400"
               >
-                Learning Strategy
+                {content.learningStrategy}
               </a>
             </li>
             <li>
               <a href="/our-work" className="hover:text-indigo-400">
-                Our Work
+                {content.ourWork}
               </a>
             </li>
           </ul>
         </div>
 
-        {/* Company Section */}
         <div className="flex-1 min-w-[150px]">
-          <p className="mb-6 text-lg font-semibold underline">Company</p>
+          <p className="mb-6 text-lg font-semibold underline">
+            {content.company}
+          </p>
           <ul className="space-y-3 text-sm">
             <li>
-              <a href="/" className="hover:text-indigo-400">
-                About us
+              <a href="/about-us" className="hover:text-indigo-400">
+                {content.aboutUs}
               </a>
             </li>
             <li>
-              <a href="/" className="hover:text-indigo-400">
-                Career
+              <a href="/careers" className="hover:text-indigo-400">
+                {content.career}
               </a>
             </li>
             <li>
-              <a href="/" className="hover:text-indigo-400">
-                Contact us
+              <a href="/contact" className="hover:text-indigo-400">
+                {content.contactUs}
               </a>
             </li>
           </ul>
         </div>
 
-        {/* Social Links Section */}
         <div className="flex-1 min-w-[200px]">
-          <p className="mb-6 text-lg font-semibold underline">Social Links</p>
+          <p className="mb-6 text-lg font-semibold underline">
+            {content.socialLinks}
+          </p>
+          {/* Social Links Section */}
+        <div className="flex-1 min-w-[200px]">
           <div className="grid grid-cols-3 gap-4">
             <a
               href="https://www.linkedin.com/company/enkoytech/"
@@ -141,14 +168,14 @@ const Footer = () => {
             </a>
           </div>
         </div>
+        </div>
       </div>
 
-      {/* Footer Bottom */}
       <div className="w-full mt-12">
         <hr className="border-gray-600" />
         <div className="flex flex-wrap justify-between gap-4 pt-4 pb-6 text-sm text-gray-400">
-          <p className="flex-1 text-center">© Enkoy Technologies 2024</p>
-          <p className="flex-1 text-center">Privacy Policy</p>
+          <p className="flex-1 text-center">{content.footerText}</p>
+          <p className="flex-1 text-center">{content.privacyPolicy}</p>
         </div>
       </div>
     </div>

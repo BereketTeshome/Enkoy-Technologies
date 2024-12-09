@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
 import { useSelector } from "react-redux";
@@ -6,7 +5,26 @@ import { useSelector } from "react-redux";
 const WorkLife = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
-  const faqData = [
+  const language = useSelector((state) => state.language?.language);
+  const isAmharic = language === "amh";
+
+  const faqData = isAmharic
+  ? [
+      {
+        question: "ለግለሰብ ፍላጎቶች ብጁ የመማሪያ መፍትሄዎች",
+        answer: [
+          `በእንኮይ ቴክኖሎጂዎች የስራ-ህይወት ሚዛን ስልጠና በድርጅትዎ ወቅታዊ አሰራር እና የሰራተኛ ፍላጎቶች ግምገማ እንጀምራለን። ይህ ከስራ-ህይወት ሚዛን ጋር የተያያዙ ልዩ ተግዳሮቶችን የሚፈቱ ብጁ ፕሮግራሞችን እንድንፈጥር ያስችለናል።`,
+          "ተሳታፊዎችን በዕለት ተዕለት ሕይወታቸው ውስጥ ሊዋሃዱ የሚችሉ ተግባራዊ መሳሪያዎችን እና ቴክኒኮችን በማስታጠቅ የግል እና ሙያዊ ውጤታማነታቸውን በማጎልበት ላይ እናተኩራለን።",
+        ],
+      },
+      {
+        question: "የእውነተኛ ዓለም አፕሊኬሽኖች ለዘላቂ ለውጥ",
+        answer: [
+          "የኛ የስልጠና ዘዴ ሚዛናዊ የአኗኗር ዘይቤን የመጠበቅን አስፈላጊነት የሚያሳዩ ተጨባጭ ሁኔታዎችን እና ተግባራዊ ልምምዶችን ያካትታል። ተሳታፊዎች ትምህርታቸውን በተግባራዊ አውድ ውስጥ ተግባራዊ ለማድረግ በሚና በመጫወት፣ በቡድን ውይይቶች እና የተግባር እቅድ ውስጥ ይሳተፋሉ። የእውነተኛ ህይወት ተግዳሮቶችን በመፍታት፣ ተማሪዎች ጤናማ የስራ እና የህይወት ሚዛንን ለማሳካት እና ለማስቀጠል የሚያስፈልጉትን ክህሎቶች ያዳብራሉ።",
+        ],
+      },
+    ]
+  : [
     {
       question: "Tailored Learning Solutions for Individual Needs",
       answer: [
@@ -21,6 +39,7 @@ const WorkLife = () => {
       ],
     },
   ];
+
 
   const fadeInUp = {
     initial: { opacity: 0, y: 50 },
@@ -37,7 +56,7 @@ const WorkLife = () => {
       className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
     >
       <motion.div
-        className="flex flex-col w-full items-center"
+        className="flex flex-col items-center w-full"
         variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
       >
         <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
@@ -51,7 +70,8 @@ const WorkLife = () => {
             className="uppercase text-sm font-semibold text-[#FF8689] my-10"
             {...fadeInUp}
           >
-            Work life balance training
+            {isAmharic ? "የስራ ህይወት ሚዛን ስልጠና" : "Work life balance training"}
+            
           </motion.p>
           <motion.h2
             className={`text-4xl sm:text-5xl mb-7 ${
@@ -59,7 +79,8 @@ const WorkLife = () => {
             }`}
             {...fadeInUp}
           >
-            Promoting Well-Being and Productivity
+            {isAmharic ? "ደህንነትን እና ምርታማነትን ማሳደግ" : "Promoting Well-Being and Productivity"}
+            
           </motion.h2>
           <motion.p
             className={`mb-7 ${
@@ -67,13 +88,8 @@ const WorkLife = () => {
             }`}
             {...fadeInUp}
           >
-            At Enkoy Technologies, we understand that achieving a healthy
-            work-life balance is crucial for overall well-being and
-            organizational success. Our Work-Life Balance Training is designed
-            to equip employees with the strategies and tools they need to manage
-            their professional and personal lives harmoniously. By fostering a
-            balanced approach, organizations can enhance employee satisfaction,
-            reduce burnout, and improve productivity.
+            {isAmharic ? "በ Enkoy Technologies ጤናማ መሆንን እንረዳለን። የስራ-ህይወት ሚዛን ለአጠቃላይ ደህንነት እና ድርጅታዊ ስኬት. የእኛ የስራ-ህይወት ሚዛን ስልጠና የተነደፈ ነው። ሰራተኞችን ለማስተዳደር በሚያስፈልጋቸው ስልቶች እና መሳሪያዎች ለማስታጠቅ ሙያዊ እና የግል ሕይወታቸው በአንድነት. በማሳደግ ሀ ሚዛናዊ አቀራረብ ፣ ድርጅቶች የሰራተኞችን እርካታ ሊያሳድጉ ይችላሉ ፣ ማቃጠልን ይቀንሱ እና ምርታማነትን ያሻሽሉ." : "2, we understand that achieving a healthy work-life balance is crucial for overall well-being and organizational success. Our Work-Life Balance Training is designed to equip employees with the strategies and tools they need to manage their professional and personal lives harmoniously. By fostering a balanced approach, organizations can enhance employee satisfaction, reduce burnout, and improve productivity."}
+            
           </motion.p>
           <motion.a
             href="/contact"
@@ -82,14 +98,14 @@ const WorkLife = () => {
             }`}
             {...fadeInUp}
           >
-            Contact Us
+            {isAmharic ? "ያግኙን" : "Contact Us"}
           </motion.a>
         </motion.div>
         <br />
         <br />
         <br />
         <motion.div
-          className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row"
+          className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div className="flex-1" {...fadeInUp}>
@@ -107,7 +123,8 @@ const WorkLife = () => {
               }`}
               {...fadeInUp}
             >
-              Transformative Learning for a Balanced Lifestyle
+              {isAmharic ? "ለተመጣጠነ የአኗኗር ዘይቤ የሚለወጥ ትምህርት" : "Transformative Learning for a Balanced Lifestyle"}
+              
             </motion.h2>
             <motion.p
               className={`mb-2 ${
@@ -115,14 +132,7 @@ const WorkLife = () => {
               }`}
               {...fadeInUp}
             >
-              Our approach to Work-Life Balance Training focuses on practical
-              strategies that empower participants to create a fulfilling
-              balance between work responsibilities and personal life. We cover
-              essential topics such as time management, stress reduction,
-              setting boundaries, and prioritizing well-being. Through
-              interactive workshops and discussions, participants learn how to
-              implement effective practices that promote a healthier lifestyle
-              both at work and at home.
+              {isAmharic ? "የስራ-ህይወት ሚዛን ስልጠና አቀራረባችን በተግባራዊ ላይ ያተኩራል። ተሟጋች ለመፍጠር ተሳታፊዎችን የሚያበረታቱ ስልቶች በሥራ ኃላፊነቶች እና በግል ሕይወት መካከል ሚዛን. እንሸፍናለን እንደ ጊዜ አስተዳደር ፣ ጭንቀትን መቀነስ ፣ ድንበሮችን ማዘጋጀት, እና ለደህንነት ቅድሚያ መስጠት. በኩል በይነተገናኝ ወርክሾፖች እና ውይይቶች፣ ተሳታፊዎች እንዴት እንደሚማሩ ይማራሉ። ጤናማ የአኗኗር ዘይቤን የሚያበረታቱ ውጤታማ ልምዶችን መተግበር በስራም ሆነ በቤት ውስጥ." : "Our approach to Work-Life Balance Training focuses on practical strategies that empower participants to create a fulfilling balance between work responsibilities and personal life. We cover essential topics such as time management, stress reduction, setting boundaries, and prioritizing well-being. Through interactive workshops and discussions, participants learn how to implement effective practices that promote a healthier lifestyle both at work and at home."}        
             </motion.p>
           </motion.div>
         </motion.div>
@@ -133,12 +143,13 @@ const WorkLife = () => {
           className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
-          <motion.div className="flex-1 flex" {...fadeInUp}>
+          <motion.div className="flex flex-1" {...fadeInUp}>
             <motion.h2
-              className="inline-block md:text-6xl text-4xl text-gray-900 font-semibold"
+              className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl"
               {...fadeInUp}
             >
-              Building a Culture of Balance and Well-Being
+              {isAmharic ? "የተመጣጠነ እና ደህንነት ባህል መገንባት" : "Building a Culture of Balance and Well-Being"}
+              
             </motion.h2>
           </motion.div>
           <motion.div
@@ -146,13 +157,8 @@ const WorkLife = () => {
             {...fadeInUp}
           >
             <motion.p {...fadeInUp}>
-              In today’s fast-paced work environment, maintaining a healthy
-              work-life balance is more important than ever. At Enkoy
-              Technologies, our training emphasizes the significance of creating
-              a workplace culture that supports balance and well-being. We
-              tailor our programs to meet the specific needs of your
-              organization, ensuring that the training is relevant and impactful
-              for all employees.
+            {isAmharic ? "በዛሬው ፈጣን ፍጥነት ያለው የሥራ አካባቢ, ጤናማ መጠበቅ የሥራ-ሕይወት ሚዛን ከመቼውም ጊዜ ይበልጥ አስፈላጊ ነው. በእንኮይ ቴክኖሎጂዎች, የእኛ ስልጠና የመፍጠርን አስፈላጊነት ያጎላል ሚዛን እና ደህንነትን የሚደግፍ የስራ ቦታ ባህል. እኛ የእርስዎን ልዩ ፍላጎቶች ለማሟላት ፕሮግራሞቻችንን ብጁ ያድርጉ አደረጃጀት, ስልጠናው ጠቃሚ እና ተፅዕኖ ያለው መሆኑን ማረጋገጥ ለሁሉም ሰራተኞች." : "In today’s fast-paced work environment, maintaining a healthy work-life balance is more important than ever. At Enkoy Technologies, our training emphasizes the significance of creating a workplace culture that supports balance and well-being. We tailor our programs to meet the specific needs of your organization, ensuring that the training is relevant and impactful for all employees."}
+              
             </motion.p>
           </motion.div>
         </motion.div>
@@ -160,7 +166,7 @@ const WorkLife = () => {
         <br />
         <br />
         <motion.div
-          className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row"
+          className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div className="flex-1" {...fadeInUp}>
@@ -182,28 +188,94 @@ const WorkLife = () => {
           className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
-          <motion.div className="flex-1 flex" {...fadeInUp}>
+          <motion.div className="flex flex-1" {...fadeInUp}>
             <motion.h2
-              className="inline-block md:text-5xl text-3xl text-gray-900 font-semibold"
+              className="inline-block text-3xl font-semibold text-gray-900 md:text-5xl"
               {...fadeInUp}
             >
-              Key Components of Our Work-Life Balance Training Solutions
+              {isAmharic ? "የእኛ የስራ-ህይወት ሚዛን የስልጠና መፍትሄዎች ቁልፍ አካላት" : "Key Components of Our Work-Life Balance Training Solutions"}
+              
             </motion.h2>
           </motion.div>
           <br />
           <br />
           <br />
+          {isAmharic ?
+            <motion.div
+            className="flex-1 text-gray-900 text-[15px]"
+            {...fadeInUp}
+          >
+            <motion.h2
+              className="mt-2 mb-5 text-2xl font-semibold text-gray-950"
+              {...fadeInUp}
+            >
+              አጠቃላይ የስልጠና አካሄዳችን የሚያተኩረው፡
+            </motion.h2>
+            <motion.ul className="py-5 pl-6 list-disc" {...fadeInUp}>
+            <li>
+                <b>ጊዜ አስተዳደር፡</b> ውጤታማ ቴክኒኮችን ማስተማር
+                ተግባራትን ቅድሚያ መስጠት እና ጊዜን በብቃት ማስተዳደር.
+              </li>
+              <li>
+                <b>የጭንቀት አስተዳደር፡</b> መሳሪያዎችን እና ስልቶችን መስጠት
+                ጭንቀትን ይቀንሱ እና የአእምሮ ደህንነትን ያበረታታሉ.
+              </li>
+              <li>
+                <b>ድንበሮችን ማዘጋጀት፡</b> ግለሰቦች እንዲመሰርቱ ማበረታታት
+                በሥራ እና በግል ሕይወት መካከል ግልጽ ድንበሮች.
+              </li>
+              <li>
+                <b>ራስን የመንከባከብ ልምምዶች፡</b> አስፈላጊነትን በማጉላት
+                ሚዛንን በማሳካት ራስን መንከባከብ እና ደህንነት.
+              </li>
+            </motion.ul>
+            <motion.h2
+              className="mt-2 mb-5 text-2xl font-semibold text-gray-950"
+              {...fadeInUp}
+            >
+              ለግለሰቦች እና ድርጅቶች የለውጥ ጥቅሞች
+            </motion.h2>
+            <motion.p {...fadeInUp}>
+            የእኛ የስራ-ህይወት ሚዛን ስልጠና ተጽእኖ በመላው ይዘልቃል
+              የእርስዎ ድርጅት. ተሳታፊዎች ግንዛቤያቸውን ሲያሳድጉ
+              የሥራ-ህይወት ሚዛን, ጥቅሞቹ የሚከተሉትን ያካትታሉ:
+            </motion.p>
+            <motion.ul className="py-5 pl-6 list-disc" {...fadeInUp}>
+            <li>
+                የሰራተኛ እርካታ እና ሞራል ጨምሯል, ወደ ከፍተኛ ይመራል
+                የማቆያ ደረጃዎች.
+              </li>
+              <li>
+                የተቃጠለ እና የጭንቀት ደረጃዎች ቀንሷል, ለተሻሻለ አስተዋፅዖ ያደርጋል
+                የአእምሮ ጤና.
+              </li>
+              <li>
+                ሰራተኞች የበለጠ ሲሰማቸው የተሻሻለ ምርታማነት እና አፈፃፀም
+                ትኩረት እና ተሳትፎ.
+              </li>
+              <li>
+                ደህንነትን የሚያከብር አዎንታዊ ድርጅታዊ ባህል እና
+                የስራ-ህይወት ስምምነት.
+              </li>
+            </motion.ul>
+            <motion.p {...fadeInUp}>
+            እርስዎን ለማጎልበት ዛሬ በስራ-ህይወት ሚዛን ስልጠና ላይ ኢንቨስት ያድርጉ
+              በመካከላቸው ጤናማ እና የበለጠ የተሟላ ሚዛን ለማግኘት የሰው ኃይል
+              ሥራ እና ሕይወት!
+            </motion.p>
+          </motion.div>
+          :
           <motion.div
             className="flex-1 text-gray-900 text-[15px]"
             {...fadeInUp}
           >
             <motion.h2
-              className="text-2xl font-semibold text-gray-950 mb-5 mt-2"
+              className="mt-2 mb-5 text-2xl font-semibold text-gray-950"
               {...fadeInUp}
             >
               Our comprehensive training approach focuses on:
             </motion.h2>
-            <motion.ul className="list-disc pl-6 py-5" {...fadeInUp}>
+            <motion.ul className="py-5 pl-6 list-disc" {...fadeInUp}>
               <li>
                 <b>Time Management:</b> Teaching effective techniques for
                 prioritizing tasks and managing time efficiently.
@@ -222,7 +294,7 @@ const WorkLife = () => {
               </li>
             </motion.ul>
             <motion.h2
-              className="text-2xl font-semibold text-gray-950 mb-5 mt-2"
+              className="mt-2 mb-5 text-2xl font-semibold text-gray-950"
               {...fadeInUp}
             >
               Transformative Benefits for Individuals and Organizations
@@ -232,7 +304,7 @@ const WorkLife = () => {
               your organization. As participants enhance their understanding of
               work-life balance, the advantages include:
             </motion.p>
-            <motion.ul className="list-disc pl-6 py-5" {...fadeInUp}>
+            <motion.ul className="py-5 pl-6 list-disc" {...fadeInUp}>
               <li>
                 Increased employee satisfaction and morale, leading to higher
                 retention rates.
@@ -256,6 +328,7 @@ const WorkLife = () => {
               work and life!
             </motion.p>
           </motion.div>
+          }
         </motion.div>
       </motion.div>
     </motion.div>

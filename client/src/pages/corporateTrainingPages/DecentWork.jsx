@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
 import { useSelector } from "react-redux";
@@ -6,7 +5,26 @@ import { useSelector } from "react-redux";
 const DecentWork = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
-  const faqData = [
+  const language = useSelector((state) => state.language?.language);
+  const isAmharic = language === "amh";
+
+  const faqData = isAmharic
+  ? [
+      {
+        question: "ለድርጅታዊ ተጽእኖ ብጁ የመማሪያ መፍትሄዎች",
+        answer: [
+          `በEnkoy Technologies፣ የኛን ጨዋ ስራ እና የኤስዲጂ ስልጠና የምንጀምረው በድርጅትዎ ወቅታዊ አሰራር እና ግቦች ላይ በጥልቀት በመገምገም ነው። ይህ ከጥሩ ስራ እና ዘላቂ ልማት ጋር የተያያዙ ልዩ ተግዳሮቶችን እና እድሎችን የሚፈቱ ብጁ ፕሮግራሞችን እንድንፈጥር ያስችለናል።`,
+          "ተሳታፊዎች በውይይት የሚሳተፉበት፣ ልምድ የሚለዋወጡበት እና ተግባራዊ ስልቶችን የሚያዘጋጁበት የትብብር የመማሪያ አካባቢ ላይ አፅንዖት እንሰጣለን። ድርጅቶች የተማሩትን በብቃት እንዲተገብሩ ለመርዳት መምህሮቻችን ቀጣይነት ያለው ድጋፍ እና ግብአት ይሰጣሉ።",
+        ],
+      },
+      {
+        question: "የእውነተኛ ዓለም መተግበሪያዎች ትርጉም ያለው ለውጥ",
+        answer: [
+          "የኛ የሥልጠና ዘዴ ትክክለኛ ሥራን እና ዘላቂ ልማዶችን ተፅእኖ የሚያሳዩ ተጨባጭ ጥናቶችን እና ተግባራዊ ልምምዶችን ያካትታል። ተሳታፊዎች ትምህርታቸውን ትርጉም ባለው መንገድ ተግባራዊ ለማድረግ በቡድን ፕሮጀክቶች፣ ሚና-ተጫዋች ሁኔታዎች እና የተግባር እቅድ ውስጥ ይሳተፋሉ። እውነተኛ ፈተናዎችን በመፍታት፣ ተማሪዎች በድርጅታቸው እና በማህበረሰባቸው ውስጥ አወንታዊ ለውጥ ለማምጣት የሚያስፈልጉትን ክህሎቶች ያዳብራሉ።",
+        ],
+      },
+    ]
+  : [
     {
       question: "Tailored Learning Solutions for Organizational Impact",
       answer: [
@@ -21,6 +39,8 @@ const DecentWork = () => {
       ],
     },
   ];
+
+  
 
   const fadeInUp = {
     initial: { opacity: 0, y: 50 },
@@ -51,7 +71,8 @@ const DecentWork = () => {
             className="uppercase text-sm font-semibold text-[#FF8689] my-10"
             {...fadeInUp}
           >
-            Decent work and SDG training
+            {isAmharic ? "ጥሩ ስራ እና የኤስዲጂ ስልጠና" : "Decent work and SDG training"}
+            
           </motion.p>
           <motion.h2
             className={`text-4xl sm:text-5xl mb-7 ${
@@ -59,7 +80,8 @@ const DecentWork = () => {
             }`}
             {...fadeInUp}
           >
-            Promoting Sustainable Employment and Responsible Practices
+            {isAmharic ? "ቀጣይነት ያለው ሥራ እና ኃላፊነት የሚሰማቸው ተግባራትን ማሳደግ" : "Promoting Sustainable Employment and Responsible Practices"}
+            
           </motion.h2>
           <motion.p
             className={`text-justify mb-7 ${
@@ -67,14 +89,8 @@ const DecentWork = () => {
             }`}
             {...fadeInUp}
           >
-            At Enkoy Technologies, we understand the importance of decent work
-            in achieving sustainable development. Our Decent Work and
-            Sustainable Development Goals (SDG) Training is designed to equip
-            individuals and organizations with the knowledge and skills
-            necessary to promote fair labor practices and contribute to the
-            global goals established by the United Nations. By fostering a
-            culture of respect, equity, and sustainability, we help build
-            stronger workplaces and communities.
+            {isAmharic ? "በእንኮይ ቴክኖሎጂስ፣ ዘላቂ ልማትን ለማስፈን ጨዋነት ያለው ሥራ አስፈላጊ መሆኑን እንረዳለን። የእኛ የጨዋ ስራ እና ዘላቂ ልማት ግቦች (SDG) ስልጠና ግለሰቦች እና ድርጅቶች ፍትሃዊ የስራ ልምዶችን ለማራመድ እና በተባበሩት መንግስታት ለተቋቋሙት አለምአቀፍ ግቦች አስተዋፅዖ ለማድረግ አስፈላጊውን እውቀትና ክህሎት ለማስታጠቅ የተዘጋጀ ነው። የመከባበር፣ የፍትሃዊነት እና የዘላቂነት ባህልን በማሳደግ ጠንካራ የስራ ቦታዎችን እና ማህበረሰቦችን እንገነባለን።" : "At Enkoy Technologies, we understand the importance of decent work in achieving sustainable development. Our Decent Work and Sustainable Development Goals (SDG) Training is designed to equip individuals and organizations with the knowledge and skills necessary to promote fair labor practices and contribute to the global goals established by the United Nations. By fostering a culture of respect, equity, and sustainability, we help build stronger workplaces and communities."}
+            
           </motion.p>
           <motion.a
             href="/contact"
@@ -83,7 +99,7 @@ const DecentWork = () => {
             }`}
             {...fadeInUp}
           >
-            Contact Us
+            {isAmharic ? "ያግኙን" : "Contact Us"}
           </motion.a>
         </motion.div>
 
@@ -110,7 +126,8 @@ const DecentWork = () => {
               }`}
               {...fadeInUp}
             >
-              Transformative Learning for Sustainable Employment
+              {isAmharic ? "ለዘላቂ የቅጥር ለውጥ ትምህርት" : "Transformative Learning for Sustainable Employment"}
+              
             </motion.h2>
             <motion.p
               className={`mb-2 text-justify ${
@@ -118,14 +135,8 @@ const DecentWork = () => {
               }`}
               {...fadeInUp}
             >
-              Our approach to Decent Work and SDG Training focuses on practical
-              applications that empower participants to understand and implement
-              the principles of decent work and sustainability. We cover
-              essential topics such as workers' rights, social justice,
-              environmental responsibility, and the impact of business practices
-              on sustainable development. Through interactive workshops and
-              discussions, participants learn how to align their work with the
-              SDGs and contribute positively to their organizations and society.
+              {isAmharic ? "የጨዋ ስራ እና የኤስዲጂ ስልጠና አቀራረባችን ተሳታፊዎች የጨዋ ስራ እና ዘላቂነት መርሆዎችን እንዲረዱ እና እንዲተገብሩ በሚያስችሉ ተግባራዊ አተገባበር ላይ ያተኩራል። እንደ የሰራተኞች መብት፣ ማህበራዊ ፍትህ፣ የአካባቢ ሃላፊነት እና የንግድ ስራዎች በዘላቂ ልማት ላይ የሚያሳድሩትን ተፅእኖ የመሳሰሉ አስፈላጊ ርዕሶችን እንሸፍናለን። በይነተገናኝ ወርክሾፖች እና ውይይቶች ተሳታፊዎች ስራቸውን ከኤስዲጂዎች ጋር እንዴት ማቀናጀት እንደሚችሉ ይማራሉ እና ለድርጅቶቻቸው እና ለህብረተሰቡ አወንታዊ አስተዋፅዖ ያደርጋሉ።" : "Our approach to Decent Work and SDG Training focuses on practical applications that empower participants to understand and implement the principles of decent work and sustainability. We cover essential topics such as workers' rights, social justice, environmental responsibility, and the impact of business practices on sustainable development. Through interactive workshops and discussions, participants learn how to align their work with the SDGs and contribute positively to their organizations and society."}
+              
             </motion.p>
           </motion.div>
         </motion.div>
@@ -142,7 +153,8 @@ const DecentWork = () => {
               className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl"
               {...fadeInUp}
             >
-              Building Awareness and Commitment to Responsible Practices
+              {isAmharic ? "ግንዛቤን መገንባት እና ለተጠያቂ ተግባራት ቁርጠኝነት" : "Building Awareness and Commitment to Responsible Practices"}
+              
             </motion.h2>
           </motion.div>
           <motion.div
@@ -153,14 +165,8 @@ const DecentWork = () => {
               {...fadeInUp}
               className={`text-justify ${"text-gray-900"}`}
             >
-              As the global job market evolves, it’s crucial for individuals and
-              organizations to embrace responsible work practices. At Enkoy
-              Technologies, our training emphasizes awareness of the SDGs,
-              particularly Goal 8: Decent Work and Economic Growth. We help
-              participants recognize the importance of creating inclusive, safe,
-              and productive work environments that support the well-being of
-              all employees. Our programs are tailored to meet the specific
-              needs of your organization, ensuring relevance and effectiveness.
+              {isAmharic ? "ዓለም አቀፉ የሥራ ገበያ እየተሻሻለ ሲመጣ፣ ግለሰቦች እና ድርጅቶች ኃላፊነት የሚሰማቸው የሥራ ልምዶችን እንዲቀበሉ ወሳኝ ነው። በእንኮይ ቴክኖሎጂዎች፣ ስልጠናችን ስለ SDGs ግንዛቤ ላይ ያተኩራል፣ በተለይም ግብ 8፡ ጨዋ ስራ እና የኢኮኖሚ እድገት። ተሳታፊዎች የሁሉንም ሰራተኞች ደህንነት የሚደግፉ አካታች፣ደህንነታቸው የተጠበቀ እና ውጤታማ የስራ አካባቢዎችን መፍጠር አስፈላጊ መሆኑን እንዲገነዘቡ እንረዳቸዋለን። ፕሮግራሞቻችን የድርጅትዎን ልዩ ፍላጎቶች ለማሟላት፣ ተገቢነት እና ውጤታማነትን ለማረጋገጥ የተበጁ ናቸው።" : "As the global job market evolves, it’s crucial for individuals and organizations to embrace responsible work practices. At Enkoy Technologies, our training emphasizes awareness of the SDGs, particularly Goal 8: Decent Work and Economic Growth. We help participants recognize the importance of creating inclusive, safe, and productive work environments that support the well-being of all employees. Our programs are tailored to meet the specific needs of your organization, ensuring relevance and effectiveness."}
+              
             </motion.p>
           </motion.div>
         </motion.div>
@@ -197,9 +203,88 @@ const DecentWork = () => {
               className="inline-block text-3xl font-semibold text-gray-900 md:text-5xl"
               {...fadeInUp}
             >
-              Key Components of Our Decent Work and SDG Training Solutions
+              {isAmharic ? "የጨዋ ስራችን ቁልፍ አካላት እና የኤስዲጂ ስልጠና መፍትሄዎች" : "Key Components of Our Decent Work and SDG Training Solutions"}
+              
             </motion.h2>
           </motion.div>
+          {isAmharic ? 
+            <motion.div
+            className="flex-1 text-gray-900 text-[15px]"
+            {...fadeInUp}
+          >
+            <motion.h2
+              className="mt-2 mb-5 text-2xl font-semibold text-gray-950"
+              {...fadeInUp}
+            >
+              አጠቃላይ የስልጠና አካሄዳችን የሚያተኩረው፡-
+            </motion.h2>
+            <motion.ul
+              className="py-5 pl-6 text-justify list-disc"
+              {...fadeInUp}
+            >
+              <li>
+              <b>ጨዋ ሥራን መረዳት፡</b> ተሳታፊዎችን በ ላይ ማስተማር
+              የጨዋ ሥራ መርሆዎች እና በኤስዲጂዎች ውስጥ ያለው ጠቀሜታ።
+              </li>
+              <li>
+              <b>የሰራተኞች መብት እና ማህበራዊ ፍትህ፡</b> ማጉላት
+                በ ውስጥ የፍትሃዊ የስራ ልምዶች, ፍትሃዊነት እና አክብሮት አስፈላጊነት
+                የስራ ቦታ.
+              </li>
+              <li>
+              <b>አካባቢያዊ ኃላፊነት፡</b> ዘላቂነትን ማበረታታት
+                የአካባቢ ተፅእኖን የሚቀንሱ እና ማህበራዊን የሚያበረታቱ ልምዶች
+                ደህንነት.
+              </li>
+              <li>
+              <b>ለውጡን በመተግበር ላይ፡</b> የመዋሃድ ስልቶችን መስጠት
+                ጨዋ የሥራ መርሆች ወደ ድርጅታዊ ፖሊሲዎች እና
+                ልምዶች.
+              </li>
+            </motion.ul>
+            <motion.h2
+              className="mt-2 mb-5 text-2xl font-semibold text-gray-950"
+              {...fadeInUp}
+            >
+              ለግለሰቦች እና ድርጅቶች የለውጥ ጥቅሞች
+            </motion.h2>
+            <motion.p
+              {...fadeInUp}
+              className={`text-justify ${"text-gray-900"}`}
+            >
+              የጨዋ ስራችን እና የኤስዲጂ ስልጠና ተፅእኖ እስከመጨረሻው ይዘልቃል
+              የእርስዎ ድርጅት እና ከዚያ በላይ. ተሳታፊዎች ሲያሳድጉ
+              ጥሩ ሥራ እና ዘላቂነት ያለው ግንዛቤ ፣ ጥቅሞቹ
+              ያካትቱ፡
+            </motion.p>
+            <motion.ul
+              className="py-5 pl-6 text-justify list-disc"
+              {...fadeInUp}
+            >
+              <li>
+                ስለ ማህበራዊ እና አካባቢያዊ ሃላፊነት ግንዛቤ መጨመር
+                በሠራተኞች መካከል.
+              </li>
+              <li>
+                የተሻሻለ የስራ ቦታ ባህል ፍትሃዊነትን፣ አካታችነትን፣
+                እና አክብሮት.
+              </li>
+              <li>
+                እንደ ማህበራዊ ሃላፊነት የላቀ ስም እና ታማኝነት
+                ድርጅት.
+              </li>
+              <li>
+                ከዓለም አቀፍ ዘላቂነት ግቦች ጋር የላቀ አሰላለፍ፣ ማሳደግ
+                የረጅም ጊዜ ስኬት.
+              </li>
+            </motion.ul>
+            <motion.p {...fadeInUp}>
+            እርስዎን ለማጎልበት ዛሬ በጨዋ ስራ እና በኤስዲጂ ስልጠና ላይ ኢንቨስት ያድርጉ
+              የበለጠ ዘላቂ እና ፍትሃዊ እንዲሆን ለማድረግ የሰው ኃይል
+              ወደፊት!
+            </motion.p>
+          </motion.div>
+          : 
           <motion.div
             className="flex-1 text-gray-900 text-[15px]"
             {...fadeInUp}
@@ -276,6 +361,7 @@ const DecentWork = () => {
               future!
             </motion.p>
           </motion.div>
+          }
         </motion.div>
       </motion.div>
     </motion.div>

@@ -60,6 +60,7 @@ import EventCalendarPage from "./pages/EventCalendarPage.jsx";
 import { useSelector } from "react-redux";
 import ChatBot from "./components/ChatBot.jsx";
 import ChatbotLauncher from "./components/ChatbotLauncher.jsx";
+import Jobs from "./pages/learningHub/Jobs.jsx";
 
 const App = () => {
   const theme = useSelector((state) => state.theme?.theme);
@@ -180,6 +181,7 @@ const App = () => {
           <Route path="/ebooks" element={<Ebooks />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/ebooks/:id" element={<EbookDetail />} />
+          <Route path="/careers" element={<Jobs />} />
 
           {/* Add blog page */}
           <Route path="/manage-blogs" element={<MyBlog />} />

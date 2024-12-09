@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
 import { useSelector } from "react-redux";
@@ -6,7 +5,27 @@ import { useSelector } from "react-redux";
 const LearningExperience = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
-  const faqData = [
+  const language = useSelector((state) => state.language?.language);
+  const isAmharic = language === "amh";
+
+  const faqData = isAmharic
+  ? [
+      {
+        question: "ለልዩ አውድዎ ብጁ የመማሪያ መፍትሄዎች",
+        answer: [
+          `በ Enkoy technologies የ LXD ስልጠና አካሄዳችን በድርጅትዎ ባህል እና ዓላማዎች ውስጥ ስር የሰደደ ነው። ስለ ተልእኮዎ፣ እይታዎ፣ እሴቶችዎ እና የሚፈልጓቸው የትምህርት ውጤቶች ላይ ጥልቅ ትንተና በማካሄድ እንጀምራለን። ይህ የመሠረታዊ ግንዛቤ ከድርጅታዊ አውድዎ ጋር ያለችግር የሚጣጣሙ የመማር ልምዶችን እንድናዳብር ያስችለናል።`,
+          "እንዲሁም የአመራር ስልጠናዎ የሚፈለገውን ውጤት በትኩረት እንከታተላለን። በመሪዎችዎ አፈጻጸም ላይ ሊያዩዋቸው የሚፈልጓቸውን ልዩ ማሻሻያዎች በመለየት፣ እውነተኛ ውጤቶችን የሚመሩ የታለሙ መፍትሄዎችን መፍጠር እንችላለን። በተጨማሪም፣ የተለያዩ ደረጃዎች የተለየ የአመራር ችሎታዎች እንደሚፈልጉ በመገንዘብ የድርጅትዎን የሕይወት ዑደት ደረጃ እንገመግማለን።",
+        ],
+      },
+      {
+        question: "በደጋፊ አካባቢ ውስጥ የእውነተኛ ዓለም መተግበሪያዎች",
+        answer: [
+          "የኛ የሥልጠና ዘዴ ተሳታፊዎች የገሃዱ ዓለም ፈተናዎችን በሚመስሉ በተጨባጭ የትምህርት ሁኔታዎች ውስጥ ያጠምቃል። በይነተገናኝ ማስመሰያዎች እና በትብብር ፕሮጄክቶች፣ የትምህርታቸውን ውጤት እንገመግማለን እና ከበርካታ አመለካከቶች - እኩዮች፣ አማካሪዎች እና ባለድርሻ አካላት ግብረ መልስ እንሰበስባለን።",
+          "ተማሪዎችን በተጨባጭ ሁኔታዎች ውስጥ በማስቀመጥ፣ ውስብስብ ፈተናዎችን በብቃት እንዲወጡ እናዘጋጃቸዋለን። የእኛ ስልጠና ወዲያውኑ ሊተገበሩ የሚችሉ የተግባር ክህሎቶችን ማዳበር ላይ አፅንዖት ይሰጣል፣ ይህም ተሳታፊዎች ሊተገበሩ በሚችሉ ግንዛቤዎች እንዲተዉ ያደርጋል።",
+        ],
+      },
+    ]
+  : [
     {
       question: "Tailored Learning Solutions for Your Unique Context",
       answer: [
@@ -22,6 +41,7 @@ const LearningExperience = () => {
       ],
     },
   ];
+
 
   // Updated fadeInUp object
   const fadeInUp = {
@@ -53,7 +73,7 @@ const LearningExperience = () => {
             className="uppercase text-sm font-semibold text-[#FF8689] my-10"
             {...fadeInUp}
           >
-            Enhancing Learning Through Thoughtful Design
+            {isAmharic ? "በአስተሳሰብ ንድፍ ትምህርትን ማሳደግ" : "Enhancing Learning Through Thoughtful Design"}
           </motion.p>
           <motion.h2
             className={`text-4xl sm:text-5xl mb-7 ${
@@ -61,7 +81,8 @@ const LearningExperience = () => {
             }`}
             {...fadeInUp}
           >
-            Learning Experience Design (LXD) Training
+            {isAmharic ? "የመማር ልምድ ንድፍ (LXD) ስልጠና" : "Learning Experience Design (LXD) Training"}
+            
           </motion.h2>
           <motion.p
             className={`text-justify mb-7 ${
@@ -69,12 +90,8 @@ const LearningExperience = () => {
             }`}
             {...fadeInUp}
           >
-            At Enkoy Technologies, we believe that effective learning
-            experiences are key to unlocking potential. Our Learning Experience
-            Design (LXD) training is crafted to engage participants and promote
-            meaningful learning outcomes. Whether you’re developing training for
-            new employees or upskilling your existing workforce, our approach
-            ensures that learning is both impactful and enjoyable.
+            {isAmharic ? "በ Enkoy technologies ውጤታማ የመማር ተሞክሮዎች አቅምን ለመክፈት ቁልፍ ናቸው ብለን እናምናለን። የእኛ የመማር ልምድ ንድፍ (LXD) ስልጠና ተሳታፊዎችን ለማሳተፍ እና ትርጉም ያለው የትምህርት ውጤቶችን ለማስተዋወቅ የተነደፈ ነው። ለአዳዲስ ሰራተኞች ስልጠና እያዳበርክም ይሁን ያለውን የስራ ሃይልህን እያሳደግክ ከሆነ፣ የእኛ አካሄድ መማር ጠቃሚ እና አስደሳች መሆኑን ያረጋግጣል።" : "At Enkoy Technologies, we believe that effective learning experiences are key to unlocking potential. Our Learning Experience Design (LXD) training is crafted to engage participants and promote meaningful learning outcomes. Whether you’re developing training for new employees or upskilling your existing workforce, our approach ensures that learning is both impactful and enjoyable."}
+            
           </motion.p>
           <motion.a
             href="/contact"
@@ -83,7 +100,7 @@ const LearningExperience = () => {
             }`}
             {...fadeInUp}
           >
-            Contact Us
+            {isAmharic ? "ያግኙን" : "Contact Us"}
           </motion.a>
         </motion.div>
         <br />
@@ -109,20 +126,16 @@ const LearningExperience = () => {
                 isDarkTheme ? "text-gray-100 " : "text-gray-950"
               }`}
             >
-              Transformative Learning Experiences for Lasting Change
+              {isAmharic ? "ለዘላቂ ለውጥ የለውጥ ትምህርት ተሞክሮዎች" : "Transformative Learning Experiences for Lasting Change"}
+              
             </h2>
             <p
               className={`mb-2 text-justify ${
                 isDarkTheme ? "text-gray-300" : "text-gray-900"
               }`}
             >
-              Our LXD training focuses on creating transformative learning
-              experiences that foster engagement and retention. By integrating
-              innovative design principles with best practices in adult
-              learning, we help organizations develop programs that resonate
-              with learners and drive results. Our training encourages
-              participants to actively engage with content, enhancing their
-              ability to apply what they learn in real-world situations.
+              {isAmharic ? "የእኛ የLXD ስልጠና ተሳትፎን እና ማቆየትን የሚያበረታቱ ተለዋዋጭ የመማር ተሞክሮዎችን በመፍጠር ላይ ያተኩራል። የፈጠራ ንድፍ መርሆዎችን ከጎልማሶች ትምህርት ምርጥ ተሞክሮዎች ጋር በማዋሃድ፣ ድርጅቶች ተማሪዎችን የሚያስተጋቡ እና ውጤቶችን የሚያመጡ ፕሮግራሞችን እንዲያዘጋጁ እናግዛለን። የእኛ ስልጠና ተሳታፊዎች ከይዘት ጋር በንቃት እንዲሳተፉ ያበረታታል፣ ይህም የተማሩትን በገሃዱ ዓለም ሁኔታዎች ውስጥ የመተግበር ችሎታቸውን ያሳድጋል።" : "Our LXD training focuses on creating transformative learning experiences that foster engagement and retention. By integrating innovative design principles with best practices in adult learning, we help organizations develop programs that resonate with learners and drive results. Our training encourages participants to actively engage with content, enhancing their ability to apply what they learn in real-world situations."}
+              
             </p>
           </motion.div>
         </motion.div>
@@ -135,7 +148,8 @@ const LearningExperience = () => {
         >
           <motion.div className="flex flex-1" {...fadeInUp}>
             <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
-              Building Future-Ready Learning Environments
+            {isAmharic ? "ለወደፊት ዝግጁ የሆኑ የመማሪያ አካባቢዎችን መገንባት" : "Building Future-Ready Learning Environments"}
+              
             </h2>
           </motion.div>
           <motion.div
@@ -143,19 +157,12 @@ const LearningExperience = () => {
             {...fadeInUp}
           >
             <p>
-              As the educational landscape evolves, so must our approaches to
-              learning. At Enkoy Technologies, we specialize in designing
-              future-ready learning experiences that adapt to the changing needs
-              of your organization. Our LXD training emphasizes key skills such
-              as critical thinking, collaboration, and adaptability, ensuring
-              that learners are equipped for the challenges ahead.
+            {isAmharic ? "የትምህርታዊ ገጽታው እየተሻሻለ ሲመጣ፣ የመማር አካሄዳችንም እንዲሁ መሆን አለበት። በእንኮይ ቴክኖሎጂዎች፣ ከድርጅትዎ ፍላጎቶች ጋር የሚጣጣሙ ለወደፊት ዝግጁ የሆኑ የመማር ተሞክሮዎችን በመንደፍ ላይ ያተኮረ ነው። የእኛ የLXD ስልጠና ተማሪዎች ወደፊት ላሉ ፈተናዎች የታጠቁ መሆናቸውን በማረጋገጥ እንደ ሂሳዊ አስተሳሰብ፣ ትብብር እና መላመድ ያሉ ቁልፍ ችሎታዎችን ያጎላል።" : "As the educational landscape evolves, so must our approaches to learning. At Enkoy Technologies, we specialize in designing future-ready learning experiences that adapt to the changing needs of your organization. Our LXD training emphasizes key skills such as critical thinking, collaboration, and adaptability, ensuring that learners are equipped for the challenges ahead."}
+              
             </p>
             <p>
-              We work closely with your organization to understand its unique
-              goals and challenges, allowing us to create customized learning
-              experiences that address specific needs. By promoting a culture of
-              continuous learning, we help organizations build a workforce that
-              is prepared to thrive in an ever-changing environment.
+            {isAmharic ? "ልዩ ፍላጎቶቹን እና ተግዳሮቶቹን ለመረዳት ከድርጅትዎ ጋር በቅርበት እንሰራለን፣ ይህም የተወሰኑ ፍላጎቶችን የሚፈታ ብጁ የመማር ተሞክሮዎችን እንድንፈጥር ያስችለናል። ቀጣይነት ያለው የመማር ባህልን በማስተዋወቅ ድርጅቶች በየጊዜው በሚለዋወጠው አካባቢ ለመልማት የተዘጋጀ የሰው ኃይል እንዲገነቡ እንረዳቸዋለን።" : "We work closely with your organization to understand its unique goals and challenges, allowing us to create customized learning experiences that address specific needs. By promoting a culture of continuous learning, we help organizations build a workforce that is prepared to thrive in an ever-changing environment."}
+              
             </p>
           </motion.div>
         </motion.div>
@@ -189,10 +196,68 @@ const LearningExperience = () => {
         >
           <motion.div className="flex flex-1" {...fadeInUp}>
             <h2 className="inline-block text-3xl font-semibold text-gray-900 md:text-5xl">
-              Key Components of Our Learning Experience Design Solutions
+            {isAmharic ? "የእኛ የመማር ልምድ ንድፍ መፍትሄዎች ቁልፍ አካላት" : "Key Components of Our Learning Experience Design Solutions"}
+              
             </h2>
           </motion.div>
-          <motion.div
+          {isAmharic ?
+            <motion.div
+            className="flex-1 text-gray-900 text-[15px]"
+            {...fadeInUp}
+          >
+            <p>አጠቃላይ የስልጠና አካሄዳችን የሚያተኩረው፡</p>
+            <ul className="py-5 pl-6 text-justify list-disc">
+              <li>
+              <b>አሳታፊ ይዘት፡</b> የሚማርኩ እና ተሞክሮዎችን መማር
+              ተሳታፊዎችን ማበረታታት.
+              </li>
+              <li>
+              <b>የጋራ ትምህርት፡</b> የቡድን ስራ እድሎች እና
+              ግንዛቤን ለመጨመር የአቻ መስተጋብር።
+              </li>
+              <li>
+              <b>ተጨባጭ ሁኔታዎች፡</b> ትክክለኛ የሚያንፀባርቁ ማስመሰያዎች
+              ተማሪዎች ሊያጋጥሟቸው የሚችሉ ተግዳሮቶች።
+              </li>
+              <li>
+              <b>የግብረመልስ ዘዴዎች፡</b> ለማሳወቅ ቀጣይነት ያለው የግብረመልስ ቀለበቶች
+              እና የትምህርት ውጤታማነትን ማሻሻል.
+              </li>
+            </ul>
+            <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
+            ለድርጅትዎ የሚለወጡ ጥቅሞች
+            </h2>
+            <p className={`text-justify ${"text-gray-900"}`}>
+            የእኛ የመማር ልምድ የንድፍ መፍትሔዎች ተጽእኖ እየሰፋ ይሄዳል
+              በድርጅትዎ ውስጥ በሙሉ። የሰው ሃይልዎ ሲሳተፍ
+              ውጤታማ የመማር ልምዶች, ጥቅሞቹ የሚከተሉትን ያካትታሉ:
+            </p>
+            <ul className="py-5 pl-6 text-justify list-disc">
+              <li>
+              በሠራተኞች መካከል የተሻሻለ እውቀት ማቆየት እና አተገባበር.
+              </li>
+              <li>
+              የተሻሻለ ተሳትፎ እና ስነ ምግባር፣ አወንታዊ ትምህርትን ማዳበር
+              ባህል.
+              </li>
+              <li>
+              ተማሪዎች ለማበርከት ስልጣን ሲሰማቸው ፈጠራን ይጨምራል
+              ሀሳቦች.
+              </li>
+              <li>
+              የተጠናከረ ትብብር እና ግንኙነት በቡድን ውስጥ።
+              </li>
+              <li>
+              አጠቃላይ ምርታማነት እና የአፈፃፀም ማሻሻያዎች, መንዳት
+              ድርጅታዊ ስኬት.
+              </li>
+            </ul>
+            <p>
+            ዛሬ በመማሪያ ንድፍዎ ላይ ኢንቨስት ያድርጉ እና ለወደፊት ዝግጁ የሆነ ይፍጠሩ
+            በየትኛውም አካባቢ የላቀ የሰው ኃይል!
+            </p>
+          </motion.div>
+          : <motion.div
             className="flex-1 text-gray-900 text-[15px]"
             {...fadeInUp}
           >
@@ -247,7 +312,7 @@ const LearningExperience = () => {
               Invest in your learning design today and create a future-ready
               workforce that excels in any environment!
             </p>
-          </motion.div>
+          </motion.div>}
         </motion.div>
       </motion.div>
     </motion.div>

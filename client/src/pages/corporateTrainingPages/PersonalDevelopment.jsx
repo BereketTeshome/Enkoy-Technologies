@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
 import { useSelector } from "react-redux";
@@ -6,7 +5,27 @@ import { useSelector } from "react-redux";
 const PersonalDevelopment = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
-  const faqData = [
+  const language = useSelector((state) => state.language?.language);
+  const isAmharic = language === "amh";
+
+  const faqData = isAmharic
+  ? [
+      {
+        question: "ለግለሰብ ፍላጎቶች ብጁ የእድገት መፍትሄዎች",
+        answer: [
+          `በእንኮይ ቴክኖሎጂዎች የእኛ የግል ልማት ስልጠና የእያንዳንዱን ግለሰብ ልዩ ፍላጎቶች ለማሟላት ግላዊ ነው. የተሳታፊዎችን ግቦች፣ ተነሳሽነቶች እና ተግዳሮቶች ለመረዳት ጥልቅ ግምገማ በማካሄድ እንጀምራለን። ይህ የመሠረታዊ ግንዛቤ ከግል የዕድገት ጉዟቸው ጋር የሚስማሙ የታለሙ የሥልጠና ፕሮግራሞችን እንድንፈጥር ያስችለናል።`,
+          "እንዲሁም ተሳታፊዎች እድገታቸውን እንዲከታተሉ እና ግባቸውን እንደ አስፈላጊነቱ እንዲያስተካክሉ በመርዳት ቀጣይነት ያለው ድጋፍ እና ግብረመልስ ቅድሚያ እንሰጣለን። የእኛ ስልጠና የእድገት አስተሳሰብን ያጎለብታል፣ ግለሰቦች እንደ የህይወት ዘመን ጉዞ መማርን እንዲቀበሉ ያበረታታል።",
+        ],
+      },
+      {
+        question: "ለፈጣን ተጽእኖ የእውነተኛ አለም መተግበሪያዎች",
+        answer: [
+          "የእኛ የሥልጠና ዘዴ ተሳታፊዎች የተማሩትን ወዲያውኑ እንዲተገብሩ የሚያስችሏቸውን የገሃዱ ዓለም ሁኔታዎችን እና ተግባራዊ ልምምዶችን ያካትታል። በተጫዋችነት፣ በቡድን ውይይቶች እና እራስን በማንፀባረቅ እንቅስቃሴዎች ውስጥ በመሳተፍ ግለሰቦች ትምህርታቸውን የሚያጠናክር የተግባር ልምድ ያገኛሉ።",
+          "ተሳታፊዎችን በዕለት ተዕለት ሕይወታቸው ውስጥ ሊዋሃዱ የሚችሉ ተግባራዊ መሳሪያዎችን እና ቴክኒኮችን በማስታጠቅ የግል እና ሙያዊ ውጤታማነታቸውን በማጎልበት ላይ እናተኩራለን።",
+        ],
+      },
+    ]
+  : [
     {
       question: "Tailored Development Solutions for Individual Needs",
       answer: [
@@ -23,6 +42,7 @@ const PersonalDevelopment = () => {
     },
   ];
 
+
   const fadeInUp = {
     initial: { opacity: 0, y: 50 },
     whileInView: {
@@ -38,7 +58,7 @@ const PersonalDevelopment = () => {
       className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
     >
       <motion.div
-        className="flex flex-col w-full items-center"
+        className="flex flex-col items-center w-full"
         variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
       >
         <motion.div className="sm:w-[60%] pb-20 w-[80%]" variants={fadeInUp}>
@@ -52,7 +72,8 @@ const PersonalDevelopment = () => {
             className="uppercase text-sm font-semibold text-[#FF8689] my-10"
             {...fadeInUp}
           >
-            Personal development training
+            {isAmharic ? "የግል ልማት ስልጠና" : "Personal development training"}
+            
           </motion.p>
           <motion.h2
             className={`text-4xl sm:text-5xl mb-7 ${
@@ -60,7 +81,8 @@ const PersonalDevelopment = () => {
             }`}
             {...fadeInUp}
           >
-            Empowering Individuals for Growth and Success
+            {isAmharic ? "ግለሰቦችን ለእድገት እና ለስኬት ማብቃት።" : "Empowering Individuals for Growth and Success"}
+            
           </motion.h2>
           <motion.p
             className={`text-justify mb-7 ${
@@ -68,11 +90,8 @@ const PersonalDevelopment = () => {
             }`}
             {...fadeInUp}
           >
-            At Enkoy Technologies, we recognize that personal development is
-            essential for both individual satisfaction and organizational
-            success. Our Personal Development Training is designed to empower
-            individuals to unlock their full potential, enhance their skills,
-            and achieve their personal and professional goals.
+            {isAmharic ? "በEnkoy Technologies፣ ለግለሰብ እርካታ እና ለድርጅታዊ ስኬት ግላዊ እድገት አስፈላጊ መሆኑን እንገነዘባለን። የእኛ የግል ልማት ስልጠና ግለሰቦች ሙሉ አቅማቸውን እንዲከፍቱ፣ ችሎታቸውን እንዲያሳድጉ እና የግል እና ሙያዊ ግቦቻቸውን እንዲያሳኩ ለማስቻል ነው።" : "At Enkoy Technologies, we recognize that personal development is essential for both individual satisfaction and organizational success. Our Personal Development Training is designed to empower individuals to unlock their full potential, enhance their skills, and achieve their personal and professional goals."}
+           
           </motion.p>
           <motion.a
             href="/contact"
@@ -81,7 +100,7 @@ const PersonalDevelopment = () => {
             }`}
             {...fadeInUp}
           >
-            Contact Us
+            {isAmharic ? "ያግኙን" : "Contact Us"}
           </motion.a>
         </motion.div>
 
@@ -89,7 +108,7 @@ const PersonalDevelopment = () => {
         <br />
         <br />
         <motion.div
-          className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row"
+          className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div className="flex-1" {...fadeInUp}>
@@ -107,7 +126,8 @@ const PersonalDevelopment = () => {
               }`}
               {...fadeInUp}
             >
-              Transformative Personal Growth for Lasting Impact
+              {isAmharic ? "ለዘላቂ ተጽእኖ የሚለወጥ ግላዊ እድገት" : "Transformative Personal Growth for Lasting Impact"}
+              
             </motion.h2>
             <motion.p
               className={`mb-2 ${
@@ -115,11 +135,8 @@ const PersonalDevelopment = () => {
               }`}
               {...fadeInUp}
             >
-              Our approach to personal development focuses on creating
-              transformative experiences that lead to lasting change. We blend
-              practical strategies with self-reflection exercises, helping
-              participants identify their strengths, weaknesses, and areas for
-              growth.
+              {isAmharic ? "የግል ልማት አካሄዳችን ወደ ዘላቂ ለውጥ የሚያመሩ የለውጥ ልምዶችን በመፍጠር ላይ ያተኩራል። የተግባር ስልቶችን ከራስ ነጸብራቅ ልምምዶች ጋር እናዋህዳለን፣ ተሳታፊዎች ጠንካራ ጎኖቻቸውን፣ ድክመቶቻቸውን እና የእድገት ቦታዎችን እንዲለዩ እንረዳለን።" : "Our approach to personal development focuses on creating transformative experiences that lead to lasting change. We blend practical strategies with self-reflection exercises, helping participants identify their strengths, weaknesses, and areas for growth."}
+              
             </motion.p>
           </motion.div>
         </motion.div>
@@ -131,12 +148,13 @@ const PersonalDevelopment = () => {
           className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
-          <motion.div className="flex-1 flex" {...fadeInUp}>
+          <motion.div className="flex flex-1" {...fadeInUp}>
             <motion.h2
-              className="inline-block md:text-6xl text-4xl text-gray-900 font-semibold"
+              className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl"
               {...fadeInUp}
             >
-              Building Resilient and Agile Individuals
+              {isAmharic ? "ተለዋዋጭ እና ቀልጣፋ ግለሰቦችን መገንባት" : "Building Resilient and Agile Individuals"}
+              
             </motion.h2>
           </motion.div>
           <motion.div
@@ -144,10 +162,8 @@ const PersonalDevelopment = () => {
             {...fadeInUp}
           >
             <motion.p {...fadeInUp}>
-              In today's fast-paced world, resilience and adaptability are vital
-              traits for success. Our Personal Development Training emphasizes
-              skills such as emotional intelligence, stress management, and
-              effective problem-solving.
+            {isAmharic ? "ዛሬ ፈጣን በሆነው ዓለም ውስጥ፣ መቻል እና መላመድ ለስኬት ወሳኝ ባህሪያት ናቸው። የእኛ የግል ልማት ስልጠና እንደ ስሜታዊ ብልህነት፣ የጭንቀት አስተዳደር እና ውጤታማ ችግር መፍታት ያሉ ችሎታዎችን ያጎላል።" : "In today's fast-paced world, resilience and adaptability are vital traits for success. Our Personal Development Training emphasizes skills such as emotional intelligence, stress management, and effective problem-solving."}
+              
             </motion.p>
           </motion.div>
         </motion.div>
@@ -156,7 +172,7 @@ const PersonalDevelopment = () => {
         <br />
         <br />
         <motion.div
-          className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row"
+          className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div className="flex-1" {...fadeInUp}>
@@ -179,14 +195,63 @@ const PersonalDevelopment = () => {
           className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
-          <motion.div className="flex-1 flex" {...fadeInUp}>
+          <motion.div className="flex flex-1" {...fadeInUp}>
             <motion.h2
-              className="inline-block md:text-5xl text-3xl text-gray-900 font-semibold"
+              className="inline-block text-3xl font-semibold text-gray-900 md:text-5xl"
               {...fadeInUp}
             >
-              Key Components of Our Personal Development Training Solutions
+              {isAmharic ? "የእኛ የግል ልማት ስልጠና መፍትሄዎች ቁልፍ አካላት" : "Key Components of Our Personal Development Training Solutions"}
+              
             </motion.h2>
           </motion.div>
+          {isAmharic ? 
+            <motion.div
+            className="flex-1 text-gray-900 text-[15px]"
+            {...fadeInUp}
+          >
+            <p>አጠቃላይ የስልጠና አካሄዳችን የሚያተኩረው፡</p>
+            <ul className="list-disc pl-6 py-5 *:mb-5">
+              <li>
+              <b>ራስን ማወቅ፡</b>ግለሰቦች ጠለቅ ብለው እንዲጨምሩ መርዳት
+              ጥንካሬያቸውን፣ እሴቶቻቸውን እና የእድገት ቦታዎችን መረዳት።
+              </li>
+              <li>
+              <b>የግብ ቅንብር፡ </b> ተሳታፊዎችን በተጨባጭ በማቀናበር ላይ መምራት
+              እና ሊደረስባቸው የሚችሉ የግል እና ሙያዊ ግቦች.
+              </li>
+              <li>
+              <b>ስሜታዊ ብልህነት፡ </b>የማወቅ እና የማስተማር ችሎታዎች
+              በራሳቸውም ሆነ በሌሎች ውስጥ ስሜቶችን መቆጣጠር.
+              </li>
+              <li>
+              <b>የመቋቋም ግንባታ፡</b> ለመቋቋም ስልቶችን መስጠት
+              ውጥረት እና እንቅፋቶችን ማሸነፍ.
+              </li>
+            </ul>
+            <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
+            ለግለሰቦች እና ድርጅቶች የለውጥ ጥቅሞች
+            </h2>
+            <p>
+            የእኛ የግል ልማት ስልጠና ተጽእኖ ከ
+              ግለሰብ, መላውን ድርጅት የሚጠቅም. እንደ ተሳታፊዎች
+              ማደግ እና ማደግ, ጥቅሞቹ የሚከተሉትን ያካትታሉ:
+            </p>
+            <ul className="list-disc pl-6 py-5 *:mb-5">
+            <li>በራስ መተማመን እና በሰራተኞች መካከል መነሳሳት ይጨምራል።</li>
+            <li>በቡድኖች ውስጥ የተሻሻለ ግንኙነት እና ትብብር።</li>
+              <li>
+              ግለሰቦች ሃይል እንዳላቸው ሲሰማቸው የላቀ ፈጠራ እና ፈጠራ
+              ሃሳቦችን ለመጋራት.
+              </li>
+              <li>የተሻሻለ አጠቃላይ የስራ እርካታ እና የሰራተኛ ማቆየት።</li>
+              <li>ይበልጥ አዎንታዊ እና ውጤታማ ድርጅታዊ ባህል።</li>
+            </ul>
+            <p>
+            ዛሬ በግል ልማት ላይ ኢንቨስት ያድርጉ እና የሰው ኃይልዎን ለዚህ ያግዟቸው
+            በግል እና በሙያዊ እድገት!
+            </p>
+          </motion.div>
+          :
           <motion.div
             className="flex-1 text-gray-900 text-[15px]"
             {...fadeInUp}
@@ -210,7 +275,7 @@ const PersonalDevelopment = () => {
                 stress and overcome obstacles.
               </li>
             </ul>
-            <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+            <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
               Transformative Benefits for Individuals and Organizations
             </h2>
             <p>
@@ -233,6 +298,7 @@ const PersonalDevelopment = () => {
               thrive both personally and professionally!
             </p>
           </motion.div>
+          }
         </motion.div>
       </motion.div>
     </motion.div>

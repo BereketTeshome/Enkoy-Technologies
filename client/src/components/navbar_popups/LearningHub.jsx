@@ -14,7 +14,8 @@ const LearningHub = () => {
 		latestPosts: language === "amh" ? "የቅርብ ጊዜ ጽሑፎች" : "Latest Posts",
 		blog: language === "amh" ? "ብሎግ" : "Blog",
 		ebooks: language === "amh" ? "ኢ-መጽሐፍት" : "E-Books",
-		events: language === "amh" ? "መጪ ክስተቶች" : "Upcoming Events",
+		careers: language === "amh" ? "የሥራ ዝርዝሮች" : "Careers",
+		// events: language === "amh" ? "መጪ ክስተቶች" : "Upcoming Events",
 	};
 
 	return (
@@ -52,6 +53,11 @@ const LearningHub = () => {
 					<li>
 						<a href="/events" className="transition hover:text-yellow-400">
 							{texts.events}
+						</a>
+					</li>
+					<li>
+						<a href="/careers" className="transition hover:text-yellow-400">
+							{texts.careers}
 						</a>
 					</li>
 				</ul>

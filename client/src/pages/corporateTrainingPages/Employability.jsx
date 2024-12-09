@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import FAQSection from "../../components/corporateTraining/FAQSection";
 import { useSelector } from "react-redux";
@@ -6,7 +5,26 @@ import { useSelector } from "react-redux";
 const Employability = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
-  const faqData = [
+  const language = useSelector((state) => state.language?.language);
+  const isAmharic = language === "amh";
+
+  const faqData = isAmharic
+  ? [
+      {
+        question: "ለተለያዩ የሙያ ግቦች ብጁ የመማሪያ መፍትሄዎች",
+        answer: [
+          `በEnkoy Technologies እያንዳንዱ ተሳታፊ ልዩ የሙያ ምኞቶች እንዳሉት እንገነዘባለን። የእኛ ስልጠና የግለሰቦችን ጥንካሬዎች፣ ድክመቶች እና ግቦችን ለመለየት በግምገማ ይጀምራል። ይህ ሥራን ለማስጠበቅ ወይም የራሳቸውን ንግድ ለመጀመር ዓላማቸው ከተወሰኑ የሙያ ጎዳናዎቻቸው ጋር የሚጣጣሙ ብጁ ፕሮግራሞችን እንድንፈጥር ያስችለናል።`,
+          "ደጋፊ እና በይነተገናኝ የመማሪያ አካባቢ ላይ አፅንዖት እንሰጣለን፣ ተሳታፊዎች ሃሳቦችን የሚለዋወጡበት፣ ጥያቄዎችን የሚጠይቁበት እና ከእኩዮቻቸው ጋር የሚተባበሩበት። እያንዳንዱ ግለሰብ ልዩ ችሎታቸውን እና ክህሎቶቻቸውን እንዲያዳብሩ አስተማሪዎቻችን ግላዊ መመሪያ እና አስተያየት ይሰጣሉ።",
+        ],
+      },
+      {
+        question: "ለፈጣን ተጽእኖ የእውነተኛ አለም መተግበሪያዎች",
+        answer: [
+          "የእኛ የስልጠና ዘዴ በዘመናዊው የስራ ገበያ እና የስራ ፈጠራ ገጽታ ላይ የሚያጋጥሙትን ተግዳሮቶች የሚያንፀባርቁ የገሃዱ ዓለም ሁኔታዎችን እና ፕሮጀክቶችን ያካትታል። ተሳታፊዎች ክህሎቶቻቸውን በተግባራዊ ሁኔታ እንዲለማመዱ በሚያስችላቸው የጉዳይ ጥናቶች፣ ሚና-ተጫዋች እና የቡድን ውይይቶች ላይ ይሳተፋሉ። ውጤታማ የንግድ ስራ እቅዶችን ከማውጣት ጀምሮ የስራ ቃለ መጠይቅን እስከመቆጣጠር ድረስ ተማሪዎች ለስኬት የሚያዘጋጃቸውን የተግባር ልምድ ያገኛሉ።",
+        ],
+      },
+    ]
+  : [
     {
       question: "Tailored Learning Solutions for Diverse Career Goals",
       answer: [
@@ -21,6 +39,7 @@ const Employability = () => {
       ],
     },
   ];
+
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -37,7 +56,7 @@ const Employability = () => {
       className={`pt-20 ${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}
     >
       <motion.div
-        className="flex flex-col w-full items-center"
+        className="flex flex-col items-center w-full"
         variants={staggerContainer}
         initial="initial"
         whileInView="animate"
@@ -54,7 +73,8 @@ const Employability = () => {
             className="uppercase text-sm font-semibold text-[#FF8689] my-10"
             {...fadeIn}
           >
-            Employability and entrepreneurship
+            {isAmharic ? "ሥራ ፈጣሪነት እና ሥራ ፈጣሪነት" : "Employability and entrepreneurship"}
+            
           </motion.p>
           <motion.h2
             className={`text-4xl sm:text-5xl mb-7 ${
@@ -62,7 +82,8 @@ const Employability = () => {
             }`}
             {...fadeIn}
           >
-            Empowering Individuals for Career Success and Business Innovation
+            {isAmharic ? "ግለሰቦችን ለሙያ ስኬት እና ለንግድ ስራ ፈጠራ ማበረታታት" : "Empowering Individuals for Career Success and Business Innovation"}
+            
           </motion.h2>
           <motion.p
             className={`mb-7 ${
@@ -70,14 +91,8 @@ const Employability = () => {
             }`}
             {...fadeIn}
           >
-            At Enkoy Technologies, we believe that equipping individuals with
-            the skills for employability and entrepreneurship is essential in
-            today’s dynamic job market. Our Employability and Entrepreneurship
-            Training is designed to nurture the skills and mindset necessary for
-            career advancement and successful business creation. Whether
-            individuals are seeking to enhance their job prospects or launch
-            their own ventures, our programs provide the tools and knowledge
-            needed to thrive.
+            {isAmharic ? "በEnkoy Technologies ፣ ግለሰቦችን ለቀጣሪነት እና ለሥራ ፈጠራ ችሎታዎች ማስታጠቅ በዛሬው ተለዋዋጭ የሥራ ገበያ ውስጥ አስፈላጊ ነው ብለን እናምናለን። የእኛ የቅጥር እና የኢንተርፕረነርሺፕ ስልጠና ለሙያ እድገት እና ለስኬታማ የንግድ ስራ ፈጠራ አስፈላጊ የሆኑትን ክህሎቶች እና አስተሳሰብ ለማዳበር የተነደፈ ነው። ግለሰቦች የስራ እድላቸውን ለማሳደግ እየፈለጉም ይሁኑ የራሳቸውን ስራ ለመጀመር፣ ፕሮግራሞቻችን ለማደግ የሚያስፈልጉትን መሳሪያዎች እና እውቀት ይሰጣሉ።" : "At Enkoy Technologies, we believe that equipping individuals with the skills for employability and entrepreneurship is essential in today’s dynamic job market. Our Employability and Entrepreneurship Training is designed to nurture the skills and mindset necessary for career advancement and successful business creation. Whether individuals are seeking to enhance their job prospects or launch their own ventures, our programs provide the tools and knowledge needed to thrive."}
+            
           </motion.p>
           <motion.a
             href="/contact"
@@ -86,13 +101,14 @@ const Employability = () => {
             }`}
             {...fadeIn}
           >
-            Contact Us
+            {isAmharic ? "ያግኙን" : "Contact Us"}
+            
           </motion.a>
         </div>
         <br />
         <br />
         <br />
-        <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+        <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
           <motion.div className="flex-1" {...fadeIn}>
             <img
               src="/img/corporate-training/employabilityImg.webp"
@@ -106,21 +122,15 @@ const Employability = () => {
                 isDarkTheme ? "text-gray-100 " : "text-gray-950"
               }`}
             >
-              Transformative Learning for Career and Business Growth
+              {isAmharic ? "ለስራ እና ለንግድ እድገት ለውጥ ያለው ትምህርት" : "Transformative Learning for Career and Business Growth"}
             </h2>
             <p
               className={`mb-2 text-justify ${
                 isDarkTheme ? "text-gray-300" : "text-gray-900"
               }`}
             >
-              Our approach to Employability and Entrepreneurship Training
-              focuses on practical, hands-on experiences that prepare
-              participants for real-world challenges. We cover essential topics
-              such as resume writing, interview techniques, networking
-              strategies, and business planning. By integrating theoretical
-              knowledge with practical applications, we ensure that learners can
-              confidently navigate their career paths or embark on their
-              entrepreneurial journeys.
+              {isAmharic ? "ለቀጣሪነት እና ለስራ ፈጠራ ስልጠና አቀራረባችን ተሳታፊዎችን ለገሃዱ አለም ፈተናዎች በሚያዘጋጁ ተግባራዊ እና በተግባራዊ ልምዶች ላይ ያተኩራል። እንደ ከቆመበት ቀጥል መጻፍ፣ የቃለ መጠይቅ ቴክኒኮችን፣ የአውታረ መረብ ስልቶችን እና የንግድ እቅድን የመሳሰሉ አስፈላጊ ርዕሶችን እንሸፍናለን። የንድፈ ሃሳባዊ እውቀትን ከተግባራዊ አፕሊኬሽኖች ጋር በማዋሃድ፣ ተማሪዎች በልበ ሙሉነት የሙያ መንገዳቸውን መምራት ወይም የስራ ፈጠራ ጉዟቸውን እንዲጀምሩ እናረጋግጣለን።" : "Our approach to Employability and Entrepreneurship Training focuses on practical, hands-on experiences that prepare participants for real-world challenges. We cover essential topics such as resume writing, interview techniques, networking strategies, and business planning. By integrating theoretical knowledge with practical applications, we ensure that learners can confidently navigate their career paths or embark on their entrepreneurial journeys."}
+              
             </p>
           </motion.div>
         </div>
@@ -128,12 +138,37 @@ const Employability = () => {
         <br />
         <br />
         <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
-          <motion.div className="flex-1 flex" {...fadeIn}>
-            <h2 className=" inline-block md:text-6xl text-4xl text-gray-900 font-semibold">
-              Building Skills for a Competitive Edge
+          <motion.div className="flex flex-1" {...fadeIn}>
+            <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
+            {isAmharic ? "ለተወዳዳሪ ጠርዝ ችሎታዎችን መገንባት" : "Building Skills for a Competitive Edge"}
+              
             </h2>
           </motion.div>
-          <motion.div className="flex-1 text-gray-900 text-[15px]" {...fadeIn}>
+          {isAmharic ?
+            <motion.div className="flex-1 text-gray-900 text-[15px]" {...fadeIn}>
+            <p>
+            በፍጥነት በሚቀያየር የስራ መልክዓ ምድር፣ የፉክክር ጠርዝ መኖር ነው።
+              ወሳኝ። በእንኮይ ቴክኖሎጂዎች፣ ስልጠናችን ወሳኝ አፅንዖት ይሰጣል
+              እንደ ችግር መፍታት፣ ግንኙነት እና መላመድ ያሉ ችሎታዎች።
+              እንዲሁም የስራ ፈጠራ አስተሳሰብን በማዳበር ላይ እናተኩራለን፣ አበረታችም።
+              ፈጠራ እና ፈጠራ. ፕሮግራሞቻችን ለማሟላት የተበጁ ናቸው።
+              የድርጅትዎ ልዩ ፍላጎቶች ፣ ተገቢነት እና ተፅእኖን ማረጋገጥ
+              ለሁሉም ተሳታፊዎች.
+            </p>
+            <p>
+            ድርጅቱን ለመረዳት ከድርጅትዎ ጋር በቅርበት እንተባበራለን
+              ብጁ ስልጠና እንድንፈጥር ያስችለናል ግቦች እና ተግዳሮቶች
+              ልምድ. ፕሮግራሞቻችን ለአሁኑ መሪዎችን ብቻ አያዘጋጁም።
+              ፈታኝ ሁኔታዎችን ግን አስቀድሞ ለመገመት የሚያስችል አርቆ አስተዋይነት ያስታጥቃቸዋል።
+              እና ለወደፊት ፍላጎቶች ምላሽ ይስጡ.
+            </p>
+            <p>
+            ቀጣይነት ያለው የመማር እና የማደግ ባህልን በማሳደግ እኛ
+              ድርጅቶች ዝግጁ የሆኑ መሪዎችን የቧንቧ መስመር እንዲያዘጋጁ መርዳት
+              የነገውን ፈተናዎች ፊት ለፊት ለመቋቋም።
+            </p>
+          </motion.div>
+          : <motion.div className="flex-1 text-gray-900 text-[15px]" {...fadeIn}>
             <p>
               In a rapidly changing job landscape, having a competitive edge is
               crucial. At Enkoy Technologies, our training emphasizes critical
@@ -155,13 +190,13 @@ const Employability = () => {
               help organizations cultivate a pipeline of leaders who are ready
               to meet tomorrow’s challenges head-on.
             </p>
-          </motion.div>
+          </motion.div>}
         </div>
       </motion.div>
       <br />
       <br />
       <br />
-      <div className="md:px-20 sm:px-10 px-5 flex items-center w-full flex-col lg:flex-row">
+      <div className="flex flex-col items-center w-full px-5 md:px-20 sm:px-10 lg:flex-row">
         <motion.div className="flex-1" {...fadeIn}>
           <FAQSection faqData={faqData} />
         </motion.div>
@@ -176,15 +211,76 @@ const Employability = () => {
       <br />
       <br />
       <br />
+      {isAmharic ? 
+        <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
+        <motion.div className="flex flex-1" {...fadeIn}>
+          <h2 className="inline-block text-3xl font-semibold text-gray-900 md:text-5xl">
+          የእኛ የቅጥር እና የስራ ፈጠራ ስልጠና ቁልፍ አካላት
+          መፍትሄዎች
+          </h2>
+        </motion.div>
+        <motion.div className="flex-1 text-gray-900 text-[15px]" {...fadeIn}>
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
+          አጠቃላይ የስልጠና አካሄዳችን የሚያተኩረው፡
+          </h2>
+          <ul className="list-disc pl-6 py-5 *:mb-5">
+            <li>
+            <b>ከቆመበት ቀጥል እና የቃለ መጠይቅ ችሎታዎች፡</b>ተሳታፊዎችን እንዴት ማድረግ እንደሚችሉ ማስተማር
+            ጎልተው የወጡ ስራዎችን ይፍጠሩ እና በቃለ-መጠይቆች ውስጥ በጣም ጥሩ።
+            </li>
+            <li>
+            <b>የአውታረ መረብ ስልቶች፡</b> ተማሪዎችን እንዴት መገንባት እንደሚችሉ መምራት
+            ሙያዊ ግንኙነቶች እና ግንኙነቶችን መጠቀም.
+            </li>
+            <li>
+            <b>የንግድ እቅድ ማውጣት፡</b> ለማዳበር ማዕቀፎችን መስጠት
+            ተግባራዊ የንግድ ሥራ ሀሳቦች እና እቅዶች።
+            </li>
+            <li>
+            <b>ሥራ ፈጣሪ አስተሳሰብ፡</b> ፈጠራን የሚያበረታታ፣
+            ፈጠራ ፣ እና በንግድ ሥራ ላይ አደጋን መውሰድ ።
+            </li>
+          </ul>
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
+          ለግለሰቦች እና ድርጅቶች የለውጥ ጥቅሞች
+          </h2>
+          <p className={`text-justify ${"text-gray-900"}`}>
+          የእኛ የስራ እድል እና የስራ ፈጠራ ስልጠና ተጽእኖ
+            ከግለሰብ ተማሪዎች አልፏል፣ ሁሉንም ተጠቃሚ ያደርጋል
+            ድርጅት. ተሳታፊዎቹ ተቀጣሪነታቸውን ሲያሳድጉ እና
+            የሥራ ፈጠራ ችሎታዎች ፣ ጥቅሞቹ የሚከተሉትን ያካትታሉ: -
+          </p>
+          <ul className="list-disc pl-6 py-5 *:mb-5 text-justify">
+          <li>በሥራ ፈላጊዎች መካከል ለሥራ ዝግጁነት እና በራስ መተማመን ይጨምራል።</li>
+            <li>
+            ስኬታማ የሥራ ምደባዎች እና የሙያ እድገቶች ከፍተኛ ተመኖች።
+            </li>
+            <li>
+              ወደ አዲስ ንግድ ሊመሩ የሚችሉ የፈጠራ ሀሳቦችን ማዳበር
+              እድሎች.
+            </li>
+            <li>
+            ግለሰቦች የተለያዩ ሲጋሩ የተሻሻለ ትብብር እና የቡድን ስራ
+              አመለካከቶች.
+            </li>
+          </ul>
+          <p>
+          ዛሬ ወደ ሥራ ፈጣሪነት እና ሥራ ፈጠራ ስልጠና ላይ ኢንቨስት ያድርጉ
+            በስራዎ ውስጥ ስኬታማ ለመሆን በችሎታ እና በራስ መተማመን የስራ ኃይልዎን ያበረታቱ
+            ሥራቸው እና ከዚያ በላይ!
+          </p>
+        </motion.div>
+      </div>
+      :
       <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
-        <motion.div className="flex-1 flex" {...fadeIn}>
-          <h2 className=" inline-block md:text-5xl text-3xl text-gray-900 font-semibold">
+        <motion.div className="flex flex-1" {...fadeIn}>
+          <h2 className="inline-block text-3xl font-semibold text-gray-900 md:text-5xl">
             Key Components of Our Employability and Entrepreneurship Training
             Solutions
           </h2>
         </motion.div>
         <motion.div className="flex-1 text-gray-900 text-[15px]" {...fadeIn}>
-          <h2 className="text-2xl font-semibold text-gray-950 mb-5 mt-2">
+          <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
             Our comprehensive training approach focuses on:
           </h2>
           <ul className="list-disc pl-6 py-5 *:mb-5">
@@ -234,7 +330,7 @@ const Employability = () => {
             their careers and beyond!
           </p>
         </motion.div>
-      </div>
+      </div>}
     </motion.div>
   );
 };
