@@ -8,7 +8,7 @@ export default {
   //   preflight: false,
   // },
   plugins: [
-    // require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/aspect-ratio"),
     // other plugins
     require("tailwind-scrollbar-hide"),
   ],

@@ -1,4 +1,3 @@
-import React from "react";
 import ReactPlayer from "react-player";
 import { useSelector } from "react-redux";
 const VideoSection = () => {
@@ -39,7 +38,7 @@ const VideoSection = () => {
               url="https://www.youtube.com/watch?v=IfDGIsZPKMs"
               controls
               width="100%"
-              height="100%" // Use 100% for full height coverage within the parent container
+              height="100%" 
             />
           </div>
         </div>

@@ -1,184 +1,114 @@
-import { useEffect, useState } from "react";
-import Blog from "../../components/learningHub/Blog";
-import axios from "axios";
-import Cookies from "universal-cookie";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
+
 const Jobs = () => {
-  const [blogs, setBlogs] = useState([]);
-  const [showPopup, setShowPopup] = useState(false);
-  const navigate = useNavigate();
-  const cookie = new Cookies();
   const language = useSelector((state) => state.language?.language);
   const isAmharic = language === "amh";
 
-  const theme = useSelector((state) => state.theme?.theme);
-  const isDarkTheme = theme === "dark";
-
-  const fadeInUp = {
-    initial: { opacity: 0, y: 50 },
-    whileInView: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+  const jobList = [
+    {
+      title: "Frontend Developer",
+      date: "Posted on: Dec 9, 2024",
+      description:
+        "We are looking for a passionate Frontend Developer skilled in React, TailwindCSS, and Framer Motion to build stunning web apps.",
+      requirements: [
+        "Proficient in React.js and modern JavaScript (ES6+)",
+        "Experience with TailwindCSS for responsive design",
+        "Understanding of Git and version control",
+      ],
+      location: "Remote",
+      type: "Full-time",
     },
-    viewport: { amount: 0.2, once: true },
-  };
-
-  const handlePostBlogClick = () => {
-    const token = cookie.get("user");
-    if (token) {
-      navigate("/manage-blogs");
-    } else {
-      setShowPopup(true);
-    }
-  };
-
-  const closePopup = () => {
-    setShowPopup(false);
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get(
-          "https://server.enkoytechnologies.com/api/blog/get"
-        );
-        const sortedBlogs = data.blogs.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
-        console.log(sortedBlogs);
-        setBlogs(sortedBlogs);
-      } catch (error) {
-        console.error("Error fetching blogs:", error);
-      }
-    };
-    fetchData();
-  }, []);
+    {
+      title: "Backend Developer",
+      date: "Posted on: Dec 7, 2024",
+      description:
+        "Join our team as a Backend Developer! We need experts in Node.js, Express, and MongoDB for building scalable APIs.",
+      requirements: [
+        "Proficient in Node.js and Express.js",
+        "Experience with MongoDB and REST API design",
+        "Knowledge of cloud platforms like AWS or Azure",
+      ],
+      location: "On-site (Addis Ababa, Ethiopia)",
+      type: "Contract",
+    },
+    {
+      title: "UI/UX Designer",
+      date: "Posted on: Dec 5, 2024",
+      description:
+        "Creative UI/UX Designer wanted! Design user-centric interfaces and experiences for web and mobile platforms.",
+      requirements: [
+        "Experience with Figma, Adobe XD, or Sketch",
+        "Strong portfolio of user-centric designs",
+        "Understanding of design systems and accessibility",
+      ],
+      location: "Hybrid (Remote + On-site)",
+      type: "Part-time",
+    },
+  ];
 
   return (
-    <motion.div
-      className={`px-5 md:px-20 py-7 ${
-        isDarkTheme ? "bg-gray-800" : "bg-white"
-      }`}
-    >
-      <br />
-      <br />
-      <br />
-      {/* Hero Section */}
+    <div className="min-h-screen bg-gray-900 text-white p-8">
+      {/* Header */}
+      <div className="text-center">
+        <h1 className="text-4xl font-bold">{isAmharic ? "አስደሳች የስራ እድሎችን ያስሱ" : "Explore Exciting Job Opportunities"}</h1>
+        <p className="text-gray-400 mt-2">{isAmharic ? "ለእርስዎ ትክክለኛውን ሚና ይፈልጉ እና ዛሬ ያመልክቱ!" : "Find the right role for you and apply today!"}</p>
+      </div>
+
+      {/* Job Listings */}
       <motion.div
-        className="flex items-center justify-between mb-6"
-        {...fadeInUp}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0, scale: 0.9 },
+          visible: {
+            opacity: 1,
+            scale: 1,
+            transition: { staggerChildren: 0.2 },
+          },
+        }}
       >
-        <motion.h2
-          className={`mb-4 text-3xl text-center ${
-            isDarkTheme ? "text-gray-100" : "text-gray-900"
-          } md:text-5xl md:text-left`}
-          {...fadeInUp}
-        >
-          {isAmharic ? "የቅርብ ጊዜ ብሎጎች" : "Latest Jobs"}
-        </motion.h2>
-
-        <button
-          className={`px-6 py-2 ${
-            isDarkTheme
-              ? "text-gray-800 bg-[#FFCD57]"
-              : "bg-[#FFCD57] text-gray-800"
-          } rounded-lg shadow-md hover:bg-opacity-90 hover:shadow-lg transition-all duration-300`}
-          onClick={handlePostBlogClick}
-        >
-          {isAmharic ? "ብሎግ አስተዳድር" : "Manage Blog"}
-        </button>
-
-        {/* Pop-Up Modal */}
-        {showPopup && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="w-11/12 max-w-md p-6 text-center bg-white rounded-lg shadow-lg">
-              <h3 className="mb-4 text-2xl font-semibold text-gray-800">
-                {isAmharic ? "አልተመዘገቡም!" : "You are not logged in!"}
-              </h3>
-              <p className="mb-6 text-gray-600">
-                {isAmharic ? "እባክዎ ብሎግ ለመለጠፍ ይመዝገቡ" : "Please log in to post a blog."}
-              </p>
-              <div className="flex items-center justify-center space-x-4">
-                <button
-                  className="px-6 py-2 bg-[#FFCD57] text-gray-800 rounded-lg shadow-md hover:bg-opacity-90 transition-all duration-300"
-                  onClick={() => navigate("/login")}
-                >
-                  {isAmharic ? "ግባ" : "Log In"}
-                </button>
-                <button
-                  className="px-6 py-2 text-gray-800 transition-all duration-300 bg-gray-300 rounded-lg shadow-md hover:bg-gray-400"
-                  onClick={closePopup}
-                >
-                  {isAmharic ? "ሰርዝ" : "Cancel"}
-                </button>
+        {jobList.map((job, index) => (
+          <motion.div
+            key={index}
+            className="bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:-translate-y-2 transition-all"
+            variants={{
+              hidden: { opacity: 0, y: 50 },
+              visible: { opacity: 1, y: 0 },
+            }}
+          >
+            <h2 className="text-2xl font-semibold mb-2">{job.title}</h2>
+            <p className="text-gray-400 text-sm mb-4">{job.date}</p>
+            <p className="text-gray-300 mb-4">{job.description}</p>
+            <ul className="list-disc list-inside text-gray-400 mb-4">
+              {job.requirements.map((req, i) => (
+                <li key={i}>{req}</li>
+              ))}
+            </ul>
+            <div className="flex justify-between items-center">
+              <div>
+                <p className="text-sm text-gray-400">
+                  <span className="font-bold">Location:</span> {job.location}
+                </p>
+                <p className="text-sm text-gray-400">
+                  <span className="font-bold">Type:</span> {job.type}
+                </p>
               </div>
-            </div>
-          </div>
-        )}
-      </motion.div>
-
-      {/* Latest Blog Display */}
-      <motion.div
-        className="flex flex-col items-center gap-8 md:flex-row"
-        {...fadeInUp}
-      >
-        <div className="flex-1">
-          <div className="w-full h-[250px] md:h-[350px] relative overflow-hidden rounded-lg">
-            <motion.img
-              src={blogs[0]?.image}
-              alt="Blog Image"
-              className="object-cover object-center w-full h-full"
-              {...fadeInUp}
-            />
-          </div>
-        </div>
-
-        <div className="flex-1 my-auto">
-          <div>
-            <motion.h2
-              className={`mb-5 text-2xl font-semibold text-center ${
-                isDarkTheme ? "text-gray-100" : "text-gray-900"
-              } md:text-3xl md:text-left`}
-              {...fadeInUp}
-            >
-              {blogs[0]?.title}
-            </motion.h2>
-            <motion.p
-              className={`mt-3 mb-4  ${
-                isDarkTheme ? "text-gray-100" : "text-gray-700"
-              }`}
-              dangerouslySetInnerHTML={{
-                __html: blogs[0]?.description.slice(0, 500),
-              }}
-              {...fadeInUp}
-            ></motion.p>
-
-            <div className="text-center md:text-left">
-              <motion.a
-                href="#blogs"
-                className={`px-6 py-3 text-white transition ${
-                  isDarkTheme
-                    ? "bg-yellow-500 hover:bg-gray-700"
-                    : "bg-gray-900 hover:bg-gray-700"
-                }`}
-                {...fadeInUp}
+              <a
+                href="https://t.me/enkoytechs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-500 focus:outline-none"
               >
-                {isAmharic ? "የበለጠ ይመልከቱ" : "See More"}
-              </motion.a>
+                Apply Now
+              </a>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        ))}
       </motion.div>
-
-      {/* Blog Component Section */}
-      <motion.div id="blogs" {...fadeInUp}>
-        <Blog blogs={blogs} />
-      </motion.div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -26,7 +26,7 @@ const OurServices = () => {
         icon: "/img/services/why_mobile_learning.png",
         title: "Animation and video production",
         description:
-          "Scale your team with learning services and strategy from ELM Learning.",
+          "Scale your team with learning services and strategy from Enkoy Technologies.",
         link: "/services/animation-videos",
       },
       {
