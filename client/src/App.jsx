@@ -7,6 +7,9 @@ import { useSelector } from "react-redux";
 import ChatBot from "./components/ChatBot.jsx";
 import ChatbotLauncher from "./components/ChatbotLauncher.jsx";
 import Loader from "./components/Loader.jsx";
+import ReactGA from 'react-ga'
+
+ReactGA.initialize('G-S3EY21WLWQ')
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const SelfPacedLearning = lazy(() => import("./pages/servicePages/SelfPacedLearning"));
@@ -63,6 +66,7 @@ const UserProfilePage = lazy(() => import("./pages/UserProfilePage.jsx"));
 const EventCalendarPage = lazy(() => import("./pages/EventCalendarPage.jsx"));
 const Jobs = lazy(() => import("./pages/learningHub/Jobs.jsx"));
 
+
 const App = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
@@ -72,9 +76,7 @@ const App = () => {
     <div className={`${isDarkTheme ? "bg-gray-800 " : "bg-white"} `}>
       <NavBar />
       <ChatbotLauncher />
-      <div>
-
-        
+      <div>    
         <Routes>
           <Route path="/" element={<HomePage />} />
 

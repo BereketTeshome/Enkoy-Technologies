@@ -51,7 +51,7 @@ const Login = () => {
   const handleGoogleLogin = () => {
     // Redirect to your backend's Google OAuth endpoint
     // window.location.href = "https://server.enkoytechnologies.com/auth/google";
-    window.location.href = "http://localhost:3000/auth/google";
+    window.location.href = "https://server.enkoytechnologies.com/auth/google";
   };
 
 
@@ -117,7 +117,7 @@ const Login = () => {
 				{/* Google Login Button */}
 				<button
 					onClick={handleGoogleLogin}
-					className="flex items-center justify-center w-full p-3 transition duration-300 bg-white border border-gray-300 rounded-lg hover:shadow-md"
+					className="flex items-center justify-center w-full p-3 transition duration-300 bg-white border border-gray-300 rounded-lg hover:shadow-md max-w-[450px]"
 				>
 					<FcGoogle size={24} className="mr-2" />
 					<span className="font-medium text-gray-700">Sign in with Google</span>

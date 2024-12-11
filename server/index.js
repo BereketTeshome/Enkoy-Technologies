@@ -30,7 +30,7 @@ const isLoggedIn = (req, res, next) => {
 };
 
 app.get("/", (req, res) => {
-  res.redirect("http://localhost:5173");
+  res.redirect("https://enkoytechnologies.com");
 });
 
 app.get(
@@ -39,8 +39,6 @@ app.get(
     scope: ["profile", "email"],
   })
 );
-
-const jwt = require("jsonwebtoken");
 
 app.get(
   "/google/callback",
@@ -58,7 +56,7 @@ app.get(
     }
 
     // Redirect to home or intended route
-    const redirectUrl = req.session.returnTo || "http://localhost:5173";
+    const redirectUrl = req.session.returnTo || "https://enkoytechnologies.com";
     delete req.session.returnTo;
     res.redirect(redirectUrl);
   }
