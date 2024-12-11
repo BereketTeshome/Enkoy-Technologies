@@ -4,6 +4,7 @@ import {
   PieChart,
   RssFeedRounded,
   VolunteerActivism,
+  Work,
 } from "@mui/icons-material";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -43,9 +44,9 @@ const SideBar = ({ isOpen }) => {
           <a href="/ebooks">
             <Newspaper fontSize="small" /> Ebooks
           </a>
-          {/* <a href="/donations">
-            <VolunteerActivism fontSize="small" /> Donations
-          </a> */}
+          <a href="/jobs">
+            <Work fontSize="small" /> Jobs
+          </a>
         </div>
       </div>
     </div>

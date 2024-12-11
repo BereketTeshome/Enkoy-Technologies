@@ -5,6 +5,7 @@ const ImageUpload = ({ setImage }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileUrl, setFileUrl] = useState("");
   const [uploadStatus, setUploadStatus] = useState("");
+  const [uploadLoading, setUploadLoading] = useState(false);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -29,6 +30,7 @@ const ImageUpload = ({ setImage }) => {
     formData.append("file", selectedFile);
 
     try {
+      setUploadLoading(true);
       const response = await axios.post(
         "https://server.enkoytechnologies.com/upload/image",
 
@@ -39,10 +41,12 @@ const ImageUpload = ({ setImage }) => {
           },
         }
       );
+      setUploadLoading(false);
       setImage(response.data.fileUrl);
       setFileUrl(response.data.fileUrl); // Extract and save the file URL
       setUploadStatus("Image uploaded successfully!");
     } catch (error) {
+      setUploadLoading(false);
       console.error(error);
       setUploadStatus("Failed to upload image.");
     }
@@ -73,11 +77,11 @@ const ImageUpload = ({ setImage }) => {
 
         {/* Upload button */}
         <button
-          onClick={handleUpload}
+          onClick={!uploadLoading && handleUpload}
           type="button"
           className="px-5 py-2 text-white bg-[#ffa216] rounded hover:bg-[#ff8c00] transition"
         >
-          Upload
+          {uploadLoading ? "Uploading..." : "Upload"}
         </button>
       </div>
 

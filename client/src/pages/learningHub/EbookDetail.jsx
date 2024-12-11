@@ -136,7 +136,7 @@ const EbookDetail = () => {
 
       {/* ebooks Content */}
       <motion.p
-        className="mb-12 text-lg leading-8 text-gray-800 dark:text-gray-200"
+        className="mb-12 text-lg leading-8 text-gray-800 dark:text-gray-200 ql-editor"
         variants={textFadeIn}
         dangerouslySetInnerHTML={{ __html: ebooks.description }}
       ></motion.p>

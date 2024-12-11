@@ -6,6 +6,7 @@ const authRouter = require("./routes/auth");
 const blogRouter = require("./routes/blogs");
 const ebookRouter = require("./routes/ebooks");
 const elearnRouter = require("./routes/elearnings");
+const jobRouter = require("./routes/jobs");
 const chatbot = require("./routes/chatbot");
 const session = require("express-session");
 const passport = require("passport");
@@ -111,6 +112,7 @@ app.use("/uploads", express.static(UPLOAD_DIR));
 app.use("/api/user", authRouter);
 app.use("/api/blog", blogRouter);
 app.use("/api/ebook", ebookRouter);
+app.use("/api/job", jobRouter);
 app.use("/api/elearn", elearnRouter);
 app.use("/api/bot", chatbot);
 

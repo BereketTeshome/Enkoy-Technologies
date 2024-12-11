@@ -153,7 +153,7 @@ const Blogs = ({ blogs }) => {
                 </h3>
                 <p className="text-sm text-gray-500">{date}</p>
                 <div
-                  className="mt-3 mb-4 text-gray-700"
+                  className="mt-3 mb-4 text-gray-700 ql-editor"
                   dangerouslySetInnerHTML={{
                     __html: blog.description.slice(0, 100),
                   }}

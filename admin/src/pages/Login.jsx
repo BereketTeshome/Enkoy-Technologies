@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -14,19 +14,22 @@ const Login = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        `${import.meta.env.VITE_SERVER_URL}/users/login`,
+        `${import.meta.env.VITE_SERVER_URL}/api/user/login`,
         {
-          username,
+          email,
           password,
         }
       );
-      sessionStorage.setItem("user_token", res.data);
+      if (!res.data.user.isAdmin || res.data.user.isAdmin === false) {
+        return alert("only admin users can login");
+      }
+      sessionStorage.setItem("user_token", res.data.token);
       setLoading(false);
       navigate("/");
     } catch (error) {
       console.log(error);
       setLoading(false);
-      setErrorMsg("incorrect password or username");
+      setErrorMsg("incorrect password or email");
     }
   };
   return (
@@ -37,12 +40,12 @@ const Login = () => {
         </div>
         <form className="p-3" onSubmit={(e) => !loading && handleLogin(e)}>
           <div>
-            <p className="text-sm text-gray-500 font-semibold mb-1">Username</p>
+            <p className="text-sm text-gray-500 font-semibold mb-1">Email</p>
             <input
               type="text"
               className="bg-blue-50 w-full text-xs py-2 px-4 rounded"
               required
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mt-3">

@@ -15,6 +15,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import EbooksPage from "./pages/EbooksPage";
 import AddEbookPage from "./pages/AddEbooksPage";
+import JobsPage from "./pages/JobsPage";
+import AddJobPage from "./pages/AddJobPage";
 
 const App = () => {
   const navigate = useNavigate();
@@ -32,14 +34,14 @@ const App = () => {
               <Route path="/blogs" element={<BlogPage />} />
               {/* <Route path="/events" element={<EventPage />} /> */}
               <Route path="/ebooks" element={<EbooksPage />} />
-              {/* <Route path="/donations" element={<DonationsPage />} /> */}
+              <Route path="/jobs" element={<JobsPage />} />
               <Route path="/add-blog" element={<AddBlogPage />} />
               {/* <Route path="/edit-blog/:id" element={<EditBlogPage />} /> */}
               <Route path="/add-ebooks" element={<AddEbookPage />} />
               {/* <Route path="/edit-event/:id" element={<EditEventPage />} /> */}
               {/* <Route path="/add-news" element={<AddNewsPage />} /> */}
               {/* <Route path="/edit-news/:id" element={<EditNewsPage />} /> */}
-              {/* <Route path="/add-donations" element={<AddDonationsPage />} /> */}
+              <Route path="/add-jobs" element={<AddJobPage />} />
               {/* <Route
                 path="/edit-donations/:id"
                 element={<EditDonationPage />}

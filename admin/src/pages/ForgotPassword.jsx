@@ -13,7 +13,7 @@ const ForgotPassword = () => {
     try {
       setLoading(true);
       await axios.post(
-        `${import.meta.env.VITE_SERVER_URL}/users/forgot-password`,
+        `${import.meta.env.VITE_SERVER_URL}/api/user/forgot-password`,
         {
           email: email,
         }

@@ -177,7 +177,7 @@ const Ebook = ({ ebooks }) => {
                 </div>
 
                 <div
-                  className="mt-3 mb-4 text-gray-700"
+                  className="mt-3 mb-4 text-gray-700 ql-editor"
                   dangerouslySetInnerHTML={{
                     __html: ebook.description.slice(0, 100),
                   }}
@@ -231,7 +231,7 @@ const Ebook = ({ ebooks }) => {
                   </motion.button>
                 </div>
                 <div className="flex items-center justify-between my-4">
-  {/* <motion.a
+                  {/* <motion.a
     whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.95 }}
     transition={{ type: "spring", stiffness: 300 }}
@@ -242,17 +242,16 @@ const Ebook = ({ ebooks }) => {
   >
     Read Online
   </motion.a> */}
-  <motion.button
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.95 }}
-    transition={{ type: "spring", stiffness: 300 }}
-    className="px-4 py-2 text-white bg-blue-500 rounded-lg shadow hover:bg-blue-600"
-    onClick={() => window.open(ebook.pdfUrl, "_blank")} // Opens in a new tab
-  >
-    Download
-  </motion.button>
-</div>
-
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="px-4 py-2 text-white bg-blue-500 rounded-lg shadow hover:bg-blue-600"
+                    onClick={() => window.open(ebook.pdfUrl, "_blank")} // Opens in a new tab
+                  >
+                    Download
+                  </motion.button>
+                </div>
 
                 <motion.button
                   whileHover={{ scale: 1.1, backgroundColor: "#FFC34D" }}
