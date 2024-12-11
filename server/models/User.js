@@ -18,15 +18,25 @@ const UserSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   { timestamps: true }
 );
 
-UserSchema.pre("save", async function () {
-  this.password = await bcrypt.hash(this.password, 10);
+UserSchema.pre("save", async function (next) {
+  if (!this.password || !this.isModified("password")) {
+    return next();  // Skip hashing if no password or not modified
+  }
+  
+  try {
+    this.password = await bcrypt.hash(this.password, 10);
+    next();
+  } catch (error) {
+    next(error);  // Pass the error to Mongoose
+  }
 });
+
 
 UserSchema.methods.createToken = function () {
   return jwt.sign(
