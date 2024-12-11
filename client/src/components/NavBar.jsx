@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import OurServices from "./navbar_popups/OurServices";
 import CorporateTraining from "./navbar_popups/CorporateTraining";
@@ -18,7 +18,6 @@ const NavBar = () => {
   const cookie = new Cookies();
   const token = cookie.get("user");
   const decode = token ? jwtDecode(token) : "";
-  const theme = useSelector((state) => state.theme?.theme);
 
   const language = useSelector((state) => state.language.language);
 

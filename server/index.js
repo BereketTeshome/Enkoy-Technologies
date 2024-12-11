@@ -48,39 +48,24 @@ app.get(
     failureRedirect: "/auth/failure",
   }),
   (req, res) => {
-    if (req.user && req.user.emails && req.user.emails[0]) {
-      const userEmail = req.user.emails[0].value;
-
-      // Create a JWT
-      const token = jwt.sign({ email: userEmail }, process.env.JWT_SECRET, {
-        expiresIn: "1d", // Token valid for 1 day
-      });
-
-      // Set the cookie
-      res.cookie("googleUser", token, {
-        httpOnly: true, // Secure cookie
-        secure: false, // Use true in production with HTTPS
-        maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
+    // Use the token from req.token set in auth.js
+    if (req.token) {
+      res.cookie("user", req.token, {
+        httpOnly: false,  // Secure cookie
+        secure: false,   // Use true in production with HTTPS
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
       });
     }
 
-    // Redirect to the intended route or home
+    // Redirect to home or intended route
     const redirectUrl = req.session.returnTo || "http://localhost:5173";
     delete req.session.returnTo;
     res.redirect(redirectUrl);
   }
 );
 
-// Middleware to store the original URL
-const saveReturnTo = (req, res, next) => {
-  if (!req.isAuthenticated() && req.originalUrl !== "/auth/google") {
-    req.session.returnTo = req.originalUrl;
-  }
-  next();
-};
 
-// Apply middleware to protected routes
-app.get("/protected", saveReturnTo, isLoggedIn, (req, res) => {
+  app.get("/protected", isLoggedIn, (req, res) => {
   res.send(`Hello ${req.user.displayName}!`);
 });
 

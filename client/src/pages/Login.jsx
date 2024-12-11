@@ -51,7 +51,7 @@ const Login = () => {
   const handleGoogleLogin = () => {
     // Redirect to your backend's Google OAuth endpoint
     // window.location.href = "https://server.enkoytechnologies.com/auth/google";
-    window.location.href = "https://server.enkoytechnologies.com/auth/google";
+    window.location.href = "http://localhost:3000/auth/google";
   };
 
 
