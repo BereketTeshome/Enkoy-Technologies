@@ -5,6 +5,7 @@ const PdfUpload = ({ setPdfUrl }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");
   const [pdf, setPdf] = useState("");
+  const [uploadLoading, setUploadLoading] = useState(false);
 
   // Handle file selection
   const handleFileChange = (event) => {
@@ -31,6 +32,8 @@ const PdfUpload = ({ setPdfUrl }) => {
     formData.append("file", selectedFile);
 
     try {
+      setUploadLoading(true);
+
       const response = await axios.post(
         "https://server.enkoytechnologies.com/upload/pdf",
         formData,
@@ -40,6 +43,7 @@ const PdfUpload = ({ setPdfUrl }) => {
           },
         }
       );
+      setUploadLoading(false);
 
       // Save the uploaded file's URL
       const uploadedFileUrl = response.data.fileUrl;
@@ -77,11 +81,11 @@ const PdfUpload = ({ setPdfUrl }) => {
 
         {/* Upload button */}
         <button
-          onClick={handleUpload}
+          onClick={!uploadLoading && handleUpload}
           type="button"
           className="px-5 py-2 text-white bg-[#ffa216] rounded hover:bg-[#ff8c00] transition"
         >
-          Upload
+          {uploadLoading ? "Uploading..." : "Upload"}
         </button>
       </div>
 

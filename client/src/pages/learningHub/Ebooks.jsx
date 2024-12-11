@@ -97,10 +97,12 @@ const Ebooks = () => {
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <div className="w-11/12 max-w-md p-6 text-center bg-white rounded-lg shadow-lg">
               <h3 className="mb-4 text-2xl font-semibold text-gray-800">
-              {isAmharic ? "አልተመዘገቡም!" : "You are not logged in!"}
+                {isAmharic ? "አልተመዘገቡም!" : "You are not logged in!"}
               </h3>
               <p className="mb-6 text-gray-600">
-                {isAmharic ? "እባክዎ ኢ-መጽሐፍት ለመለጠፍ ይመዝገቡ" : "Please log in to post a ebook."}
+                {isAmharic
+                  ? "እባክዎ ኢ-መጽሐፍት ለመለጠፍ ይመዝገቡ"
+                  : "Please log in to post a ebook."}
               </p>
               <div className="flex items-center justify-center space-x-4">
                 <button
@@ -108,7 +110,6 @@ const Ebooks = () => {
                   onClick={() => navigate("/login")}
                 >
                   {isAmharic ? "ግባ" : "Log In"}
-
                 </button>
                 <button
                   className="px-6 py-2 text-gray-800 transition-all duration-300 bg-gray-300 rounded-lg shadow-md hover:bg-gray-400"
@@ -149,7 +150,7 @@ const Ebooks = () => {
               {ebooks[0]?.title}
             </motion.h2>
             <motion.p
-              className={`mt-3 mb-4  ${
+              className={`mt-3 mb-4 ql-editor ${
                 isDarkTheme ? "text-gray-100" : "text-gray-700"
               }`}
               dangerouslySetInnerHTML={{

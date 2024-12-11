@@ -23,7 +23,9 @@ const BlogDetail = () => {
 
     const fetchAllBlogs = async () => {
       try {
-        const { data } = await axios.get("https://server.enkoytechnologies.com/api/blog/get");
+        const { data } = await axios.get(
+          "https://server.enkoytechnologies.com/api/blog/get"
+        );
         console.log(data.blogs);
         setAllBlogs(data.blogs);
       } catch (error) {
@@ -120,7 +122,7 @@ const BlogDetail = () => {
 
       {/* Blogs Content */}
       <motion.p
-        className="mb-12 text-lg leading-8 text-gray-800 dark:text-gray-200"
+        className="mb-12 text-lg leading-8 text-gray-800 dark:text-gray-200 ql-editor"
         variants={textFadeIn}
         dangerouslySetInnerHTML={{ __html: blogs.description }}
       ></motion.p>
@@ -133,35 +135,35 @@ const BlogDetail = () => {
               <BlogComments blogs={blogs} setFetchAgain={setFetchAgain} />
             </div>
           </div>
-         
         </div>
       </div>
 
       {/* Related Posts */}
-   
 
-    <motion.div className="mt-12" initial="hidden" animate="visible">
+      <motion.div className="mt-12" initial="hidden" animate="visible">
         <h2 className="mb-6 text-3xl font-bold text-gray-800 dark:text-white">
           Related Posts
         </h2>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {relatedPosts.length > 0 ? (
-          relatedPosts.map((post) => (
-            <motion.li
-              key={post._id}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-4 transition-shadow duration-300 bg-white shadow-md dark:bg-gray-700 rounded-xl hover:shadow-lg"
-            >
-          <a href={`/blog/${post._id}`} className="block text-lg font-semibold text-blue-600 dark:text-blue-400">
-            {post.title}
-          </a>
-    </motion.li>
-  ))
-) : (
-  <p className="text-gray-200">No related posts found.</p>
-)}
-
+          {relatedPosts.length > 0 ? (
+            relatedPosts.map((post) => (
+              <motion.li
+                key={post._id}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-4 transition-shadow duration-300 bg-white shadow-md dark:bg-gray-700 rounded-xl hover:shadow-lg"
+              >
+                <a
+                  href={`/blog/${post._id}`}
+                  className="block text-lg font-semibold text-blue-600 dark:text-blue-400"
+                >
+                  {post.title}
+                </a>
+              </motion.li>
+            ))
+          ) : (
+            <p className="text-gray-200">No related posts found.</p>
+          )}
         </ul>
       </motion.div>
     </motion.div>

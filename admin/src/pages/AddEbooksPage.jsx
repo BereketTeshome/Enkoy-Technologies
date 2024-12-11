@@ -22,7 +22,7 @@ const AddEbookPage = () => {
   const cookie = new Cookies();
 
   // Decode the JWT token
-  const token = cookie.get("user");
+  const token = sessionStorage.getItem("user_token");
   let author;
   if (token) {
     author = jwtDecode(token).userId;

@@ -100,7 +100,9 @@ const Blogs = () => {
                 {isAmharic ? "አልተመዘገቡም!" : "You are not logged in!"}
               </h3>
               <p className="mb-6 text-gray-600">
-                {isAmharic ? "እባክዎ ብሎግ ለመለጠፍ ይመዝገቡ" : "Please log in to post a blog."}
+                {isAmharic
+                  ? "እባክዎ ብሎግ ለመለጠፍ ይመዝገቡ"
+                  : "Please log in to post a blog."}
               </p>
               <div className="flex items-center justify-center space-x-4">
                 <button
@@ -148,7 +150,7 @@ const Blogs = () => {
               {blogs[0]?.title}
             </motion.h2>
             <motion.p
-              className={`mt-3 mb-4  ${
+              className={`mt-3 mb-4 ql-editor  ${
                 isDarkTheme ? "text-gray-100" : "text-gray-700"
               }`}
               dangerouslySetInnerHTML={{

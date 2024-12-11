@@ -16,6 +16,10 @@ const UserSchema = new mongoose.Schema(
     profileImg: {
       type: String,
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
     password: {
       type: String,
       required: false,

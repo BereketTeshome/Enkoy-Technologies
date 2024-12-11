@@ -5,7 +5,7 @@ import { Button, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-const DonationsPage = () => {
+const JobsPage = () => {
   const [donations, setDonations] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deleted, setDeleted] = useState(false);
@@ -16,9 +16,9 @@ const DonationsPage = () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_SERVER_URL}/donations`
+          `${import.meta.env.VITE_SERVER_URL}/api/job/get`
         );
-        setDonations(res.data);
+        setDonations(res.data.jobs);
       } catch (error) {
         console.error("Error fetching donations:", error);
       }
@@ -30,7 +30,9 @@ const DonationsPage = () => {
   const deleteDonation = async (id) => {
     setBtnLoading(true);
     try {
-      await axios.delete(`${import.meta.env.VITE_SERVER_URL}/donations/${id}`);
+      await axios.delete(
+        `${import.meta.env.VITE_SERVER_URL}/api/job/delete/${id}`
+      );
       setDeleted((prev) => !prev);
     } catch (error) {
       console.error("Error deleting donations:", error);
@@ -40,23 +42,34 @@ const DonationsPage = () => {
 
   const columns = useMemo(
     () => [
-      {
-        accessorKey: "img",
-        header: "Image",
-        Cell: ({ cell }) => (
-          <img
-            src={cell.getValue()}
-            alt="donations"
-            style={{ width: "80px", borderRadius: "8px" }}
-          />
-        ),
-        size: 150,
-      },
+      // {
+      //   accessorKey: "img",
+      //   header: "Image",
+      //   Cell: ({ cell }) => (
+      //     <img
+      //       src={cell.getValue()}
+      //       alt="donations"
+      //       style={{ width: "80px", borderRadius: "8px" }}
+      //     />
+      //   ),
+      //   size: 150,
+      // },
       {
         accessorKey: "title",
         header: "Title",
         size: 250,
       },
+      {
+        accessorKey: "jobType",
+        header: " Job Type",
+        size: 100,
+      },
+      {
+        accessorKey: "jobTime",
+        header: "Work Time",
+        size: 100,
+      },
+
       {
         accessorKey: "createdAt",
         header: "Posted Date",
@@ -66,11 +79,11 @@ const DonationsPage = () => {
           return <span>{date}</span>;
         },
       },
-      {
-        accessorKey: "views",
-        header: "Views",
-        size: 50,
-      },
+      // {
+      //   accessorKey: "views",
+      //   header: "Views",
+      //   size: 50,
+      // },
       {
         accessorKey: "actions",
         header: "Actions",
@@ -100,19 +113,19 @@ const DonationsPage = () => {
   return (
     <div className="py-10 px-5">
       <h1 className="text-center uppercase text-3xl font-bold text-[#070b22] mb-4">
-        donations Dashboard
+        jobs Dashboard
       </h1>
       <div className="bg-white shadow-md">
         <p className="capitalize bg-[#070b22] py-1 px-3 text-gray-100 text-sm">
-          Manage donations Posts
+          Manage job Posts
         </p>
         <div className="px-3 py-3 flex flex-col gap-y-2 mt-2">
           <div>
             <a
-              href="/add-donations"
+              href="/add-jobs"
               className="bg-[#ffa216] px-3 py-2 uppercase text-sm text-gray-50"
             >
-              create new donation post
+              create new job post
             </a>
           </div>
 
@@ -153,4 +166,4 @@ const DonationsPage = () => {
   );
 };
 
-export default DonationsPage;
+export default JobsPage;
