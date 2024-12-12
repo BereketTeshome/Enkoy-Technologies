@@ -11,7 +11,11 @@ const MyEbook = () => {
   const [deleted, setDeleted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEbook, setSelectedEbook] = useState(null);
-  const [formData, setFormData] = useState({ title: "", description: "", image: "" });
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    image: "",
+  });
 
   const cookie = new Cookies();
   const token = cookie.get("user");
@@ -22,7 +26,9 @@ const MyEbook = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("https://server.enkoytechnologies.com/api/ebook/get");
+        const res = await axios.get(
+          "https://server.enkoytechnologies.com/api/ebook/get"
+        );
         const filteredEbooks = res.data.ebooks.filter(
           (ebook) => ebook.author?._id === userId
         );
@@ -40,7 +46,9 @@ const MyEbook = () => {
   const deleteEbook = async (id) => {
     setBtnLoading(true);
     try {
-      await axios.delete(`https://server.enkoytechnologies.com/api/ebook/delete/${id}`);
+      await axios.delete(
+        `https://server.enkoytechnologies.com/api/ebook/delete/${id}`
+      );
       setDeleted(!deleted);
     } catch (error) {
       console.error("Error deleting ebook:", error);
@@ -51,7 +59,11 @@ const MyEbook = () => {
 
   const openModal = (ebook) => {
     setSelectedEbook(ebook);
-    setFormData({ title: ebook.title, description: ebook.description, image: ebook.image });
+    setFormData({
+      title: ebook.title,
+      description: ebook.description,
+      image: ebook.image,
+    });
     setIsModalOpen(true);
   };
 
@@ -62,7 +74,10 @@ const MyEbook = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`https://server.enkoytechnologies.com/api/ebook/edit/${selectedEbook._id}`, formData);
+      await axios.put(
+        `https://server.enkoytechnologies.com/api/ebook/edit/${selectedEbook._id}`,
+        formData
+      );
       setIsModalOpen(false);
       setDeleted(!deleted); // Refresh ebooks list
     } catch (error) {
@@ -154,12 +169,12 @@ const MyEbook = () => {
                           <td className="py-3">{date}</td>
                           <td className="py-3">{item.views}</td>
                           <td className="py-3 space-x-2">
-                            <button
-                              className="bg-[#ffa216] px-4 py-1 rounded-md text-white"
-                              onClick={() => openModal(item)}
+                            <a
+                              className="bg-[#ffa216] px-6 py-[6px] rounded-md text-white"
+                              href={`/edit-ebook/${item._id}`}
                             >
                               Edit
-                            </button>
+                            </a>
                             <button
                               className="px-4 py-1 text-white bg-red-600 rounded-md"
                               onClick={() =>

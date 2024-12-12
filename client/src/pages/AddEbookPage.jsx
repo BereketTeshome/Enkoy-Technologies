@@ -60,7 +60,10 @@ const AddEbookPage = () => {
         pdfUrl,
         createdAt: new Date().toISOString(),
       };
-      await axios.post("https://server.enkoytechnologies.com/api/ebook/create", ebookData);
+      await axios.post(
+        "https://server.enkoytechnologies.com/api/ebook/create",
+        ebookData
+      );
       navigate("/ebooks");
       window.location.reload();
     } catch (error) {
@@ -76,12 +79,12 @@ const AddEbookPage = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen py-20 bg-[#19192e] flex justify-center items-center"
+      className="min-h-screen py-20  flex justify-center items-center"
     >
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1, transition: { duration: 0.8 } }}
-        className="p-10 bg-white shadow-lg rounded-lg w-[90%] md:w-1/2"
+        className="p-10 bg-white shadow-lg rounded-lg w-[90%] md:w-[70%]"
         whileHover={{ scale: 1.02, boxShadow: "0px 10px 30px rgba(0,0,0,0.1)" }}
       >
         <motion.h1

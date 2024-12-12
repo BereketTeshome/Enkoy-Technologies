@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import Cookies from "universal-cookie";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 const MyBlog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -11,7 +11,11 @@ const MyBlog = () => {
   const [deleted, setDeleted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBlog, setSelectedBlog] = useState(null);
-  const [formData, setFormData] = useState({ title: "", description: "", image: "" });
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    image: "",
+  });
 
   const cookie = new Cookies();
   const token = cookie.get("user");
@@ -22,7 +26,9 @@ const MyBlog = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("https://server.enkoytechnologies.com/api/blog/get");
+        const res = await axios.get(
+          "https://server.enkoytechnologies.com/api/blog/get"
+        );
         const filteredBlogs = res.data.blogs.filter(
           (blog) => blog.author?._id === userId
         );
@@ -40,7 +46,9 @@ const MyBlog = () => {
   const deleteBlog = async (id) => {
     setBtnLoading(true);
     try {
-      await axios.delete(`https://server.enkoytechnologies.com/api/blog/delete/${id}`);
+      await axios.delete(
+        `https://server.enkoytechnologies.com/api/blog/delete/${id}`
+      );
       setDeleted(!deleted);
     } catch (error) {
       console.error("Error deleting blog:", error);
@@ -51,7 +59,11 @@ const MyBlog = () => {
 
   const openModal = (blog) => {
     setSelectedBlog(blog);
-    setFormData({ title: blog.title, description: blog.description, image: blog.image });
+    setFormData({
+      title: blog.title,
+      description: blog.description,
+      image: blog.image,
+    });
     setIsModalOpen(true);
   };
 
@@ -62,7 +74,10 @@ const MyBlog = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`https://server.enkoytechnologies.com/api/blog/edit/${selectedBlog._id}`, formData);
+      await axios.put(
+        `https://server.enkoytechnologies.com/api/blog/edit/${selectedBlog._id}`,
+        formData
+      );
       setIsModalOpen(false);
       setDeleted(!deleted); // Refresh blogs list
     } catch (error) {
@@ -104,7 +119,7 @@ const MyBlog = () => {
           </motion.div>
 
           <div className="px-6 py-4">
-          <motion.a
+            <motion.a
               href="/add-blog"
               className="inline-block bg-[#ffa216] px-4 py-2 rounded-md text-white text-sm font-medium mb-4"
               initial={{ opacity: 0, x: -20 }}
@@ -153,12 +168,12 @@ const MyBlog = () => {
                           <td className="py-3">{date}</td>
                           <td className="py-3">{item.views}</td>
                           <td className="py-3 space-x-2">
-                            <button
-                              className="bg-[#ffa216] px-4 py-1 rounded-md text-white"
-                              onClick={() => openModal(item)}
+                            <a
+                              className="bg-[#ffa216] px-6 py-[6px] rounded-md text-white"
+                              href={`/edit-blog/${item._id}`}
                             >
                               Edit
-                            </button>
+                            </a>
                             <button
                               className="px-4 py-1 text-white bg-red-600 rounded-md"
                               onClick={() =>
@@ -187,82 +202,81 @@ const MyBlog = () => {
 
       {/* Modal */}
       <AnimatePresence>
-  {isModalOpen && (
-    <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      variants={modalVariants}
-    >
-      <motion.div
-        className="bg-[#FFCD4C] rounded-md shadow-lg p-6 w-[95%] max-w-[800px] overflow-hidden"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 50 }}
-      >
-        <h2 className="mb-4 text-2xl font-semibold text-[#070b22]">
-          Edit Blog
-        </h2>
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-800">
-              Title
-            </label>
-            <input
-              type="text"
-              name="title"
-              placeholder="Title"
-              value={formData.title}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border rounded-md"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-800">
-              Description
-            </label>
-            <textarea
-              name="description"
-              placeholder="Description"
-              value={formData.description}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border rounded-md h-[200px] resize-none overflow-y-auto"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-800">
-              Image URL
-            </label>
-            <input
-              type="text"
-              name="image"
-              placeholder="Image URL"
-              value={formData.image}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border rounded-md"
-            />
-          </div>
-        </div>
-        <div className="flex justify-end mt-6 space-x-2">
-          <button
-            onClick={() => setIsModalOpen(false)}
-            className="px-4 py-2 text-white bg-gray-600 rounded-md"
+        {isModalOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={modalVariants}
           >
-            Cancel
-          </button>
-          <button
-            onClick={handleUpdate}
-            className="px-4 py-2 text-white bg-green-600 rounded-md"
-          >
-            Update
-          </button>
-        </div>
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
-
+            <motion.div
+              className="bg-[#FFCD4C] rounded-md shadow-lg p-6 w-[95%] max-w-[800px] overflow-hidden"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 50 }}
+            >
+              <h2 className="mb-4 text-2xl font-semibold text-[#070b22]">
+                Edit Blog
+              </h2>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-800">
+                    Title
+                  </label>
+                  <input
+                    type="text"
+                    name="title"
+                    placeholder="Title"
+                    value={formData.title}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border rounded-md"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-800">
+                    Description
+                  </label>
+                  <textarea
+                    name="description"
+                    placeholder="Description"
+                    value={formData.description}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border rounded-md h-[200px] resize-none overflow-y-auto"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-800">
+                    Image URL
+                  </label>
+                  <input
+                    type="text"
+                    name="image"
+                    placeholder="Image URL"
+                    value={formData.image}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border rounded-md"
+                  />
+                </div>
+              </div>
+              <div className="flex justify-end mt-6 space-x-2">
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="px-4 py-2 text-white bg-gray-600 rounded-md"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleUpdate}
+                  className="px-4 py-2 text-white bg-green-600 rounded-md"
+                >
+                  Update
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
