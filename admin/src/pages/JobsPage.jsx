@@ -6,7 +6,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
 const JobsPage = () => {
-  const [donations, setDonations] = useState([]);
+  const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deleted, setDeleted] = useState(false);
   const [btnLoading, setBtnLoading] = useState(false);
@@ -18,9 +18,9 @@ const JobsPage = () => {
         const res = await axios.get(
           `${import.meta.env.VITE_SERVER_URL}/api/job/get`
         );
-        setDonations(res.data.jobs);
+        setJobs(res.data.jobs);
       } catch (error) {
-        console.error("Error fetching donations:", error);
+        console.error("Error fetching jobs:", error);
       }
       setLoading(false);
     };
@@ -35,7 +35,7 @@ const JobsPage = () => {
       );
       setDeleted((prev) => !prev);
     } catch (error) {
-      console.error("Error deleting donations:", error);
+      console.error("Error deleting jobs:", error);
     }
     setBtnLoading(false);
   };
@@ -48,7 +48,7 @@ const JobsPage = () => {
       //   Cell: ({ cell }) => (
       //     <img
       //       src={cell.getValue()}
-      //       alt="donations"
+      //       alt="jobs"
       //       style={{ width: "80px", borderRadius: "8px" }}
       //     />
       //   ),
@@ -91,7 +91,7 @@ const JobsPage = () => {
           <div>
             <IconButton
               component="a"
-              href={`/edit-donations/${row.original._id}`}
+              href={`/edit-jobs/${row.original._id}`}
               color="primary"
             >
               <EditIcon />
@@ -135,7 +135,7 @@ const JobsPage = () => {
             ) : (
               <MaterialReactTable
                 columns={columns}
-                data={donations}
+                data={jobs}
                 enableColumnActions={false}
                 enableColumnFilters={false}
                 enablePagination={true}

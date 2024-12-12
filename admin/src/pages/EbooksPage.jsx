@@ -80,7 +80,7 @@ const EbooksPage = () => {
           <div>
             <IconButton
               component="a"
-              href={`/edit-ebooks/${row.original._id}`}
+              href={`/edit-ebook/${row.original._id}`}
               color="primary"
             >
               <EditIcon />

@@ -4,6 +4,7 @@ import {
   Person,
   RssFeedRounded,
   VolunteerActivism,
+  Work,
 } from "@mui/icons-material";
 import React, { useEffect, useMemo, useState } from "react";
 import { Pie } from "react-chartjs-2";
@@ -20,6 +21,7 @@ const HomePage = () => {
   const [blogs, setBlogs] = useState([]);
   const [ebooks, setEbooks] = useState([]);
   const [users, setUsers] = useState([]);
+  const [jobs, setJobs] = useState([]);
   // const [donations, setDonations] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deleted, setDeleted] = useState(false);
@@ -61,15 +63,29 @@ const HomePage = () => {
     };
     fetchData();
   }, []);
-
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_SERVER_URL}/api/job/get`
+        );
+        setJobs(res.data.jobs);
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
   const options = {};
   const data = {
-    labels: ["Blogs", "Ebooks"],
+    labels: ["Blogs", "Ebooks", "Jobs"],
     datasets: [
       {
         label: "Total Posts",
-        data: [blogs.length, ebooks.length],
-        backgroundColor: ["#49BD81", "#FFA001"],
+        data: [blogs.length, ebooks.length, jobs.length],
+        backgroundColor: ["#49BD81", "#FFA001", "#A855F7"],
         hoverOffset: 4,
       },
     ],
@@ -115,13 +131,6 @@ const HomePage = () => {
         Cell: ({ row }) => (
           <div>
             <IconButton
-              component="a"
-              href={`/edit-blog/${row.original._id}`}
-              color="primary"
-            >
-              <EditIcon />
-            </IconButton>
-            <IconButton
               onClick={() => !btnLoading && deleteBlog(row.original._id)}
               color="error"
             >
@@ -147,15 +156,15 @@ const HomePage = () => {
               <p className="text-lg font-semibold">{blogs.length}</p>
             </div>
           </div>
-          {/* <div className="flex items-center bg-white py-5 gap-4 justify-center">
-          <div className="bg-[#E1F1FF] text-[#3F7AFC] p-3 rounded-full">
-            <Event sx={{ fontSize: "60px" }} />
+          <div className="flex items-center bg-white py-5 gap-4 justify-center">
+            <div className="bg-purple-100 text-purple-500 p-3 rounded-full">
+              <Work sx={{ fontSize: "60px" }} />
+            </div>
+            <div>
+              <p className="text-gray-400 text-lg">Job Posts</p>
+              <p className="text-lg font-semibold">{ebooks.length}</p>
+            </div>
           </div>
-          <div>
-            <p className="text-gray-400 text-lg">Event Posts</p>
-            <p className="text-lg font-semibold">{ebooks.length}</p>
-          </div>
-        </div> */}
           <div className="flex items-center bg-white py-5 gap-4 justify-center">
             <div className="bg-[#FFF2D8] text-[#FFA001] p-3 rounded-full">
               <Newspaper sx={{ fontSize: "60px" }} />

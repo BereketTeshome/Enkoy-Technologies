@@ -17,6 +17,8 @@ import EbooksPage from "./pages/EbooksPage";
 import AddEbookPage from "./pages/AddEbooksPage";
 import JobsPage from "./pages/JobsPage";
 import AddJobPage from "./pages/AddJobPage";
+import EditEbookPage from "./pages/EditEbookPage";
+import EditJobPage from "./pages/EditJobsPage";
 
 const App = () => {
   const navigate = useNavigate();
@@ -36,12 +38,12 @@ const App = () => {
               <Route path="/ebooks" element={<EbooksPage />} />
               <Route path="/jobs" element={<JobsPage />} />
               <Route path="/add-blog" element={<AddBlogPage />} />
-              {/* <Route path="/edit-blog/:id" element={<EditBlogPage />} /> */}
+              <Route path="/edit-blog/:id" element={<EditBlogPage />} />
               <Route path="/add-ebooks" element={<AddEbookPage />} />
-              {/* <Route path="/edit-event/:id" element={<EditEventPage />} /> */}
+              <Route path="/edit-ebook/:id" element={<EditEbookPage />} />
               {/* <Route path="/add-news" element={<AddNewsPage />} /> */}
-              {/* <Route path="/edit-news/:id" element={<EditNewsPage />} /> */}
               <Route path="/add-jobs" element={<AddJobPage />} />
+              <Route path="/edit-jobs/:id" element={<EditJobPage />} />
               {/* <Route
                 path="/edit-donations/:id"
                 element={<EditDonationPage />}

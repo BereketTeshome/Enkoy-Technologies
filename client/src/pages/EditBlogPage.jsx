@@ -1,26 +1,27 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
-import ImageUpload from "./learningHub/ImageUpload";
-// import ImageUpload from "./learningHub/ImageUpload";
+import ImageUpload from "../../../admin/src/components/ImageUpload";
 // import ImageUpload from "../components/ImageUpload";
 
-const AddBlogPage = () => {
+const EditBlogPage = () => {
+  const [blogs, setBlogs] = useState([]);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { id } = useParams();
   const cookie = new Cookies();
 
   // Decode the JWT token
-  const token = cookie.get("user");
+  const token = sessionStorage.getItem("user_token");
   let author;
   if (token) {
     author = jwtDecode(token).userId;
@@ -51,19 +52,16 @@ const AddBlogPage = () => {
     setLoading(true);
     try {
       const blogData = {
-        title,
-        description,
-        image,
-        category,
-        author: author,
-        comments: [],
-        createdAt: new Date().toISOString(),
+        title: title ? title : blogs.title,
+        description: description ? description : blogs.description,
+        image: image ? image : blogs.image,
+        category: category ? category : blogs.category,
       };
-      await axios.post(
-        "https://server.enkoytechnologies.com/api/blog/create",
+      await axios.put(
+        `https://server.enkoytechnologies.com/api/blog/edit/${id}`,
         blogData
       );
-      navigate("/blog");
+      navigate("/blogs");
       window.location.reload();
     } catch (error) {
       alert("Something went wrong!");
@@ -73,6 +71,22 @@ const AddBlogPage = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get(
+          `https://server.enkoytechnologies.com/api/blog/get/${id}`
+        );
+        setBlogs(res.data.blogs);
+        setDescription(res.data.blogs.description);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -91,7 +105,7 @@ const AddBlogPage = () => {
           animate={{ scale: 1 }}
           className="mb-6 text-3xl font-bold text-center text-gray-600"
         >
-          Create a New Blog Post
+          Edit Blog Post
         </motion.h1>
 
         <form onSubmit={(e) => !loading && addBlog(e)}>
@@ -109,7 +123,8 @@ const AddBlogPage = () => {
                 <motion.input
                   type="text"
                   className="w-full p-2 mt-1 border border-gray-300 rounded focus:border-[#ffa216]"
-                  value={field.value}
+                  // value={field.value}
+                  defaultValue={blogs.title}
                   onChange={(e) => field.onChange(e.target.value)}
                 />
               </motion.div>
@@ -117,9 +132,16 @@ const AddBlogPage = () => {
           )}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Image
+              Change Image
             </label>
             <ImageUpload setImage={setImage} />
+          </div>
+          <br />
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Old Image
+            </label>
+            <img src={blogs.image} alt="" className="h-24 w-24" />
           </div>
           <br />
           <motion.div
@@ -172,7 +194,7 @@ const AddBlogPage = () => {
                 className="loader"
               ></motion.div>
             ) : (
-              "Post Blog"
+              "Edit Blog"
             )}
           </motion.button>
         </form>
@@ -181,4 +203,4 @@ const AddBlogPage = () => {
   );
 };
 
-export default AddBlogPage;
+export default EditBlogPage;
