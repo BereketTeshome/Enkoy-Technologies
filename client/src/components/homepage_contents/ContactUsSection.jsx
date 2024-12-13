@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import { useState } from "react";
+import emailjs from "emailjs-com";
 
 const ContactUsSection = () => {
   const [formData, setFormData] = useState({
@@ -55,15 +56,35 @@ const ContactUsSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid) {
-      alert("Form submitted successfully!");
-      setFormData({
-        fullName: "",
-        email: "",
-        countryCode: "",
-        phone: "",
-        company: "",
-        projectDescription: "",
-      });
+      const serviceID = "service_hbuyjwk";
+      const templateID = "exbDEOF6w8_vEVNex";
+      
+      const templateParams = {
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: `${formData.countryCode} ${formData.phone}`,
+        company: formData.company,
+        projectDescription: formData.projectDescription,
+      };
+
+      emailjs
+        .send(serviceID, templateID, templateParams)
+        .then((response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("Your message has been sent successfully!");
+          setFormData({
+            fullName: "",
+            email: "",
+            countryCode: "",
+            phone: "",
+            company: "",
+            projectDescription: "",
+          });
+        })
+        .catch((err) => {
+          console.error("FAILED...", err);
+          alert("There was an error sending your message. Please try again.");
+        });
     }
   };
 
