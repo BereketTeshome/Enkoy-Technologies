@@ -169,14 +169,14 @@ const OurServices = () => {
 							</li>
 						))}
 					</ul>
-					{service.solutionsLink && (
+					{/* {service.solutionsLink && (
 						<a
 							href={service.solutionsLink}
 							className="mt-4 text-sm text-[#fcb633] font-bold hover:underline"
 						>
 							{language === "amh" ? "ተጨማሪ መፍትሄዎችን ይመልከቱ" : "See More Solutions"}
 						</a>
-					)}
+					)} */}
 				</motion.div>
 			))}
 		</motion.div>

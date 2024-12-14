@@ -78,4 +78,36 @@ export const works = [
       "During the testing phase, agents in Mojo and Holeta reported fantastic outcomes. This program built their capacity through digital tools and simplified many aspects of their work. While recognition are great, the true success lies in the positive impact on these agents, who have shown significant improvements. This innovative approach has enhanced their skills, provided easy access to crucial information, and motivated them to excel, resulting in more effective and consistent land resource management.",
     ],
   },
+  {
+    id: 3,
+    icon: "/img/corporate-training/workLife.png",
+    image: "/img/corporate-training/decentWorkImg.webp",
+    title: "Enhancing Digital Learning for Decent Work: A Comprehensive Training Program for GIZ STEP",
+    description: "This project, undertaken for GIZ STEP, aims to ensure that the training is not only effective but also accessible and tailored to the needs of all learners involved.",
+    projectOverview: [
+      "Addressing Knowledge Gaps: Focusing on the deficiencies in traditional training methods.",
+      "Empowering Development Agents: Equipping them to manage land use effectively and support farmers with their expertise.",
+      "Raising Awareness About Digital Learning: Promoting the benefits and effectiveness of digital training solutions."
+    ],
+    whatWeMade: "To effectively engage learners, Enkoy Technologies developed twenty inclusive digital learning modules that focus on experience-based learning and interactive content. These modules cover crucial topics such as erosion causes, impacts on agriculture, and farmers' well-being. They connect farming practices to erosion, explain control principles, and introduce soil and water conservation methods. This approach ensures that learners are actively involved in the learning process, making it more engaging and impactful.",
+    shortIssus: "Face-to-face training often results in knowledge gaps and delayed access to crucial information. Enkoy Technologies addresses these challenges by providing timely, interactive, and customized digital learning.",
+    longIssus: {
+      title: "Addressing Key Training Challenges with Digital Solutions",
+      description: "Enkoy Technologies offers innovative digital education solutions that address several key issues. By developing twenty engaging digital learning modules, they tackle knowledge gaps, ensure consistency, and make training accessible to remote areas. These modules provide flexibility for learners to study at their own pace, standardize training quality, and offer progress tracking through digital tools. Additionally, this approach reduces costs and promotes sustainability, empowering development agents to manage land use better and share their expertise effectively."
+    },
+    journey: {
+      title: "The Journey: The Path to an Ideal Solution",
+      description: [
+        "The journey started with a thorough Learning Experience Design phase, uncovering gaps caused by different training levels. By blending digital learning with face-to-face methods, Enkoy aimed to create a smooth, unified training system.",
+        "A fresh strategy was formed to meet learners' needs while sticking to Enkoy’s educational values. The digital modules were crafted to break down complex topics into simple, engaging narratives, animations, and interactive activities, keeping learners interested and making concepts easy to grasp.",
+        "Enkoy developed twenty digital learning modules, turning traditional training into lively, interactive experiences. Each module included video stories, quizzes, and activities to keep learners engaged and improve retention.",
+        "These digital learning experiences helped Enkoy bridge knowledge gaps, ensure consistent, high-quality training, and empower development agents. This modern approach aligned with Enkoy’s goal of fostering continuous learning and improving land use management skills."
+      ]
+    },
+    outcomes: [
+      "The digital learning program by Enkoy Technologies quickly made waves in the learning and development space, reaching an impressive milestone by empowering 60,000 development agents nationwide. Supported by GIZ CLM as funders and project guides, and Xhub Addis as program incubators, the initiative grew.",
+      "During the testing phase, agents in Mojo and Holeta reported fantastic outcomes. This program built their capacity through digital tools and simplified many aspects of their work. While recognition is great, the true success lies in the positive impact on these agents, who have shown significant improvements. This innovative approach has enhanced their skills, provided easy access to crucial information, and motivated them to excel, resulting in more effective and consistent land resource management."
+    ]
+  }
+  
 ];
