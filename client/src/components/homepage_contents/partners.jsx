@@ -8,14 +8,14 @@ const Partners = () => {
 
   // List of partner logos with their names
   const logos = [
-    { src: "/img/partners/GIZ.PNG", alt: "GIZ" },
-    { src: "/img/partners/GermenET.PNG", alt: "GermenET" },
-    { src: "/img/partners/MLS.PNG", alt: "MLS" },
-    { src: "/img/partners/MOA.PNG", alt: "MOA" },
-    { src: "/img/partners/Ozone.PNG", alt: "Ozone" },
-    { src: "/img/partners/Efuye.PNG", alt: "Efuye" },
-    { src: "/img/partners/Jethro.PNG", alt: "Jethro" },
-    { src: "/img/partners/XHub.PNG", alt: "XHub" },
+    { src: "/img/partners/GIZ.png", alt: "GIZ" },
+    { src: "/img/partners/GermenET.png", alt: "GermenET" },
+    { src: "/img/partners/MLS.png", alt: "MLS" },
+    { src: "/img/partners/MOA.png", alt: "MOA" },
+    { src: "/img/partners/Ozone.png", alt: "Ozone" },
+    { src: "/img/partners/Efuye.png", alt: "Efuye" },
+    { src: "/img/partners/Jethro.png", alt: "Jethro" },
+    { src: "/img/partners/XHub.png", alt: "XHub" },
   ];
 
   const containerVariants = {
@@ -65,7 +65,7 @@ const Partners = () => {
             <img
               src={logo.src}
               alt={logo.alt}
-              className="object-contain h-auto w-36"
+              className="object-contain h-auto w-40"
             />
           </motion.div>
         ))}

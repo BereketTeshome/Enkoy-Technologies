@@ -60,7 +60,7 @@ const Jobs = () => {
         {jobsList.map((job, index) => {
           const date = new Date(job.createdAt).toString().slice(0, 16);
           return (
-            <motion.div
+            <motion.div 
               key={index}
               className="bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:-translate-y-2 transition-all"
               variants={{
@@ -70,36 +70,32 @@ const Jobs = () => {
             >
               <h2 className="text-2xl font-semibold mb-2">{job.title}</h2>
               <p className="text-gray-400 text-sm mb-4">Posted on: {date}</p>
+                <div className="flex justify-between items-center flex-wrap my-4">
+                  <div>
+                    <p className="text-sm text-gray-400">
+                      <span className="font-bold">Job Type:</span> {job.jobType}
+                    </p>
+                    <p className="text-sm text-gray-400">
+                      <span className="font-bold">Working Time:</span>{" "}
+                      {job.jobTime}
+                    </p>
+                  </div>
+                  <a
+                    href={job.applyLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-500 focus:outline-none justify-self-end"
+                  >
+                    Apply Now
+                  </a>
+                </div>
               <div
-                className=" mb-4 ql-editor text-gray-100"
+                className=" ql-editor text-gray-100"
                 dangerouslySetInnerHTML={{
                   __html: job.description,
                 }}
               ></div>
-              {/* <ul className="list-disc list-inside text-gray-400 mb-4">
-              {job.requirements.map((req, i) => (
-                <li key={i}>{req}</li>
-              ))}
-            </ul> */}
-              <div className="flex justify-between items-center flex-wrap">
-                <div>
-                  <p className="text-sm text-gray-400">
-                    <span className="font-bold">Job Type:</span> {job.jobType}
-                  </p>
-                  <p className="text-sm text-gray-400">
-                    <span className="font-bold">Working Time:</span>{" "}
-                    {job.jobTime}
-                  </p>
-                </div>
-                <a
-                  href={job.applyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 bg-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-500 focus:outline-none justify-self-end"
-                >
-                  Apply Now
-                </a>
-              </div>
+             
             </motion.div>
           );
         })}
