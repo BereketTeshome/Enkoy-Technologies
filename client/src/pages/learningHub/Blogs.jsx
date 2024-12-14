@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
+  const [loading, setLoading] = useState(true); // Loading state
   const navigate = useNavigate();
   const cookie = new Cookies();
   const language = useSelector((state) => state.language?.language);
@@ -49,10 +50,11 @@ const Blogs = () => {
         const sortedBlogs = data.blogs.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
-        console.log(sortedBlogs);
         setBlogs(sortedBlogs);
       } catch (error) {
         console.error("Error fetching blogs:", error);
+      } finally {
+        setLoading(false); // Set loading to false after data is fetched
       }
     };
     fetchData();
@@ -123,63 +125,73 @@ const Blogs = () => {
         )}
       </motion.div>
 
-      {/* Latest Blog Display */}
-      <motion.div
-        className="flex flex-col items-center gap-8 md:flex-row"
-        {...fadeInUp}
-      >
-        <div className="flex-1">
-          <div className="w-full h-[250px] md:h-[350px] relative overflow-hidden rounded-lg">
-            <motion.img
-              src={blogs[0]?.image}
-              alt="Blog Image"
-              className="object-cover object-center w-full h-full"
-              {...fadeInUp}
-            />
+      {loading ? (
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-xl font-semibold text-gray-700 animate-pulse">
+            {isAmharic ? "ብሎጎች በመጫን ላይ..." : "Loading blogs..."}
           </div>
         </div>
-
-        <div className="flex-1 my-auto">
-          <div>
-            <motion.h2
-              className={`mb-5 text-2xl font-semibold text-center ${
-                isDarkTheme ? "text-gray-100" : "text-gray-900"
-              } md:text-3xl md:text-left`}
-              {...fadeInUp}
-            >
-              {blogs[0]?.title}
-            </motion.h2>
-            <motion.p
-              className={`mt-3 mb-4 ql-editor  ${
-                isDarkTheme ? "text-gray-100" : "text-gray-700"
-              }`}
-              dangerouslySetInnerHTML={{
-                __html: blogs[0]?.description.slice(0, 500),
-              }}
-              {...fadeInUp}
-            ></motion.p>
-
-            <div className="text-center md:text-left">
-              <motion.a
-                href="#blogs"
-                className={`px-6 py-3 text-white transition ${
-                  isDarkTheme
-                    ? "bg-yellow-500 hover:bg-gray-700"
-                    : "bg-gray-900 hover:bg-gray-700"
-                }`}
-                {...fadeInUp}
-              >
-                {isAmharic ? "የበለጠ ይመልከቱ" : "See More"}
-              </motion.a>
+      ) : (
+        <>
+          {/* Latest Blog Display */}
+          <motion.div
+            className="flex flex-col items-center gap-8 md:flex-row"
+            {...fadeInUp}
+          >
+            <div className="flex-1">
+              <div className="w-full h-[250px] md:h-[350px] relative overflow-hidden rounded-lg">
+                <motion.img
+                  src={blogs[0]?.image}
+                  alt="Blog Image"
+                  className="object-cover object-center w-full h-full"
+                  {...fadeInUp}
+                />
+              </div>
             </div>
-          </div>
-        </div>
-      </motion.div>
 
-      {/* Blog Component Section */}
-      <motion.div id="blogs" {...fadeInUp}>
-        <Blog blogs={blogs} />
-      </motion.div>
+            <div className="flex-1 my-auto">
+              <div>
+                <motion.h2
+                  className={`mb-5 text-2xl font-semibold text-center ${
+                    isDarkTheme ? "text-gray-100" : "text-gray-900"
+                  } md:text-3xl md:text-left`}
+                  {...fadeInUp}
+                >
+                  {blogs[0]?.title}
+                </motion.h2>
+                <motion.p
+                  className={`mt-3 mb-4 ql-editor  ${
+                    isDarkTheme ? "text-gray-100" : "text-gray-700"
+                  }`}
+                  dangerouslySetInnerHTML={{
+                    __html: blogs[0]?.description.slice(0, 500),
+                  }}
+                  {...fadeInUp}
+                ></motion.p>
+
+                <div className="text-center md:text-left">
+                  <motion.a
+                    href="#blogs"
+                    className={`px-6 py-3 text-white transition ${
+                      isDarkTheme
+                        ? "bg-yellow-500 hover:bg-gray-700"
+                        : "bg-gray-900 hover:bg-gray-700"
+                    }`}
+                    {...fadeInUp}
+                  >
+                    {isAmharic ? "የበለጠ ይመልከቱ" : "See More"}
+                  </motion.a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Blog Component Section */}
+          <motion.div id="blogs" {...fadeInUp}>
+            <Blog blogs={blogs} />
+          </motion.div>
+        </>
+      )}
     </motion.div>
   );
 };
