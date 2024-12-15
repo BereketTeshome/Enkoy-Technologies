@@ -53,7 +53,7 @@ const OurDEI = () => {
 				<div className="w-[70%] text-gray-900 mb-20 *:mb-20">
 					<AnimatedSection>
 						<div>
-							<h3 className="mb-5 text-4xl text-gray-200">
+							<h3 className={`mb-5 text-4xl ${isDarkTheme ? "text-[#F9D75D]" : "text-gray-700"}`}>
 								{isAmharic ? "ምን እንደምንለይም ያደርጋል?" : "What Makes Us Unique"}
 							</h3>
 							<p
@@ -70,7 +70,7 @@ const OurDEI = () => {
 
 					<AnimatedSection>
 						<div>
-							<h3 className="mb-5 text-4xl text-gray-200">
+							<h3 className={`mb-5 text-4xl ${isDarkTheme ? "text-[#F9D75D]" : "text-gray-700"}`}>
 								{isAmharic
 									? "አካታች የትምህርት ተሞክሮዎች"
 									: "Inclusive Learning Experiences"}
@@ -105,7 +105,7 @@ const OurDEI = () => {
 
 					<AnimatedSection>
 						<div>
-							<h3 className="mb-5 text-4xl text-gray-200">
+							<h3 className={`mb-5 text-4xl ${isDarkTheme ? "text-[#F9D75D]" : "text-gray-700"}`}>
 								{isAmharic
 									? "የአቅራቢ ልዩነት እና አጋርነት"
 									: "Supplier Diversity and Partnerships"}
@@ -124,7 +124,7 @@ const OurDEI = () => {
 
 					<AnimatedSection>
 						<div>
-							<h3 className="mb-5 text-4xl text-gray-200">
+							<h3 className={`mb-5 text-4xl ${isDarkTheme ? "text-[#F9D75D]" : "text-gray-700"}`}>
 								{isAmharic
 									? "DEIን በማስተዋወቅ ረገድ የእኛ ሚና"
 									: "Our Role in Promoting DEI"}
@@ -143,7 +143,7 @@ const OurDEI = () => {
 
 					<AnimatedSection>
 						<div>
-							<h3 className="mb-5 text-4xl text-gray-200">
+							<h3 className={`mb-5 text-4xl ${isDarkTheme ? "text-[#F9D75D]" : "text-gray-700"}`}>
 								{isAmharic
 									? "ለዘላቂ ተግባራት የገባነው ቃል"
 									: "Our Promise to Sustainable Practices"}
@@ -172,7 +172,9 @@ const OurDEI = () => {
 
 					<AnimatedSection>
 						<div>
-							<h3 className="mb-5 text-4xl text-gray-200">
+						<h3
+							className={`mb-5 text-4xl ${isDarkTheme ? "text-[#F9D75D]" : "text-gray-700"}`}
+							>
 								{isAmharic ? "አካታች የእድገት ጉዞ" : "Inclusive Growth Journey"}
 							</h3>
 							<p
