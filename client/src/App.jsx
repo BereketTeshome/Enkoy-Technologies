@@ -10,6 +10,8 @@ import Loader from "./components/Loader.jsx";
 import ReactGA from "react-ga";
 import EditBlogPage from "./pages/EditBlogPage.jsx";
 import EditEbookPage from "./pages/EditEbookPage.jsx";
+import ResetPassword from "./pages/ResetPassword.jsx";
+import ForgotPassword from "./pages/ForgotPassword.jsx";
 
 ReactGA.initialize("G-S3EY21WLWQ");
 
@@ -270,7 +272,13 @@ const App = () => {
             {/* Login and Registration Page */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/bot" element={<ChatBot />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route
+              path="/reset-password/:id/:token"
+              element={<ResetPassword />}
+            />
+
+            {/* <Route path="/bot" element={<ChatBot />} /> */}
 
             {/* Add a fallback route (optional) */}
             <Route path="*" element={<UnderConstruction />} />

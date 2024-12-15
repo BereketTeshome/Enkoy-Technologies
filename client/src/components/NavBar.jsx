@@ -139,7 +139,7 @@ const NavBar = () => {
               <img
                 src={decode.profileImg}
                 alt="Profile"
-                className="object-cover w-12 h-12 border rounded-full shadow-md"
+                className="object-cover w-12 h-12  rounded-full shadow-md"
               />
             ) : (
               <motion.div

@@ -88,7 +88,7 @@ const updateUser = async (req, res) => {
 };
 
 const forgotPassword = async (req, res) => {
-  const { email } = req.body;
+  const { email, isAdmin } = req.body;
 
   if (!email) {
     return res.status(400).json({ message: "Email is required" });
@@ -118,23 +118,45 @@ const forgotPassword = async (req, res) => {
     });
 
     // Define mail options (where to send, subject, and content)
-    const mailOptions = {
-      from: "zelalemt2525@gmail.com",
-      to: email, // Send to user's email
-      subject: "Reset your password",
-      text: `Click here to reset your password: http://localhost:5173/reset-password/${id}/${token}`,
-    };
+    if (isAdmin) {
+      const mailOptions = {
+        from: "zelalemt2525@gmail.com",
+        to: email, // Send to user's email
+        subject: "Reset your password",
+        text: `Click here to reset your password: http://localhost:5173/reset-password/${id}/${token}`,
+      };
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.error(error);
+          return res
+            .status(500)
+            .json({ message: "Error sending email", error });
+        } else {
+          console.log("Email sent: " + info.response);
+          return res.status(200).json({ message: "Email sent successfully" });
+        }
+      });
+    } else {
+      const mailOptions = {
+        from: "zelalemt2525@gmail.com",
+        to: email, // Send to user's email
+        subject: "Reset your password",
+        text: `Click here to reset your password: http://localhost:5173/reset-password/${id}/${token}`,
+      };
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.error(error);
+          return res
+            .status(500)
+            .json({ message: "Error sending email", error });
+        } else {
+          console.log("Email sent: " + info.response);
+          return res.status(200).json({ message: "Email sent successfully" });
+        }
+      });
+    }
 
     // Send the email using the transporter
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.error(error);
-        return res.status(500).json({ message: "Error sending email", error });
-      } else {
-        console.log("Email sent: " + info.response);
-        return res.status(200).json({ message: "Email sent successfully" });
-      }
-    });
   } catch (error) {
     console.error("Error handling forgot password request:", error);
     return res.status(500).json({ message: "Internal server error", error });
@@ -146,18 +168,36 @@ const resetPassword = async (req, res) => {
   const { password } = req.body;
 
   try {
-    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-      if (err) {
-        return res.json({ status: "error with token" });
-      } else {
-        bcrypt.hash(password, 10).then((hash) => {
-          User.findByIdAndUpdate({ _id: id }, { password: hash })
-            .then((u) => res.send({ status: "success!" }))
-            .catch((err) => res.send({ status: err }));
-        });
-      }
-    });
-  } catch (error) {}
+    // Verify token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    if (!decoded) {
+      return res
+        .status(401)
+        .json({ status: "error", message: "Invalid or expired token" });
+    }
+
+    // Check if user exists
+    const user = await User.findById(id);
+    if (!user) {
+      return res
+        .status(404)
+        .json({ status: "error", message: "User not found" });
+    }
+
+    // Hash new password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Update user password
+    await User.findByIdAndUpdate(id, { password: hashedPassword });
+
+    res
+      .status(200)
+      .json({ status: "success", message: "Password reset successful" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: "error", message: "error" });
+  }
 };
 
 module.exports = {
