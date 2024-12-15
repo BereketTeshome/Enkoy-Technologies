@@ -19,6 +19,9 @@ import JobsPage from "./pages/JobsPage";
 import AddJobPage from "./pages/AddJobPage";
 import EditEbookPage from "./pages/EditEbookPage";
 import EditJobPage from "./pages/EditJobsPage";
+import PortfolioPage from "./pages/PortfolioPage";
+import EditPortfolioPage from "./pages/EditPortfolioPage";
+import AddPortfolioPage from "./pages/AddPortfolioPage";
 
 const App = () => {
   const navigate = useNavigate();
@@ -30,26 +33,26 @@ const App = () => {
       <SideBar isOpen={isOpen} />
       <div className="flex-grow bg-[#F0F2FF] px-8">
         <Routes>
-          {
+          {sessionStorage.getItem("user_token") && (
             <>
               <Route path="/" element={<HomePage />} />
               <Route path="/blogs" element={<BlogPage />} />
-              {/* <Route path="/events" element={<EventPage />} /> */}
+              <Route path="/portfolio" element={<PortfolioPage />} />
               <Route path="/ebooks" element={<EbooksPage />} />
               <Route path="/jobs" element={<JobsPage />} />
               <Route path="/add-blog" element={<AddBlogPage />} />
               <Route path="/edit-blog/:id" element={<EditBlogPage />} />
               <Route path="/add-ebooks" element={<AddEbookPage />} />
               <Route path="/edit-ebook/:id" element={<EditEbookPage />} />
-              {/* <Route path="/add-news" element={<AddNewsPage />} /> */}
+              <Route path="/add-portfolio" element={<AddPortfolioPage />} />
               <Route path="/add-jobs" element={<AddJobPage />} />
               <Route path="/edit-jobs/:id" element={<EditJobPage />} />
-              {/* <Route
-                path="/edit-donations/:id"
-                element={<EditDonationPage />}
-              /> */}
+              <Route
+                path="/edit-portfolio/:id"
+                element={<EditPortfolioPage />}
+              />
             </>
-          }
+          )}
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route
@@ -58,7 +61,7 @@ const App = () => {
           />
           {/* Catch-all route that redirects to login */}
           {/* <Route path="*" element={<Navigate to="/login" />} /> */}
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </div>
       <button

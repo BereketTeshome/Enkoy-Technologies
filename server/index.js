@@ -82,12 +82,13 @@ app.get("/logout", (req, res) => {
 const UPLOAD_DIR = path.join(__dirname, "uploads");
 const PDF_UPLOAD_DIR = path.join(UPLOAD_DIR, "pdfs");
 const IMAGE_UPLOAD_DIR = path.join(UPLOAD_DIR, "images");
+const VIDEO_UPLOAD_DIR = path.join(UPLOAD_DIR, "videos");
 
 // Serve the uploads directory as static
 app.use("/uploads", express.static(UPLOAD_DIR));
 
 // Ensure directories exist
-[PDF_UPLOAD_DIR, IMAGE_UPLOAD_DIR].forEach((dir) => {
+[PDF_UPLOAD_DIR, IMAGE_UPLOAD_DIR, VIDEO_UPLOAD_DIR].forEach((dir) => {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 });
 
@@ -172,6 +173,39 @@ app.post("/upload/pdf", (req, res) => {
   });
 });
 
+// Video upload endpoint
+app.post("/upload/video", (req, res) => {
+  if (!req.files || !req.files.file) {
+    return res.status(400).send("No file was uploaded.");
+  }
+
+  const file = req.files.file;
+
+  // Validate file type
+  if (!file.mimetype.startsWith("video/")) {
+    return res.status(400).send("Only video files are allowed.");
+  }
+
+  const fileExtension = path.extname(file.name).toLowerCase();
+  const uniqueFileName = `${uuidv4()}${fileExtension}`;
+  const uploadPath = path.join(VIDEO_UPLOAD_DIR, uniqueFileName);
+
+  // Save the file
+  file.mv(uploadPath, (err) => {
+    if (err) {
+      console.error("Error saving video:", err);
+      return res.status(500).send("Video upload failed.");
+    }
+
+    const fileUrl = `${req.protocol}://${req.get(
+      "host"
+    )}/uploads/videos/${uniqueFileName}`;
+    res.send({
+      message: "Video uploaded successfully!",
+      fileUrl,
+    });
+  });
+});
 // Start server
 const start = async () => {
   const port = 3000;

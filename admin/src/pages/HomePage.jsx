@@ -2,6 +2,7 @@ import {
   Event,
   Newspaper,
   Person,
+  PostAdd,
   RssFeedRounded,
   VolunteerActivism,
   Work,
@@ -22,7 +23,7 @@ const HomePage = () => {
   const [ebooks, setEbooks] = useState([]);
   const [users, setUsers] = useState([]);
   const [jobs, setJobs] = useState([]);
-  // const [donations, setDonations] = useState([]);
+  const [portfolio, setPortfolio] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deleted, setDeleted] = useState(false);
   const [btnLoading, setBtnLoading] = useState(false);
@@ -80,16 +81,33 @@ const HomePage = () => {
   }, []);
   const options = {};
   const data = {
-    labels: ["Blogs", "Ebooks", "Jobs"],
+    labels: ["Blogs", "Ebooks", "Jobs", "Portfolio"],
     datasets: [
       {
         label: "Total Posts",
-        data: [blogs.length, ebooks.length, jobs.length],
-        backgroundColor: ["#49BD81", "#FFA001", "#A855F7"],
+        data: [blogs.length, ebooks.length, jobs.length, portfolio.length],
+        backgroundColor: ["#49BD81", "#FFA001", "#A855F7", "#EF4444"],
         hoverOffset: 4,
       },
     ],
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_SERVER_URL}/api/portfolio/get`
+        );
+        setPortfolio(res.data.portfolio);
+      } catch (error) {
+        console.error("Error fetching portfolio:", error);
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
   const deleteBlog = async (id) => {};
   const columns = useMemo(
     () => [
@@ -172,6 +190,15 @@ const HomePage = () => {
             <div>
               <p className="text-gray-400 text-lg">Ebook Posts</p>
               <p className="text-lg font-semibold">{ebooks.length}</p>
+            </div>
+          </div>
+          <div className="flex items-center bg-white py-5 gap-4 justify-center">
+            <div className="bg-red-100 text-red-500 p-3 rounded-full">
+              <PostAdd sx={{ fontSize: "60px" }} />
+            </div>
+            <div>
+              <p className="text-gray-400 text-lg">Portfolio Posts</p>
+              <p className="text-lg font-semibold">{portfolio.length}</p>
             </div>
           </div>
           <div className="flex items-center bg-white py-5 gap-4 justify-center">

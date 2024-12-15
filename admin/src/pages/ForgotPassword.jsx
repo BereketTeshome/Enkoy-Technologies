@@ -16,6 +16,7 @@ const ForgotPassword = () => {
         `${import.meta.env.VITE_SERVER_URL}/api/user/forgot-password`,
         {
           email: email,
+          isAdmin: true,
         }
       );
       setLoading(false);
