@@ -36,7 +36,7 @@ const DigitalTraining = () => {
 			</div>
 
 			{/* Right Section */}
-			<div className="pl-4 flex flex-col gap-3">
+			{/* <div className="flex flex-col gap-3 pl-4">
 				<a
 					href="/create-course"
 					className="text-sm text-yellow-400 hover:underline"
@@ -49,7 +49,7 @@ const DigitalTraining = () => {
 				>
 					{texts.publishedTrainings}
 				</a>
-			</div>
+			</div> */}
 		</div>
 	);
 };

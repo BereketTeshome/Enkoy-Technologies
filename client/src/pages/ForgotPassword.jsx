@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      await axios.post(`http://localhost:3000/api/user/forgot-password`, {
+      await axios.post(`https://server.enkoytechnologies.com/api/user/forgot-password`, {
         email: email,
         isAdmin: false,
       });
@@ -60,7 +60,7 @@ const ForgotPassword = () => {
           />
 
           {message && (
-            <p className="text-xs text-blue-600 mt-3 text-center">{message}</p>
+            <p className="mt-3 text-xs text-center text-blue-600">{message}</p>
           )}
           <button
             type="submit"

@@ -7,13 +7,15 @@ const Jobs = () => {
   const language = useSelector((state) => state.language?.language);
   const isAmharic = language === "amh";
   const [jobsList, setJobsList] = useState([]);
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
           // "https://server.enkoytechnologies.com/api/blog/get"
-          "http://localhost:3000/api/job/get"
+          "https://server.enkoytechnologies.com/api/job/get"
         );
         const sortedJobs = data.jobs.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
@@ -28,15 +30,19 @@ const Jobs = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
+    <div
+  className={`${
+    isDarkTheme ? "bg-gray-800" : "bg-white"
+  } min-h-screen text-white p-8`}
+>
       {/* Header */}
       <div className="text-center">
-        <h1 className="text-4xl font-bold">
+        <h1 className={`${isDarkTheme ? "text-white" : "text-gray-700"} text-4xl font-bold`}>
           {isAmharic
             ? "አስደሳች የስራ እድሎችን ያስሱ"
             : "Explore Exciting Job Opportunities"}
         </h1>
-        <p className="text-gray-400 mt-2">
+        <p className="mt-2 text-gray-400">
           {isAmharic
             ? "ለእርስዎ ትክክለኛውን ሚና ይፈልጉ እና ዛሬ ያመልክቱ!"
             : "Find the right role for you and apply today!"}
@@ -45,7 +51,7 @@ const Jobs = () => {
 
       {/* Job Listings */}
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
+        className="grid grid-cols-1 gap-6 mt-8 sm:grid-cols-2 lg:grid-cols-3"
         initial="hidden"
         animate="visible"
         variants={{
@@ -62,15 +68,15 @@ const Jobs = () => {
           return (
             <motion.div 
               key={index}
-              className="bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:-translate-y-2 transition-all"
+              className="p-6 transition-all transform bg-gray-800 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2"
               variants={{
                 hidden: { opacity: 0, y: 50 },
                 visible: { opacity: 1, y: 0 },
               }}
             >
-              <h2 className="text-2xl font-semibold mb-2">{job.title}</h2>
-              <p className="text-gray-400 text-sm mb-4">Posted on: {date}</p>
-                <div className="flex justify-between items-center flex-wrap my-4">
+              <h2 className="mb-2 text-2xl font-semibold">{job.title}</h2>
+              <p className="mb-4 text-sm text-gray-400">Posted on: {date}</p>
+                <div className="flex flex-wrap items-center justify-between my-4">
                   <div>
                     <p className="text-sm text-gray-400">
                       <span className="font-bold">Job Type:</span> {job.jobType}
@@ -84,13 +90,13 @@ const Jobs = () => {
                     href={job.applyLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-500 focus:outline-none justify-self-end"
+                    className="px-4 py-2 text-sm font-semibold bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none justify-self-end"
                   >
                     Apply Now
                   </a>
                 </div>
               <div
-                className=" ql-editor text-gray-100"
+                className="text-gray-100 ql-editor"
                 dangerouslySetInnerHTML={{
                   __html: job.description,
                 }}

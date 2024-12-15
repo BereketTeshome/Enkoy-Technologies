@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../components/Header";
 // import Contents from "../components/Contents";
 import Partners from "../components/homepage_contents/partners";

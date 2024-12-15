@@ -197,8 +197,8 @@ const UserProfilePage = () => {
                   },
                 }}
               >
-                <MenuItem value="eng">English</MenuItem>
-                <MenuItem value="amh">Amharic</MenuItem>
+                <MenuItem value="eng" sx={{color: "#fff"}}>English</MenuItem>
+                <MenuItem value="amh" sx={{color: "#fff"}}>Amharic</MenuItem>
               </Select>
             </motion.div>
           </motion.div>

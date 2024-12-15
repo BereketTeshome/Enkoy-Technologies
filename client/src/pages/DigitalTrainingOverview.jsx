@@ -42,13 +42,11 @@ const DigitalTrainingOverview = () => {
           />
         </motion.div>
         <motion.div className="flex-1">
-          <h2 className="text-3xl sm:text-5xl text-gray-650 mb-7">
+          <h2 className={`text-3xl sm:text-5xl text-gray-650 mb-7 ${isDarkTheme ? "text-gray-300" : "text-gray-900"}`}>
             Transform Learning with Digital Training Solutions
           </h2>
           <p
-            className={`text-justify ${
-              isDarkTheme ? "text-gray-300" : "text-gray-900"
-            }`}
+            className={`text-justify ${isDarkTheme ? "text-gray-300" : "text-gray-900"}`}
           >
             Most people are visual learners, so creating visual content can
             capture their attention and evoke emotions. At Enkoy, we use our

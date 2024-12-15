@@ -1,6 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { useSelector } from "react-redux";
 
 const Portfolio = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
+  const language = useSelector((state) => state.language?.language);
+  const isAmharic = language === "amh";
   const projects = [
     {
       id: 1,
@@ -30,9 +35,9 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="px-10 py-32 bg-gray-900 md:px-20">
+    <div className={`px-10 min-h-screen py-32 md:px-20 ${isDarkTheme ? "bg-gray-900" : "bg-gray-100"}`}>
       <motion.h1
-        className="mb-10 text-4xl font-extrabold text-center text-white"
+        className={`mb-10 text-4xl sm:text-5xl font-bold text-center ${isDarkTheme ? "text-white" : "text-gray-700"}`}
         variants={headerAnimation}
         initial="hidden"
         animate="visible"

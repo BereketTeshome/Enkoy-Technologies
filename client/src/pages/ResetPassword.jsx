@@ -21,7 +21,7 @@ const ResetPassword = () => {
     try {
       setLoading(true);
       await axios.post(
-        `http://localhost:3000/api/user/reset-password/${id}/${token}`,
+        `https://server.enkoytechnologies.com/api/user/reset-password/${id}/${token}`,
         {
           password: password,
         }
