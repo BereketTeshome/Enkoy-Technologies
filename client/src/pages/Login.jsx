@@ -49,8 +49,8 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     // Redirect to your backend's Google OAuth endpoint
-    // window.location.href = "https://server.enkoytechnologies.com/auth/google";
     window.location.href = "https://server.enkoytechnologies.com/auth/google";
+    // window.location.href = "http://localhost:3000/auth/google";
   };
 
   return (
@@ -99,7 +99,7 @@ const Login = () => {
           )}
           <a
             href="/forgot-password"
-            className="text-blue-600 hover:underline text-xs "
+            className="text-xs text-blue-600 hover:underline "
           >
             Forgot Password?
           </a>

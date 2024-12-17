@@ -139,7 +139,7 @@ const NavBar = () => {
               <img
                 src={decode.profileImg}
                 alt="Profile"
-                className="object-cover w-12 h-12  rounded-full shadow-md"
+                className="object-cover w-12 h-12 rounded-full shadow-md"
               />
             ) : (
               <motion.div
@@ -220,14 +220,36 @@ const NavBar = () => {
                 </AnimatePresence>
               </motion.div>
             ))}
-            <motion.a
-              href="/Contact"
-              className="navLightLinkContactUs"
-              initial={{ y: -16 }}
-              animate={{ y: 0 }}
-            >
-              Contact Us
-            </motion.a>
+            {decode ? (
+          <a href="/profile" className="w-full ml-10 ">
+            {decode.profileImg ? (
+              <img
+                src={decode.profileImg}
+                alt="Profile"
+                className="object-cover w-12 h-12 rounded-full shadow-md"
+              />
+            ) : (
+              <motion.div
+                className="flex items-center justify-center w-12 h-12 text-xl font-bold text-gray-700 uppercase rounded-full bg-[#E6C354]"
+                whileHover={{ scale: 1.1 }}
+              >
+                {decode.username?.slice(0, 2) || ""}
+                {console.log("profile image", decode.profileImg)}
+              </motion.div>
+            )}
+          </a>
+        ) : (
+          <motion.a
+            href="/login"
+            className="relative text-sm font-semibold max-w-[110px] bg-gradient-to-r from-yellow-500 to-yellow-500 text-white flex items-center justify-center px-5 py-2 rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-yellow-500/50 ml-10"
+            variants={{
+              hidden: { opacity: 0, y: -20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+          >
+            login
+          </motion.a>
+        )}
           </motion.div>
         )}
       </AnimatePresence>

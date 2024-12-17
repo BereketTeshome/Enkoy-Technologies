@@ -60,7 +60,7 @@ const UserProfilePage = () => {
   const handleProfileChange = async () => {
     try {
       const { data } = await axios.put(
-        `https://server.enkoytechnologies.com/api/user/users/${decode.userId}`,
+        `https://enkoytechnologies.com/api/user/users/${decode.userId}`,
         {
           username: decode.username,
           email: decode.email,
@@ -189,16 +189,18 @@ const UserProfilePage = () => {
                 sx={{
                   ".MuiSelect-select": {
                     padding: "6px 16px",
+                    color: "#fff"
                   },
                   ".MuiMenuItem-root": {
                     display: "flex",
                     gap: "8px",
                     alignItems: "center",
+                    color: "#fff"
                   },
                 }}
               >
-                <MenuItem value="eng" sx={{color: "#fff"}}>English</MenuItem>
-                <MenuItem value="amh" sx={{color: "#fff"}}>Amharic</MenuItem>
+                <MenuItem value="eng" sx={{color: "#444"}}>English</MenuItem>
+                <MenuItem value="amh" sx={{color: "#444"}}>Amharic</MenuItem>
               </Select>
             </motion.div>
           </motion.div>

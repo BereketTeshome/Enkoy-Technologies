@@ -42,6 +42,7 @@ app.get(
   })
 );
 
+
 app.get(
   "/google/callback",
   passport.authenticate("google", {
@@ -51,8 +52,8 @@ app.get(
     // Use the token from req.token set in auth.js
     if (req.token) {
       res.cookie("user", req.token, {
-        httpOnly: false, // Secure cookie
-        secure: false, // Use true in production with HTTPS
+        httpOnly: false,  // Secure cookie
+        secure: false,   // Use true in production with HTTPS
         maxAge: 24 * 60 * 60 * 1000, // 1 day
       });
     }
@@ -64,7 +65,8 @@ app.get(
   }
 );
 
-app.get("/protected", isLoggedIn, (req, res) => {
+
+  app.get("/protected", isLoggedIn, (req, res) => {
   res.send(`Hello ${req.user.displayName}!`);
 });
 
