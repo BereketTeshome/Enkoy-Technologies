@@ -9,11 +9,11 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      video: "../../public/videos/our-works1.mp4",
+      video: "/our-works1.mp4",
     },
     {
       id: 2,
-      video: "../../public/videos/our-works2.mp4",
+      video: "/our-works2.mp4",
     },
   ];
 
@@ -43,7 +43,7 @@ const Portfolio = () => {
         animate="visible"
         transition={{ duration: 0.8 }}
       >
-        Our Recent Portfolio
+        {isAmharic ? "የእኛ የቅርብ ጊዜ ፖርትፎሊዮ" : "Our Recent Portfolio"}
       </motion.h1>
       {/* Projects Grid */}
       <motion.div

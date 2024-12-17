@@ -29,12 +29,12 @@ const OurWork = () => {
 						alt={texts.title}
 						className="w-12 h-12 mr-3"
 					/>
-					<span className="text-lg text-gray-600 font-bold">{texts.title}</span>
+					<span className="text-lg font-bold text-gray-600">{texts.title}</span>
 				</div>
 				<p className="mb-4 text-sm">{texts.description}</p>
 				<a
 					href="/our-work"
-					className="font-medium text-yellow-400 hover:underline"
+					className="font-bold text-yellow-400 hover:underline"
 				>
 					{texts.caseStudies}
 				</a>
@@ -42,12 +42,12 @@ const OurWork = () => {
 
 			{/* Right Section */}
 			<div className="w-[40%]">
-				<h3 className="mb-2 text-sm text-gray-600 font-semibold">
+				<h3 className="mb-2 text-sm font-semibold text-gray-600">
 					{texts.campaignsTitle}
 				</h3>
 				<a
 					href="/portfolio"
-					className="font-medium text-yellow-400 hover:underline"
+					className="font-bold text-yellow-400 hover:underline"
 				>
 					{texts.portfolio}
 				</a>

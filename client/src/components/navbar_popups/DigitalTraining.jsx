@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 
 const DigitalTraining = () => {
@@ -29,7 +28,7 @@ const DigitalTraining = () => {
 				<p className="mb-4 text-sm">{texts.description}</p>
 				<a
 					href="/digital-training"
-					className="text-sm font-medium text-yellow-400 hover:underline"
+					className="font-bold text-yellow-500 text-md hover:underline"
 				>
 					{texts.overview}
 				</a>
