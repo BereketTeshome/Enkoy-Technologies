@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -10,6 +11,8 @@ const EditPortfolioPage = () => {
   const [video, setVideo] = useState("");
   const [portfolio, setPortfolio] = useState([]);
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -22,6 +25,7 @@ const EditPortfolioPage = () => {
       const portfolioData = {
         title: title ? title : portfolio.title,
         video: video ? video : portfolio.video,
+        description: description ? description : portfolio.description,
       };
       await axios.put(
         `${import.meta.env.VITE_SERVER_URL}/api/portfolio/edit/${id}`,
@@ -45,6 +49,7 @@ const EditPortfolioPage = () => {
           `${import.meta.env.VITE_SERVER_URL}/api/portfolio/get/${id}`
         );
         setPortfolio(res.data.portfolio);
+        setDescription(res.data.portfolio.description);
       } catch (error) {
         console.error("Error fetching portfolios:", error);
       }
@@ -52,6 +57,17 @@ const EditPortfolioPage = () => {
     };
     fetchData();
   }, []);
+
+  const toolbarOptions = [
+    ["bold", "italic", "underline", "strike"],
+    ["blockquote", "code-block"],
+    [{ header: 1 }, { header: 2 }],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ color: [] }, { background: [] }],
+    ["clean"],
+  ];
+  const modules = { toolbar: toolbarOptions };
+  const handleDescriptionChange = (value) => setDescription(value);
 
   return (
     <motion.div
@@ -113,6 +129,22 @@ const EditPortfolioPage = () => {
               Your browser does not support the video tag.
             </video>
           </div>
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
+            className="mb-4"
+          >
+            <label className="block text-sm font-medium text-gray-700">
+              Description
+            </label>
+            <ReactQuill
+              value={description}
+              onChange={handleDescriptionChange}
+              modules={modules}
+              theme="snow"
+            />
+          </motion.div>
+
           <motion.button
             type="submit"
             className="w-full p-3 mt-4 text-white bg-[#ffa216] rounded hover:bg-[#ff8c00]"

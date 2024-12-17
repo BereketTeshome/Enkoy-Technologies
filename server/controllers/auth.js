@@ -123,7 +123,9 @@ const forgotPassword = async (req, res) => {
         from: "zelalemt2525@gmail.com",
         to: email, // Send to user's email
         subject: "Reset your password",
-        text: `Click here to reset your password: https://server.enkoytechnologies.com/reset-password/${id}/${token}`,
+
+        text: `Click here to reset your password: https://admin.enkoytechnologies.com/reset-password/${id}/${token}`,
+
       };
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
@@ -141,7 +143,9 @@ const forgotPassword = async (req, res) => {
         from: "zelalemt2525@gmail.com",
         to: email, // Send to user's email
         subject: "Reset your password",
-        text: `Click here to reset your password: https://server.enkoytechnologies.com/reset-password/${id}/${token}`,
+
+        text: `Click here to reset your password: https://enkoytechnologies.com/reset-password/${id}/${token}`,
+
       };
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
