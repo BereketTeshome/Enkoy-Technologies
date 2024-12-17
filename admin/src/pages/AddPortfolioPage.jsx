@@ -10,10 +10,22 @@ import VideoUpload from "../components/VideoUpload";
 
 const AddPortfolioPage = () => {
   const [video, setVideo] = useState("");
-
+  const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const toolbarOptions = [
+    ["bold", "italic", "underline", "strike"],
+    ["blockquote", "code-block"],
+    [{ header: 1 }, { header: 2 }],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ color: [] }, { background: [] }],
+    ["clean"],
+  ];
+  const modules = { toolbar: toolbarOptions };
+
+  const handleDescriptionChange = (value) => setDescription(value);
 
   // Decode the JWT token
   const addPortfolio = async (e) => {
@@ -23,6 +35,7 @@ const AddPortfolioPage = () => {
       const portfolioData = {
         title,
         video,
+        description,
       };
       await axios.post(
         `${import.meta.env.VITE_SERVER_URL}/api/portfolio/create`,
@@ -88,6 +101,21 @@ const AddPortfolioPage = () => {
             <VideoUpload setVideo={setVideo} />
           </div>
           <br />
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
+            className="mb-4"
+          >
+            <label className="block text-sm font-medium text-gray-700">
+              Description
+            </label>
+            <ReactQuill
+              value={description}
+              onChange={handleDescriptionChange}
+              modules={modules}
+              theme="snow"
+            />
+          </motion.div>
 
           <motion.button
             type="submit"
