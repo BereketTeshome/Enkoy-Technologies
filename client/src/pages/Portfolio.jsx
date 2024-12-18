@@ -16,15 +16,29 @@ const Portfolio = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/portfolio/get");
+        const response = await fetch(
+          "https://server.enkoytechnologies.com/api/portfolio/get"
+        );
         const data = await response.json();
-        setProjects(data);
+        console.log("Fetched Data:", data);
+  
+        // Ensure compatibility with the provided JSON structure
+        if (data?.portfolio) {
+          // Sort projects by the 'createdAt' field in descending order
+          const sortedProjects = data.portfolio.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          );
+          setProjects(sortedProjects);
+        } else {
+          console.error("Unexpected response format");
+        }
       } catch (error) {
         console.error("Error fetching projects:", error);
       }
     };
     fetchProjects();
   }, []);
+  
 
   // Framer Motion variants
   const fadeInVariant = {
@@ -44,9 +58,15 @@ const Portfolio = () => {
   };
 
   return (
-    <div className={`px-10 min-h-screen py-32 md:px-20 ${isDarkTheme ? "bg-gray-900" : "bg-gray-100"}`}>
+    <div
+      className={`px-10 min-h-screen py-32 md:px-20 ${
+        isDarkTheme ? "bg-gray-900" : "bg-gray-100"
+      }`}
+    >
       <motion.h1
-        className={`mb-10 text-4xl sm:text-5xl font-bold text-center ${isDarkTheme ? "text-white" : "text-gray-700"}`}
+        className={`mb-10 text-4xl sm:text-5xl font-bold text-center ${
+          isDarkTheme ? "text-white" : "text-gray-700"
+        }`}
         variants={headerAnimation}
         initial="hidden"
         animate="visible"
@@ -54,57 +74,71 @@ const Portfolio = () => {
       >
         {isAmharic ? "የእኛ የቅርብ ጊዜ ፖርትፎሊዮ" : "Our Recent Portfolio"}
       </motion.h1>
+
       {/* Projects Grid */}
-      <motion.div
-        className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3"
-        layout
-      >
+      <motion.div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3" layout>
         <AnimatePresence>
-          {projects.length > 0 && projects.map((project) => (
-            <motion.div
-              key={project.id}
-              className="overflow-hidden bg-[#1F2937] rounded-md cursor-pointer p-4"
-              variants={fadeInVariant}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              whileHover={hoverEffect}
-              transition={{ duration: 0.3 }}
-            >
-              {project.title && (
-                <h2 className="text-lg font-bold text-white mb-2">{project.title}</h2>
-              )}
-              {project.video ? (
-                <video
-                  src={project.video}
-                  controls
-                  className="object-cover w-full h-60"
-                ></video>
-              ) : (
-                <p className="text-gray-300">{project.description}</p>
-              )}
-              {!project.video && project.description && (
-                <button
-                  className="mt-4 text-sm text-blue-400 underline"
-                  onClick={() => {
-                    setSelectedDescription(project.description);
-                    setIsModalOpen(true);
-                  }}
+          {projects.length > 0 &&
+            projects.map((project) => {
+              const truncatedDescription = project.description
+                ? project.description.substring(0, 370) + "..."
+                : "";
+
+              return (
+                <motion.div
+                  key={project._id} // Updated to match JSON `_id`
+                  className="overflow-hidden bg-[#1F2937] rounded-md cursor-pointer p-4"
+                  variants={fadeInVariant}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  whileHover={hoverEffect}
+                  transition={{ duration: 0.3 }}
                 >
-                  See More
-                </button>
-              )}
-            </motion.div>
-          ))}
+                  {project.title && (
+                    <h2 className="mb-2 text-lg font-bold text-white">
+                      {project.title}
+                    </h2>
+                  )}
+                  {project.video ? (
+                    <video
+                      src={project.video}
+                      controls
+                      className="object-cover w-full h-60"
+                    ></video>
+                  ) : (
+                    <div
+                      className="text-gray-300"
+                      dangerouslySetInnerHTML={{ __html: truncatedDescription }}
+                    ></div>
+                  )}
+                  {!project.video && project.description && (
+                    <button
+                      className="mt-4 text-sm text-blue-400 underline"
+                      onClick={() => {
+                        setSelectedDescription(project.description);
+                        setIsModalOpen(true);
+                      }}
+                    >
+                      See More
+                    </button>
+                  )}
+                </motion.div>
+              );
+            })}
         </AnimatePresence>
       </motion.div>
+
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-6 rounded-md w-3/4 max-w-lg">
-            <p className="text-gray-700">{selectedDescription}</p>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="w-3/4 max-w-lg p-6 bg-white rounded-md">
+            <div
+              className="text-gray-700"
+              dangerouslySetInnerHTML={{ __html: selectedDescription }}
+            ></div>
             <button
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md"
+              className="px-4 py-2 mt-4 text-white bg-blue-500 rounded-md"
               onClick={() => setIsModalOpen(false)}
             >
               Close
