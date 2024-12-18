@@ -17,10 +17,12 @@ const path = require("path");
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 require("./auth");
+const cookieParser = require("cookie-parser");
 
 app.use(session({ secret: "cats" }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cookieParser());
 
 // Middleware
 app.use(express.json());
@@ -49,21 +51,27 @@ app.get(
     failureRedirect: "/auth/failure",
   }),
   (req, res) => {
-    // Use the token from req.token set in auth.js
-    if (req.token) {
-      res.cookie("user", req.token, {
-        httpOnly: false,  // Secure cookie
-        secure: false,   // Use true in production with HTTPS
-        maxAge: 24 * 60 * 60 * 1000, // 1 day
-      });
-    }
+    try {
+      // Set the token as a cookie
+      if (req.token) {
+        res.cookie("user", req.token, {
+          httpOnly: true,    // Use true for security
+          secure: true,      // Use true in production
+          maxAge: 24 * 60 * 60 * 1000, // 1 day
+        });
+      }
 
-    // Redirect to home or intended route
-    const redirectUrl = req.session.returnTo || "https://enkoytechnologies.com";
-    delete req.session.returnTo;
-    res.redirect(redirectUrl);
+      // Redirect to home or intended route
+      const redirectUrl = "https://enkoytechnologies.com";
+      delete req.session.returnTo;
+      res.redirect(redirectUrl);
+    } catch (err) {
+      console.error("Error in Google callback route:", err);
+      res.status(500).send("Internal Server Error");
+    }
   }
 );
+
 
 
   app.get("/protected", isLoggedIn, (req, res) => {

@@ -44,10 +44,9 @@ passport.use(
           { expiresIn: "1d" }
         );
 
-        // console.log("Generated Token:", token);
-
-        // Attach token to request for next middleware
+        // Attach token to request for use in index.js
         request.token = token;
+
         return done(null, user);
       } catch (err) {
         console.error("Error during Google authentication:", err);
