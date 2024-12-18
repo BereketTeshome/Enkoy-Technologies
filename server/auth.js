@@ -44,6 +44,12 @@ passport.use(
           { expiresIn: "1d" }
         );
 
+         // Set the token as a cookie
+        res.cookie("user", token, {
+          httpOnly: false,
+          maxAge: 365 * 24 * 60 * 60 * 1000, 
+        });
+
         // console.log("Generated Token:", token);
 
         // Attach token to request for next middleware

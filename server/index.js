@@ -17,10 +17,12 @@ const path = require("path");
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 require("./auth");
+const cookieParser = require("cookie-parser");
 
 app.use(session({ secret: "cats" }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cookieParser());
 
 // Middleware
 app.use(express.json());
