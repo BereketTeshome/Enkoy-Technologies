@@ -82,7 +82,7 @@ const Ebooks = () => {
         </motion.h2>
 
         <button
-          className={`px-6 py-2 ${
+          className={`px-6 py-2 font-bold ${
             isDarkTheme
               ? "text-gray-800 bg-[#FFCD57]"
               : "bg-[#FFCD57] text-gray-800"

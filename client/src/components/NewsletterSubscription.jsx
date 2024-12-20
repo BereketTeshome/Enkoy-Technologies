@@ -93,7 +93,7 @@ const NewsletterSubscription = () => {
                 Thank You!
               </motion.h3>
               <motion.p
-                className="mt-4 text-gray-700"
+                className="mt-4 font-semibold"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
@@ -102,7 +102,7 @@ const NewsletterSubscription = () => {
               </motion.p>
               <motion.button
                 onClick={() => setShowModal(false)}
-                className="px-6 py-2 mt-6 text-white rounded-lg"
+                className="px-6 py-2 mt-6 font-bold rounded-lg"
                 style={{ backgroundColor: "#FFA834" }}
                 whileHover={{
                   scale: 1.1,

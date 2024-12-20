@@ -14,7 +14,6 @@ const Blogs = () => {
   const cookie = new Cookies();
   const language = useSelector((state) => state.language?.language);
   const isAmharic = language === "amh";
-
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
 
@@ -84,7 +83,7 @@ const Blogs = () => {
         </motion.h2>
 
         <button
-          className={`px-6 py-2 ${
+          className={`px-6 py-2 font-bold ${
             isDarkTheme
               ? "text-gray-800 bg-[#FFCD57]"
               : "bg-[#FFCD57] text-gray-800"

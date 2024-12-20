@@ -70,7 +70,7 @@ const Employability = () => {
             {...fadeIn}
           />
           <motion.p
-            className="uppercase text-sm font-semibold text-[#FF8689] my-10"
+            className="uppercase text-sm font-semibold text-[#FFCD46] my-10"
             {...fadeIn}
           >
             {isAmharic ? "ሥራ ፈጣሪነት እና ሥራ ፈጣሪነት" : "Employability and entrepreneurship"}

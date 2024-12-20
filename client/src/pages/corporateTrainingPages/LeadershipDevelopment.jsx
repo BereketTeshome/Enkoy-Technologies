@@ -79,7 +79,7 @@ const LeadershipDevelopment = () => {
             className="w-[70px]"
           />
           <motion.p
-            className="uppercase text-sm font-semibold text-[#FF8689] my-10 "
+            className="uppercase text-sm font-semibold text-[#FFCD46] my-10 "
             variants={childVariants}
           >
             {isAmharic ? "የአመራር ልማት ስልጠና" : "Leadership development training"}

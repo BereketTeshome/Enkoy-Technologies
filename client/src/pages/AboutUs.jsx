@@ -32,7 +32,7 @@ const AboutUs = () => {
 				{...fadeInUp}
 			>
 				<div className="text-center px-1 md:px-0 w-full md:w-[60%] flex flex-col items-center justify-center">
-					<p className="mb-4 text-sm uppercase text-[#FF8689]" {...fadeInUp}>
+					<p className="mb-4 text-sm uppercase text-[#FFCD46]" {...fadeInUp}>
 						{isAmharic ? "ስለ እኛ" : "About Us"}
 					</p>
 					<h1

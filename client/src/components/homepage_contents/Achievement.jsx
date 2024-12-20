@@ -61,7 +61,7 @@ const Achievement = () => {
   });
 
   return (
-    <div ref={ref} className="bg-[#FFCD57] py-12 sm:py-16 text-center">
+    <div ref={ref} className="bg-[#FFCD57] py-12 mt-14 sm:py-16 text-center">
       <div className="flex flex-wrap justify-center gap-8 px-4 sm:gap-12">
         {stats.map((stat, index) => (
           <div key={index} className="max-w-xs">

@@ -3,6 +3,7 @@ import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
+import { useSelector } from "react-redux";
 
 const MyBlog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -11,6 +12,8 @@ const MyBlog = () => {
   const [deleted, setDeleted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBlog, setSelectedBlog] = useState(null);
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -92,10 +95,10 @@ const MyBlog = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
+    <div className={`flex flex-col min-h-screen ${isDarkTheme ? "bg-gray-800" : "bg-gray-100"}`}>
       <div className="flex-grow px-8 pb-10 lg:px-32 md:px-20">
         <motion.h1
-          className="text-center uppercase text-4xl font-semibold text-[#070b22] mb-6 mt-10"
+          className={`text-center uppercase text-4xl font-semibold ${isDarkTheme ? "text-gray-100" : "text-[#070b22]"} mb-6 mt-10`}
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -104,7 +107,7 @@ const MyBlog = () => {
         </motion.h1>
 
         <motion.div
-          className="overflow-hidden bg-white rounded-md shadow-lg"
+          className={`overflow-hidden ${isDarkTheme ? "bg-gray-900" : "bg-white"} rounded-md shadow-lg`}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
@@ -129,9 +132,9 @@ const MyBlog = () => {
               Create New Blog Post
             </motion.a>
             <div className="overflow-auto">
-              <table className="w-full mt-4 text-gray-700 min-w-[650px] bg-gray-50 border border-gray-200 rounded-md">
+              <table className={`w-full mt-4 text-gray-700 min-w-[650px] ${isDarkTheme ? "bg-gray-800" : "bg-gray-50"} border border-gray-200 rounded-md`}>
                 <thead>
-                  <tr className="text-sm text-left bg-gray-200">
+                  <tr className={`text-sm ${isDarkTheme ? "text-white" : "text-gray-900"} text-left ${isDarkTheme ? "bg-gray-900" : "bg-gray-200"}`}>
                     <th className="p-3">Image</th>
                     <th className="p-3">Title</th>
                     <th className="p-3">Posted Date</th>
@@ -152,7 +155,7 @@ const MyBlog = () => {
                       return (
                         <motion.tr
                           key={index}
-                          className="border-b "
+                          className={`${isDarkTheme ? "text-white" : "text-gray-900"} border-b`}
                           initial={{ opacity: 0, x: -50 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 }}
@@ -169,13 +172,13 @@ const MyBlog = () => {
                           <td className="py-3">{item.views}</td>
                           <td className="py-3 space-x-2">
                             <a
-                              className="bg-[#ffa216] px-6 py-[6px] rounded-md text-white"
+                              className="bg-[#ffa216] px-6 py-[6px] rounded-md font-bold text-white"
                               href={`/edit-blog/${item._id}`}
                             >
                               Edit
                             </a>
                             <button
-                              className="px-4 py-1 text-white bg-red-600 rounded-md"
+                              className="px-4 py-1 font-bold text-white bg-red-600 rounded-md"
                               onClick={() =>
                                 !btnLoading && deleteBlog(item._id)
                               }

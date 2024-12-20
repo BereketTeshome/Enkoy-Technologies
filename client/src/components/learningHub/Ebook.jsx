@@ -4,6 +4,8 @@ import { FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import NewsletterSubscription from "../NewsletterSubscription";
 import { Star } from "@mui/icons-material";
+import { useSelector } from "react-redux";
+
 
 const categories = [
   "All",
@@ -19,6 +21,8 @@ const Ebook = ({ ebooks }) => {
   const [sortOption, setSortOption] = useState("");
   const [copiedLink, setCopiedLink] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
 
   const shareOnFacebook = (title, url) => {
     const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
@@ -149,7 +153,7 @@ const Ebook = ({ ebooks }) => {
           return (
             <motion.div
               key={index}
-              className="p-4 rounded-lg shadow-md bg-gray-50"
+              className={`p-4 rounded-lg shadow-md ${isDarkTheme ? "bg-gray-900 text-gray-50" : "bg-gray-50 text-gray-900"}`}
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -163,11 +167,11 @@ const Ebook = ({ ebooks }) => {
                 />
               </div>
               <div className="mt-4">
-                <h3 className="text-2xl font-bold min-h-[80px] text-gray-800">
+                <h3 className="text-2xl font-bold min-h-[80px]">
                   {ebook.title}
                 </h3>
                 <div className="flex items-center justify-between">
-                  <p className="text-sm text-gray-500">{date}</p>
+                  <p className="text-sm">{date}</p>
                   <span className="grid grid-cols-2 ml-1 w-fit">
                     <Star size="small" sx={{ color: "gold" }} />
                     {filterRating(ebook._id) === 0
@@ -177,7 +181,7 @@ const Ebook = ({ ebooks }) => {
                 </div>
 
                 <div
-                  className="mt-3 mb-4 text-gray-700 ql-editor"
+                  className="mt-3 mb-4 ql-editor"
                   dangerouslySetInnerHTML={{
                     __html: ebook.description.slice(0, 100),
                   }}
@@ -197,7 +201,7 @@ const Ebook = ({ ebooks }) => {
                 </motion.a>
                 <a
                   href={`/ebook/user/${ebook.author._id}`}
-                  className="relative mt-4 text-sm text-gray-600 underline bottom-1"
+                  className="relative mt-4 text-sm underline bottom-1"
                 >
                   <span className="font-semibold ">Posted By: </span>
                   {ebook.author?.username}
@@ -205,7 +209,7 @@ const Ebook = ({ ebooks }) => {
                     </div>
 
                 <div className="flex items-center my-6 space-x-4">
-                  <b className="text-gray-600">Share ebook on: </b>
+                  <b>Share ebook on: </b>
                   <motion.button
                     whileHover={{ scale: 1.2, rotate: -10 }}
                     transition={{ type: "spring", stiffness: 300 }}

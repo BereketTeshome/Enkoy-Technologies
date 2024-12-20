@@ -85,7 +85,7 @@ const OurServices = () => {
   };
 
   return (
-    <div className={`py-12 ${isDarkTheme ? "bg-gray-800" : "bg-gray-50"}`}>
+    <div className={`py-28 ${isDarkTheme ? "bg-gray-800" : "bg-gray-50"}`}>
       <div className="px-6 mx-auto max-w-7xl sm:px-12">
         <motion.h2
           className={`mb-12 text-4xl font-semibold text-center ${
