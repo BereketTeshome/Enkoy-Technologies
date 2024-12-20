@@ -18,7 +18,7 @@ const DigitalTraining = () => {
 	return (
 		<div className="flex min-w-[310px] p-6 bg-white text-gray-500 border  rounded-lg shadow-md">
 			{/* Left Section */}
-			<div className="flex-1 pr-4 border-r ">
+			<div className="flex-1 pr-4">
 				<img
 					src="/img/contentsMenuImg.png"
 					alt={texts.title}

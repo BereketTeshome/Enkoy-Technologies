@@ -180,11 +180,48 @@ const ContactUsSection = () => {
                   className="w-1/3 p-2 text-sm bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   whileFocus={{ boxShadow: "0 0 8px rgba(255, 105, 180, 0.6)" }}
                 >
-                  <option value="" disabled>
+                 <option value="" disabled>
                     Select Code *
                   </option>
+
+                  {/* <!-- Africa --> */}
                   <option value="+251">🇪🇹 +251 (Ethiopia)</option>
                   <option value="+1">🇺🇸 +1 (United States)</option>
+                  <option value="+234">🇳🇬 +234 (Nigeria)</option>
+                  <option value="+254">🇰🇪 +254 (Kenya)</option>
+                  <option value="+27">🇿🇦 +27 (South Africa)</option>
+                  <option value="+233">🇬🇭 +233 (Ghana)</option>
+                  <option value="+212">🇲🇦 +212 (Morocco)</option>
+                  <option value="+216">🇹🇳 +216 (Tunisia)</option>
+                  <option value="+225">🇨🇮 +225 (Ivory Coast)</option>
+                  <option value="+243">🇨🇩 +243 (DR Congo)</option>
+                  <option value="+20">🇪🇬 +20 (Egypt)</option>
+
+                  {/* <!-- Europe --> */}
+                  <option value="+44">🇬🇧 +44 (United Kingdom)</option>
+                  <option value="+49">🇩🇪 +49 (Germany)</option>
+                  <option value="+33">🇫🇷 +33 (France)</option>
+                  <option value="+34">🇪🇸 +34 (Spain)</option>
+                  <option value="+39">🇮🇹 +39 (Italy)</option>
+                  <option value="+47">🇳🇴 +47 (Norway)</option>
+                  <option value="+46">🇸🇪 +46 (Sweden)</option>
+                  <option value="+45">🇩🇰 +45 (Denmark)</option>
+                  <option value="+41">🇨🇭 +41 (Switzerland)</option>
+                  <option value="+31">🇳🇱 +31 (Netherlands)</option>
+                  <option value="+48">🇵🇱 +48 (Poland)</option>
+                  <option value="+43">🇦🇹 +43 (Austria)</option>
+                  <option value="+386">🇸🇮 +386 (Slovenia)</option>
+                  <option value="+420">🇨🇿 +420 (Czech Republic)</option>
+
+                  {/* <!-- North America --> */}
+                  <option value="+52">🇲🇽 +52 (Mexico)</option>
+
+                  {/* <!-- Middle East --> */}
+                  <option value="+971">🇦🇪 +971 (United Arab Emirates)</option>
+                  <option value="+966">🇸🇦 +966 (Saudi Arabia)</option>
+                  <option value="+90">🇹🇷 +90 (Turkey)</option>
+                  <option value="+98">🇮🇷 +98 (Iran)</option>
+
                   {/* Add other options */}
                 </motion.select>
                 <motion.input

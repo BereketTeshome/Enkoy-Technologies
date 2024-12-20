@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import { FcGoogle } from "react-icons/fc";
+import { useSelector } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +13,8 @@ const Login = () => {
   const [passwordErr, setPasswordErr] = useState(false);
   const navigate = useNavigate();
   const cookie = new Cookies();
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -54,9 +57,9 @@ const Login = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className={`flex h-screen ${isDarkTheme ? "bg-[#1F2937]" : "bg-gray-50"}`}>
       {/* Left side with the image */}
-      <div className="items-center justify-center flex-1 hidden bg-gray-100 md:flex">
+      <div className={`items-center justify-center flex-1 hidden ${isDarkTheme ? "bg-[#15202e]" : "bg-gray-100"} md:flex`}>
         <img
           src="/img/corporate-training/decentWorkImg.webp"
           alt="Login Visual"
@@ -66,7 +69,7 @@ const Login = () => {
 
       {/* Right side with the form */}
       <div className="flex flex-col items-center justify-center flex-1 px-8">
-        <h2 className="mb-6 text-3xl font-bold text-gray-800">
+        <h2 className={`mb-6 text-3xl font-bold ${isDarkTheme ? "text-gray-50" : "text-gray-800"}`}>
           <span className="text-[#FFCD57]">Welcome</span> Back
         </h2>
         <form
@@ -99,13 +102,13 @@ const Login = () => {
           )}
           <a
             href="/forgot-password"
-            className="text-xs text-blue-600 hover:underline "
+            className={`text-sm ${isDarkTheme ? "text-gray-50" : "text-blue-600"} hover:underline`}
           >
             Forgot Password?
           </a>
           <button
             type="submit"
-            className="w-full p-3 bg-[#FFCD57] text-white rounded-lg hover:bg-[#ffcd57bf] transition duration-300"
+            className="w-full p-3 bg-[#FFCD57] text-blue-950 text-lg font-semibold rounded-lg hover:bg-[#ffcd57bf] transition duration-300"
           >
             {btnLoading ? "Loading..." : "Login"}
           </button>
@@ -127,9 +130,9 @@ const Login = () => {
           <span className="font-medium text-gray-700">Sign in with Google</span>
         </button>
 
-        <p className="mt-4 text-gray-600">
+        <p className={`mt-4 ${isDarkTheme ? "text-gray-50" : "text-gray-600"}`}>
           Don't have an account?{" "}
-          <a href="/register" className="text-blue-600 hover:underline">
+          <a href="/register" className={`${isDarkTheme ? "text-[#FFCD57]" : "text-blue-600"} hover:underline`}>
             Register
           </a>
         </p>
