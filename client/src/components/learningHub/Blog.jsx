@@ -4,6 +4,8 @@ import { FaFacebookF, FaCopy, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import NewsletterSubscription from "../NewsletterSubscription";
+import { useSelector } from "react-redux";
+
 
 const categories = [
   "All",
@@ -19,6 +21,9 @@ const Blogs = ({ blogs }) => {
   const [sortOption, setSortOption] = useState("");
   const [copiedLink, setCopiedLink] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
+
 
   const shareOnFacebook = (title, url) => {
     const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
@@ -134,7 +139,7 @@ const Blogs = ({ blogs }) => {
           return (
             <motion.div
               key={index}
-              className="p-4 rounded-lg shadow-md bg-gray-50"
+              className={`p-4 rounded-lg shadow-md ${isDarkTheme ? "bg-gray-900 text-gray-50" : "bg-gray-50 text-gray-900"}`}
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -147,13 +152,13 @@ const Blogs = ({ blogs }) => {
                   transition={{ duration: 0.5 }}
                 />
               </div>
-              <div className="mt-4">
-                <h3 className="text-2xl font-bold min-h-[80px] text-gray-800">
+              <div className="mt-2">
+                <h3 className="text-2xl font-bold min-h-[80px]">
                   {blog.title}
                 </h3>
-                <p className="text-sm text-gray-500">{date}</p>
+                <p className="text-sm ">{date}</p>
                 <div
-                  className="mt-3 mb-4 text-gray-700 ql-editor"
+                  className="mt-3 mb-2 ql-editor"
                   dangerouslySetInnerHTML={{
                     __html: blog.description.slice(0, 100),
                   }}
@@ -172,13 +177,13 @@ const Blogs = ({ blogs }) => {
                 </motion.a>
                 <a
                   href={`/blog/user/${blog.author._id}`}
-                  className="block mt-4 text-sm text-blue-600 underline"
+                  className="block mt-1 text-sm text-blue-600 underline"
                 >
                   <span className="font-semibold">Author: </span>
                   {blog.author.username}
                 </a>
-                <div className="flex items-center my-6 space-x-4">
-                  <b className="text-gray-600">Share Blog on: </b>
+                <div className="flex items-center my-3 space-x-4">
+                  <b>Share Blog on: </b>
                   <motion.button
                     whileHover={{ scale: 1.2, rotate: -10 }}
                     transition={{ type: "spring", stiffness: 300 }}

@@ -53,17 +53,18 @@ app.get(
   (req, res) => {
     try {
       // Set the token as a cookie
-      if (req.token) {
-        res.cookie("user", req.token, {
-          httpOnly: true,    // Use true for security
-          secure: true,      // Use true in production
+      if (req.user && req.user.token) {
+        res.cookie("user", req.user.token, {
+          httpOnly: false, // Set to `true` for production
+          secure: false,   // Set to `true` for production
           maxAge: 24 * 60 * 60 * 1000, // 1 day
         });
+      } else {
+        console.error("Token not available in user object.");
       }
 
       // Redirect to home or intended route
       const redirectUrl = "https://enkoytechnologies.com";
-      delete req.session.returnTo;
       res.redirect(redirectUrl);
     } catch (err) {
       console.error("Error in Google callback route:", err);
@@ -71,6 +72,7 @@ app.get(
     }
   }
 );
+
 
 
 
@@ -83,10 +85,11 @@ app.get("/auth/failure", (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-  req.logOut;
+  req.logout();
   req.session.destroy();
   res.send("Goodbye :(");
 });
+
 
 // Directory setup
 const UPLOAD_DIR = path.join(__dirname, "uploads");

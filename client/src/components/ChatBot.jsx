@@ -1,14 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import botIcon from "../assets/bot.svg";
 import userIcon from "../assets/user.svg";
 import send from "../assets/send.svg";
 import axios from "axios";
+import { useSelector } from "react-redux";
+
 
 const ChatBot = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
   const chatContainerRef = useRef(null);
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
 
   useEffect(() => {
     if (chatContainerRef.current) {
@@ -115,7 +119,7 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between w-full h-full px-4 pt-2 bg-gray-800">
+    <div className={`flex flex-col items-center justify-between w-full shadow-md h-full px-4 pt-2 ${isDarkTheme ? "bg-[#070920]" : "bg-gray-50"}`}>
       <div
         id="chat_container"
         ref={chatContainerRef}

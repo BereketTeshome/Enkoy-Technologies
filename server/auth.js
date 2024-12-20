@@ -45,8 +45,7 @@ passport.use(
         );
 
         // Attach token to request for use in index.js
-        request.token = token;
-
+        request.user = { ...user.toObject(), token };
         return done(null, user);
       } catch (err) {
         console.error("Error during Google authentication:", err);

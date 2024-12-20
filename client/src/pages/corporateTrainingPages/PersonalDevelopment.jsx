@@ -69,7 +69,7 @@ const PersonalDevelopment = () => {
             {...fadeInUp}
           />
           <motion.p
-            className="uppercase text-sm font-semibold text-[#FF8689] my-10"
+            className="uppercase text-sm font-semibold text-[#FFCD46] my-10"
             {...fadeInUp}
           >
             {isAmharic ? "የግል ልማት ስልጠና" : "Personal development training"}

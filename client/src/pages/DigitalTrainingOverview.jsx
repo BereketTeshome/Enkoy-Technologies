@@ -126,7 +126,7 @@ const DigitalTrainingOverview = () => {
 
       {/* Title Section */}
       <div className="my-10 text-center">
-        <h2 className="mb-6 text-4xl font-bold text-gray-500">
+        <h2 className={`mb-6 mt-28 text-4xl font-bold ${isDarkTheme ? "text-gray-100" : "text-gray-700"}`}>
           Explore Our Tailored Solutions
         </h2>
       </div>
@@ -141,7 +141,7 @@ const DigitalTrainingOverview = () => {
         ].map((title, index) => (
           <motion.div
             key={index}
-            className="p-6 bg-white rounded-md shadow-lg"
+            className={`p-6 ${isDarkTheme ? "bg-gray-900 text-gray-50" : "bg-white text-gray-900"}  rounded-md shadow-lg`}
             variants={cardVariants}
             initial="initial"
             whileHover="hover"
@@ -151,10 +151,10 @@ const DigitalTrainingOverview = () => {
               alt={`${title} Icon`}
               className="w-12 h-12 mb-4"
             />
-            <h3 className="mb-3 text-xl font-semibold text-gray-900">
+            <h3 className="mb-3 text-xl font-semibold">
               {title}
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm">
               {title === "Digital Training"
                 ? "Develop strong relationships and become more positive through our assessments."
                 : title === "Interactive Learning"

@@ -138,7 +138,7 @@ const CorporateTraining = () => {
         >
           <p
             className={`uppercase text-sm font-semibold ${
-              isDarkTheme ? "text-[#F28D8F]" : "text-[#FF8689]"
+              isDarkTheme ? "text-[#F28D8F]" : "text-[#FFCD46]"
             } my-10 `}
           >
             {isAmharic ? "የኩባንያ ስልጠና አጠቃላይ መግለጫ" : "Corporate Training Overview"}
@@ -176,7 +176,7 @@ const CorporateTraining = () => {
             >
               <span
                 className={`p-4 rounded-full ${
-                  isDarkTheme ? "bg-[#F28D8F]" : "bg-[#FF8689]"
+                  isDarkTheme ? "bg-[#F28D8F]" : "bg-[#FFCD46]"
                 }`}
               >
                 <IoIosArrowDown />
