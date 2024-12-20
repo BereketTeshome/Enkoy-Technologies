@@ -44,12 +44,12 @@ const AboutUs = () => {
 				{/* Links Section */}
 				<ul className="mt-4 text-xs text-gray-500">
 					<li className="mt-4 whitespace-nowrap">
-						<a href="/about-us/our-team" className="hover:text-gray-700">
+						<a href="/about-us/our-team" className="font-semibold hover:text-gray-700">
 							{texts.ourTeam}
 						</a>
 					</li>
 					<li className="mt-4 whitespace-nowrap">
-						<a href="/about-us/our-DEI" className="hover:text-gray-700">
+						<a href="/about-us/our-DEI" className="font-semibold hover:text-gray-700">
 							{texts.ourDEI}
 						</a>
 					</li>

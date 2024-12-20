@@ -87,7 +87,7 @@ const Portfolio = () => {
               return (
                 <motion.div
                   key={project._id} // Updated to match JSON `_id`
-                  className="overflow-hidden bg-[#1F2937] rounded-md cursor-pointer p-4"
+                  className={`overflow-hidden ${isDarkTheme ? "bg-[#1F2937]" : "bg-white"} rounded-md cursor-pointer p-4`}
                   variants={fadeInVariant}
                   initial="hidden"
                   animate="visible"
@@ -96,7 +96,7 @@ const Portfolio = () => {
                   transition={{ duration: 0.3 }}
                 >
                   {project.title && (
-                    <h2 className="mb-2 text-lg font-bold text-white">
+                    <h2 className={`mb-2 text-lg font-bold ${isDarkTheme ? "text-white" : "text-gray-600"}`}>
                       {project.title}
                     </h2>
                   )}
@@ -104,17 +104,17 @@ const Portfolio = () => {
                     <video
                       src={project.video}
                       controls
-                      className="object-cover w-full h-60"
+                      className="object-cover w-full h-full"
                     ></video>
                   ) : (
                     <div
-                      className="text-gray-300"
+                    className={`${isDarkTheme ? "text-gray-200" : "text-gray-700"}`}
                       dangerouslySetInnerHTML={{ __html: truncatedDescription }}
                     ></div>
                   )}
                   {!project.video && project.description && (
                     <button
-                      className="mt-4 text-sm text-blue-400 underline"
+                      className="mt-4 font-semibold text-blue-400 underline text-md"
                       onClick={() => {
                         setSelectedDescription(project.description);
                         setIsModalOpen(true);
@@ -129,23 +129,24 @@ const Portfolio = () => {
         </AnimatePresence>
       </motion.div>
 
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="w-3/4 max-w-lg p-6 bg-white rounded-md">
-            <div
-              className="text-gray-700"
-              dangerouslySetInnerHTML={{ __html: selectedDescription }}
-            ></div>
-            <button
-              className="px-4 py-2 mt-4 text-white bg-blue-500 rounded-md"
-              onClick={() => setIsModalOpen(false)}
-            >
-              Close
-            </button>
-          </div>
+          {/* Modal */}
+    {isModalOpen && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="w-11/12 max-w-lg p-4 sm:p-6 max-h-[90vh] overflow-y-auto bg-white rounded-md">
+          <div
+            className="text-gray-700"
+            dangerouslySetInnerHTML={{ __html: selectedDescription }}
+          ></div>
+          <button
+            className="px-4 py-2 mt-4 text-white bg-blue-500 rounded-md"
+            onClick={() => setIsModalOpen(false)}
+          >
+            Close
+          </button>
         </div>
-      )}
+      </div>
+    )}
+
     </div>
   );
 };

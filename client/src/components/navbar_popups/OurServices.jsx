@@ -20,7 +20,7 @@ const OurServices = () => {
 	const services = [
 		{
 			title: language === "amh" ? "የትምህርት ቅንብሮች" : "Customized Learning",
-			overviewLink: "/self-paced-learning",
+			overviewLink: "/services/self-paced-learning",
 			solutionsLink: "/more-solutions",
 			items: [
 				{
@@ -53,7 +53,7 @@ const OurServices = () => {
 		{
 			title:
 				language === "amh" ? "ምክር እና ምክር አቅራቢዎች" : "Consulting and Advisory",
-			overviewLink: "/learning-experiences",
+			overviewLink: "/services/learning-experiences",
 			solutionsLink: "",
 			items: [
 				{
@@ -81,7 +81,7 @@ const OurServices = () => {
 				language === "amh"
 					? "አኒሜሽን እና ቪዲዮ ፕሮዳክሽን"
 					: "Animation and Video Production",
-			overviewLink: "/animation-videos",
+			overviewLink: "/services/animation-videos",
 			solutionsLink: "",
 			items: [
 				{

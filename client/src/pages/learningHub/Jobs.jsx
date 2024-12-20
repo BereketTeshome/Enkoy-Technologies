@@ -68,7 +68,11 @@ const Jobs = () => {
           return (
             <motion.div 
               key={index}
-              className="p-6 transition-all transform bg-gray-800 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2"
+              className={`p-6 transition-all transform rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 ${
+                isDarkTheme 
+                  ? "bg-gray-900 text-gray-100 shadow-gray-700" 
+                  : "bg-white text-gray-800 shadow-gray-400"
+              }`}
               variants={{
                 hidden: { opacity: 0, y: 50 },
                 visible: { opacity: 1, y: 0 },
@@ -78,10 +82,10 @@ const Jobs = () => {
               <p className="mb-4 text-sm text-gray-400">Posted on: {date}</p>
                 <div className="flex flex-wrap items-center justify-between my-4">
                   <div>
-                    <p className="text-sm text-gray-400">
+                    <p className={`text-sm ${isDarkTheme ? "text-gray-400" : "text-gray-600"}`}>
                       <span className="font-bold">Job Type:</span> {job.jobType}
                     </p>
-                    <p className="text-sm text-gray-400">
+                    <p className={`text-sm ${isDarkTheme ? "text-gray-400" : "text-gray-600"}`}>
                       <span className="font-bold">Working Time:</span>{" "}
                       {job.jobTime}
                     </p>
@@ -90,13 +94,13 @@ const Jobs = () => {
                     href={job.applyLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 text-sm font-semibold bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none justify-self-end"
+                    className="px-4 py-2 text-sm font-semibold bg-[#F7D359] transition-all duration-300 rounded-lg hover:bg-blue-500 focus:outline-none justify-self-end"
                   >
                     Apply Now
                   </a>
                 </div>
               <div
-                className="text-gray-100 ql-editor"
+                className={`ql-editor ${isDarkTheme ? "text-gray-100" : "text-gray-800"}`}
                 dangerouslySetInnerHTML={{
                   __html: job.description,
                 }}

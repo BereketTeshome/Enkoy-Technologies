@@ -183,6 +183,8 @@ const Ebook = ({ ebooks }) => {
                   }}
                 ></div>
 
+                <div className="flex justify-between ">
+
                 <motion.a
                   whileHover={{
                     scale: 1.1,
@@ -195,11 +197,12 @@ const Ebook = ({ ebooks }) => {
                 </motion.a>
                 <a
                   href={`/ebook/user/${ebook.author._id}`}
-                  className="mt-4 text-sm text-gray-600"
+                  className="relative mt-4 text-sm text-gray-600 underline bottom-1"
                 >
-                  <span className="font-semibold">Posted By: </span>
+                  <span className="font-semibold ">Posted By: </span>
                   {ebook.author?.username}
                 </a>
+                    </div>
 
                 <div className="flex items-center my-6 space-x-4">
                   <b className="text-gray-600">Share ebook on: </b>
