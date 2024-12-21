@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import ProfileImgUpload from "../components/ProfileImgUpload";
 import { FcGoogle } from "react-icons/fc"; // Google Icon
+import { useSelector } from "react-redux";
+
 
 const Register = () => {
 	const [name, setName] = useState("");
@@ -16,6 +18,8 @@ const Register = () => {
 	const [passwordErr, setPasswordErr] = useState(false);
 	const navigate = useNavigate();
 	const cookie = new Cookies();
+	const theme = useSelector((state) => state.theme?.theme);
+	const isDarkTheme = theme === "dark";
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
@@ -50,15 +54,14 @@ const Register = () => {
 
   const handleGoogleSignup = () => {
     // Redirect to your backend's Google OAuth endpoint
-    // window.location.href = "https://server.enkoytechnologies.com/auth/google";
     window.location.href = "https://server.enkoytechnologies.com/auth/google";
   };
 
 
 	return (
-		<div className="flex flex-col py-10 md:flex-row bg-gray-50">
+		<div className={`flex h-screen ${isDarkTheme ? "bg-[#1F2937]" : "bg-gray-50"}`}>
 			{/* Left side with the image */}
-			<div className="items-center justify-center flex-1 hidden bg-gray-100 md:flex">
+			<div className={`items-center justify-center flex-1 hidden ${isDarkTheme ? "bg-[#15202e]" : "bg-gray-100"} md:flex`}>
 				<img
 					src="/img/corporate-training/decentWorkImg.webp"
 					alt="Registration Visual"
@@ -68,7 +71,7 @@ const Register = () => {
 
 			{/* Right side with the form */}
 			<div className="flex flex-col items-center justify-center flex-1 px-4 md:px-8">
-				<h2 className="mb-6 text-2xl font-bold text-gray-800 md:text-3xl">
+				<h2 className={`mb-6 text-3xl font-bold ${isDarkTheme ? "text-gray-50" : "text-gray-800"}`}>
 					Create an <span className="text-[#FFCD57]">Account</span>
 				</h2>
 				<form
@@ -92,7 +95,7 @@ const Register = () => {
 					/>
 					{emailErr && <p className="text-xs text-red-500">{emailErr}</p>}
 					<div>
-						<label htmlFor="profileImg" className="mb-3 text-sm text-gray-500">
+						<label htmlFor="profileImg" className={`mb-3 text-sm ${isDarkTheme ? "text-white" : "text-gray-600"}`}>
 							Profile Image
 						</label>
 						<ProfileImgUpload setProfileImg={setProfileImg} />
@@ -108,7 +111,7 @@ const Register = () => {
 					)}
 					<button
 						type="submit"
-						className="w-full p-3 bg-[#FFCD57] text-white rounded-lg hover:bg-[#ffcd57bf] transition duration-300"
+						className="w-full p-3 bg-[#FFCD57] text-blue-950 text-lg font-semibold rounded-lg hover:bg-[#ffcd57bf] transition duration-300"
 					>
 						{btnLoading ? "Registering..." : "Register"}
 					</button>
@@ -130,9 +133,9 @@ const Register = () => {
 					<span className="font-medium text-gray-700">Sign up with Google</span>
 				</button>
 
-				<p className="mt-4 text-gray-600">
+				<p className={`mt-4 ${isDarkTheme ? "text-gray-50" : "text-gray-600"}`}>
 					Already have an account?{" "}
-					<a href="/login" className="text-blue-600 hover:underline">
+					<a href="/login" className={`${isDarkTheme ? "text-[#FFCD57]" : "text-blue-600"} hover:underline`}>
 						Login
 					</a>
 				</p>

@@ -19,23 +19,20 @@ const { v4: uuidv4 } = require("uuid");
 require("./auth");
 const cookieParser = require("cookie-parser");
 
+// Middleware setup
 app.use(session({ secret: "cats" }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
-
-// Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors())
+
 app.use(fileUpload());
 
+// Utility for checking login
 const isLoggedIn = (req, res, next) => {
   req.user ? next() : res.sendStatus(401);
 };
-
-app.get("/", (req, res) => {
-  res.redirect("https://enkoytechnologies.com");
-});
 
 app.get(
   "/auth/google",
@@ -44,44 +41,36 @@ app.get(
   })
 );
 
-
 app.get(
   "/google/callback",
-  passport.authenticate("google", {
-    failureRedirect: "/auth/failure",
-  }),
+  passport.authenticate("google", { failureRedirect: "/auth/failure" }),
   (req, res) => {
     try {
-      // Set the token as a cookie
-      if (req.user && req.user.token) {
+      if (req.user) {
         res.cookie("user", req.user.token, {
-          httpOnly: false, // Set to `true` for production
-          secure: false,   // Set to `true` for production
-          maxAge: 24 * 60 * 60 * 1000, // 1 day
+          httpOnly: false,
+          secure: false, // Use HTTPS in production
+          maxAge: 365 * 24 * 60 * 60 * 1000, // 1 year
         });
+        console.log("Token set in cookie:", req.user.token);
       } else {
         console.error("Token not available in user object.");
       }
-
-      // Redirect to home or intended route
-      const redirectUrl = "https://enkoytechnologies.com";
-      res.redirect(redirectUrl);
+      res.redirect("https://enkoytechnologies.com");
     } catch (err) {
       console.error("Error in Google callback route:", err);
-      res.status(500).send("Internal Server Error");
+      res.status(500).send("Internal Server Error", err);
     }
   }
 );
 
 
-
-
-  app.get("/protected", isLoggedIn, (req, res) => {
-  res.send(`Hello ${req.user.displayName}!`);
+app.get("/protected", isLoggedIn, (req, res) => {
+  res.send(`Hello ${req.user.username || "User"}!`);
 });
 
 app.get("/auth/failure", (req, res) => {
-  res.send("Something went wrong....");
+  res.send("Something went wrong...");
 });
 
 app.get("/logout", (req, res) => {
@@ -89,6 +78,8 @@ app.get("/logout", (req, res) => {
   req.session.destroy();
   res.send("Goodbye :(");
 });
+
+module.exports = app;
 
 
 // Directory setup

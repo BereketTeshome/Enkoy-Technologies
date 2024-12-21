@@ -6,8 +6,10 @@ import { TypeAnimation } from "react-type-animation";
 import { useSelector } from "react-redux";
 
 const Header = () => {
+  // Get the selected language from the Redux store
   const language = useSelector((state) => state.language.language);
 
+  // Translation object for different languages
   const translations = {
     eng: {
       headerText: ["Engaging Experiences", "Innovative Solutions", "Digital Empowerment"],
@@ -33,6 +35,7 @@ const Header = () => {
     },
   };
 
+  // Set translations based on the selected language, default to English
   const t = translations[language] || translations.eng;
 
   return (
@@ -43,7 +46,7 @@ const Header = () => {
           <Particle />
         </div>
 
-        {/* Left Section */}
+        {/* Left Section: Header text animation and CTA */}
         <motion.div
           className="z-10 flex-1 mb-10 lg:mb-0"
           initial={{ x: "-100vw" }}
@@ -55,6 +58,7 @@ const Header = () => {
             stiffness: 100,
           }}
         >
+          {/* Typing animation for the header text */}
           <div className="mb-5">
             <TypeAnimation
               sequence={[...t.headerText.flatMap((text) => [text, 2000])]}
@@ -64,12 +68,15 @@ const Header = () => {
               repeat={Infinity}
             />
           </div>
+
+           {/* Subtitle with highlighted and underlined text */}
           <h2 className="text-lg text-gray-300 sm:text-xl lg:text-2xl">
             {t.subHeading}
             <span className="text-[#FFCD57] font-bold">{t.highlight}</span>{" "}
             {t.impactText}
             <span className="underline text-[#FFCD57] decoration-[#FFCD57]">{t.underline}</span>.
           </h2>
+          {/* CTA for the video section */}
           <div className="flex items-center gap-2 mt-6 transition-transform duration-300 cursor-pointer group">
             <MdOutlinePlayCircle
               className="text-white transition-transform duration-300 group-hover:text-orange-300 group-hover:scale-110"
@@ -83,7 +90,7 @@ const Header = () => {
           </div>
         </motion.div>
 
-        {/* Right Section - Video */}
+        {/* Right Section: Video with hover effect */}
         <motion.div
           className="flex justify-center flex-1 lg:justify-end"
           initial={{ y: "100vh", scale: 1 }}
@@ -105,6 +112,7 @@ const Header = () => {
               controls
               autoPlay={false}
               className="w-full h-auto shadow-lg rounded-3xl"
+              poster="/homeThumbnail.png"
               style={{
                 border: "4px solid #FFCD57",
                 boxShadow: "0 10px 20px rgba(255, 205, 87, 0.5)",
@@ -114,6 +122,7 @@ const Header = () => {
         </motion.div>
       </div>
 
+  {/* Footer Section with main text and CTA button */}
       <motion.div
         className="my-16 text-center text-white lg:my-28"
         initial={{ opacity: 0, y: 100 }}
@@ -125,6 +134,7 @@ const Header = () => {
           {t.mainText}
         </p>
 
+        {/* Get Started button */}
         <a
           href="#start"
           className="flex items-center justify-center gap-2 mt-4 transition-transform duration-300 cursor-pointer group"

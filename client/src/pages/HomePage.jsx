@@ -8,8 +8,12 @@ import HowWeWork from "../components/homepage_contents/HowWeWork";
 import CaseStudies from "../components/homepage_contents/CaseStudies";
 import ContactUsSection from "../components/homepage_contents/ContactUsSection";
 import Achievement from "../components/homepage_contents/Achievement";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
+  const theme = useSelector((state) => state.theme?.theme);
+  const isDarkTheme = theme === "dark";
+
   return (
     <div>
       <Header />
@@ -22,6 +26,9 @@ const HomePage = () => {
       <VideoSection />
       <HowWeWork />
       <CaseStudies />
+      
+      {/* Title for contact us */}
+      <h1 className={`text-3xl font-bold text-center my-14 ${isDarkTheme ? "text-gray-100" : "text-gray-600"}`}>Contact Us</h1>
       <ContactUsSection />
     </div>
   );

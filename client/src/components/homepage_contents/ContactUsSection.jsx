@@ -1,8 +1,15 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
-import emailjs from "emailjs-com";
+import { motion } from "framer-motion"; // Animation library
+import { useEffect, useRef, useState } from "react"; // React hooks for state and lifecycle management
+import emailjs from "emailjs-com"; // Service to send emails
+import lottie from "lottie-web"; // Animation library
+import contactAnimation from "../../assets/contact.json"; // Lottie animation file
+import { useSelector } from "react-redux"; // Redux hook for accessing the global state
+
 
 const ContactUsSection = () => {
+  const theme = useSelector((state) => state.theme?.theme); // Get the current theme (dark or light) from Redux state
+  const isDarkTheme = theme === "dark"; // Check if the theme is dark
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -14,6 +21,7 @@ const ContactUsSection = () => {
 
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
+  const [loading, setLoading] = useState(false); 
 
   const validateForm = () => {
     const newErrors = {};
@@ -53,12 +61,29 @@ const ContactUsSection = () => {
     validateForm();
   };
 
-  const handleSubmit = (e) => {
+  const container = useRef(null);
+
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: container.current,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: contactAnimation,
+    });
+    return () => {
+      lottie.destroy();
+    };
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (isFormValid) {
+      setLoading(true); // Set loading to true when submitting starts
       const serviceID = "service_hbuyjwk";
-      const templateID = "exbDEOF6w8_vEVNex";
-      
+      const templateID = "template_3k2h30m";
+      const userID = "exbDEOF6w8_vEVNex";
+
       const templateParams = {
         fullName: formData.fullName,
         email: formData.email,
@@ -67,36 +92,35 @@ const ContactUsSection = () => {
         projectDescription: formData.projectDescription,
       };
 
-      emailjs
-        .send(serviceID, templateID, templateParams)
-        .then((response) => {
-          console.log("SUCCESS!", response.status, response.text);
-          alert("Your message has been sent successfully!");
-          setFormData({
-            fullName: "",
-            email: "",
-            countryCode: "",
-            phone: "",
-            company: "",
-            projectDescription: "",
-          });
-        })
-        .catch((err) => {
-          console.error("FAILED...", err);
-          alert("There was an error sending your message. Please try again.");
+      try {
+        const response = await emailjs.send(
+          serviceID,
+          templateID,
+          templateParams,
+          userID
+        );
+        console.log("SUCCESS!", response.status, response.text);
+        alert("Your message has been sent successfully!");
+        setFormData({
+          fullName: "",
+          email: "",
+          countryCode: "",
+          phone: "",
+          company: "",
+          projectDescription: "",
         });
+      } catch (err) {
+        console.error("FAILED...", err);
+        alert("There was an error sending your message. Please try again.");
+      } finally {
+        setLoading(false); // Set loading back to false after submission
+      }
     }
   };
 
   return (
-    <div className="flex h-screen ">
-      <div
-        className="flex-1 hidden bg-center bg-cover md:flex"
-        style={{
-          backgroundImage:
-            "url('https://raw.githubusercontent.com/liyucards/new1/refs/heads/main/contactadmission.png')",
-        }}
-      ></div>
+    <div className="flex flex-col sm:flex-row">
+      <div ref={container} className={`w-[100%]  sm:w-[50%] pr-24 border-r-2 ${isDarkTheme ? "border-gray-600" : "border-gray-300"}`}></div>
 
       <div className="flex flex-col items-center justify-center flex-1 scale-90">
         <div className="relative w-full max-w-md p-8 bg-white rounded-lg shadow-xl bg-opacity-90">
@@ -293,13 +317,15 @@ const ContactUsSection = () => {
 
             <motion.button
               type="submit"
-              className="w-full p-2 text-white transition bg-yellow-500 rounded-md hover:bg-yellow-600 disabled:bg-gray-300"
-              disabled={!isFormValid}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 200 }}
+              className={`w-full py-2 text-white rounded-md ${
+                loading
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-blue-600 hover:bg-blue-700"
+              }`}
+              disabled={loading} // Disable button while loading
+              whileHover={{ scale: loading ? 1 : 1.02 }}
             >
-              Submit
+              {loading ? "Submitting..." : "Submit"}
             </motion.button>
           </motion.form>
         </div>

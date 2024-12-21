@@ -14,6 +14,7 @@ passport.use(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
+      // callbackURL: "http://localhost:3000/google/callback",
       callbackURL: "https://server.enkoytechnologies.com/google/callback",
       passReqToCallback: true,
     },
@@ -33,6 +34,7 @@ passport.use(
           console.log("User registered:", user);
         }
 
+        // Generate JWT token
         const token = jwt.sign(
           {
             userId: user._id,
@@ -44,9 +46,11 @@ passport.use(
           { expiresIn: "1d" }
         );
 
-        // Attach token to request for use in index.js
-        request.user = { ...user.toObject(), token };
-        return done(null, user);
+        console.log("Generated Token:", token);
+
+        // Add token to `req.user` object
+        const userObject = user.toObject();
+        return done(null, { ...userObject, token });
       } catch (err) {
         console.error("Error during Google authentication:", err);
         return done(err, null);
@@ -57,16 +61,14 @@ passport.use(
 
 // Serialize and Deserialize
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  // Save the entire user object, including the token, in the session
+  done(null, user);
 });
 
-passport.deserializeUser(async (id, done) => {
-  try {
-    const user = await User.findById(id);
-    done(null, user);
-  } catch (err) {
-    done(err, null);
-  }
+passport.deserializeUser((user, done) => {
+  // Pass the full user object back to the request
+  done(null, user);
 });
+
 
 module.exports = passport;

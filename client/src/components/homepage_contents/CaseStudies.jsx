@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 
 const CaseStudies = () => {
+   // Get the current language from Redux store
   const language = useSelector((state) => state.language.language);
 
+   // Translations for case studies in English and Amharic
   const translations = {
     eng: {
       title: "Case Studies",
@@ -34,6 +36,7 @@ const CaseStudies = () => {
     },
   };
 
+   // Fallback to English if language is not recognized
   const selectedContent = translations[language] || translations.eng;
 
   return (
@@ -58,6 +61,8 @@ const CaseStudies = () => {
                   className="w-16 h-auto"
                 />
               </div>
+
+              {/* Case study details */}
               <h3 className="text-xl font-semibold">{caseStudy.title}</h3>
               <p className="mt-4 font-semibold text-justify text-gray-400">
                 {caseStudy.description}

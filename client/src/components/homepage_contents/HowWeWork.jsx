@@ -6,6 +6,7 @@ const HowWeWork = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
 
+  // Translations in English and Amharic
   const translations = {
     eng: [
       {
@@ -92,6 +93,7 @@ const HowWeWork = () => {
 
   return (
     <>
+    {/* How We Work section that shows our skills sets */}
       {content.map((section, index) => (
         <div
           key={index}
@@ -123,7 +125,7 @@ const HowWeWork = () => {
             viewport={{ once: true, amount: 0.25 }}
             variants={motionVariants}
           >
-            <h3 className="text-yellow-300 text-lg font-medium mb-5">
+            <h3 className="mb-5 text-lg font-medium text-yellow-300">
               {section.title}
             </h3>
             <h2
@@ -131,7 +133,7 @@ const HowWeWork = () => {
                 isDarkTheme ? "text-gray-100" : "text-gray-800"
               }`}
             >
-              {section.heading}
+              {section.heading} 
             </h2>
             <p
               className={`text-sm md:text-base text-justify ${
