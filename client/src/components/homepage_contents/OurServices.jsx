@@ -2,10 +2,13 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
 const OurServices = () => {
+    // Select language and theme from the Redux store
   const language = useSelector((state) => state.language.language);
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
 
+
+  // Translations for service details in English and Amharic
   const translations = {
     eng: [
       {
@@ -67,8 +70,10 @@ const OurServices = () => {
     ],
   };
 
+   // Fallback to English if language is not recognized
   const services = translations[language] || translations.eng;
 
+  // Animation variants for container and items
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -87,6 +92,7 @@ const OurServices = () => {
   return (
     <div className={`py-28 ${isDarkTheme ? "bg-gray-800" : "bg-gray-50"}`}>
       <div className="px-6 mx-auto max-w-7xl sm:px-12">
+        {/* Section title with conditional styling based on theme */}
         <motion.h2
           className={`mb-12 text-4xl font-semibold text-center ${
             isDarkTheme ? "text-gray-100" : "text-gray-700"
@@ -97,6 +103,8 @@ const OurServices = () => {
         >
           {language === "amh" ? "አገልግሎቶቻችን" : "Our Services"}
         </motion.h2>
+        
+        {/* Services grid with animation */}
         <motion.div
           className="grid grid-cols-1 gap-8 md:grid-cols-2"
           variants={containerVariants}

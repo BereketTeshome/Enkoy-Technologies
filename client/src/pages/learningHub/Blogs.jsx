@@ -126,7 +126,7 @@ const Blogs = () => {
 
       {loading ? (
         <div className="flex items-center justify-center min-h-screen">
-          <div className="text-xl font-semibold text-gray-700 animate-pulse">
+          <div className={`text-xl font-semibold ${isDarkTheme ? "text-gray-100" : "text-gray-700"} animate-pulse`}>
             {isAmharic ? "ብሎጎች በመጫን ላይ..." : "Loading blogs..."}
           </div>
         </div>
