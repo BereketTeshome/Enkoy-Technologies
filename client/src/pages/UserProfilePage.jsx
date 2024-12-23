@@ -128,7 +128,7 @@ const UserProfilePage = () => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 30, opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className={`w-full max-w-md p-6 bg-white rounded-lg shadow-md dark:bg-gray-900`}
+        className={`w-full max-w-md p-3 bg-white rounded-lg shadow-md dark:bg-gray-900`}
       >
         {/* User Info Section */}
         <div className="flex items-center gap-4 mb-6">
@@ -155,7 +155,10 @@ const UserProfilePage = () => {
                 {theme === "dark" ? <LightMode /> : <DarkMode />}
               </IconButton>
             </div>
-            <p className="text-gray-600 dark:text-gray-400">{decode.email}</p>
+            <p className="text-gray-600 dark:text-gray-400">
+            {decode.email.length > 20 ? `${decode.email.slice(0, 20)}...` : decode.email}
+          </p>
+
           </div>
         </div>
 
