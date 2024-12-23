@@ -9,10 +9,29 @@ import CaseStudies from "../components/homepage_contents/CaseStudies";
 import ContactUsSection from "../components/homepage_contents/ContactUsSection";
 import Achievement from "../components/homepage_contents/Achievement";
 import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import Cookies from "universal-cookie";
+import { useEffect } from "react";
+import { useLocation } from 'react-router-dom';
 
 const HomePage = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
+  const { token } = useParams()
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const myParam = queryParams.get('token');
+ 
+    const cookie = new Cookies();
+    const navigate = useNavigate();
+  
+  useEffect(()=>{
+    if(myParam){
+      cookie.set("user", myParam, { path: "/", httpOnly: false });
+      navigate("/");
+      window.location.reload();
+    }
+  },[myParam])
 
   return (
     <div>

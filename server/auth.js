@@ -7,27 +7,30 @@ require("dotenv").config();
 // Credentials
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
-const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) throw new Error("JWT_SECRET is not defined in the environment variables");
 
 passport.use(
   new GoogleStrategy(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-      // callbackURL: "http://localhost:3000/google/callback",
-      callbackURL: "https://server.enkoytechnologies.com/google/callback",
+      callbackURL: "http://localhost:3000/google/callback",
       passReqToCallback: true,
     },
     async (request, accessToken, refreshToken, profile, done) => {
       try {
         console.log("Google profile received:", profile);
 
-        let user = await User.findOne({ email: profile.email });
+        const email = profile.emails?.[0]?.value;
+        if (!email) return done(new Error("Email not found in Google profile"), null);
+
+        let user = await User.findOne({ email });
 
         if (!user) {
           console.log("Registering new user...");
           user = await User.create({
-            email: profile.email,
+            email,
             username: profile.displayName,
             profileImg: profile.picture,
           });
@@ -61,14 +64,11 @@ passport.use(
 
 // Serialize and Deserialize
 passport.serializeUser((user, done) => {
-  // Save the entire user object, including the token, in the session
   done(null, user);
 });
 
 passport.deserializeUser((user, done) => {
-  // Pass the full user object back to the request
   done(null, user);
 });
-
 
 module.exports = passport;

@@ -18,11 +18,21 @@ const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 require("./auth");
 const cookieParser = require("cookie-parser");
+const helmet = require("helmet");
+const MongoStore = require("connect-mongo");
 
 // Middleware setup
-app.use(session({ secret: "cats" }));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "default_session_secret",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL }),
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(helmet());
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors())
@@ -34,6 +44,7 @@ const isLoggedIn = (req, res, next) => {
   req.user ? next() : res.sendStatus(401);
 };
 
+// Routes
 app.get(
   "/auth/google",
   passport.authenticate("google", {
@@ -46,24 +57,19 @@ app.get(
   passport.authenticate("google", { failureRedirect: "/auth/failure" }),
   (req, res) => {
     try {
-      if (req.user) {
-        res.cookie("user", req.user.token, {
-          httpOnly: false,
-          secure: false, // Use HTTPS in production
-          maxAge: 365 * 24 * 60 * 60 * 1000, // 1 year
-        });
+      if (req.user && req.user.token) {
         console.log("Token set in cookie:", req.user.token);
+        res.redirect(`http://localhost:5173/?token=${req.user.token}`);
       } else {
-        console.error("Token not available in user object.");
+        console.error("User object or token not available.");
+        return res.redirect("/auth/failure");
       }
-      res.redirect("https://enkoytechnologies.com");
     } catch (err) {
       console.error("Error in Google callback route:", err);
-      res.status(500).send("Internal Server Error", err);
+      res.status(500).send("Internal Server Error");
     }
   }
 );
-
 
 app.get("/protected", isLoggedIn, (req, res) => {
   res.send(`Hello ${req.user.username || "User"}!`);
@@ -74,9 +80,14 @@ app.get("/auth/failure", (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-  req.logout();
-  req.session.destroy();
-  res.send("Goodbye :(");
+  req.logout((err) => {
+    if (err) {
+      console.error("Logout error:", err);
+      return res.status(500).send("Logout failed.");
+    }
+    req.session.destroy();
+    res.send("Goodbye :(");
+  });
 });
 
 module.exports = app;

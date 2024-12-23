@@ -1,5 +1,5 @@
-import { Suspense, lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Suspense, lazy, useEffect } from "react";
+import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import "./App.css";
@@ -12,6 +12,7 @@ import EditBlogPage from "./pages/EditBlogPage.jsx";
 import EditEbookPage from "./pages/EditEbookPage.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
+import Cookies from "universal-cookie";
 
 ReactGA.initialize("G-S3EY21WLWQ");
 
@@ -110,9 +111,11 @@ const UserProfilePage = lazy(() => import("./pages/UserProfilePage.jsx"));
 const EventCalendarPage = lazy(() => import("./pages/EventCalendarPage.jsx"));
 const Jobs = lazy(() => import("./pages/learningHub/Jobs.jsx"));
 
+
 const App = () => {
   const theme = useSelector((state) => state.theme?.theme);
   const isDarkTheme = theme === "dark";
+  
 
   return (
     <Suspense fallback={<Loader />}>
