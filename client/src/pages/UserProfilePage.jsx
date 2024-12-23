@@ -136,7 +136,7 @@ const UserProfilePage = () => {
             <img
               src={decode.profileImg}
               alt="Profile"
-              className="object-cover w-20 h-20 border rounded-full shadow-md"
+              className="object-cover w-20 h-20 rounded-full shadow-md"
             />
           ) : (
             <motion.div
