@@ -35,7 +35,7 @@ const VideoSection = () => {
             id="video-section"
           >
             <ReactPlayer
-              url="https://www.youtube.com/watch?v=IfDGIsZPKMs"
+              url="https://youtu.be/gQ6_pEQZsVE"
               controls
               width="100%"
               height="100%" 

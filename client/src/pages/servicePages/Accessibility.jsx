@@ -94,7 +94,7 @@ const Accessibility = () => {
           className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           {...fadeInUp}
         >
-          <motion.div className="flex flex-1" {...fadeInUp}>
+          <motion.div className="flex items-center flex-1" {...fadeInUp}>
             <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
               {isAmharic
                 ? "የተደራሽነት አቅጣጫዎቻችን"

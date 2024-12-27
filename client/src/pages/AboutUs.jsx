@@ -27,16 +27,16 @@ const AboutUs = () => {
 		>
 			{/* Hero Section */}
 			<motion.div
-				className="h-screen flex items-center justify-center"
+				className="flex items-center justify-center h-96"
 				style={{ backgroundColor: "#161628" }}
 				{...fadeInUp}
 			>
 				<div className="text-center px-1 md:px-0 w-full md:w-[60%] flex flex-col items-center justify-center">
-					<p className="mb-4 text-sm uppercase text-[#FFCD46]" {...fadeInUp}>
+					<p className="mb-4 text-4xl font-bold uppercase text-[#FFCD46]" {...fadeInUp}>
 						{isAmharic ? "ስለ እኛ" : "About Us"}
 					</p>
 					<h1
-						className={`text-3xl font-semibold md:text-4xl ${"text-gray-100"}`}
+						className={`text-xl font-semibold md:text-2xl ${"text-gray-100"}`}
 						{...fadeInUp}
 					>
 						{isAmharic
@@ -47,7 +47,7 @@ const AboutUs = () => {
 			</motion.div>
 
 			{/* Who We Are Section */}
-			<motion.div className="px-5 py-20 text-center md:px-32" {...fadeInUp}>
+			<motion.div className="max-w-6xl px-5 py-20 mx-auto text-center md:px-32" {...fadeInUp}>
 				<h2
 					className={`mb-4 text-3xl font-semibold ${
 						isDarkTheme ? "text-gray-100" : "text-gray-950"
@@ -56,7 +56,7 @@ const AboutUs = () => {
 					{isAmharic ? "እኛ ማን ነን" : "Who We Are"}
 				</h2>
 				<p
-					className={`text-justify leading-relaxed ${
+					className={`text-justify text-lg leading-relaxed ${
 						isDarkTheme ? "text-gray-100" : "text-gray-700"
 					}`}
 				>
@@ -68,53 +68,64 @@ const AboutUs = () => {
 
 			{/* Mission and Vision Section */}
 			<div
-				className={`py-20 px-5 md:px-20 flex flex-col gap-10 md:flex-row ${
-					isDarkTheme ? "bg-gray-700" : "bg-[#FFC961]"
-				}`}
-			>
-				{/* Mission */}
-				<motion.div className="flex-1" {...fadeInUp}>
-					<h3
-						className={`mb-4 text-3xl font-semibold ${
-							isDarkTheme ? "text-gray-100" : "text-gray-900"
-						}`}
-					>
-						{isAmharic ? "የእኛ ተልዕኮ" : "Our Mission"}
-					</h3>
-					<p
-						className={` text-justify ${
-							isDarkTheme ? "text-gray-100" : "text-gray-800"
-						}`}
-					>
-						{isAmharic
-							? "በእንኮይ ቴክኖሎጂዎች፣ የእኛ ተልእኮ የግለሰቦችን ፍላጎት እና ደህንነትን በማስቀደም የንድፍ እና ቴክኖሎጂን በመማር የትምህርት ልምድን የሚያጎለብት ተፅእኖ ያለው ተማሪን ያማከለ ዲጂታል መፍትሄዎችን መፍጠር ነው። መማርን የበለጠ ተደራሽ፣ በይነተገናኝ እና ትርጉም ያለው ለማድረግ ቁርጠኞች ነን።"
-							: "At Enkoy Technologies, our mission is to craft impactful, learner-centered digital solutions that prioritize individuals' needs and well-being, enhancing the educational experience through the latest in learning design and technology. We are committed to making learning more accessible, interactive, and meaningful."}
-					</p>
-				</motion.div>
+  className={`py-20 px-5 md:px-20 flex flex-col gap-10 md:flex-row ${
+    isDarkTheme ? "bg-gray-700" : "bg-[#FFC961]"
+  }`}
+>
+  {/* Mission */}
+  <motion.div
+    className="flex-1 p-8 transition-transform transform rounded-lg shadow-lg hover:scale-105"
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.2 }}
+  >
+    <h3
+      className={`mb-4 text-4xl font-bold ${
+        isDarkTheme ? "text-gray-100" : "text-gray-900"
+      }`}
+    >
+      {isAmharic ? "የእኛ ተልዕኮ" : "Our Mission"}
+    </h3>
+    <p
+      className={`text-justify text-lg leading-relaxed ${
+        isDarkTheme ? "text-gray-100" : "text-gray-800"
+      }`}
+    >
+      {isAmharic
+        ? "በእንኮይ ቴክኖሎጂዎች፣ የእኛ ተልእኮ የግለሰቦችን ፍላጎት እና ደህንነትን በማስቀደም የንድፍ እና ቴክኖሎጂን በመማር የትምህርት ልምድን የሚያጎለብት ተፅእኖ ያለው ተማሪን ያማከለ ዲጂታል መፍትሄዎችን መፍጠር ነው። መማርን የበለጠ ተደራሽ፣ በይነተገናኝ እና ትርጉም ያለው ለማድረግ ቁርጠኞች ነን።"
+        : "At Enkoy Technologies, our mission is to craft impactful, learner-centered digital solutions that prioritize individuals' needs and well-being, enhancing the educational experience through the latest in learning design and technology. We are committed to making learning more accessible, interactive, and meaningful."}
+    </p>
+  </motion.div>
 
-				{/* Vision */}
-				<motion.div className="flex-1" {...fadeInUp}>
-					<h3
-						className={`mb-4 text-3xl font-semibold ${
-							isDarkTheme ? "text-gray-100" : "text-gray-900"
-						}`}
-					>
-						{isAmharic ? "የእኛ እይታ" : "Our Vision"}
-					</h3>
-					<p
-						className={` text-justify ${
-							isDarkTheme ? "text-gray-100" : "text-gray-800"
-						}`}
-					>
-						{isAmharic
-							? "አዳዲስ የመማሪያ ቴክኖሎጂዎች ያለምንም እንከን ወደ እያንዳንዱ የትምህርት አካባቢ የተዋሃዱበት፣ በእጅ የሚማሩ ቁሳቁሶችን ወደ መስተጋብራዊ፣ አሳታፊ ተሞክሮዎች የሚቀይሩበትን ዓለም እናስባለን። ግባችን ግለሰቦች እና ድርጅቶች ሙሉ አቅማቸውን በእውቀት እና በፈጠራ እንዲከፍቱ ማስቻል ነው።"
-							: "We envision a world where innovative learning technologies are seamlessly integrated into every educational environment, transforming manual learning materials into interactive, engaging experiences. Our goal is to empower individuals and organizations to unlock their full potential through knowledge and creativity."}
-					</p>
-				</motion.div>
-			</div>
+  {/* Vision */}
+  <motion.div
+    className="flex-1 p-8 transition-transform transform rounded-lg shadow-lg hover:scale-105"
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.4 }}
+  >
+    <h3
+      className={`mb-4 text-4xl font-bold ${
+        isDarkTheme ? "text-gray-100" : "text-gray-900"
+      }`}
+    >
+      {isAmharic ? "የእኛ እይታ" : "Our Vision"}
+    </h3>
+    <p
+      className={`text-justify text-lg leading-relaxed ${
+        isDarkTheme ? "text-gray-100" : "text-gray-800"
+      }`}
+    >
+      {isAmharic
+        ? "አዳዲስ የመማሪያ ቴክኖሎጂዎች ያለምንም እንከን ወደ እያንዳንዱ የትምህርት አካባቢ የተዋሃዱበት፣ በእጅ የሚማሩ ቁሳቁሶችን ወደ መስተጋብራዊ፣ አሳታፊ ተሞክሮዎች የሚቀይሩበትን ዓለም እናስባለን። ግባችን ግለሰቦች እና ድርጅቶች ሙሉ አቅማቸውን በእውቀት እና በፈጠራ እንዲከፍቱ ማስቻል ነው።"
+        : "We envision a world where innovative learning technologies are seamlessly integrated into every educational environment, transforming manual learning materials into interactive, engaging experiences. Our goal is to empower individuals and organizations to unlock their full potential through knowledge and creativity."}
+    </p>
+  </motion.div>
+</div>
+
 
 			{/* Our Journey Section */}
-			<motion.div className="px-5 py-20 text-center md:px-32" {...fadeInUp}>
+			<motion.div className="max-w-6xl px-5 py-20 mx-auto text-center md:px-32" {...fadeInUp}>
 				<h2
 					className={`mb-4 text-3xl font-semibold ${
 						isDarkTheme ? "text-gray-100" : "text-gray-950"
@@ -123,7 +134,7 @@ const AboutUs = () => {
 					{isAmharic ? "ጉዟችን" : "Our Journey"}
 				</h2>
 				<p
-					className={` leading-relaxed text-justify ${
+					className={` leading-relaxed text-md text-justify ${
 						isDarkTheme ? "text-gray-100" : "text-gray-700"
 					}`}
 				>

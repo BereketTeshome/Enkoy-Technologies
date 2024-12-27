@@ -125,7 +125,7 @@ const HowWeWork = () => {
             viewport={{ once: true, amount: 0.25 }}
             variants={motionVariants}
           >
-            <h3 className="mb-5 text-lg font-medium text-yellow-300">
+            <h3 className="mb-5 text-xl font-bold text-[#FFCD57]">
               {section.title}
             </h3>
             <h2
