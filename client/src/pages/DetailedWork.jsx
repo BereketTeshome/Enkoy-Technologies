@@ -38,11 +38,7 @@ const DetailedWork = () => {
         >
           <motion.div className="flex-1" {...fadeInUp}>
             <img src={work.icon} alt="" className="w-[80px] mb-8" />
-            <h1
-              className={`text-4xl lg:text-5xl ${
-                isDarkTheme ? "text-white" : "text-black"
-              }`}
-            >
+            <h1 className={`text-4xl lg:text-5xl ${"text-gray-200"}`}>
               {work.title}
             </h1>
           </motion.div>
@@ -61,27 +57,19 @@ const DetailedWork = () => {
             <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               What we made
             </h4>
-            <p className={isDarkTheme ? "text-gray-300" : "text-gray-700"}>
-              {work.whatWeMade}
-            </p>
+            <p className={"text-gray-100"}>{work.whatWeMade}</p>
           </div>
           <div>
             <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               The issue
             </h4>
-            <p className={isDarkTheme ? "text-gray-300" : "text-gray-700"}>
-              {work.shortIssus}
-            </p>
+            <p className={"text-gray-100"}>{work.shortIssus}</p>
           </div>
           <div>
             <h4 className="text-yellow-500 font-semibold uppercase mb-4">
               Project Highlights
             </h4>
-            <ul
-              className={`list-disc pl-5 space-y-2 ${
-                isDarkTheme ? "text-gray-300" : "text-gray-700"
-              }`}
-            >
+            <ul className={`list-disc pl-5 space-y-2 ${"text-gray-100"}`}>
               {work.projectOverview.map((highlight, idx) => (
                 <li key={idx}>{highlight}</li>
               ))}
@@ -117,7 +105,7 @@ const DetailedWork = () => {
           </div>
           <div
             className={`flex-1 ${
-              isDarkTheme ? "text-gray-300" : "text-gray-700"
+              isDarkTheme ? "text-gray-100" : "text-gray-700"
             }`}
           >
             {work.longIssus.description}
@@ -133,7 +121,7 @@ const DetailedWork = () => {
       >
         <motion.div
           className={`flex flex-col gap-10 ${
-            isDarkTheme ? "text-gray-300" : "text-gray-700"
+            isDarkTheme ? "text-gray-100" : "text-gray-700"
           }`}
           {...fadeInUp}
         >
@@ -167,7 +155,7 @@ const DetailedWork = () => {
       >
         <motion.div
           className={`flex flex-col gap-5 ${
-            isDarkTheme ? "text-gray-300" : "text-gray-700"
+            isDarkTheme ? "text-gray-100" : "text-gray-700"
           }`}
           {...fadeInUp}
         >
