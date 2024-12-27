@@ -17,7 +17,7 @@ const Header = () => {
       highlight: "Digital Solutions",
       impactText: "that leave a ",
       underline: "lasting impact",
-      videoCTA: "Check Out Other Videos",
+      videoCTA: "Explore More Insights",
       mainText:
         "Empower your teams and communities with learning that truly resonates. Enkoy Technologies designs innovative, interactive learning experiences to engage and inspire, driving real progress across industries.",
       getStarted: "Get Started",
@@ -139,9 +139,11 @@ const Header = () => {
           href="#start"
           className="flex items-center justify-center gap-2 mt-4 transition-transform duration-300 cursor-pointer group"
         >
+          <a href="/contact">
           <h2 className="text-lg font-semibold text-white transition-transform duration-300 sm:text-xl lg:text-2xl group-hover:text-orange-300">
             {t.getStarted}
           </h2>
+          </a>
           <IoArrowForward
             className="text-white transition-transform duration-300 group-hover:text-orange-300 group-hover:scale-110"
             size={30}

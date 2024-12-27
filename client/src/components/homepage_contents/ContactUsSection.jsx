@@ -124,7 +124,10 @@ const ContactUsSection = () => {
 
       <div className="flex flex-col items-center justify-center flex-1 scale-90">
         <div className="relative w-full max-w-md p-8 bg-white rounded-lg shadow-xl bg-opacity-90">
-          <div className="absolute top-[-5px] left-[-5px] w-[calc(100%+10px)] h-[calc(100%+10px)] rounded-lg border-2 border-transparent bg-gradient-to-r from-blue-400 to-blue-600 animate-pulse z-0"></div>
+        <div
+        className="absolute top-[-8px] left-[-8px] w-[calc(100%+16px)] h-[calc(100%+16px)] rounded-lg border-2 border-transparent bg-gradient-to-r from-[#FFC94D] via-[#FF8A00] to-[#FFC94D] animate-pulse z-0 shadow-[0_0_20px_rgba(255,200,75,0.8),0_0_40px_rgba(22,22,40,0.5)] blur-sm"
+      ></div>
+
 
           <motion.form
             className="relative z-10"
@@ -317,16 +320,17 @@ const ContactUsSection = () => {
 
             <motion.button
               type="submit"
-              className={`w-full py-2 text-white rounded-md ${
+              className={`w-full py-2 text-black rounded-md ${
                 loading
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-blue-600 hover:bg-blue-700"
+                  : "bg-[#ffc94d] hover:bg-[#ffc94d]"
               }`}
               disabled={loading} // Disable button while loading
               whileHover={{ scale: loading ? 1 : 1.02 }}
             >
               {loading ? "Submitting..." : "Submit"}
             </motion.button>
+
           </motion.form>
         </div>
       </div>

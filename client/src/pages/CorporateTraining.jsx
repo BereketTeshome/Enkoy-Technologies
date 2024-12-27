@@ -202,7 +202,7 @@ const CorporateTraining = () => {
       <br />
       <br />
       <div
-        className={`w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 ${"bg-[#B7D6D8]"} md:flex-row flex-col`}
+        className={`w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 ${"bg-[#FFC94D]"} md:flex-row flex-col`}
       >
         <motion.div
           className="flex flex-1 "
@@ -218,33 +218,43 @@ const CorporateTraining = () => {
           </h2>
         </motion.div>
         <motion.div
-          className={`flex-1 text-[15px] ${"text-gray-900"}`}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ amount: 0.2, once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <p>
-            {isAmharic ? "“አስደሳች” እና “አዝናኝ” ከድርጅት ስልጠና ጋር ብዙም አይገናኙም። የሚያሳዝነው. የድርጅት ትምህርት እንደ ድርጊት መታየት አለበት። ከተራ ግዴታ ይልቅ እንክብካቤ።" 
-            : " “Captivating” and “fun” are rarely linked to corporate training, which is unfortunate. Corporate learning should be viewed as an actof care rather than a mere obligation."}
-          </p>
-          {isAmharic ? 
-            <p>
-              At <b>Enkoy Technologies</b>, we aim for learners to connect with
-              and engage with the content. That’s why we employ creative
-              storytelling, interactive graphics and animations, and user
-              preferences to foster genuine connections and provide more effective
-              training.
-            </p>
-          : <p>
-              በ <b>Enkoy Technologies</b>፣ ተማሪዎች እንዲገናኙ ዓላማ እናደርጋለን
-              እና ከይዘቱ ጋር ይሳተፉ። ለዚህ ነው ፈጠራን የምንቀጥረው
-              ተረት ተረት፣ በይነተገናኝ ግራፊክስ እና እነማዎች፣ እና ተጠቃሚ
-              እውነተኛ ግንኙነቶችን ለመፍጠር እና የበለጠ ውጤታማ ለማቅረብ ምርጫዎች
-              ስልጠና.
-            </p>
-            }
-        </motion.div>
+  className={`flex-1 text-[15px] ${"text-gray-900"}`}
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ amount: 0.2, once: true }}
+  transition={{ duration: 0.8 }}
+>
+  {isAmharic ? (
+    <>
+      <p>
+      “አስደሳች” እና “አዝናኝ” ከድርጅት ስልጠና ጋር እምብዛም አይገናኙም, ማለትም
+        ያሳዝናል. የድርጅት ትምህርት እንደ እንክብካቤ ሳይሆን መታየት አለበት።
+        ከግዴታ ብቻ።
+      </p>
+      <p>
+      በ<b>Enkoy Technologies</b>፣ ተማሪዎች እንዲገናኙ እና እንዲገናኙ ዓላማ እናደርጋለን
+        ከይዘቱ ጋር መሳተፍ. ለዚህ ነው የፈጠራ ታሪኮችን የምንጠቀምበት ፣
+        በይነተገናኝ ግራፊክስ እና እነማዎች፣ እና የተጠቃሚ ምርጫዎች እውነተኛን ለማሳደግ
+        ግንኙነቶች እና የበለጠ ውጤታማ ስልጠና መስጠት.
+      </p>
+    </>
+  ) : (
+    <>
+      <p>
+        “Captivating” and “fun” are rarely linked to corporate training, which is
+        unfortunate. Corporate learning should be viewed as an act of care rather
+        than a mere obligation.
+      </p>
+      <p>
+        At <b>Enkoy Technologies</b>, we aim for learners to connect with and
+        engage with the content. That’s why we employ creative storytelling,
+        interactive graphics and animations, and user preferences to foster genuine
+        connections and provide more effective training.
+      </p>
+    </>
+  )}
+</motion.div>
+
       </div>
       <br />
       <br id="solutions" />
@@ -286,37 +296,66 @@ const CorporateTraining = () => {
           </motion.p>}
         </div>
         <br />
+        
         <motion.div
-          className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 mt-7"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={containerVariants}
-        >
-          {services.map((item, index) => {
-            return (
-              <motion.div
-                className={`${isDarkTheme ? "text-gray-100 mt-10" : "text-gray-800 mt-10"}`}
-                key={index}
-                variants={childVariants}
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <img src={item.img} alt="" className="w-[60px] mb-6" />
-                <p className="mb-6 text-lg font-semibold">{item.title}</p>
-                <p className="mb-2">{item.desc}</p>
-                <a
-                  href={item.path}
-                  className={`mb-6 font-semibold border-b-2 pb-2 ${
-                    isDarkTheme ? "border-[#FFB450]" : "border-[#F3858D]"
-                  }`}
-                >
-                  Learn More
-                </a>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+  className="grid grid-cols-1 gap-10 p-5 rounded-lg sm:grid-cols-2 lg:grid-cols-3 mt-7"
+
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.1 }}
+  variants={{
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, duration: 0.5 },
+    },
+  }}
+>
+  {services.map((item, index) => (
+    <motion.div
+      className={`${
+        isDarkTheme
+          ? "text-gray-100 bg-gray-800"
+          : "text-gray-800 bg-white"
+      } mt-10 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300`}
+      key={index}
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.img
+        src={item.img}
+        alt=""
+        className="w-[60px] mb-6 mx-auto"
+        whileHover={{ rotate: 10 }}
+        transition={{ type: "spring", stiffness: 300 }}
+      />
+      <motion.p
+        className="mb-6 text-lg font-semibold text-center"
+        transition={{ duration: 0.3 }}
+      >
+        {item.title}
+      </motion.p>
+      <motion.p className="mb-4 text-center text-gray-500">
+        {item.desc}
+      </motion.p>
+      <motion.a
+        href={item.path}
+        className="pb-1 mb-6 font-bold text-center border-b-2 "
+        style={{color:"#ebac1b", borderColor: "#ebac1b",
+        }}
+    
+        transition={{ duration: 0.3 }}
+      >
+        Explore More
+      </motion.a>
+    </motion.div>
+  ))}
+</motion.div>
+
       </div>
       <br />
       <br />
