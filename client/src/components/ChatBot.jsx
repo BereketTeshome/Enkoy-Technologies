@@ -5,7 +5,6 @@ import send from "../assets/send.svg";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
-
 const ChatBot = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -119,7 +118,11 @@ const ChatBot = () => {
   };
 
   return (
-    <div className={`flex flex-col items-center justify-between w-full shadow-md h-full px-4 pt-2 ${isDarkTheme ? "bg-[#070920]" : "bg-gray-50"}`}>
+    <div
+      className={`flex flex-col items-center justify-between w-full shadow-md h-full px-4 pt-2 ${
+        isDarkTheme ? "bg-[#070920]" : "bg-gray-50"
+      }`}
+    >
       <div
         id="chat_container"
         ref={chatContainerRef}
@@ -135,7 +138,7 @@ const ChatBot = () => {
         )}
       </div>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={() => !loading && handleSubmit()}
         className="flex flex-row w-full max-w-5xl gap-3 px-5 py-2 mx-auto mb-5 bg-gray-700 rounded-full"
       >
         <textarea
@@ -144,7 +147,7 @@ const ChatBot = () => {
           rows="1"
           placeholder="Ask Sam..."
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => !loading && setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           required
           className="flex-1 p-2 text-xs text-white bg-transparent border-none rounded-md outline-none"
