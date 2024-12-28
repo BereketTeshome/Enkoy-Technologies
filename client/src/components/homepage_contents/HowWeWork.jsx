@@ -10,7 +10,7 @@ const HowWeWork = () => {
   const translations = {
     eng: [
       {
-        img: "/img/services/gamificationImg.png",
+        img: "/img/services/why_mobile_learning.png",
         alt: "Gamification",
         title: "How We Work",
         heading: "We prioritize people over processes",
@@ -25,7 +25,7 @@ const HowWeWork = () => {
         inclusive and relevant.`,
       },
       {
-        img: "/img/services/why_mobile_learning.png",
+        img: "/img/services/training.png",
         alt: "Mobile Learning",
         title: "How We Work",
         heading: "This isn’t just training, it’s empathetic learning.",
