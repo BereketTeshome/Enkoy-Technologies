@@ -57,11 +57,17 @@ const Login = () => {
   };
 
   return (
-    <div className={`flex h-screen ${isDarkTheme ? "bg-[#1F2937]" : "bg-gray-50"}`}>
+    <div
+      className={`flex h-screen ${isDarkTheme ? "bg-[#1F2937]" : "bg-gray-50"}`}
+    >
       {/* Left side with the image */}
-      <div className={`items-center justify-center flex-1 hidden ${isDarkTheme ? "bg-[#15202e]" : "bg-gray-100"} md:flex`}>
+      <div
+        className={`items-center justify-center flex-1 hidden ${
+          isDarkTheme ? "bg-[#15202e]" : "bg-gray-100"
+        } md:flex`}
+      >
         <img
-          src="/img/corporate-training/decentWorkImg.webp"
+          src="/img/login.png"
           alt="Login Visual"
           className="max-w-[90%] max-h-[80%] object-contain"
         />
@@ -69,7 +75,11 @@ const Login = () => {
 
       {/* Right side with the form */}
       <div className="flex flex-col items-center justify-center flex-1 px-8">
-        <h2 className={`mb-6 text-3xl font-bold ${isDarkTheme ? "text-gray-50" : "text-gray-800"}`}>
+        <h2
+          className={`mb-6 text-3xl font-bold ${
+            isDarkTheme ? "text-gray-50" : "text-gray-800"
+          }`}
+        >
           <span className="text-[#FFCD57]">Welcome</span> Back
         </h2>
         <form
@@ -102,7 +112,9 @@ const Login = () => {
           )}
           <a
             href="/forgot-password"
-            className={`text-sm ${isDarkTheme ? "text-gray-50" : "text-blue-600"} hover:underline`}
+            className={`text-sm ${
+              isDarkTheme ? "text-gray-50" : "text-blue-600"
+            } hover:underline`}
           >
             Forgot Password?
           </a>
@@ -132,7 +144,12 @@ const Login = () => {
 
         <p className={`mt-4 ${isDarkTheme ? "text-gray-50" : "text-gray-600"}`}>
           Don't have an account?{" "}
-          <a href="/register" className={`${isDarkTheme ? "text-[#FFCD57]" : "text-blue-600"} hover:underline`}>
+          <a
+            href="/register"
+            className={`${
+              isDarkTheme ? "text-[#FFCD57]" : "text-blue-600"
+            } hover:underline`}
+          >
             Register
           </a>
         </p>
