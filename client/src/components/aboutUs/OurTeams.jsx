@@ -70,6 +70,7 @@ const OurTeams = () => {
 
 	return (
 		<div
+		id="ourTeam"
 			className={`px-6 py-12 lg:px-32 ${
 				isDarkTheme
 					? "bg-gray-800"
