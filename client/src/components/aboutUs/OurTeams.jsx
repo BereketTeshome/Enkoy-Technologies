@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -50,8 +50,6 @@ const teamData = [
 ];
 
 const OurTeams = () => {
-	const language = useSelector((state) => state.language?.language);
-	const isAmharic = language === "amh";
 
 	useEffect(() => {
 		AOS.init({ duration: 1000 });
@@ -78,14 +76,6 @@ const OurTeams = () => {
 					: "bg-gradient-to-b from-white via-gray-100 to-gray-200"
 			}`}
 		>
-			{/* <motion.h1
-				className={`mb-12 text-4xl font-bold text-center ${
-					isDarkTheme ? "text-gray-100" : "text-gray-800"
-				}`}
-				{...fadeInUp}
-			>
-				{isAmharic ? "ቡድናችንን ሰላም ይበሉ" : "Meet Our Team"}
-			</motion.h1> */}
 			<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 				{teamData.map((member, index) => (
 					<motion.div
@@ -107,7 +97,7 @@ const OurTeams = () => {
 					>
 						<div className="p-6">
 							<motion.div
-								className="relative w-full overflow-hidden rounded-lg h-[420px]"
+								className="relative w-full overflow-hidden rounded-full h-[420px]"
 								whileHover={{
 									rotateX: -5,
 									rotateY: 5,
