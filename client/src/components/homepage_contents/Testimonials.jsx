@@ -104,7 +104,7 @@ const Testimonials = () => {
             <img
               src="./headerImg.png"
               alt="Illustration"
-              className="w-full max-w-sm mx-auto rounded-lg shadow-lg"
+              className="w-full max-w-sm mx-auto"
             />
           </div>
         </div>
