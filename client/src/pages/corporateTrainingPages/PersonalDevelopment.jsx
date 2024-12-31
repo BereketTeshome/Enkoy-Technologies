@@ -150,7 +150,7 @@ const PersonalDevelopment = () => {
         >
           <motion.div className="flex flex-1" {...fadeInUp}>
             <motion.h2
-              className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl"
+              className="inline-block text-4xl font-semibold text-gray-900 md:text-5xl"
               {...fadeInUp}
             >
               {isAmharic ? "ተለዋዋጭ እና ቀልጣፋ ግለሰቦችን መገንባት" : "Building Resilient and Agile Individuals"}

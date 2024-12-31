@@ -107,10 +107,10 @@ const AnimatedVideos = () => {
       >
         <motion.div className="flex flex-1" {...fadeInUp}>
           {isAmharic ? 
-            <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
+            <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-5xl">
             የኛ አኒሜሽን <br /> ቪዲዮ ሂደት
           </h2>
-          : <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
+          : <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-5xl">
             Our animation <br /> video process
           </h2>}
         </motion.div>

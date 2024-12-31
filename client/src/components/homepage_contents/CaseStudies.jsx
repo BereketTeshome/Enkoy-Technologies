@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 
 const CaseStudies = () => {
-   // Get the current language from Redux store
+  // Get the current language from Redux store
   const language = useSelector((state) => state.language.language);
 
-   // Translations for case studies in English and Amharic
+  // Translations for case studies in English and Amharic
   const translations = {
     eng: {
       title: "Case Studies",
@@ -13,10 +13,24 @@ const CaseStudies = () => {
       caseStudies: [
         {
           logo: "/img/contentsMenuImg.png",
-          title: "Decent Work in Ethiopia",
+          title: "Enhancing Digital Learning for Decent Work",
           description:
-            "Ethiopia faces challenges in creating fair and ethical work environments, especially for its young and growing workforce. Together with GIZ-STEP, Enkoy Technologies took a bold step to transform traditional labor training into a dynamic, self-paced online experience—accessible to learners nationwide.",
-          link: "/our-work",
+            "This project, undertaken for GIZ STEP, aims to ensure that the training is not only effective but also accessible and tailored to the needs of all learners involved.",
+          link: "/our-work/3",
+        },
+        {
+          logo: "/img/contentsMenuImg.png",
+          title: "Physical Soil and Water Conservation Measures",
+          description:
+            "Enkoy Technologies developed twenty engaging digital learning modules. This module covers erosion causes, impacts on agriculture, and farmers' well-being",
+          link: "/our-work/2",
+        },
+        {
+          logo: "/img/contentsMenuImg.png",
+          title: "Local Level Participatory Land Use Planning",
+          description:
+            "Enkoy Technologies created 6 modules in this course to empower Development Agents to actively engage in planning and managing land resources with farmers.",
+          link: "/our-work/1",
         },
       ],
     },
@@ -29,14 +43,28 @@ const CaseStudies = () => {
           logo: "/img/contentsMenuImg.png",
           title: "ጥሩ ስራ በኢትዮጵያ",
           description:
-            "ኢትዮጵያ ፍትሃዊ እና ስነምግባርን የተላበሰ የስራ አካባቢን በመፍጠር ረገድ ተግዳሮቶች ከፊቷ ተጋርጦባታል፣በተለይም ለወጣት እና እያደገ ለሚሄደው የሰው ሃይል። ከGIZ-STEP ጋር፣ እንኮይ ቴክኖሎጂዎች ባህላዊ የሰው ኃይል ስልጠናን ወደ ተለዋዋጭ እና በራስ የመመራት የመስመር ላይ ተሞክሮ ለመቀየር ደፋር እርምጃ ወስደዋል—በአገር አቀፍ ደረጃ ለተማሪዎች ተደራሽ።",
+            "ኢትዮጵያ ፍትሃዊ እና ስነምግባርን የተላበሰ የስራ አካባቢን በመፍጠር ረገዳቸውን እንዴት እንደፈቱበት፣ ተመልከቱ።",
+          link: "/our-work",
+        },
+        {
+          logo: "/img/secondProject.png",
+          title: "የኢ-ግራግር መፍትሄዎች",
+          description:
+            "አርሶ አደሮችን ከቴክኖሎጂ ጋር በመገናኘት ፈጣን ልማትን ማሳደግ።",
+          link: "/our-work",
+        },
+        {
+          logo: "/img/thirdProject.png",
+          title: "ኢ-ትምህርት መድረክ",
+          description:
+            "በተገደበት አካባቢ በተሰማራነት የሚገኝ ትምህርት መድረክ መፍጠር።",
           link: "/our-work",
         },
       ],
     },
   };
 
-   // Fallback to English if language is not recognized
+  // Fallback to English if language is not recognized
   const selectedContent = translations[language] || translations.eng;
 
   return (
@@ -48,7 +76,7 @@ const CaseStudies = () => {
         <p className="mb-12 text-center text-gray-300">
           {selectedContent.subtitle}
         </p>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {selectedContent.caseStudies.map((caseStudy, index) => (
             <div
               key={index}
@@ -61,10 +89,8 @@ const CaseStudies = () => {
                   className="w-16 h-auto"
                 />
               </div>
-
-              {/* Case study details */}
               <h3 className="text-xl font-semibold">{caseStudy.title}</h3>
-              <p className="mt-4 font-semibold text-justify text-gray-400">
+              <p className="mt-4 font-semibold text-gray-400">
                 {caseStudy.description}
               </p>
               <a

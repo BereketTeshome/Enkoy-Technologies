@@ -41,22 +41,22 @@ const LearningHub = () => {
 				{/* Links Section */}
 				<ul className="mt-4 space-y-4 text-xs">
 					<li>
-						<a href="/blog" className="font-semibold transition text-md hover:text-yellow-400">
+						<a href="/blog" className="font-semibold transition text-md hover:text-yellow-500 hover:font-bold ">
 							{texts.blog}
 						</a>
 					</li>
 					<li>
-						<a href="/ebooks" className="font-semibold transition text-md hover:text-yellow-400">
+						<a href="/ebooks" className="font-semibold transition text-md hover:text-yellow-500 hover:font-bold ">
 							{texts.ebooks}
 						</a>
 					</li>
-					<li>
-						<a href="/events" className="font-semibold transition text-md hover:text-yellow-400">
+					{/* <li>
+						<a href="/events" className="font-semibold transition text-md hover:text-yellow-500 hover:font-bold ">
 							{texts.events}
 						</a>
-					</li>
+					</li> */}
 					<li>
-						<a href="/careers" className="font-semibold transition text-md hover:text-yellow-400">
+						<a href="/careers" className="font-semibold transition text-md hover:text-yellow-500 hover:font-bold ">
 							{texts.careers}
 						</a>
 					</li>

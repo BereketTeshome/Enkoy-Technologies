@@ -145,7 +145,7 @@ const SoftSkill = () => {
         >
           <motion.div className="flex flex-1" {...fadeInUp}>
             <motion.h2
-              className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl"
+              className="inline-block text-4xl font-semibold text-gray-900 md:text-5xl"
               {...fadeInUp}
             >
               {isAmharic ? "ውጤታማ የግንኙነት እና የቡድን ስራ ባህል መገንባት" : "Building a Culture of Effective Communication and Teamwork"}

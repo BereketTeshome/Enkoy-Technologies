@@ -107,11 +107,11 @@ const Gamification = () => {
       >
         <motion.div className="flex flex-1" {...fadeInUp}>
           {isAmharic ? 
-           <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
+           <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-5xl">
            የእኛ አቀራረብ <br /> ወደ ጨዋታ
          </h2>
           : 
-          <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
+          <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-5xl">
             Our Approach <br /> to gamification
           </h2>
           }

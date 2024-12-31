@@ -11,7 +11,7 @@ const OurTeam = () => {
   <div
   className="absolute inset-0 bg-cover filter blur-10 bg-center sm:bg-top"
   style={{
-    backgroundImage: `url(/img/aboutUs/groupPhoto.jpg)`, // Replace with your image path
+    backgroundImage: `url(/img/aboutUs/groupPhoto.jpg)`, 
   }}
 ></div>
 

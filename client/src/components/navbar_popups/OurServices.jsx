@@ -151,18 +151,19 @@ const OurServices = () => {
 							{service.title}
 						</span>
 					</div>
-					<a
+					<hr/>
+					{/* <a
 						href={service.overviewLink}
 						className="text-sm text-[#FFCD57] font-bold hover:underline"
 					>
 						{language === "amh" ? "ማጠቃለያን ይመልከቱ" : "See Overview"}
-					</a>
-					<ul className="space-y-4 text-sm text-gray-700">
+					</a> */}
+					<ul className="mt-2 space-y-4 text-sm text-gray-700">
 						{service.items.map((item, idx) => (
 							<li key={idx}>
 								<a
 									href={item.link}
-									className="transition cursor-pointer hover:text-blue-500"
+									className="transition cursor-pointer hover:text-yellow-500 hover:font-bold"
 								>
 									{item.label}
 								</a>
