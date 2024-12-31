@@ -31,14 +31,14 @@ const VideoSection = () => {
 
           {/* Video Player */}
           <div
-            className="relative mt-8 overflow-hidden rounded-lg shadow-lg aspect-w-16 aspect-h-9 sm:mt-10 lg:w-3/4 lg:mx-auto"
+            className="h-[50vh] sm:h-[80vh] md:h-[100vh] mt-8 overflow-hidden rounded-lg"
             id="video-section"
           >
             <ReactPlayer
               url="https://youtu.be/gQ6_pEQZsVE"
               controls
               width="100%"
-              height="100%" 
+              height="80%" 
             />
           </div>
         </div>

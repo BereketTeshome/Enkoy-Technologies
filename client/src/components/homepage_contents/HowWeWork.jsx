@@ -92,12 +92,12 @@ const HowWeWork = () => {
   };
 
   return (
-    <>
+    <div className="mt-16">
     {/* How We Work section that shows our skills sets */}
       {content.map((section, index) => (
         <div
           key={index}
-          className={`flex flex-col items-center w-full px-5 py-16 md:py-28 md:px-20 overflow-hidden 
+          className={`flex flex-col  items-center w-full px-5 py-16 md:py-10 md:px-20 overflow-hidden 
              ${
                index % 2 === 1
                  ? "lg:flex-row-reverse " +
@@ -145,7 +145,7 @@ const HowWeWork = () => {
           </motion.div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

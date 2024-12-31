@@ -112,7 +112,7 @@ const SelfPacedLearning = () => {
 			>
 				<motion.div className="flex flex-1" {...fadeInUp}>
 					<h2
-						className={`inline-block text-4xl font-semibold md:text-6xl ${"text-gray-900"}`}
+						className={`inline-block text-4xl font-semibold md:text-5xl ${"text-gray-900"}`}
 					>
 						Our Self-Paced <br /> Learning <br /> Approach
 					</h2>
@@ -123,10 +123,10 @@ const SelfPacedLearning = () => {
 				>
 					<p>
 						{isAmharic
-							? "በእንኮይ፣ በራስ ስራ ተመራ መማር በመንነት በማወቅ ተማሪዎቻችንን እንዴት እንደሚያሳድግ እናስተውላለን። አቅጣጫችን ተማሪዎችን በራስ ስራ ማማረንን ያካተት ትክክለኛ እውነተኛነትን በመጠቀም ማካተት ነው።"
+							? "በእንኮይ፣ ፍላጎቶቻቸውን በትክክል በማወቅ ተማሪዎቻችንን በራስ የመመራት ትምህርት እንዴት በአዎንታዊ ተጽእኖ እንደምንፈጥር እንረዳለን። አካሄዳችን በተለዋዋጭነት ላይ ያተኩራል፣ ይህም ተማሪዎች በራሳቸው ፍጥነት እንዲያጠኑ ያስችላቸዋል። ሁሉም ሰው በብቃት መማር እንዲችል ለተለያዩ የመማሪያ ዘይቤዎች የሚያቀርብ አሳታፊ እና በይነተገናኝ ይዘት እንፈጥራለን። ተማሪዎቻችን ትምህርታቸውን እንዲከታተሉ በማብቃት፣ ግባቸው ላይ ከህይወታቸው ጋር በሚስማማ መንገድ እንዲሳኩ እናግዛቸዋለን።።"
 							: "At Enkoy, we understand how to positively impact our learners through self-paced learning by truly knowing their needs. Our approach focuses on flexibility, allowing learners to study at their own pace. We create engaging and interactive content that caters to different learning styles, ensuring everyone can learn effectively. By empowering our learners to take charge of their education, we help them achieve their goals in a way that fits their lives."}
 					</p>
-					<h2 className={`mt-2 mb-5 text-2xl font-semibold ${"text-gray-950"}`}>
+					{/* <h2 className={`mt-2 mb-5 text-2xl font-semibold ${"text-gray-950"}`}>
 						{isAmharic ? "ለራስ ስራ መማር ምንድነው?" : "Why self-paced learning?"}
 					</h2>
 					<p>
@@ -178,7 +178,7 @@ const SelfPacedLearning = () => {
 						{isAmharic
 							? "በአጠቃላይ፣ ራስ ስራ ተመራ መማር ለማንኛውም የመማር ዘዴ እና ከሚፈለጉት ዘዴ ጋር ተዛማቹ የተለዋዋጭነት አይነት ነው።"
 							: "Overall, self-paced learning is an effective approach that supports diverse learning styles and helps individuals achieve their educational goals in a way that suits their lifestyles."}
-					</p>
+					</p> */}
 				</motion.div>
 			</motion.div>
 		</motion.div>

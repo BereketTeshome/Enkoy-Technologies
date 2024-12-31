@@ -176,7 +176,7 @@ const LeadershipDevelopment = () => {
             viewport={{ amount: 0.2, once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
+            <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-5xl">
             {isAmharic ? "ለወደፊት ዝግጁ የሆኑ መሪዎችን መገንባት" : "Building Future-Ready Leaders"}
               
             </h2>

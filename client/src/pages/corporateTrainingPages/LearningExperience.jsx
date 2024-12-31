@@ -147,7 +147,7 @@ const LearningExperience = () => {
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div className="flex flex-1" {...fadeInUp}>
-            <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
+            <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-5xl">
             {isAmharic ? "ለወደፊት ዝግጁ የሆኑ የመማሪያ አካባቢዎችን መገንባት" : "Building Future-Ready Learning Environments"}
               
             </h2>

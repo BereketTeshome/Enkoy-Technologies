@@ -139,7 +139,7 @@ const Employability = () => {
         <br />
         <div className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col">
           <motion.div className="flex flex-1" {...fadeIn}>
-            <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-6xl">
+            <h2 className="inline-block text-4xl font-semibold text-gray-900 md:text-5xl">
             {isAmharic ? "ለተወዳዳሪ ጠርዝ ችሎታዎችን መገንባት" : "Building Skills for a Competitive Edge"}
               
             </h2>
