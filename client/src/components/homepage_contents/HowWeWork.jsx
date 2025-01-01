@@ -92,8 +92,8 @@ const HowWeWork = () => {
   };
 
   return (
-    <div className="mt-16">
-    {/* How We Work section that shows our skills sets */}
+    <div className="pt-16">
+      {/* How We Work section that shows our skills sets */}
       {content.map((section, index) => (
         <div
           key={index}
@@ -133,7 +133,7 @@ const HowWeWork = () => {
                 isDarkTheme ? "text-gray-100" : "text-gray-800"
               }`}
             >
-              {section.heading} 
+              {section.heading}
             </h2>
             <p
               className={`text-sm md:text-base text-justify ${

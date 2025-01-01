@@ -7,9 +7,11 @@ import { motion } from "framer-motion";
 
 import { jwtDecode } from "jwt-decode";
 import VideoUpload from "../components/VideoUpload";
+import ImageUpload from "../components/ImageUpload";
 
 const AddPortfolioPage = () => {
   const [video, setVideo] = useState("");
+  const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
@@ -35,6 +37,7 @@ const AddPortfolioPage = () => {
       const portfolioData = {
         title,
         video,
+        thumbnail: image,
         description,
       };
       await axios.post(
@@ -99,6 +102,13 @@ const AddPortfolioPage = () => {
               Video
             </label>
             <VideoUpload setVideo={setVideo} />
+          </div>
+          <br />
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Video Cover Image
+            </label>
+            <ImageUpload setImage={setImage} />
           </div>
           <br />
           <motion.div

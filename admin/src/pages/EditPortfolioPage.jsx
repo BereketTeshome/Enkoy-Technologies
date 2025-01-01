@@ -6,10 +6,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import VideoUpload from "../components/VideoUpload";
+import ImageUpload from "../components/ImageUpload";
 
 const EditPortfolioPage = () => {
   const [video, setVideo] = useState("");
   const [portfolio, setPortfolio] = useState([]);
+  const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -25,6 +27,7 @@ const EditPortfolioPage = () => {
       const portfolioData = {
         title: title ? title : portfolio.title,
         video: video ? video : portfolio.video,
+        thumbnail: image ? image : portfolio.thumbnail,
         description: description ? description : portfolio.description,
       };
       await axios.put(
@@ -119,16 +122,35 @@ const EditPortfolioPage = () => {
             <VideoUpload setVideo={setVideo} />
           </div>
           <br />
-          <div className="mt-4">
-            <p className="text-gray-600 text-sm">Current Uploaded Video:</p>
-            <video
-              src={portfolio.video}
-              controls
-              className="mt-2 w-48 h-48 object-cover border rounded-md shadow-sm"
-            >
-              Your browser does not support the video tag.
-            </video>
+          {portfolio.video && (
+            <div className="mt-4">
+              <p className="text-gray-600 text-sm">Current Uploaded Video:</p>
+              <video
+                src={portfolio.video}
+                controls
+                className="mt-2 w-48 h-48 object-cover border rounded-md shadow-sm"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          )}
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Change Cover Image
+            </label>
+            <ImageUpload setImage={setImage} />
           </div>
+          <br />
+          {portfolio.thumbnail && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Old Image
+              </label>
+              <img src={portfolio?.thumbnail} alt="" className="h-24 w-24" />
+            </div>
+          )}
+
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
