@@ -166,42 +166,78 @@ const AboutUs = () => {
         >
           {isAmharic ? "ዋና እሴቶቻችን" : "Our Core Values"}
         </h2>
-        <ul
-          className={`space-y-4 ${
-            isDarkTheme ? "text-gray-100" : "text-gray-800"
-          }`}
-        >
-          <li>
-            <strong>{isAmharic ? "ፈጠራ፡" : "Innovation:"}</strong>{" "}
-            {isAmharic
-              ? "ተረት አተረጓጎምን፣ የጨዋታ ክፍሎችን እና ኤልኤክስዲን በማዋሃድ አንገብጋቢ የዲጂታል ትምህርት መፍትሄዎችን እናቀርባለን።"
-              : "We provide cutting-edge digital learning solutions by integrating storytelling, gaming elements, and LXD."}
-          </li>
-          <li>
-            <strong>{isAmharic ? "ዘላቂነት፡" : "Sustainability:"}</strong>{" "}
-            {isAmharic
-              ? "ኢኮሎጂያዊ እውቅና በተገኘው መሪነት ብቃት የታጠቁ የማማር ስርዓት እናቀርባለን።"
-              : "We develop learning systems that promote environmental awareness and responsible leadership."}
-          </li>
-          <li>
-            <strong>{isAmharic ? "ተባባሪነት፡" : "Collaboration:"}</strong>{" "}
-            {isAmharic
-              ? "በእኩል ተሳትፎ ከተናጋሪዎችና አገልግሎት አቅራቢዎች ጋር ለአእምሮ ውጤት እንሠራለን።"
-              : "Working closely with clients and partners to achieve shared goals."}
-          </li>
-          <li>
-            <strong>{isAmharic ? "ማጎልበት፡" : "Empowerment:"}</strong>{" "}
-            {isAmharic
-              ? "በየጊዜው በሚለዋወጠው ዓለም ውስጥ ለመላመድ አስፈላጊ የሆኑ የትችት የማሰብ ችሎታዎችን እናስተምራለን።"
-              : "We teach critical thinking skills necessary for adapting in an ever-changing world."}
-          </li>
-          <li>
-            <strong>{isAmharic ? "የአየር ንብረት እርምጃ" : "Climate Action:"}</strong>{" "}
-            {isAmharic
-              ? "የአየር ንብረት ለውጥን ለመቅረፍ ለፈጠራ መፍትሄዎች ቁርጠኛ ነው።"
-              : "Committed to innovative solutions to address climate change."}
-          </li>
-        </ul>
+        <div className={`grid gap-6 md:grid-cols-2 lg:grid-cols-3`}>
+          <div
+            className={`p-4 shadow-md rounded-md ${
+              isDarkTheme ? "bg-gray-800" : "bg-[#fbcc5e]"
+            }`}
+          >
+            <h3 className="font-bold text-lg">
+              {isAmharic ? "ፈጠራ፡" : "Innovation:"}
+            </h3>
+            <p>
+              {isAmharic
+                ? "ተረት አተረጓጎምን፣ የጨዋታ ክፍሎችን እና ኤልኤክስዲን በማዋሃድ አንገብጋቢ የዲጂታል ትምህርት መፍትሄዎችን እናቀርባለን።"
+                : "We provide cutting-edge digital learning solutions by integrating storytelling, gaming elements, and LXD."}
+            </p>
+          </div>
+          <div
+            className={`p-4 shadow-md rounded-md ${
+              isDarkTheme ? "bg-gray-800" : "bg-[#fbcc5e]"
+            }`}
+          >
+            <h3 className="font-bold text-lg">
+              {isAmharic ? "ዘላቂነት፡" : "Sustainability:"}
+            </h3>
+            <p>
+              {isAmharic
+                ? "ኢኮሎጂያዊ እውቅና በተገኘው መሪነት ብቃት የታጠቁ የማማር ስርዓት እናቀርባለን።"
+                : "We develop learning systems that promote environmental awareness and responsible leadership."}
+            </p>
+          </div>
+          <div
+            className={`p-4 shadow-md rounded-md ${
+              isDarkTheme ? "bg-gray-800" : "bg-[#fbcc5e]"
+            }`}
+          >
+            <h3 className="font-bold text-lg">
+              {isAmharic ? "ተባባሪነት፡" : "Collaboration:"}
+            </h3>
+            <p>
+              {isAmharic
+                ? "በእኩል ተሳትፎ ከተናጋሪዎችና አገልግሎት አቅራቢዎች ጋር ለአእምሮ ውጤት እንሠራለን።"
+                : "Working closely with clients and partners to achieve shared goals."}
+            </p>
+          </div>
+          <div
+            className={`p-4 shadow-md rounded-md ${
+              isDarkTheme ? "bg-gray-800" : "bg-[#fbcc5e]"
+            }`}
+          >
+            <h3 className="font-bold text-lg">
+              {isAmharic ? "ማጎልበት፡" : "Empowerment:"}
+            </h3>
+            <p>
+              {isAmharic
+                ? "በየጊዜው በሚለዋወጠው ዓለም ውስጥ ለመላመድ አስፈላጊ የሆኑ የትችት የማሰብ ችሎታዎችን እናስተምራለን።"
+                : "We teach critical thinking skills necessary for adapting in an ever-changing world."}
+            </p>
+          </div>
+          <div
+            className={`p-4 shadow-md rounded-md ${
+              isDarkTheme ? "bg-gray-800" : "bg-[#fbcc5e]"
+            }`}
+          >
+            <h3 className="font-bold text-lg">
+              {isAmharic ? "የአየር ንብረት እርምጃ" : "Climate Action:"}
+            </h3>
+            <p>
+              {isAmharic
+                ? "የአየር ንብረት ለውጥን ለመቅረፍ ለፈጠራ መፍትሄዎች ቁርጠኛ ነው።"
+                : "Committed to innovative solutions to address climate change."}
+            </p>
+          </div>
+        </div>
       </motion.div>
 
       {/* Partners Section */}

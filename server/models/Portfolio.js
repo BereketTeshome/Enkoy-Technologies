@@ -8,6 +8,9 @@ const PortfolioSchema = new mongoose.Schema(
     video: {
       type: String,
     },
+    thumbnail: {
+      type: String,
+    },
     description: {
       type: String,
     },

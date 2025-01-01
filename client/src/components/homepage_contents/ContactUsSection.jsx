@@ -5,7 +5,6 @@ import lottie from "lottie-web"; // Animation library
 import contactAnimation from "../../assets/contact.json"; // Lottie animation file
 import { useSelector } from "react-redux"; // Redux hook for accessing the global state
 
-
 const ContactUsSection = () => {
   const theme = useSelector((state) => state.theme?.theme); // Get the current theme (dark or light) from Redux state
   const isDarkTheme = theme === "dark"; // Check if the theme is dark
@@ -21,7 +20,7 @@ const ContactUsSection = () => {
 
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
 
   const validateForm = () => {
     const newErrors = {};
@@ -120,14 +119,16 @@ const ContactUsSection = () => {
 
   return (
     <div className="flex flex-col sm:flex-row">
-      <div ref={container} className={`w-[100%]  sm:w-[50%] pr-24 border-r-2 ${isDarkTheme ? "border-gray-600" : "border-gray-300"}`}></div>
+      <div
+        ref={container}
+        className={`w-[100%]  sm:w-[50%] pr-24 border-r-2 ${
+          isDarkTheme ? "border-gray-600" : "border-gray-300"
+        }`}
+      ></div>
 
       <div className="flex flex-col items-center justify-center flex-1 scale-90">
         <div className="relative w-full max-w-md p-8 bg-white rounded-lg shadow-xl bg-opacity-90">
-        <div
-        className="absolute top-[-8px] left-[-8px] w-[calc(100%+16px)] h-[calc(100%+16px)] rounded-lg border-2 border-transparent bg-gradient-to-r from-[#FFC94D] via-[#FF8A00] to-[#FFC94D] animate-pulse z-0 shadow-[0_0_20px_rgba(255,200,75,0.8),0_0_40px_rgba(22,22,40,0.5)] blur-sm"
-      ></div>
-
+          <div className="absolute top-[-8px] left-[-8px] w-[calc(100%+16px)] h-[calc(100%+16px)] rounded-lg border-2 border-transparent bg-gradient-to-r from-[#FFC94D] via-[#FF8A00] to-[#FFC94D] animate-pulse z-0 shadow-[0_0_20px_rgba(255,200,75,0.8),0_0_40px_rgba(22,22,40,0.5)] blur-sm"></div>
 
           <motion.form
             className="relative z-10"
@@ -207,7 +208,7 @@ const ContactUsSection = () => {
                   className="w-1/3 p-2 text-sm bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   whileFocus={{ boxShadow: "0 0 8px rgba(255, 105, 180, 0.6)" }}
                 >
-                 <option value="" disabled>
+                  <option value="" disabled>
                     Select Code *
                   </option>
 
@@ -330,7 +331,6 @@ const ContactUsSection = () => {
             >
               {loading ? "Submitting..." : "Submit"}
             </motion.button>
-
           </motion.form>
         </div>
       </div>
