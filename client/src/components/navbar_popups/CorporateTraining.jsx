@@ -49,31 +49,31 @@ const CorporateTraining = () => {
 						: "Decent Work and SDG Training",
 				link: "/corporate-training/decent-work",
 			},
-			{
-				text:
-					language === "amh"
-						? "የተገቢ ተቀጣጣሪነት ስልጠና"
-						: "Fair Employment Practice Training",
-				link: "/corporate-training/fair-employment",
-			},
-			{
-				text:
-					language === "amh"
-						? "የእንቅስቃሴና ጤና ስልጠና"
-						: "Safety and Health at Workplace Training",
-				link: "/corporate-training/safety",
-			},
-			{
-				text:
-					language === "amh"
-						? "የሥራ እና ሕይወት ሚዛን ስልጠና"
-						: "Work-life Balance Training",
-				link: "/corporate-training/work-life",
-			},
-			{
-				text: language === "amh" ? "ሶፍት ክህሎት ስልጠና" : "Soft Skill Training",
-				link: "/corporate-training/soft-skill",
-			},
+			// {
+			// 	text:
+			// 		language === "amh"
+			// 			? "የተገቢ ተቀጣጣሪነት ስልጠና"
+			// 			: "Fair Employment Practice Training",
+			// 	link: "/corporate-training/fair-employment",
+			// },
+			// {
+			// 	text:
+			// 		language === "amh"
+			// 			? "የእንቅስቃሴና ጤና ስልጠና"
+			// 			: "Safety and Health at Workplace Training",
+			// 	link: "/corporate-training/safety",
+			// },
+			// {
+			// 	text:
+			// 		language === "amh"
+			// 			? "የሥራ እና ሕይወት ሚዛን ስልጠና"
+			// 			: "Work-life Balance Training",
+			// 	link: "/corporate-training/work-life",
+			// },
+			// {
+			// 	text: language === "amh" ? "ሶፍት ክህሎት ስልጠና" : "Soft Skill Training",
+			// 	link: "/corporate-training/soft-skill",
+			// },
 		],
 	};
 
