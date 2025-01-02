@@ -191,7 +191,7 @@ const PersonalDevelopment = () => {
         <br />
         <br />
         <br />
-        <motion.div
+        {/* <motion.div
           className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
           variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
         >
@@ -299,7 +299,7 @@ const PersonalDevelopment = () => {
             </p>
           </motion.div>
           }
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </motion.div>
   );
