@@ -61,7 +61,7 @@ const BasicComputer = () => {
       >
         <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
           <motion.img
-            src="/img/corporate-training/basicComputer.svg"
+            src="/img/corporate-training/basicComputer.jpg"
             alt=""
             className="w-[70px]"
             {...fadeInUp}
@@ -189,136 +189,7 @@ const BasicComputer = () => {
         <br />
         <br />
         <br />
-        <motion.div
-          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
-          variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
-        >
-          <motion.div className="flex flex-1" {...fadeInUp}>
-            <motion.h2
-              className="inline-block text-3xl font-semibold text-gray-900 md:text-5xl"
-              {...fadeInUp}
-            >
-              {isAmharic ? "የእኛ መሰረታዊ የኮምፒውተር ችሎታ ስልጠና መፍትሄዎች ቁልፍ አካላት" : "Key Components of Our Basic Computer Skills Training Solutions"}
-              
-            </motion.h2>
-          </motion.div>
-          {isAmharic ? 
-            <motion.div
-            className="flex-1 text-gray-900 text-[15px]"
-            {...fadeInUp}
-          >
-            <motion.p>አጠቃላይ የስልጠና አካሄዳችን የሚያተኩረው፡</motion.p>
-            <ul className="py-5 pl-6 list-disc">
-              <li>
-              <b>የሶፍትዌር ብቃት፡</b> ተሳታፊዎች እንዴት እንደሚጠቀሙ ማስተማር
-                እንደ ማይክሮሶፍት ዎርድ፣ ኤክሴል እና የመሳሰሉት አስፈላጊ መተግበሪያዎች
-                ፓወር ፖይንት
-              </li>
-              <li>
-              <b>ፋይል ማኔጅመንት፡</b> ፋይሎችን በማደራጀት ላይ ተማሪዎችን መምራት እና
-              በቀላሉ ለመድረስ እና ለማውጣት አቃፊዎች ውጤታማ በሆነ መንገድ።
-              </li>
-              <li>
-              <b>የበይነመረብ ችሎታዎች፡</b> ደህንነቱ የተጠበቀ የአሰሳ ልማዶችን ማስተማር፣
-              የመስመር ላይ የምርምር ቴክኒኮች እና የዲጂታል ግንኙነት ሥነ-ምግባር።
-              </li>
-              <li>
-              <b>መሰረታዊ መላ ፍለጋ፡</b> ተሳታፊዎችን በክህሎት ማስታጠቅ
-                የተለመዱ የኮምፒዩተር ጉዳዮችን ለመፍታት እና መቼ እርዳታ ይጠይቁ
-                ያስፈልጋል።
-              </li>
-            </ul>
-            <motion.h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
-            ለግለሰቦች እና ድርጅቶች የለውጥ ጥቅሞች
-            </motion.h2>
-            <motion.p>
-            የእኛ የመሠረታዊ የኮምፒዩተር ክህሎት ስልጠና ተጽእኖ ከዚህ በላይ ይዘልቃል
-              የግለሰብ ተማሪዎች፣ መላውን ድርጅት የሚጠቅም። እንደ
-              ተሳታፊዎች የዲጂታል ብቃታቸውን, ጥቅሞቹን ያሻሽላሉ
-              ያካትቱ፡
-            </motion.p>
-            <ul className="py-5 pl-6 list-disc">
-              <li>
-              ሰራተኞች የበለጠ ውጤታማ ሲሆኑ ምርታማነት ይጨምራል
-              ቴክኖሎጂን በመጠቀም.
-              </li>
-              <li>
-              በውጤታማ አጠቃቀም የተሻሻለ ግንኙነት እና ትብብር
-              የዲጂታል መሳሪያዎች.
-              </li>
-              <li>
-              የኮምፒተር ስርዓቶችን በማሰስ ላይ የበለጠ በራስ መተማመን ፣ ወደዚህ ይመራል።
-              ብስጭት እና ውጥረት ይቀንሳል.
-              </li>
-              <li>
-              አዳዲስ ቴክኖሎጂዎች ብቅ እያሉ የመላመድ የተሻሻለ ችሎታ።
-              </li>
-            </ul>
-            <motion.p>
-            ዛሬ በመሠረታዊ የኮምፒዩተር ክህሎት ስልጠና ላይ ኢንቨስት ያድርጉ እና የእርስዎን ኃይል ይስጡ
-            በዲጂታል ዘመን ለማደግ የሰው ኃይል!
-            </motion.p>
-          </motion.div>
-          : 
-          
-          <motion.div
-            className="flex-1 text-gray-900 text-[15px]"
-            {...fadeInUp}
-          >
-            <motion.p>Our comprehensive training approach focuses on:</motion.p>
-            <ul className="py-5 pl-6 list-disc">
-              <li>
-                <b>Software Proficiency:</b> Teaching participants how to use
-                essential applications like Microsoft Word, Excel, and
-                PowerPoint.
-              </li>
-              <li>
-                <b>File Management:</b> Guiding learners in organizing files and
-                folders effectively for easy access and retrieval.
-              </li>
-              <li>
-                <b>Internet Skills:</b> Instructing on safe browsing practices,
-                online research techniques, and digital communication etiquette.
-              </li>
-              <li>
-                <b>Basic Troubleshooting:</b> Equipping participants with skills
-                to troubleshoot common computer issues and seek help when
-                needed.
-              </li>
-            </ul>
-            <motion.h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
-              Transformative Benefits for Individuals and Organizations
-            </motion.h2>
-            <motion.p>
-              The impact of our Basic Computer Skills Training extends beyond
-              individual learners, benefiting the entire organization. As
-              participants enhance their digital competencies, the advantages
-              include:
-            </motion.p>
-            <ul className="py-5 pl-6 list-disc">
-              <li>
-                Increased productivity as employees become more efficient in
-                using technology.
-              </li>
-              <li>
-                Improved communication and collaboration through effective use
-                of digital tools.
-              </li>
-              <li>
-                Greater confidence in navigating computer systems, leading to
-                reduced frustration and stress.
-              </li>
-              <li>
-                Enhanced ability to adapt to new technologies as they emerge.
-              </li>
-            </ul>
-            <motion.p>
-              Invest in basic computer skills training today and empower your
-              workforce to thrive in a digital age!
-            </motion.p>
-          </motion.div>
-          }
-        </motion.div>
+        
       </motion.div>
     </motion.div>
   );

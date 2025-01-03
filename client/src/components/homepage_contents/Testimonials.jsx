@@ -47,9 +47,9 @@ const Testimonials = () => {
         viewport={{ margin: "-50%", once: true }}
         transition={{ duration: 0.5 }}
       >
-        <div className="flex flex-col items-center max-w-6xl gap-8 mx-auto lg:flex-row">
+        <div className="flex flex-col items-center max-w-6xl gap-3 mx-auto lg:flex-row">
           {/* Text Section */}
-          <div className="flex-1">
+          <div className="relative left-0 flex-1 sm:left-14">
             <img className="relative scale-75 right-9" src="/testimonial.png" alt="testimonial" />
             
             <p
