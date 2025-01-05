@@ -33,7 +33,7 @@ const DetailedWork = () => {
         animate="animate"
       >
         <motion.div
-          className="flex flex-col lg:flex-row items-center gap-5"
+          className="flex flex-col items-center gap-5 lg:flex-row"
           {...fadeInUp}
         >
           <motion.div className="flex-1" {...fadeInUp}>
@@ -43,30 +43,36 @@ const DetailedWork = () => {
             </h1>
           </motion.div>
           <motion.div className="flex-1" {...fadeInUp}>
-            <img src={work.image} alt="" className="w-full max-w-[80%]" />
+          {work.image ?  <img src={work.image} alt="" className="rounded-lg"/> : 
+          
+           <video src="/img/corporate-training/LLP.mp4" alt="" className="mb-8 rounded-lg" controls>
+            Your browser does not support the video tag.
+          </video> 
+          }
+
           </motion.div>
         </motion.div>
         <br />
         <br />
         <br />
         <motion.div
-          className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10 mt-16"
+          className="grid grid-cols-1 gap-10 mt-16 lg:grid-cols-3 sm:grid-cols-2"
           {...fadeInUp}
         >
           <div>
-            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
+            <h4 className="mb-4 font-semibold text-yellow-500 uppercase">
               What we made
             </h4>
             <p className={"text-gray-100"}>{work.whatWeMade}</p>
           </div>
           <div>
-            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
+            <h4 className="mb-4 font-semibold text-yellow-500 uppercase">
               The issue
             </h4>
             <p className={"text-gray-100"}>{work.shortIssus}</p>
           </div>
           <div>
-            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
+            <h4 className="mb-4 font-semibold text-yellow-500 uppercase">
               Project Highlights
             </h4>
             <ul className={`list-disc pl-5 space-y-2 ${"text-gray-100"}`}>
@@ -82,17 +88,17 @@ const DetailedWork = () => {
       <br />
       <br />
       <motion.div
-        className="px-5 md:px-32 py-16"
+        className="px-5 py-16 md:px-32"
         variants={staggerContainer}
         initial="initial"
         animate="animate"
       >
         <motion.div
-          className="flex flex-col md:flex-row items-start gap-10"
+          className="flex flex-col items-start gap-10 md:flex-row"
           {...fadeInUp}
         >
           <div className="flex-1">
-            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
+            <h4 className="mb-4 font-semibold text-yellow-500 uppercase">
               The issue
             </h4>
             <h2
@@ -114,7 +120,7 @@ const DetailedWork = () => {
       </motion.div>
 
       <motion.div
-        className="px-5 md:px-32 py-8"
+        className="px-5 py-8 md:px-32"
         variants={staggerContainer}
         initial="initial"
         animate="animate"
@@ -126,7 +132,7 @@ const DetailedWork = () => {
           {...fadeInUp}
         >
           <div>
-            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
+            <h4 className="mb-4 font-semibold text-yellow-500 uppercase">
               The journey
             </h4>
             <h2
@@ -148,7 +154,7 @@ const DetailedWork = () => {
       </motion.div>
 
       <motion.div
-        className="px-5 md:px-32 py-5"
+        className="px-5 py-5 md:px-32"
         variants={staggerContainer}
         initial="initial"
         animate="animate"
@@ -160,7 +166,7 @@ const DetailedWork = () => {
           {...fadeInUp}
         >
           <div>
-            <h4 className="text-yellow-500 font-semibold uppercase mb-4">
+            <h4 className="mb-4 font-semibold text-yellow-500 uppercase">
               The Outcomes
             </h4>
           </div>

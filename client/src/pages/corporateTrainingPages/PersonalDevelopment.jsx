@@ -65,7 +65,7 @@ const PersonalDevelopment = () => {
           <motion.img
             src="/img/corporate-training/workLife.png"
             alt=""
-            className="w-[70px]"
+            className="w-[140px]"
             {...fadeInUp}
           />
           <motion.p
@@ -191,115 +191,7 @@ const PersonalDevelopment = () => {
         <br />
         <br />
         <br />
-        {/* <motion.div
-          className="w-full flex gap-32 md:px-20 sm:px-10 px-5 py-32 bg-[#FFCD57] md:flex-row flex-col"
-          variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
-        >
-          <motion.div className="flex flex-1" {...fadeInUp}>
-            <motion.h2
-              className="inline-block text-3xl font-semibold text-gray-900 md:text-5xl"
-              {...fadeInUp}
-            >
-              {isAmharic ? "የእኛ የግል ልማት ስልጠና መፍትሄዎች ቁልፍ አካላት" : "Key Components of Our Personal Development Training Solutions"}
-              
-            </motion.h2>
-          </motion.div>
-          {isAmharic ? 
-            <motion.div
-            className="flex-1 text-gray-900 text-[15px]"
-            {...fadeInUp}
-          >
-            <p>አጠቃላይ የስልጠና አካሄዳችን የሚያተኩረው፡</p>
-            <ul className="list-disc pl-6 py-5 *:mb-5">
-              <li>
-              <b>ራስን ማወቅ፡</b>ግለሰቦች ጠለቅ ብለው እንዲጨምሩ መርዳት
-              ጥንካሬያቸውን፣ እሴቶቻቸውን እና የእድገት ቦታዎችን መረዳት።
-              </li>
-              <li>
-              <b>የግብ ቅንብር፡ </b> ተሳታፊዎችን በተጨባጭ በማቀናበር ላይ መምራት
-              እና ሊደረስባቸው የሚችሉ የግል እና ሙያዊ ግቦች.
-              </li>
-              <li>
-              <b>ስሜታዊ ብልህነት፡ </b>የማወቅ እና የማስተማር ችሎታዎች
-              በራሳቸውም ሆነ በሌሎች ውስጥ ስሜቶችን መቆጣጠር.
-              </li>
-              <li>
-              <b>የመቋቋም ግንባታ፡</b> ለመቋቋም ስልቶችን መስጠት
-              ውጥረት እና እንቅፋቶችን ማሸነፍ.
-              </li>
-            </ul>
-            <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
-            ለግለሰቦች እና ድርጅቶች የለውጥ ጥቅሞች
-            </h2>
-            <p>
-            የእኛ የግል ልማት ስልጠና ተጽእኖ ከ
-              ግለሰብ, መላውን ድርጅት የሚጠቅም. እንደ ተሳታፊዎች
-              ማደግ እና ማደግ, ጥቅሞቹ የሚከተሉትን ያካትታሉ:
-            </p>
-            <ul className="list-disc pl-6 py-5 *:mb-5">
-            <li>በራስ መተማመን እና በሰራተኞች መካከል መነሳሳት ይጨምራል።</li>
-            <li>በቡድኖች ውስጥ የተሻሻለ ግንኙነት እና ትብብር።</li>
-              <li>
-              ግለሰቦች ሃይል እንዳላቸው ሲሰማቸው የላቀ ፈጠራ እና ፈጠራ
-              ሃሳቦችን ለመጋራት.
-              </li>
-              <li>የተሻሻለ አጠቃላይ የስራ እርካታ እና የሰራተኛ ማቆየት።</li>
-              <li>ይበልጥ አዎንታዊ እና ውጤታማ ድርጅታዊ ባህል።</li>
-            </ul>
-            <p>
-            ዛሬ በግል ልማት ላይ ኢንቨስት ያድርጉ እና የሰው ኃይልዎን ለዚህ ያግዟቸው
-            በግል እና በሙያዊ እድገት!
-            </p>
-          </motion.div>
-          :
-          <motion.div
-            className="flex-1 text-gray-900 text-[15px]"
-            {...fadeInUp}
-          >
-            <p>Our comprehensive training approach focuses on:</p>
-            <ul className="list-disc pl-6 py-5 *:mb-5">
-              <li>
-                <b>Self-Awareness:</b>Helping individuals gain a deeper
-                understanding of their strengths, values, and areas for growth.
-              </li>
-              <li>
-                <b>Goal Setting: </b> Guiding participants in setting realistic
-                and achievable personal and professional goals.
-              </li>
-              <li>
-                <b>Emotional Intelligence: </b>Teaching skills to recognize and
-                manage emotions, both in themselves and in others.
-              </li>
-              <li>
-                <b>Resilience Building:</b> Providing strategies to cope with
-                stress and overcome obstacles.
-              </li>
-            </ul>
-            <h2 className="mt-2 mb-5 text-2xl font-semibold text-gray-950">
-              Transformative Benefits for Individuals and Organizations
-            </h2>
-            <p>
-              The impact of our Personal Development Training extends beyond the
-              individual, benefiting the entire organization. As participants
-              grow and develop, the advantages include:
-            </p>
-            <ul className="list-disc pl-6 py-5 *:mb-5">
-              <li>Increased self-confidence and motivation among employees.</li>
-              <li>Enhanced communication and collaboration within teams.</li>
-              <li>
-                Greater innovation and creativity as individuals feel empowered
-                to share ideas.
-              </li>
-              <li>Improved overall job satisfaction and employee retention.</li>
-              <li>A more positive and productive organizational culture.</li>
-            </ul>
-            <p>
-              Invest in personal development today and empower your workforce to
-              thrive both personally and professionally!
-            </p>
-          </motion.div>
-          }
-        </motion.div> */}
+        
       </motion.div>
     </motion.div>
   );

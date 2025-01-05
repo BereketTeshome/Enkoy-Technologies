@@ -2,7 +2,7 @@ export const works = [
   {
     id: 1,
     icon: "/img/corporate-training/dream.webp",
-    image: "/img/corporate-training/employabilityImg.webp",
+    // image: "/img/corporate-training/employabilityImg.webp",
     title:
       "Local Level Participatory Land Use Planning (LLPLUP) and Participatory Watershed Development Planning (PWDP)- Course (14 Modules)",
     description:
@@ -41,7 +41,7 @@ export const works = [
   {
     id: 2,
     icon: "/img/corporate-training/workLife.png",
-    image: "/img/corporate-training/decentWorkImg.webp",
+    image: "/img/our-work/soil.gif",
     title:
       "Physical Soil and Water Conservation Measures (PSWC)-Course(20 Module)",
     description:
@@ -81,7 +81,7 @@ export const works = [
   {
     id: 3,
     icon: "/img/corporate-training/workLife.png",
-    image: "/img/corporate-training/decentWorkImg.webp",
+    image: "/img/our-work/decentWork.gif",
     title: "Enhancing Digital Learning for Decent Work: A Comprehensive Training Program for GIZ STEP",
     description: "This project, undertaken for GIZ STEP, aims to ensure that the training is not only effective but also accessible and tailored to the needs of all learners involved.",
     projectOverview: [

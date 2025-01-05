@@ -18,7 +18,7 @@ const Testimonials = () => {
     {
       quote:
         "We are delighted to recommend Enkoy Technologies for their exceptional work in transforming our 'Decent Work in Ethiopia' training into a 6-hour self-paced online course. The course, now hosted on the atingi platform, met all our expectations in terms of quality and engagement. Enkoy’s team applied a minimal viable product (MVP) approach, incorporating multiple feedback loops and iterations, to effectively convert our in-person training for company managers and workers into an engaging online format for young Ethiopians, especially fresh graduates. Their expertise in learning experience design and online course development made this collaboration a success, and we look forward to working with them on future projects.",
-      author: "GIZ Ethiopia and Djibouti",
+      author: "Fink, Nina Kristin",
       organization: "German Development Cooperation",
       logo: "/img/partners/GIZ.png",
     },
