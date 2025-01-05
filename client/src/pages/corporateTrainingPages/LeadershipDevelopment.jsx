@@ -1,4 +1,3 @@
-import FAQSection from "../../components/corporateTraining/FAQSection";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
@@ -9,39 +8,6 @@ const LeadershipDevelopment = () => {
   const isAmharic = language === "amh";
 
 
-  // const faqData = isAmharic
-  // ? [
-  //     {
-  //       question: "ለእርስዎ የተሰራ የመሪነት እድገት አውድ",
-  //       answer: [
-  //         `በእንኮይ ቴክኖሎጂዎች፣የእኛ የአመራር ስልጠና ከድርጅትዎ የተለየ ባህል እና አላማ ጋር ለማስተጋባት በረቀቀ መንገድ የተዘጋጀ ነው። የእርስዎን ተልዕኮ፣ ራዕይ፣ እሴቶች እና ግቦች በጥልቀት በመረዳት እንጀምራለን። ይህ የመሠረታዊ እውቀት ከዐውደ-ጽሑፍዎ ጋር ወጥ በሆነ መልኩ የሚስማማ የድርጅት አመራር ልማት መርሃ ግብር እንድንፈጥር ያስችለናል።`,
-  //         "እንዲሁም የአመራር ስልጠናዎ የሚፈለገውን ውጤት በትኩረት እንከታተላለን። በመሪዎችዎ አፈጻጸም ላይ ሊያዩዋቸው የሚፈልጓቸውን ልዩ ማሻሻያዎች በመለየት፣ እውነተኛ ውጤቶችን የሚመሩ የታለሙ መፍትሄዎችን መፍጠር እንችላለን። በተጨማሪም፣ የተለያዩ ደረጃዎች የተለየ የአመራር ችሎታዎች እንደሚፈልጉ በመገንዘብ የድርጅትዎን የሕይወት ዑደት ደረጃ እንገመግማለን።",
-  //       ],
-  //     },
-  //     {
-  //       question: "ቁጥጥር የሚደረግበት የገሃዱ ዓለም ተግዳሮቶች",
-  //       answer: [
-  //         "የእንኮይ ሥልጠና ሥርዓት ተማሪዎችን እውነተኛ የመሪነት ችግሮች ውስጥ ይጠለልላቸዋል፣ የማይሰራውን ተግባራት ሲጋለጥ ሊታይ እንዲሆን ይደረጋል።",
-  //         "መሪዎቻችሁን ከእነዚህ ትክክለኛ ተግዳሮቶች ጋር በመጋፈጥ፣ ውስብስብ ሁኔታዎችን እንዲሄዱ እናዘጋጃቸዋለን። የእኛ አሠልጣኝ ውጤታማ የለውጥ አስተዳደር ስትራቴጂዎችን በማዘጋጀት በድርጅታዊ ለውጦች፣ በቴክኖሎጂ እድገቶች እና በኢኮኖሚያዊ መልክዓ ምድራዊ ለውጦች እንዲመሩ በማስታጠቅ ላይ ያተኩራል።",
-  //       ],
-  //     },
-  //   ]
-  // : [
-  //     {
-  //       question: "Tailored Leadership Development for Your Unique Context",
-  //       answer: [
-  //         `At Enkoy Technologies, our leadership training is intricately designed to resonate with your organization’s specific culture and objectives. We begin by gaining a deep understanding of your mission, vision, values, and goals. This foundational knowledge allows us to craft a corporate leadership development program that aligns seamlessly with your context.`,
-  //         "We also pay close attention to the desired outcomes of your leadership training. By identifying the specific improvements you want to see in your leaders’ performance, we can create targeted solutions that drive real results. Additionally, we assess your organization’s life cycle stage, recognizing that different phases demand distinct leadership capabilities.",
-  //       ],
-  //     },
-  //     {
-  //       question: "Real-World Challenges in a Controlled Environment",
-  //       answer: [
-  //         "Our training methodology immerses learners in realistic leadership scenarios, allowing them to experience the challenges leaders face firsthand. Through simulations, we evaluate their performance and gather feedback from various perspectives—team members, supervisors, and customers—to provide comprehensive insights.",
-  //         "By confronting your leaders with these authentic challenges, we prepare them to navigate complex situations. Our coaching emphasizes the development of effective change management strategies, equipping them to lead through organizational transformations, technological advancements, and shifts in the economic landscape.",
-  //       ],
-  //     },
-  //   ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
