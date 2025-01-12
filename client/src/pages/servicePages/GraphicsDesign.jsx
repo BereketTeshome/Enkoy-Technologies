@@ -23,7 +23,7 @@ const GraphicsDesign = () => {
         {/* Header Section */}
         <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
           <motion.img
-            src="/img/services/microlearning.svg"
+            src="/img/services/Graphic Design.png"
             alt={isAmharic ? "የግራፊክ ዲዛይን አርማ" : "Graphic Design Icon"}
             className="w-[70px]"
             {...fadeInUp}

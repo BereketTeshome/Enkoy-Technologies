@@ -28,7 +28,7 @@ const SelfPacedLearning = () => {
 			>
 				<div className="sm:w-[60%] pb-20 w-[80%]">
 					<motion.img
-						src="/img/services/mobileElearning.svg"
+						src="/img/services/mobileElearning.png"
 						alt="Mobile Learning Icon"
 						className="w-[70px]"
 						{...fadeInUp}

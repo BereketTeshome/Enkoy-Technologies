@@ -74,9 +74,9 @@ const AnimationVideos = () => {
       >
         <motion.div className="flex-1" {...fadeInUp}>
           <img
-            src="/img/services/animatedVideosImg.png"
+            src="/img/services/Animation,Everyone adores.gif"
             alt="Animated Videos Visual"
-            className="w-[90%]"
+            className="w-[90%] rounded-md shadow-md"
           />
         </motion.div>
         <motion.div className="flex-1" {...fadeInUp}>

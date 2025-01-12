@@ -26,7 +26,7 @@ const Translation = () => {
         {/* Content Section */}
         <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
           <motion.img
-            src="/img/services/translation.svg"
+            src="/img/services/Instractional design.png"
             alt={isAmharic ? "ትርጉም እና አካባቢያዊነት" : "Translation Icon"}
             className="w-[70px]"
             {...fadeInUp}
