@@ -23,7 +23,7 @@ const VideoEditing = () => {
         {/* Header Section */}
         <motion.div className="sm:w-[60%] pb-20 w-[80%]" {...fadeInUp}>
           <motion.img
-            src="/img/services/microlearning.svg"
+            src="/img/services/Video Editing.png"
             alt={
               isAmharic
                 ? "የቪዲዮ ማሻሻያ አገልግሎቶች"

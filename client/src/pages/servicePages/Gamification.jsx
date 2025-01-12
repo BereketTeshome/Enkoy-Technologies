@@ -25,7 +25,7 @@ const Gamification = () => {
       <motion.div className="flex flex-col items-center w-full" {...fadeInUp}>
         <div className="sm:w-[60%] pb-20 w-[80%]">
           <motion.img
-            src="/img/services/gamification.svg"
+            src="/img/services/educational-games.png"
             alt="Gamification Icon"
             className="w-[70px]"
             {...fadeInUp}
