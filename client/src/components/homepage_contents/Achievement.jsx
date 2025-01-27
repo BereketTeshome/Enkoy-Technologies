@@ -9,7 +9,7 @@ const Achievement = () => {
     eng: [
       {
         value: 2,
-        description: "years of professional experience",
+        description: "Years of professional experience",
         duration: 2,
       },
       {
@@ -24,7 +24,7 @@ const Achievement = () => {
       },
       {
         value: 50,
-        description: "illustrations we create for a course",
+        description: "Illustrations we create for a course",
         duration: 2,
       },
     ],

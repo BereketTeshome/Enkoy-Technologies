@@ -63,19 +63,19 @@ const DetailedWork = () => {
             <h4 className="mb-4 font-semibold text-yellow-500 uppercase">
               What we made
             </h4>
-            <p className={"text-gray-100"}>{work.whatWeMade}</p>
+            <p className={"text-gray-100 text-justify"}>{work.whatWeMade}</p>
           </div>
           <div>
             <h4 className="mb-4 font-semibold text-yellow-500 uppercase">
               The issue
             </h4>
-            <p className={"text-gray-100"}>{work.shortIssus}</p>
+            <p className={"text-gray-100 text-justify"}>{work.shortIssus}</p>
           </div>
           <div>
             <h4 className="mb-4 font-semibold text-yellow-500 uppercase">
               Project Highlights
             </h4>
-            <ul className={`list-disc pl-5 space-y-2 ${"text-gray-100"}`}>
+            <ul className={`list-disc pl-5 text-justify space-y-2 ${"text-gray-100"}`}>
               {work.projectOverview.map((highlight, idx) => (
                 <li key={idx}>{highlight}</li>
               ))}
@@ -110,7 +110,7 @@ const DetailedWork = () => {
             </h2>
           </div>
           <div
-            className={`flex-1 ${
+            className={`flex-1 text-justify ${
               isDarkTheme ? "text-gray-100" : "text-gray-700"
             }`}
           >
@@ -143,7 +143,7 @@ const DetailedWork = () => {
               {work.journey.title}
             </h2>
           </div>
-          <div>
+          <div className="text-justify">
             {work.journey.description.map((item, index) => (
               <p key={index} className="mb-5">
                 {item}
@@ -172,7 +172,7 @@ const DetailedWork = () => {
           </div>
           <div>
             {work.outcomes.map((item, index) => (
-              <p key={index} className="mb-5">
+              <p key={index} className="mb-5 text-justify">
                 {item}
               </p>
             ))}
